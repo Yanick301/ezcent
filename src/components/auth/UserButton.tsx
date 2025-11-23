@@ -20,9 +20,9 @@ export function UserButton() {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon">
+           <Button variant="ghost" className="w-full justify-start gap-2 px-0 text-base font-normal">
             <User className="h-5 w-5" />
-            <span className="sr-only">Benutzermenü</span>
+            <TranslatedText fr="Mon compte">Mein Konto</TranslatedText>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
@@ -40,21 +40,13 @@ export function UserButton() {
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <User className="h-5 w-5" />
-          <span className="sr-only">Benutzermenü</span>
+    <div className="flex flex-col space-y-2">
+       <Button variant="outline" asChild className="justify-start">
+        <Link href="/login"><User className="mr-2" /> <TranslatedText fr="Se connecter">Anmelden</TranslatedText></Link>
+       </Button>
+        <Button variant="ghost" asChild className="justify-start">
+            <Link href="/register"><TranslatedText fr="S'inscrire">Registrieren</TranslatedText></Link>
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem asChild>
-          <Link href="/login"><TranslatedText fr="Se connecter">Anmelden</TranslatedText></Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link href="/register"><TranslatedText fr="S'inscrire">Registrieren</TranslatedText></Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    </div>
   );
 }

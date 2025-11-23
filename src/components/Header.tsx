@@ -11,6 +11,7 @@ import { CartButton } from '@/components/cart/CartButton';
 import { UserButton } from './auth/UserButton';
 import { TranslatedText } from './TranslatedText';
 import { SearchDialog } from './search/SearchDialog';
+import { Separator } from './ui/separator';
 
 export function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -31,29 +32,34 @@ export function Header() {
                 <span className="sr-only">Menü umschalten</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="flex w-[300px] flex-col sm:w-[400px]">
-              <div className="mb-6 flex items-center justify-between">
+            <SheetContent side="left" className="flex w-[300px] flex-col bg-background p-0 sm:w-[350px]">
+              <div className="p-6">
                 <Link href="/" className="flex items-center space-x-2" onClick={handleLinkClick}>
                   <span className="font-bold font-headline text-2xl">
                     EZCENTIALS
                   </span>
                 </Link>
-                <div className="lg:hidden">
-                  <UserButton />
-                </div>
               </div>
-              <nav className="flex flex-col space-y-4">
-                {categories.map((category) => (
-                  <Link
-                    key={category.id}
-                    href={`/products/${category.slug}`}
-                    className="text-muted-foreground transition-colors hover:text-foreground"
-                    onClick={handleLinkClick}
-                  >
-                    <TranslatedText fr={category.name_fr}>{category.name}</TranslatedText>
-                  </Link>
-                ))}
+              <Separator />
+              <nav className="flex-grow p-6">
+                <ul className="flex flex-col space-y-5">
+                  {categories.map((category) => (
+                    <li key={category.id}>
+                      <Link
+                        href={`/products/${category.slug}`}
+                        className="text-lg uppercase tracking-wider text-foreground/80 transition-colors hover:text-foreground"
+                        onClick={handleLinkClick}
+                      >
+                        <TranslatedText fr={category.name_fr}>{category.name}</TranslatedText>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </nav>
+              <Separator />
+              <div className="p-6">
+                <UserButton />
+              </div>
             </SheetContent>
           </Sheet>
           
@@ -96,10 +102,10 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <SearchDialog />
           <div className="hidden lg:flex">
-            <UserButton />
+             <UserButton />
           </div>
+          <SearchDialog />
           <CartButton />
         </div>
       </div>
