@@ -3,10 +3,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
-import { getFeaturedProducts, categories } from '@/lib/data';
+import { getFeaturedProducts } from '@/lib/data';
 import { ProductCard } from '@/components/ProductCard';
 import { TranslatedText } from '@/components/TranslatedText';
 import { CategoryCard } from '@/components/CategoryCard';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel"
 
 export default function HomePage() {
   const featuredProducts = getFeaturedProducts(4);
@@ -36,8 +41,15 @@ export default function HomePage() {
             <h2 className="mb-12 text-center font-headline text-4xl md:text-5xl text-black">
                 <TranslatedText fr="Menu Maison">Menu Maison</TranslatedText>
             </h2>
-            <div className="flex gap-8 overflow-x-auto pb-4 -mx-4 px-4">
-                <div className="flex-none w-[80vw] md:w-[30vw]">
+             <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
                     <CategoryCard 
                         pretitle="PRÉCISION SARTORIALE"
                         title="Atelier Tailoring"
@@ -46,8 +58,8 @@ export default function HomePage() {
                         href="/products/mens-clothing"
                         imageId="mens-category"
                     />
-                </div>
-                <div className="flex-none w-[80vw] md:w-[30vw]">
+                </CarouselItem>
+                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
                     <CategoryCard 
                         pretitle="MAISON LUMIÈRE"
                         title="Couture & Soirée"
@@ -56,8 +68,8 @@ export default function HomePage() {
                         href="/products/womens-clothing"
                         imageId="womens-category"
                     />
-                </div>
-                <div className="flex-none w-[80vw] md:w-[30vw]">
+                </CarouselItem>
+                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
                     <CategoryCard 
                         pretitle="GALERIE SÉLECTION"
                         title="Salon Accessoires"
@@ -66,8 +78,8 @@ export default function HomePage() {
                         href="/products/accessories"
                         imageId="accessories-category"
                     />
-                </div>
-                <div className="flex-none w-[80vw] md:w-[30vw]">
+                </CarouselItem>
+                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
                     <CategoryCard
                         pretitle="ART DE LA MARCHE"
                         title="Studio Chaussures"
@@ -76,8 +88,8 @@ export default function HomePage() {
                         href="/products/shoes"
                         imageId="shoes-category"
                     />
-                </div>
-                <div className="flex-none w-[80vw] md:w-[30vw]">
+                </CarouselItem>
+                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
                     <CategoryCard
                         pretitle="REFUGE D'HIVER"
                         title="Collection Neige"
@@ -86,8 +98,9 @@ export default function HomePage() {
                         href="/products/winter-clothing"
                         imageId="winter-category"
                     />
-                </div>
-            </div>
+                </CarouselItem>
+              </CarouselContent>
+            </Carousel>
         </div>
       </section>
 
