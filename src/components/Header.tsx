@@ -17,6 +17,7 @@ export function Header() {
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Image src="/images/logo.png" alt="EZCENTIALS Logo" width={120} height={40} className="h-10 w-auto" />
+            <span className="font-bold font-headline text-xl">EZCENTIALS</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {categories.map((category) => (
@@ -41,6 +42,7 @@ export function Header() {
           <SheetContent side="left">
             <Link href="/" className="mb-6 flex items-center space-x-2">
                <Image src="/images/logo.png" alt="EZCENTIALS Logo" width={120} height={40} className="h-10 w-auto" />
+               <span className="font-bold font-headline text-xl">EZCENTIALS</span>
             </Link>
             <nav className="flex flex-col space-y-4">
               {categories.map((category) => (

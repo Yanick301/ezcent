@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { TranslatedText } from './TranslatedText';
@@ -39,7 +40,10 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
           <div className="col-span-2 mb-8 md:col-span-4 lg:col-span-1 lg:mb-0">
-            <h4 className="font-headline text-lg"><TranslatedText>EZCENTIALS</TranslatedText></h4>
+            <div className="flex items-center space-x-2">
+              <Image src="/images/logo.png" alt="EZCENTIALS Logo" width={120} height={40} className="h-10 w-auto" />
+              <span className="font-bold font-headline text-xl">EZCENTIALS</span>
+            </div>
             <p className="mt-2 text-sm text-muted-foreground"><TranslatedText>Understated elegance and sophistication.</TranslatedText></p>
           </div>
 
