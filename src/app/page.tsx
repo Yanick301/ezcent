@@ -16,12 +16,6 @@ import { categories } from '@/lib/data';
 
 export default function HomePage() {
   const featuredProducts = getFeaturedProducts(4);
-  const mensCategory = categories.find(c => c.slug === 'mens-clothing');
-  const womensCategory = categories.find(c => c.slug === 'womens-clothing');
-  const accessoriesCategory = categories.find(c => c.slug === 'accessories');
-  const shoesCategory = categories.find(c => c.slug === 'shoes');
-  const winterCategory = categories.find(c => c.slug === 'winter-clothing');
-
 
   return (
     <div className="flex flex-col">
@@ -55,68 +49,28 @@ export default function HomePage() {
             <h2 className="mb-12 text-center font-headline text-3xl md:text-5xl text-foreground">
                 <TranslatedText fr="Menu Maison">Menu Maison</TranslatedText>
             </h2>
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {mensCategory && (
-                    <div className="lg:col-span-1">
-                        <CategoryCard 
-                            pretitle={<TranslatedText fr="PRÉCISION SARTORIALE">SARTORIALE PRÄZISION</TranslatedText>}
-                            title={<TranslatedText fr="Atelier Tailoring">Atelier Schneiderei</TranslatedText>}
-                            description={<TranslatedText fr="Costumes architecturés et précision sartoriale.">Strukturierte Anzüge und satoriale Präzision.</TranslatedText>}
-                            linkText={<TranslatedText fr="EXPLORER HOMMES">HERREN ENTDECKEN</TranslatedText>}
-                            href={`/products/${mensCategory.slug}`}
-                            imageId={mensCategory.imageId}
-                        />
-                    </div>
-                )}
-                {womensCategory && (
-                     <div className="lg:col-span-2">
-                        <CategoryCard 
-                            pretitle={<TranslatedText fr="MAISON LUMIÈRE">MAISON LUMIÈRE</TranslatedText>}
-                            title={<TranslatedText fr="Couture & Soirée">Couture & Abendmode</TranslatedText>}
-                            description={<TranslatedText fr="Robes fluides, soies lumineuses et couture contemporaine.">Fließende Kleider, leuchtende Seide und zeitgenössische Couture.</TranslatedText>}
-                            linkText={<TranslatedText fr="EXPLORER FEMMES">DAMEN ENTDECKEN</TranslatedText>}
-                             href={`/products/${womensCategory.slug}`}
-                            imageId={womensCategory.imageId}
-                        />
-                    </div>
-                )}
-                {accessoriesCategory && (
-                    <div className="lg:col-span-2">
-                        <CategoryCard 
-                            pretitle={<TranslatedText fr="GALERIE SÉLECTION">GALERIE AUSWAHL</TranslatedText>}
-                            title={<TranslatedText fr="Salon Accessoires">Accessoires Salon</TranslatedText>}
-                            description={<TranslatedText fr="Bags iconiques, parfums signature et bijoux modernes.">Ikonische Taschen, Signature-Düfte und moderner Schmuck.</TranslatedText>}
-                            linkText={<TranslatedText fr="EXPLORER ACCESSOIRES">ACCESSOIRES ENTDECKEN</TranslatedText>}
-                            href={`/products/${accessoriesCategory.slug}`}
-                            imageId={accessoriesCategory.imageId}
-                        />
-                    </div>
-                )}
-                {shoesCategory && (
-                    <div className="lg:col-span-1">
-                        <CategoryCard
-                            pretitle={<TranslatedText fr="ART DE LA MARCHE">KUNST DES GEHENS</TranslatedText>}
-                            title={<TranslatedText fr="Studio Chaussures">Schuhstudio</TranslatedText>}
-                            description={<TranslatedText fr="Souliers d'exception, entre savoir-faire et design audacieux.">Außergewöhnliche Schuhe, zwischen Handwerkskunst und kühnem Design.</TranslatedText>}
-                            linkText={<TranslatedText fr="EXPLORER CHAUSSURES">SCHUHE ENTDECKEN</TranslatedText>}
-                            href={`/products/${shoesCategory.slug}`}
-                            imageId={shoesCategory.imageId}
-                        />
-                    </div>
-                )}
-                 {winterCategory && (
-                    <div className="lg:col-span-3">
-                        <CategoryCard
-                            pretitle={<TranslatedText fr="REFUGE D'HIVER">WINTER-REFUGIUM</TranslatedText>}
-                            title={<TranslatedText fr="Collection Neige">Schneekollektion</TranslatedText>}
-                            description={<TranslatedText fr="Pièces chaudes et luxueuses pour affronter le froid avec style.">Warme und luxuriöse Stücke, um der Kälte mit Stil zu trotzen.</TranslatedText>}
-                            linkText={<TranslatedText fr="EXPLORER HIVER">WINTER ENTDECKEN</TranslatedText>}
-                            href={`/products/${winterCategory.slug}`}
-                            imageId={winterCategory.imageId}
-                        />
-                    </div>
-                )}
-            </div>
+             <Carousel
+                opts={{
+                    align: "start",
+                    loop: true,
+                }}
+                className="w-full"
+            >
+                <CarouselContent>
+                    {categories.map((category, index) => (
+                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                             <CategoryCard 
+                                pretitle={<TranslatedText fr="CATÉGORIE">KATEGORIE</TranslatedText>}
+                                title={<TranslatedText fr={category.name_fr}>{category.name}</TranslatedText>}
+                                description={<TranslatedText fr={`Explorez notre collection ${category.name_fr}.`}>Entdecken Sie unsere {category.name}-Kollektion.</TranslatedText>}
+                                linkText={<TranslatedText fr="EXPLORER">ENTDECKEN</TranslatedText>}
+                                href={`/products/${category.slug}`}
+                                imageId={category.imageId}
+                            />
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+            </Carousel>
         </div>
       </section>
 
@@ -169,5 +123,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
