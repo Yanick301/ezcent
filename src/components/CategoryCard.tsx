@@ -4,12 +4,13 @@ import Link from 'next/link';
 import placeholderImagesData from '@/lib/placeholder-images.json';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import type { ReactNode } from 'react';
 
 type CategoryCardProps = {
-    pretitle: string;
-    title: string;
-    description: string;
-    linkText: string;
+    pretitle: ReactNode;
+    title: ReactNode;
+    description: ReactNode;
+    linkText: ReactNode;
     href: string;
     imageId: string;
 };
@@ -27,7 +28,7 @@ export function CategoryCard({ pretitle, title, description, linkText, href, ima
         <Link href={href} className="group relative block aspect-[3/4] w-full overflow-hidden">
             <Image
                 src={image.imageUrl}
-                alt={title}
+                alt={title?.toString() || 'Category'}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 33vw"
