@@ -17,11 +17,11 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center">
-        {/* Mobile Nav Trigger and Logo */}
-        <div className="flex flex-1 items-center justify-start md:hidden">
+        {/* Mobile Nav & Left items */}
+        <div className="flex flex-1 items-center justify-start">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Menü umschalten</span>
               </Button>
@@ -45,42 +45,36 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
-           <div className="ml-4">
-            <Link href="/" className="flex items-center space-x-2">
-                <span className="font-bold font-headline text-xl">
-                EZCENTIALS
-                </span>
-            </Link>
+          <div className="hidden md:flex items-center gap-4">
+             <SearchDialog />
+              <nav className="flex items-center space-x-6 text-sm font-medium">
+                {categories.map((category) => (
+                  <Link
+                    key={category.id}
+                    href={`/products/${category.slug}`}
+                    className="transition-colors hover:text-primary text-foreground/80"
+                  >
+                    <TranslatedText fr={category.name_fr}>{category.name}</TranslatedText>
+                  </Link>
+                ))}
+              </nav>
           </div>
         </div>
 
-        {/* Desktop Logo */}
-        <div className="hidden md:flex flex-1 items-center justify-start">
+        {/* Desktop Logo (Centered) */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
              <Link href="/" className="flex items-center space-x-2">
-                <span className="font-bold font-headline text-2xl">
+                <span className="font-bold font-headline text-2xl tracking-wider">
                 EZCENTIALS
                 </span>
             </Link>
         </div>
-
-
-        {/* Desktop Navigation (Centered) */}
-        <div className="mr-4 hidden flex-1 items-center justify-center md:flex">
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            {categories.map((category) => (
-              <Link
-                key={category.id}
-                href={`/products/${category.slug}`}
-                className="transition-colors hover:text-primary text-foreground/60"
-              >
-                <TranslatedText fr={category.name_fr}>{category.name}</TranslatedText>
-              </Link>
-            ))}
-          </nav>
-        </div>
         
+        {/* Right items */}
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <SearchDialog />
+          <div className="md:hidden">
+            <SearchDialog />
+          </div>
           <LanguageSelector />
           <UserButton />
           <CartButton />

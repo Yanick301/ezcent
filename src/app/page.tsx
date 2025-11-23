@@ -7,13 +7,6 @@ import { categories, getFeaturedProducts } from '@/lib/data';
 import { ProductCard } from '@/components/ProductCard';
 import placeholderImagesData from '@/lib/placeholder-images.json';
 import { TranslatedText } from '@/components/TranslatedText';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
 
 const { placeholderImages } = placeholderImagesData;
 
@@ -23,7 +16,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col">
-      <section className="relative h-[80vh] w-full text-foreground">
+      <section className="relative h-[90vh] w-full text-foreground">
         {heroImage && (
           <Image
             src={heroImage.imageUrl}
@@ -34,21 +27,34 @@ export default function HomePage() {
             data-ai-hint="fashion model"
           />
         )}
-        <div className="absolute inset-0 bg-white/30" />
-        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center">
-          <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl">
-            <TranslatedText fr="EZCENTIALS">EZCENTIALS</TranslatedText>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        <div className="relative z-10 flex h-full flex-col items-center justify-end pb-20 text-center text-white">
+          <h1 className="font-headline text-4xl md:text-5xl">
+            <TranslatedText fr="La Collection">Die Kollektion</TranslatedText>
           </h1>
-          <p className="mt-4 max-w-2xl text-lg md:text-xl">
+          <p className="mt-4 max-w-lg text-base">
             <TranslatedText fr="Découvrez notre nouvelle collection de pièces intemporelles, conçues avec passion et précision.">
               Entdecken Sie unsere neue Kollektion zeitloser Stücke, gefertigt mit Leidenschaft und Präzision.
             </TranslatedText>
           </p>
-          <Button asChild className="mt-8" size="lg">
+          <Button variant="outline" asChild className="mt-8 rounded-full border-white bg-transparent text-white hover:bg-white hover:text-black">
             <Link href="/products/all">
-              <TranslatedText fr="Acheter maintenant">Jetzt einkaufen</TranslatedText>
+              <TranslatedText fr="Découvrir">Entdecken</TranslatedText>
             </Link>
           </Button>
+        </div>
+      </section>
+
+      <section className="w-full bg-background py-16 lg:py-24">
+        <div className="container mx-auto px-4">
+          <h2 className="mb-12 text-center font-headline text-3xl md:text-4xl">
+            <TranslatedText fr="Produits Phares">Ausgewählte Produkte</TranslatedText>
+          </h2>
+          <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -66,7 +72,7 @@ export default function HomePage() {
                   <Link
                       key={category.id}
                       href={`/products/${category.slug}`}
-                      className="group relative block aspect-[3/4] h-full overflow-hidden rounded-md"
+                      className="group relative block aspect-[3/4] h-full overflow-hidden"
                     >
                       {categoryImage && (
                         <Image
@@ -86,19 +92,6 @@ export default function HomePage() {
                     </Link>
                 );
               })}
-          </div>
-        </div>
-      </section>
-
-      <section className="w-full bg-background py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-headline text-3xl md:text-4xl">
-            <TranslatedText fr="Collection d'hiver">Winterkollektion</TranslatedText>
-          </h2>
-          <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
           </div>
         </div>
       </section>

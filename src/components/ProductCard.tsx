@@ -2,12 +2,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Product } from '@/lib/types';
-import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
 import placeholderImagesData from '@/lib/placeholder-images.json';
 import { TranslatedText } from './TranslatedText';
-import { AddToFavoritesButton } from './favorites/AddToFavoritesButton';
-import { AddToCartButton } from './cart/AddToCartButton';
-import { Button } from './ui/button';
 
 const { placeholderImages } = placeholderImagesData;
 
@@ -19,9 +15,9 @@ export function ProductCard({ product }: ProductCardProps) {
   const productImage = placeholderImages.find(p => p.id === product.images[0]);
 
   return (
-    <div className="group flex h-full flex-col overflow-hidden rounded-lg">
+    <div className="group flex h-full flex-col">
         <Link href={`/product/${product.slug}`} className="block">
-            <div className="relative block aspect-[3/4] w-full overflow-hidden rounded-md">
+            <div className="relative block aspect-[3/4] w-full overflow-hidden">
                 {productImage && (
                 <Image
                     src={productImage.imageUrl}
@@ -34,8 +30,8 @@ export function ProductCard({ product }: ProductCardProps) {
                 )}
             </div>
         </Link>
-        <div className="p-4 text-center">
-            <h3 className="font-headline text-lg leading-snug">
+        <div className="pt-4 text-center">
+            <h3 className="font-body text-sm uppercase tracking-wider">
                 <Link href={`/product/${product.slug}`}><TranslatedText fr={product.name_fr}>{product.name}</TranslatedText></Link>
             </h3>
             <p className="text-sm text-muted-foreground mt-1">${product.price.toFixed(2)}</p>
