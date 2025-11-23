@@ -1,0 +1,47 @@
+
+import Image from 'next/image';
+import Link from 'next/link';
+import placeholderImagesData from '@/lib/placeholder-images.json';
+import { ArrowRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+type CategoryCardProps = {
+    pretitle: string;
+    title: string;
+    description: string;
+    linkText: string;
+    href: string;
+    imageId: string;
+};
+
+const { placeholderImages } = placeholderImagesData;
+
+export function CategoryCard({ pretitle, title, description, linkText, href, imageId }: CategoryCardProps) {
+    const image = placeholderImages.find((img) => img.id === imageId);
+
+    if (!image) {
+        return null;
+    }
+
+    return (
+        <Link href={href} className="group relative block aspect-[3/4] w-full overflow-hidden">
+            <Image
+                src={image.imageUrl}
+                alt={title}
+                fill
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 33vw"
+                data-ai-hint={image.imageHint}
+            />
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
+                <p className="text-sm uppercase tracking-widest">{pretitle}</p>
+                <h3 className="mt-2 font-headline text-4xl">{title}</h3>
+                <p className="mt-2 max-w-xs text-white/90">{description}</p>
+                <div className="mt-6 flex items-center gap-2 text-sm font-semibold uppercase tracking-wider transition-transform duration-300 group-hover:translate-x-2">
+                    {linkText} <ArrowRight className="h-4 w-4" />
+                </div>
+            </div>
+        </Link>
+    );
+}
