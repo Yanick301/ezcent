@@ -21,7 +21,7 @@ export function TranslatedText({ children }: TranslatedTextProps) {
 
   useEffect(() => {
     // Do not translate on the server or if the key is not set
-    if (typeof window === 'undefined' && !apiKeyIsSet) {
+    if (typeof window === 'undefined' || !apiKeyIsSet) {
       return;
     }
 
@@ -63,9 +63,16 @@ export function TranslatedText({ children }: TranslatedTextProps) {
     };
   }, [children, language, cacheKey]);
 
-  if (isLoading) {
+  // Si le texte est en cours de traduction et que ce n'est pas la langue par défaut (anglais)
+  if (isLoading && language !== 'en') {
     return <span className="opacity-75 animate-pulse">...</span>;
   }
 
+  // Si la langue cible est l'anglais, ou si la traduction n'est pas encore disponible, afficher le texte original.
+  if (language === 'en' || !translatedText) {
+    return <>{children}</>;
+  }
+  
+  // Sinon, afficher le texte traduit.
   return <>{translatedText}</>;
 }
