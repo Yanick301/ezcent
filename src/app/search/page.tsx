@@ -39,7 +39,7 @@ export default function SearchPage() {
         <p className="text-center"><TranslatedText fr="Recherche...">Suche...</TranslatedText></p>
       ) : (
         <>
-          <h1 className="mb-8 text-center font-headline text-4xl md:text-5xl">
+          <h1 className="mb-8 text-center font-headline text-3xl md:text-5xl break-words">
             {query && results.length > 0 ? (
               <>
                 <TranslatedText fr="Résultats de recherche pour">Suchergebnisse für</TranslatedText>: "{query}"
