@@ -4,6 +4,7 @@ import { AppProviders } from '@/components/AppProviders';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Toaster } from '@/components/ui/toaster';
+import { StarryBackground } from '@/components/StarryBackground';
 
 export const metadata: Metadata = {
   title: 'EZCENTIALS',
@@ -26,8 +27,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
+        <StarryBackground />
         <AppProviders>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-col relative z-10">
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />

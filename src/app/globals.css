@@ -82,6 +82,15 @@
     100% { background-position: 0% 50%; }
   }
 
+  @keyframes stars {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(-2000px);
+    }
+  }
+
   html {
     @apply scroll-smooth;
   }
@@ -90,12 +99,39 @@
   }
   body {
     @apply text-foreground;
-    background: linear-gradient(-45deg, #e9d5ff, #f3e8ff, #d1d5db, #e5e7eb);
+    background: linear-gradient(-45deg, #1e1b4b, #312e81, #4c1d95, #27272a);
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  .stars-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    transform: rotate(25deg);
+    animation: stars 200s linear infinite;
   }
 
-  /* Make cards and other elements semi-transparent to see the background */
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 2s infinite ease-in-out;
+  }
+  
+  @keyframes twinkle {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+  }
+
+
+   /* Make cards and other elements semi-transparent to see the background */
    .bg-background {
     background-color: hsla(var(--background), 0.8);
    }
