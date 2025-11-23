@@ -22,8 +22,20 @@ export function TranslatedText({ children }: TranslatedTextProps) {
 
   useEffect(() => {
     // Do not translate on the server or if the key is not set
-    if (typeof window === 'undefined' || !apiKeyIsSet) {
+    if (typeof window === 'undefined') {
       setTranslatedText(children);
+      return;
+    }
+    
+    if (!apiKeyIsSet) {
+      if(language !== originalLanguage) {
+        // To avoid showing the original german text when another language is selected
+        // but no API key is present, we can show a placeholder or the key.
+        // Here, showing the original child text is a safe fallback.
+         setTranslatedText(children);
+      } else {
+         setTranslatedText(children);
+      }
       return;
     }
 
