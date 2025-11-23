@@ -48,7 +48,7 @@ export default function HomePage() {
           <h2 className="mb-12 text-center font-headline text-3xl md:text-4xl">
             <TranslatedText>Shop by Category</TranslatedText>
           </h2>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
             {categories.map((category) => {
               const categoryImage = placeholderImages.find(p => p.id === category.imageId);
               return (

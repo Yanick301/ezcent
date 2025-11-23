@@ -12,6 +12,7 @@ export function Footer() {
         { name: "Men's Clothing", href: '/products/mens-clothing' },
         { name: "Women's Clothing", href: '/products/womens-clothing' },
         { name: 'Accessories', href: '/products/accessories' },
+        { name: 'Shoes', href: '/products/shoes' },
         { name: 'Winter Wear', href: '/products/winter-clothing' },
       ],
     },

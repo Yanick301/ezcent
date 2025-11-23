@@ -4,6 +4,7 @@ export const categories: Category[] = [
   { id: 'cat-1', name: 'Men\'s Clothing', slug: 'mens-clothing', imageId: 'mens-category' },
   { id: 'cat-2', name: 'Women\'s Clothing', slug: 'womens-clothing', imageId: 'womens-category' },
   { id: 'cat-3', name: 'Accessories', slug: 'accessories', imageId: 'accessories-category' },
+  { id: 'cat-5', name: 'Shoes', slug: 'shoes', imageId: 'shoes-category' },
   { id: 'cat-4', name: 'Winter Wear', slug: 'winter-clothing', imageId: 'winter-category' },
 ];
 
@@ -157,6 +158,34 @@ export const products: Product[] = [
         { author: 'Daniel G.', rating: 5, comment: 'Great quality for the price.' },
     ],
   },
+  
+  // Shoes
+  {
+    id: 'prod-13',
+    name: 'Italian Leather Loafers',
+    slug: 'italian-leather-loafers',
+    price: 280.00,
+    description: 'Hand-crafted in Italy from premium calfskin leather, these loafers offer timeless style and exceptional comfort. A versatile addition to any gentleman\'s wardrobe.',
+    category: 'shoes',
+    images: ['shoe-1', 'shoe-1-alt'],
+    reviews: [
+        { author: 'Edward H.', rating: 5, comment: 'The craftsmanship is superb. They feel like they were made for my feet.' },
+        { author: 'Felix I.', rating: 5, comment: 'Incredibly comfortable and stylish. I get compliments every time.' },
+    ],
+  },
+  {
+    id: 'prod-14',
+    name: 'Classic Suede Boots',
+    slug: 'classic-suede-boots',
+    price: 320.00,
+    description: 'These classic boots are made from rich, water-resistant suede and feature a durable rubber sole. Perfect for bridging the gap between smart and casual.',
+    category: 'shoes',
+    images: ['shoe-2'],
+    reviews: [
+        { author: 'Gabriel J.', rating: 5, comment: 'Stylish, comfortable, and durable. What more could you ask for?' },
+        { author: 'Harry K.', rating: 4, comment: 'Great boots, but they require some care to keep the suede looking good.' },
+    ],
+  },
 
   // Winter Wear
   {
@@ -245,7 +274,7 @@ export function getFeaturedProducts(limit: number = 4): Product[] {
     const featured = [
         products.find(p => p.category === 'womens-clothing'),
         products.find(p => p.category === 'mens-clothing'),
-        products.find(p => p.category === 'winter-clothing'),
+        products.find(p => p.category === 'shoes'),
         products.find(p => p.category === 'accessories'),
     ].filter((p): p is Product => p !== undefined);
   

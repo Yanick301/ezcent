@@ -3,31 +3,37 @@
     {
       "id": "hero",
       "description": "Hero fashion model",
-      "imageUrl": "https://images.unsplash.com/photo-1578632292335-df3abbb0d586?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmYXNoaW9uJTIwbW9kZWx8ZW58MHx8fHwxNzYzODYzNzExfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/hero.jpg",
       "imageHint": "fashion model"
     },
     {
       "id": "mens-category",
       "description": "Men's Clothing Category",
-      "imageUrl": "https://images.unsplash.com/photo-1557977275-d261356f567f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYWxlJTIwbW9kZWx8ZW58MHx8fHwxNzYzOTA3Mzg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/category-men.jpg",
       "imageHint": "male model"
     },
     {
       "id": "womens-category",
       "description": "Women's Clothing Category",
-      "imageUrl": "https://images.unsplash.com/photo-1562572159-4efc207f5aff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmZW1hbGUlMjBtb2RlbHxlbnwwfHx8fDE3NjM5MTMyMzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/category-women.jpg",
       "imageHint": "female model"
     },
     {
       "id": "accessories-category",
       "description": "Accessories Category",
-      "imageUrl": "https://images.unsplash.com/photo-1613495316603-56bb7633017e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3YXRjaCUyMHN1bmdsYXNzZXN8ZW58MHx8fHwxNzYzODMzMTg1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/category-accessories.jpg",
       "imageHint": "watch sunglasses"
+    },
+    {
+      "id": "shoes-category",
+      "description": "Shoes Category",
+      "imageUrl": "/images/products/category-shoes.jpg",
+      "imageHint": "stylish shoes"
     },
     {
       "id": "winter-category",
       "description": "Winter Clothing Category",
-      "imageUrl": "https://images.unsplash.com/photo-1612797748239-a83ed306dcfc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3aW50ZXIlMjBmYXNoaW9ufGVufDB8fHx8MTc2MzgxNzYwMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/category-winter.jpg",
       "imageHint": "winter fashion"
     },
     {
@@ -39,92 +45,110 @@
     {
       "id": "men-1-alt",
       "description": "Classic Linen Shirt Alt",
-      "imageUrl": "https://images.unsplash.com/photo-1611211081285-bd02a70f8b27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzaGlydCUyMGRldGFpbHxlbnwwfHx8fDE3NjM4MjE4MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/men-1-alt.jpg",
       "imageHint": "shirt detail"
     },
     {
       "id": "men-2",
       "description": "Tailored Wool Trousers",
-      "imageUrl": "https://images.unsplash.com/photo-1517184828383-bdf7e82f395f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtZW5zJTIwdHJvdXNlcnN8ZW58MHx8fHwxNzYzOTEzMjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/men-2.jpg",
       "imageHint": "mens trousers"
     },
     {
       "id": "men-3",
       "description": "Urban Explorer Jacket",
-      "imageUrl": "https://images.unsplash.com/photo-1649768722562-c4d276b82dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtZW5zJTIwamFja2V0fGVufDB8fHx8MTc2MzkxMzIzMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/men-3.jpg",
       "imageHint": "mens jacket"
     },
     {
       "id": "women-1",
       "description": "Silk Blend Blouse",
-      "imageUrl": "https://images.unsplash.com/photo-1694243382431-90d1934d6c3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzaWxrJTIwYmxvdXNlfGVufDB8fHx8MTc2Mzg2OTMyNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/women-1.jpg",
       "imageHint": "silk blouse"
     },
     {
       "id": "women-1-alt",
       "description": "Silk Blend Blouse Alt",
-      "imageUrl": "https://images.unsplash.com/photo-1763444134734-166e349dcba8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxibG91c2UlMjBkZXRhaWx8ZW58MHx8fHwxNzYzOTEzMjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/women-1-alt.jpg",
       "imageHint": "blouse detail"
     },
     {
       "id": "women-2",
       "description": "Flowy Maxi Dress",
-      "imageUrl": "https://images.unsplash.com/photo-1643387774657-01bffa461627?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtYXhpJTIwZHJlc3N8ZW58MHx8fHwxNzYzODY3MjY5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/women-2.jpg",
       "imageHint": "maxi dress"
     },
     {
       "id": "women-3",
       "description": "High-Waisted Culottes",
-      "imageUrl": "https://images.unsplash.com/photo-1663016587313-49823d48b7ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b21lbnMlMjBjdWxvdHRlc3xlbnwwfHx8fDE3NjM5MTMyMzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/women-3.jpg",
       "imageHint": "womens culottes"
     },
     {
       "id": "acc-1",
       "description": "Leather Chronograph Watch",
-      "imageUrl": "https://images.unsplash.com/photo-1641060311626-9362cbf0c7a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsZWF0aGVyJTIwd2F0Y2h8ZW58MHx8fHwxNzYzODk1MTI0fDA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/acc-1.jpg",
       "imageHint": "leather watch"
     },
     {
       "id": "acc-1-alt",
       "description": "Leather Chronograph Watch Alt",
-      "imageUrl": "https://images.unsplash.com/photo-1755078231930-fbf6783343e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3YXRjaCUyMGZhY2V8ZW58MHx8fHwxNzYzODY4MzMxfDA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/acc-1-alt.jpg",
       "imageHint": "watch face"
     },
     {
       "id": "acc-2",
       "description": "Woven Silk Scarf",
-      "imageUrl": "https://images.unsplash.com/photo-1606259458027-54d2a728b6ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzaWxrJTIwc2NhcmZ8ZW58MHx8fHwxNzYzOTEzMjMxfDA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/acc-2.jpg",
       "imageHint": "silk scarf"
     },
     {
       "id": "acc-3",
       "description": "Minimalist Silver Ring",
-      "imageUrl": "https://images.unsplash.com/photo-1749635705571-a262d6c6134c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzaWx2ZXIlMjByaW5nfGVufDB8fHx8MTc2Mzg5NzIzMXww&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/acc-3.jpg",
       "imageHint": "silver ring"
     },
     {
       "id": "winter-1",
       "description": "Cashmere Turtleneck Sweater",
-      "imageUrl": "https://images.unsplash.com/photo-1687275166296-7766371fd254?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXNobWVyZSUyMHN3ZWF0ZXJ8ZW58MHx8fHwxNzYzODg0ODIzfDA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/winter-1.jpg",
       "imageHint": "cashmere sweater"
     },
     {
       "id": "winter-1-alt",
       "description": "Cashmere Turtleneck Sweater Alt",
-      "imageUrl": "https://images.unsplash.com/photo-1633008004964-730029021e62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzd2VhdGVyJTIwa25pdHxlbnwwfHx8fDE3NjM4MjE4MTZ8MA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/winter-1-alt.jpg",
       "imageHint": "sweater knit"
     },
     {
       "id": "winter-2",
       "description": "Elegant Wool Coat",
-      "imageUrl": "https://images.unsplash.com/photo-1649566169356-e47e8d9809e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b29sJTIwY29hdHxlbnwwfHx8fDE3NjM4ODI2NDJ8MA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/winter-2.jpg",
       "imageHint": "wool coat"
     },
     {
       "id": "winter-3",
       "description": "Insulated Parka",
-      "imageUrl": "https://images.unsplash.com/photo-1731341869905-5ef9bcd272f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwYXJrYSUyMGphY2tldHxlbnwwfHx8fDE3NjM5MTMyMzF8MA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/winter-3.jpg",
       "imageHint": "parka jacket"
+    },
+    {
+      "id": "shoe-1",
+      "description": "Italian Leather Loafers",
+      "imageUrl": "/images/products/shoe-1.jpg",
+      "imageHint": "leather loafers"
+    },
+    {
+      "id": "shoe-1-alt",
+      "description": "Italian Leather Loafers Alt",
+      "imageUrl": "/images/products/shoe-1-alt.jpg",
+      "imageHint": "shoe detail"
+    },
+    {
+      "id": "shoe-2",
+      "description": "Classic Suede Boots",
+      "imageUrl": "/images/products/shoe-2.jpg",
+      "imageHint": "suede boots"
     }
   ]
 }
