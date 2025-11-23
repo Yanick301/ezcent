@@ -37,118 +37,209 @@
       "imageHint": "winter fashion"
     },
     {
-      "id": "men-1",
-      "description": "Classic Linen Shirt",
-      "imageUrl": "/images/products/men-1.jpg",
-      "imageHint": "linen shirt"
-    },
-    {
-      "id": "men-1-alt",
-      "description": "Classic Linen Shirt Alt",
-      "imageUrl": "/images/products/men-1-alt.jpg",
-      "imageHint": "shirt detail"
-    },
-    {
-      "id": "men-2",
-      "description": "Tailored Wool Trousers",
-      "imageUrl": "/images/products/men-2.jpg",
-      "imageHint": "mens trousers"
-    },
-    {
-      "id": "men-3",
-      "description": "Urban Explorer Jacket",
-      "imageUrl": "/images/products/men-3.jpg",
-      "imageHint": "mens jacket"
-    },
-    {
-      "id": "women-1",
-      "description": "Silk Blend Blouse",
-      "imageUrl": "/images/products/women-1.jpg",
-      "imageHint": "silk blouse"
-    },
-    {
-      "id": "women-1-alt",
-      "description": "Silk Blend Blouse Alt",
-      "imageUrl": "/images/products/women-1-alt.jpg",
-      "imageHint": "blouse detail"
-    },
-    {
-      "id": "women-2",
-      "description": "Flowy Maxi Dress",
-      "imageUrl": "/images/products/women-2.jpg",
-      "imageHint": "maxi dress"
-    },
-    {
-      "id": "women-3",
-      "description": "High-Waisted Culottes",
-      "imageUrl": "/images/products/women-3.jpg",
-      "imageHint": "womens culottes"
-    },
-    {
-      "id": "acc-1",
-      "description": "Leather Chronograph Watch",
-      "imageUrl": "/images/products/acc-1.jpg",
-      "imageHint": "leather watch"
-    },
-    {
-      "id": "acc-1-alt",
-      "description": "Leather Chronograph Watch Alt",
-      "imageUrl": "/images/products/acc-1-alt.jpg",
-      "imageHint": "watch face"
-    },
-    {
-      "id": "acc-2",
-      "description": "Woven Silk Scarf",
-      "imageUrl": "/images/products/acc-2.jpg",
-      "imageHint": "silk scarf"
-    },
-    {
-      "id": "acc-3",
-      "description": "Minimalist Silver Ring",
-      "imageUrl": "/images/products/acc-3.jpg",
-      "imageHint": "silver ring"
-    },
-    {
-      "id": "winter-1",
-      "description": "Cashmere Turtleneck Sweater",
-      "imageUrl": "/images/products/winter-1.jpg",
-      "imageHint": "cashmere sweater"
-    },
-    {
-      "id": "winter-1-alt",
-      "description": "Cashmere Turtleneck Sweater Alt",
-      "imageUrl": "/images/products/winter-1-alt.jpg",
-      "imageHint": "sweater knit"
-    },
-    {
-      "id": "winter-2",
-      "description": "Elegant Wool Coat",
-      "imageUrl": "/images/products/winter-2.jpg",
+      "id": "manteau-long-laine-hugo-boss",
+      "imageUrl": "/images/products/manteau-long-laine-hugo-boss.jpg",
       "imageHint": "wool coat"
     },
     {
-      "id": "winter-3",
-      "description": "Insulated Parka",
-      "imageUrl": "/images/products/winter-3.jpg",
-      "imageHint": "parka jacket"
+      "id": "doudoune-matelassee-moncler",
+      "imageUrl": "/images/products/doudoune-matelassee-moncler.jpg",
+      "imageHint": "puffer jacket"
     },
     {
-      "id": "shoe-1",
-      "description": "Italian Leather Loafers",
-      "imageUrl": "/images/products/shoe-1.jpg",
-      "imageHint": "leather loafers"
+      "id": "parka-arctic-canada-goose",
+      "imageUrl": "/images/products/parka-arctic-canada-goose.jpg",
+      "imageHint": "arctic parka"
     },
     {
-      "id": "shoe-1-alt",
-      "description": "Italian Leather Loafers Alt",
-      "imageUrl": "/images/products/shoe-1-alt.jpg",
-      "imageHint": "shoe detail"
+      "id": "manteau-cachemire-loro-piana-homme",
+      "imageUrl": "/images/products/manteau-cachemire-loro-piana-homme.jpg",
+      "imageHint": "cashmere coat"
     },
     {
-      "id": "shoe-2",
-      "description": "Classic Suede Boots",
-      "imageUrl": "/images/products/shoe-2.jpg",
-      "imageHint": "suede boots"
+      "id": "blouson-shearling-saint-laurent",
+      "imageUrl": "/images/products/blouson-shearling-saint-laurent.jpg",
+      "imageHint": "shearling jacket"
+    },
+    {
+      "id": "pull-col-roule-laine-merinos-paul-smith",
+      "imageUrl": "/images/products/pull-col-roule-laine-merinos-paul-smith.jpg",
+      "imageHint": "turtleneck sweater"
+    },
+    {
+      "id": "surchemise-doublee-acne-studios-homme",
+      "imageUrl": "/images/products/surchemise-doublee-acne-studios-homme.jpg",
+      "imageHint": "lined overshirt"
+    },
+    {
+      "id": "doudoune-sans-manche-polo-ralph-lauren",
+      "imageUrl": "/images/products/doudoune-sans-manche-polo-ralph-lauren.jpg",
+      "imageHint": "vest puffer"
+    },
+    {
+      "id": "manteau-trench-double-burberry",
+      "imageUrl": "/images/products/manteau-trench-double-burberry.jpg",
+      "imageHint": "trench coat"
+    },
+    {
+      "id": "pull-torsade-epais-dior-homme",
+      "imageUrl": "/images/products/pull-torsade-epais-dior-homme.jpg",
+      "imageHint": "cable-knit sweater"
+    },
+    {
+      "id": "veste-technique-impermeable-tnf-black-series",
+      "imageUrl": "/images/products/veste-technique-impermeable-tnf-black-series.jpg",
+      "imageHint": "technical jacket"
+    },
+    {
+      "id": "robe-midi-en-soie-gucci",
+      "imageUrl": "/images/products/robe-midi-en-soie-gucci.jpg",
+      "imageHint": "silk dress"
+    },
+    {
+      "id": "blazer-croise-balmain",
+      "imageUrl": "/images/products/blazer-croise-balmain.jpg",
+      "imageHint": "double-breasted blazer"
+    },
+    {
+      "id": "pull-col-roule-cachemire-loro-piana-femme",
+      "imageUrl": "/images/products/pull-col-roule-cachemire-loro-piana-femme.jpg",
+      "imageHint": "cashmere turtleneck"
+    },
+    {
+      "id": "pantalon-large-en-laine-max-mara",
+      "imageUrl": "/images/products/pantalon-large-en-laine-max-mara.jpg",
+      "imageHint": "wool trousers"
+    },
+    {
+      "id": "jean-slim-premium-diesel",
+      "imageUrl": "/images/products/jean-slim-premium-diesel.jpg",
+      "imageHint": "slim jeans"
+    },
+    {
+      "id": "chemisier-en-soie-imprimee-saint-laurent",
+      "imageUrl": "/images/products/chemisier-en-soie-imprimee-saint-laurent.jpg",
+      "imageHint": "printed blouse"
+    },
+    {
+      "id": "robe-courte-en-laine-prada",
+      "imageUrl": "/images/products/robe-courte-en-laine-prada.jpg",
+      "imageHint": "wool dress"
+    },
+    {
+      "id": "manteau-long-en-cachemire-max-mara",
+      "imageUrl": "/images/products/manteau-long-en-cachemire-max-mara.jpg",
+      "imageHint": "cashmere coat"
+    },
+    {
+      "id": "veste-courte-matelassee-moncler",
+      "imageUrl": "/images/products/veste-courte-matelassee-moncler.jpg",
+      "imageHint": "quilted jacket"
+    },
+    {
+      "id": "pull-oversize-torsade-chloe",
+      "imageUrl": "/images/products/pull-oversize-torsade-chloe.jpg",
+      "imageHint": "oversize sweater"
+    },
+    {
+      "id": "jupe-crayon-en-laine-hugo-boss",
+      "imageUrl": "/images/products/jupe-crayon-en-laine-hugo-boss.jpg",
+      "imageHint": "pencil skirt"
+    },
+    {
+      "id": "robe-longue-plissee-valentino",
+      "imageUrl": "/images/products/robe-longue-plissee-valentino.jpg",
+      "imageHint": "pleated dress"
+    },
+    {
+      "id": "chemise-en-coton-premium-burberry",
+      "imageUrl": "/images/products/chemise-en-coton-premium-burberry.jpg",
+      "imageHint": "cotton shirt"
+    },
+    {
+      "id": "robe-portefeuille-en-soie-diane-von-furstenberg",
+      "imageUrl": "/images/products/robe-portefeuille-en-soie-diane-von-furstenberg.jpg",
+      "imageHint": "wrap dress"
+    },
+    {
+      "id": "pantalon-tailleur-dior-femme",
+      "imageUrl": "/images/products/pantalon-tailleur-dior-femme.jpg",
+      "imageHint": "tailored trousers"
+    },
+    {
+      "id": "pull-col-bateau-ralph-lauren",
+      "imageUrl": "/images/products/pull-col-bateau-ralph-lauren.jpg",
+      "imageHint": "boatneck sweater"
+    },
+    {
+      "id": "cardigan-long-en-cachemire-brunello-cucinelli",
+      "imageUrl": "/images/products/cardigan-long-en-cachemire-brunello-cucinelli.jpg",
+      "imageHint": "cashmere cardigan"
+    },
+    {
+      "id": "robe-asymetrique-givenchy",
+      "imageUrl": "/images/products/robe-asymetrique-givenchy.jpg",
+      "imageHint": "asymmetrical dress"
+    },
+    {
+      "id": "blouse-satinee-stella-mccartney",
+      "imageUrl": "/images/products/blouse-satinee-stella-mccartney.jpg",
+      "imageHint": "satin blouse"
+    },
+    {
+      "id": "combinaison-pantalon-balenciaga",
+      "imageUrl": "/images/products/combinaison-pantalon-balenciaga.jpg",
+      "imageHint": "jumpsuit"
+    },
+    {
+      "id": "manteau-oversize-acne-studios",
+      "imageUrl": "/images/products/manteau-oversize-acne-studios.jpg",
+      "imageHint": "oversize coat"
+    },
+    {
+      "id": "robe-pull-en-cachemire-max-mara",
+      "imageUrl": "/images/products/robe-pull-en-cachemire-max-mara.jpg",
+      "imageHint": "sweater dress"
+    },
+    {
+      "id": "pantalon-en-cuir-saint-laurent",
+      "imageUrl": "/images/products/pantalon-en-cuir-saint-laurent.jpg",
+      "imageHint": "leather pants"
+    },
+    {
+      "id": "jupe-plissee-midi-valentino",
+      "imageUrl": "/images/products/jupe-plissee-midi-valentino.jpg",
+      "imageHint": "pleated skirt"
+    },
+    {
+      "id": "t-shirt-brode-logo-gucci",
+      "imageUrl": "/images/products/t-shirt-brode-logo-gucci.jpg",
+      "imageHint": "logo t-shirt"
+    },
+    {
+      "id": "pull-col-bateau-manches-ballon-chloe",
+      "imageUrl": "/images/products/pull-col-bateau-manches-ballon-chloe.jpg",
+      "imageHint": "balloon-sleeve sweater"
+    },
+    {
+      "id": "robe-chemise-oversize-balenciaga",
+      "imageUrl": "/images/products/robe-chemise-oversize-balenciaga.jpg",
+      "imageHint": "oversize shirtdress"
+    },
+    {
+      "id": "pantalon-palazzo-en-laine-max-mara",
+      "imageUrl": "/images/products/pantalon-palazzo-en-laine-max-mara.jpg",
+      "imageHint": "palazzo pants"
+    },
+    {
+      "id": "blazer-satin-saint-laurent",
+      "imageUrl": "/images/products/blazer-satin-saint-laurent.jpg",
+      "imageHint": "satin blazer"
+    },
+    {
+      "id": "robe-longue-en-velours-valentino",
+      "imageUrl": "/images/products/robe-longue-en-velours-valentino.jpg",
+      "imageHint": "velvet dress"
     }
   ]
 }

@@ -41,13 +41,12 @@ export default function HomePage() {
           </h1>
           <p className="mt-4 max-w-2xl text-lg md:text-xl">
             <TranslatedText>
-              Discover our new collection of timeless pieces, crafted with
-              passion and precision.
+              Découvrez notre nouvelle collection de pièces intemporelles, confectionnées avec passion et précision.
             </TranslatedText>
           </p>
           <Button asChild className="mt-8" size="lg">
             <Link href="/products/all">
-              <TranslatedText>Shop Now</TranslatedText>
+              <TranslatedText>Acheter maintenant</TranslatedText>
             </Link>
           </Button>
         </div>
@@ -56,7 +55,7 @@ export default function HomePage() {
       <section className="w-full bg-background py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center font-headline text-3xl md:text-4xl">
-            <TranslatedText>Shop by Category</TranslatedText>
+            <TranslatedText>Acheter par catégorie</TranslatedText>
           </h2>
           <Carousel
             opts={{
@@ -109,7 +108,7 @@ export default function HomePage() {
       <section className="w-full bg-card py-16 lg:py-24">
         <div className="container mx-auto px-4">
           <h2 className="mb-12 text-center font-headline text-3xl md:text-4xl">
-            <TranslatedText>Featured Products</TranslatedText>
+            <TranslatedText>Collection Hiver</TranslatedText>
           </h2>
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {featuredProducts.map((product) => (
