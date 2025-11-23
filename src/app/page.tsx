@@ -12,36 +12,24 @@ const { placeholderImages } = placeholderImagesData;
 
 export default function HomePage() {
   const featuredProducts = getFeaturedProducts(4);
-  const heroImage = placeholderImages.find((p) => p.id === 'hero');
 
   return (
     <div className="flex flex-col">
-      <section className="relative h-[90vh] w-full text-foreground">
-        {heroImage && (
-          <Image
-            src={heroImage.imageUrl}
-            alt="Elegantes Model"
-            fill
-            className="object-cover"
-            priority
-            data-ai-hint="fashion model"
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-        <div className="relative z-10 flex h-full flex-col items-center justify-end pb-20 text-center text-white">
-          <h1 className="font-headline text-5xl md:text-6xl">
-            <TranslatedText fr="La Collection">Die Kollektion</TranslatedText>
-          </h1>
-          <p className="mt-4 max-w-lg text-base">
-            <TranslatedText fr="Découvrez notre nouvelle collection de pièces intemporelles, conçues avec passion et précision.">
-              Entdecken Sie unsere neue Kollektion zeitloser Stücke, gefertigt mit Leidenschaft und Präzision.
-            </TranslatedText>
-          </p>
-          <Button variant="outline" asChild className="mt-8 border-white bg-transparent text-white hover:bg-white hover:text-black">
-            <Link href="/products/all">
-              <TranslatedText fr="Découvrir">Entdecken</TranslatedText>
-            </Link>
-          </Button>
+      <section className="relative flex h-[90vh] w-full flex-col items-center justify-center bg-background text-center text-foreground">
+        <div className="container px-4">
+            <h1 className="font-headline text-5xl md:text-7xl">
+                <TranslatedText fr="L'Élégance Redéfinie">Eleganz Neu Definiert</TranslatedText>
+            </h1>
+            <p className="mt-6 max-w-2xl mx-auto text-base md:text-lg text-muted-foreground">
+                <TranslatedText fr="Découvrez des pièces intemporelles où le savoir-faire artisanal rencontre un design d'exception.">
+                Entdecken Sie zeitlose Stücke, in denen handwerkliches Können auf außergewöhnliches Design trifft.
+                </TranslatedText>
+            </p>
+            <Button size="lg" asChild className="mt-8">
+                <Link href="/products/all">
+                <TranslatedText fr="Explorer la collection">Die Kollektion entdecken</TranslatedText>
+                </Link>
+            </Button>
         </div>
       </section>
 
@@ -63,8 +51,8 @@ export default function HomePage() {
           <h2 className="mb-12 text-center font-headline text-4xl md:text-5xl">
             <TranslatedText fr="Acheter par catégorie">Nach Kategorie einkaufen</TranslatedText>
           </h2>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-              {categories.map((category) => {
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
+              {categories.slice(0, 3).map((category) => {
                 const categoryImage = placeholderImages.find(
                   (p) => p.id === category.imageId
                 );
@@ -74,14 +62,14 @@ export default function HomePage() {
                       href={`/products/${category.slug}`}
                       className="group block overflow-hidden text-center"
                     >
-                      <div className="relative aspect-[3/4] w-full bg-gray-100">
+                      <div className="relative aspect-video w-full bg-gray-100 rounded-lg">
                         {categoryImage && (
                           <Image
                             src={categoryImage.imageUrl}
                             alt={category.name}
                             fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-105"
-                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                            className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-lg"
+                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                             data-ai-hint={categoryImage.imageHint}
                           />
                         )}

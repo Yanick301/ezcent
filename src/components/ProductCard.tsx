@@ -17,7 +17,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="group flex h-full flex-col">
         <Link href={`/product/${product.slug}`} className="block">
-            <div className="relative block aspect-[3/4] w-full overflow-hidden bg-gray-100">
+            <div className="relative block aspect-[3/4] w-full overflow-hidden bg-gray-100 rounded-md">
                 {productImage && (
                 <Image
                     src={productImage.imageUrl}
@@ -30,7 +30,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 )}
             </div>
         </Link>
-        <div className="pt-4 text-center">
+        <div className="pt-4 text-left">
             <h3 className="font-body text-sm uppercase tracking-wider text-foreground">
                 <Link href={`/product/${product.slug}`}><TranslatedText fr={product.name_fr}>{product.name}</TranslatedText></Link>
             </h3>

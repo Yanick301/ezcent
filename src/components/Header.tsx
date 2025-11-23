@@ -46,32 +46,32 @@ export function Header() {
             </SheetContent>
           </Sheet>
           <div className="hidden md:flex items-center gap-4">
-             <SearchDialog />
-              <nav className="hidden lg:flex lg:items-center lg:space-x-6 text-sm font-medium">
-                {categories.map((category) => (
-                  <Link
-                    key={category.id}
-                    href={`/products/${category.slug}`}
-                    className="transition-colors hover:text-primary text-foreground/80"
-                  >
-                    <TranslatedText fr={category.name_fr}>{category.name}</TranslatedText>
-                  </Link>
-                ))}
-              </nav>
+            <SearchDialog />
           </div>
         </div>
 
         {/* Desktop Logo (Centered) */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-             <Link href="/" className="flex items-center space-x-2">
-                <span className="font-bold font-headline text-2xl tracking-wider">
-                EZCENTIALS
-                </span>
-            </Link>
+          <Link href="/" className="flex items-center space-x-2">
+            <span className="font-bold font-headline text-2xl tracking-wider">
+              EZCENTIALS
+            </span>
+          </Link>
         </div>
-        
+
         {/* Right items */}
         <div className="flex flex-1 items-center justify-end space-x-1 md:space-x-2 flex-nowrap shrink-0">
+          <nav className="hidden lg:flex lg:items-center lg:space-x-6 text-sm font-medium">
+            {categories.map((category) => (
+              <Link
+                key={category.id}
+                href={`/products/${category.slug}`}
+                className="transition-colors hover:text-primary text-foreground/80"
+              >
+                <TranslatedText fr={category.name_fr}>{category.name}</TranslatedText>
+              </Link>
+            ))}
+          </nav>
           <div className="md:hidden">
             <SearchDialog />
           </div>

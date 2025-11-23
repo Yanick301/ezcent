@@ -32,39 +32,35 @@ export function Footer() {
         { name: 'Karriere', name_fr: 'Carrières', href: '#' },
       ],
     },
-     {
-      title: 'Verbinden',
-      title_fr: 'Connecter',
-      links: [
-        { name: 'Folgen Sie uns', name_fr: 'Suivez-nous', href: '#' },
-        { name: 'Newsletter', name_fr: 'Newsletter', href: '#' },
-      ],
-    },
   ];
 
   return (
     <footer className="border-t bg-background text-foreground">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          {footerSections.map((section) => (
-            <div key={section.title}>
-              <h5 className="font-headline text-lg font-semibold tracking-wider">
-                <TranslatedText fr={section.title_fr}>{section.title}</TranslatedText>
-              </h5>
-              <ul className="mt-4 space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
-                      <TranslatedText fr={link.name_fr}>{link.name}</TranslatedText>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:flex lg:justify-between">
+            <div className="col-span-2 mb-8 lg:mb-0 lg:col-span-1">
+                <h5 className="font-headline text-xl font-semibold tracking-wider">EZCENTIALS</h5>
             </div>
-          ))}
+            <div className="grid grid-cols-2 gap-8 col-span-2 md:col-span-4 lg:flex lg:gap-16">
+                {footerSections.map((section) => (
+                <div key={section.title}>
+                    <h5 className="font-headline text-lg font-semibold tracking-wider">
+                    <TranslatedText fr={section.title_fr}>{section.title}</TranslatedText>
+                    </h5>
+                    <ul className="mt-4 space-y-3">
+                    {section.links.map((link) => (
+                        <li key={link.name}>
+                        <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                            <TranslatedText fr={link.name_fr}>{link.name}</TranslatedText>
+                        </Link>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+                ))}
+            </div>
         </div>
         <div className="mt-16 pt-8 border-t text-center text-sm text-muted-foreground">
-           <p className="font-headline text-lg text-foreground mb-4">EZCENTIALS</p>
            <p>&copy; {new Date().getFullYear()} <TranslatedText fr="EZCENTIALS. Tous droits réservés.">EZCENTIALS. Alle Rechte vorbehalten.</TranslatedText></p>
         </div>
       </div>
