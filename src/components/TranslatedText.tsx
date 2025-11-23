@@ -17,15 +17,17 @@ export function TranslatedText({ children }: TranslatedTextProps) {
   const [translatedText, setTranslatedText] = useState(children);
   const [isLoading, setIsLoading] = useState(false);
 
+  const originalLanguage = 'de';
   const cacheKey = useMemo(() => `${language}:${children}`, [language, children]);
 
   useEffect(() => {
     // Do not translate on the server or if the key is not set
     if (typeof window === 'undefined' || !apiKeyIsSet) {
+      setTranslatedText(children);
       return;
     }
 
-    if (language === 'en') {
+    if (language === originalLanguage) {
       setTranslatedText(children);
       return;
     }
@@ -63,16 +65,11 @@ export function TranslatedText({ children }: TranslatedTextProps) {
     };
   }, [children, language, cacheKey]);
 
-  // Si le texte est en cours de traduction et que ce n'est pas la langue par défaut (anglais)
-  if (isLoading && language !== 'en') {
+  // Si le texte est en cours de traduction et que ce n'est pas la langue par défaut
+  if (isLoading && language !== originalLanguage) {
     return <span className="opacity-75 animate-pulse">...</span>;
   }
-
-  // Si la langue cible est l'anglais, ou si la traduction n'est pas encore disponible, afficher le texte original.
-  if (language === 'en' || !translatedText) {
-    return <>{children}</>;
-  }
   
-  // Sinon, afficher le texte traduit.
+  // Sinon, afficher le texte traduit (ou l'original si c'est la langue par défaut).
   return <>{translatedText}</>;
 }
