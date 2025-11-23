@@ -61,7 +61,7 @@ export function CollectionHighlight({
                         ))}
                     </div>
                     <div className="text-left">
-                        <p className="text-sm uppercase tracking-widest text-primary">{supertitle}</p>
+                        <p className="text-sm uppercase tracking-widest text-amber-600">{supertitle}</p>
                         <h2 className="mt-4 font-headline text-5xl text-foreground md:text-6xl">
                             {title}
                         </h2>
@@ -79,7 +79,7 @@ export function CollectionHighlight({
                         <div className="mt-12 grid grid-cols-3 gap-4 text-center">
                             {stats.map(stat => (
                                 <div key={stat.value}>
-                                    <p className="font-headline text-4xl text-primary">{stat.value}</p>
+                                    <p className="font-headline text-4xl text-amber-600">{stat.value}</p>
                                     <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{stat.label}</p>
                                 </div>
                             ))}
