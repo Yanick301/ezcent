@@ -2,7 +2,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Menu } from 'lucide-react';
 
 import { categories } from '@/lib/data';
@@ -18,13 +17,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center">
-        <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            
-            <span className="font-bold font-headline text-2xl">
-              EZCENTIALS
-            </span>
-          </Link>
+        {/* Desktop */}
+        <div className="mr-4 hidden flex-1 items-center md:flex">
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {categories.map((category) => (
               <Link
@@ -38,6 +32,7 @@ export function Header() {
           </nav>
         </div>
 
+        {/* Mobile */}
         <div className="flex flex-1 items-center justify-start md:hidden">
           <Sheet>
             <SheetTrigger asChild>
@@ -48,7 +43,6 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left">
               <Link href="/" className="mb-6 flex items-center space-x-2">
-                
                 <span className="font-bold font-headline text-2xl">
                   EZCENTIALS
                 </span>
@@ -66,9 +60,15 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
-           <Link href="/" className="ml-2">
-                 <span className="font-bold font-headline text-xl">EZCENTIALS</span>
-            </Link>
+        </div>
+
+        {/* Centered Logo */}
+        <div className="flex flex-1 items-center justify-center">
+           <Link href="/" className="flex items-center space-x-2">
+            <span className="font-bold font-headline text-2xl">
+              EZCENTIALS
+            </span>
+          </Link>
         </div>
         
         <div className="flex flex-1 items-center justify-end space-x-2">
