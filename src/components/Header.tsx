@@ -20,8 +20,8 @@ export function Header() {
             <Image
               src="/images/logo.png"
               alt="EZCENTIALS Logo"
-              width={40}
-              height={40}
+              width={50}
+              height={50}
             />
             <span className="font-bold font-headline text-2xl">
               EZCENTIALS
@@ -40,7 +40,7 @@ export function Header() {
           </nav>
         </div>
 
-        <div className="flex items-center md:hidden">
+        <div className="flex flex-1 items-center justify-start md:hidden">
             <Sheet>
             <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -73,22 +73,16 @@ export function Header() {
                 </nav>
             </SheetContent>
             </Sheet>
-        </div>
-        
-        <div className="flex flex-1 items-center justify-center md:hidden">
-            <Link href="/" className="flex items-center space-x-2">
+             <Link href="/" className="ml-2">
                  <Image
                     src="/images/logo.png"
                     alt="EZCENTIALS Logo"
-                    width={32}
-                    height={32}
+                    width={40}
+                    height={40}
                 />
-                <span className="font-bold font-headline text-xl">
-                    EZCENTIALS
-                </span>
             </Link>
         </div>
-
+        
         <div className="flex flex-1 items-center justify-end space-x-2">
           <Button variant="ghost" size="icon">
             <Search className="h-5 w-5" />
