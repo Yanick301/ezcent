@@ -1,4 +1,4 @@
-import type { Product, Category } from './types';
+import type { Product, Category, Review } from './types';
 
 export const categories: Category[] = [
   { id: 'cat-1', name: 'Herrenbekleidung', name_fr: 'Vêtements Homme', slug: 'mens-clothing', imageId: 'mens-category' },
@@ -20,7 +20,13 @@ export const products: Product[] = [
     description_fr: 'Un manteau long classique en pure laine vierge qui offre chaleur et une silhouette impeccablement élégante par Hugo Boss.',
     category: 'winter-clothing',
     images: ['manteau-long-laine-hugo-boss'],
-    reviews: [],
+    reviews: [
+        { author: 'Klaus', rating: 5, comment: 'Absolut fantastischer Mantel. Die Qualität ist unübertroffen und er ist jeden Cent wert.' },
+        { author: 'Helena', rating: 5, comment: 'Habe diesen Mantel für meinen Mann gekauft und er sieht so elegant aus. Perfekte Passform.' },
+        { author: 'Stefan', rating: 4, comment: 'Sehr warm und stilvoll. Ein bisschen steif am Anfang, aber das gibt sich mit der Zeit.' },
+        { author: 'Lina', rating: 5, comment: 'Ein zeitloser Klassiker. Sehr zufrieden mit dem Kauf.' },
+        { author: 'Markus', rating: 3, comment: 'Guter Mantel, aber ich hatte für den Preis eine etwas weichere Wolle erwartet.' }
+    ],
   },
   {
     id: 'prod-winter-2',
@@ -32,7 +38,13 @@ export const products: Product[] = [
     description_fr: 'L\'emblématique doudoune Moncler, alliant performance technique et style alpin pour une protection optimale contre le froid.',
     category: 'winter-clothing',
     images: ['doudoune-matelassee-moncler'],
-    reviews: [],
+    reviews: [
+        { author: 'Alex', rating: 5, comment: 'Unglaublich leicht und extrem warm. Perfekt für den Winter in der Stadt.' },
+        { author: 'Sophie', rating: 5, comment: 'Der Stil ist unübertroffen. Moncler enttäuscht nie.' },
+        { author: 'Tom', rating: 5, comment: 'Die Investition lohnt sich. Eine Jacke, die Jahre halten wird.' },
+        { author: 'Julia', rating: 4, comment: 'Sehr gute Jacke, aber die glänzende Oberfläche ist nicht jedermanns Sache.' },
+        { author: 'Chris', rating: 3, comment: 'Warm, ja, aber der Reißverschluss klemmt manchmal. Bei diesem Preis hätte ich das nicht erwartet.' }
+    ],
   },
   {
     id: 'prod-winter-3',
@@ -44,7 +56,13 @@ export const products: Product[] = [
     description_fr: 'Conçu pour les climats les plus extrêmes, le parka Arctic de Canada Goose est le summum de la chaleur et de la durabilité.',
     category: 'winter-clothing',
     images: ['parka-arctic-canada-goose'],
-    reviews: [],
+    reviews: [
+        { author: 'Ben', rating: 5, comment: 'Kein kalter Tag kann diesem Parka etwas anhaben. Unglaublich.' },
+        { author: 'Anna', rating: 5, comment: 'Sehr funktional mit all den Taschen. Und so warm!' },
+        { author: 'David', rating: 5, comment: 'Die beste Winterjacke, die ich je besessen habe.' },
+        { author: 'Lea', rating: 4, comment: 'Extrem warm, aber auch ziemlich schwer. Für den Alltag manchmal zu viel.' },
+        { author: 'Martin', rating: 3, comment: 'Hält warm, aber das Design ist etwas zu sperrig für meinen Geschmack.' }
+    ],
   },
   {
     id: 'prod-winter-4',
@@ -56,7 +74,13 @@ export const products: Product[] = [
     description_fr: 'Le luxe à l\'état pur. Ce manteau en cachemire double face de Loro Piana est d\'une douceur et d\'une chaleur inégalées.',
     category: 'mens-clothing',
     images: ['manteau-cachemire-loro-piana-homme'],
-    reviews: [],
+    reviews: [
+        { author: 'Arthur', rating: 5, comment: 'Das ist kein Mantel, das ist ein Traum. Die Weichheit ist unglaublich.' },
+        { author: 'Isabelle', rating: 5, comment: 'Der Preis ist hoch, aber die Qualität ist einfach von einer anderen Welt. Phänomenal.' },
+        { author: 'Richard', rating: 5, comment: 'Man fühlt sich wie ein König, wenn man ihn trägt. Jeder Detail ist perfekt.' },
+        { author: 'Charlotte', rating: 5, comment: 'Der luxuriöseste Stoff, den ich je berührt habe.' },
+        { author: 'Philip', rating: 3, comment: 'Wunderbar weich, aber für diesen Preis ist er überraschend empfindlich. Man muss sehr vorsichtig sein.' }
+    ],
   },
   {
     id: 'prod-winter-5',
@@ -68,7 +92,13 @@ export const products: Product[] = [
     description_fr: 'Un audacieux blouson aviateur en peau de mouton retournée par Saint Laurent pour un style rock et luxueux.',
     category: 'mens-clothing',
     images: ['blouson-shearling-saint-laurent'],
-    reviews: [],
+    reviews: [
+        { author: 'Jules', rating: 5, comment: 'Rock\'n\'Roll und Luxus perfekt vereint. Ich liebe diese Jacke.' },
+        { author: 'Adèle', rating: 5, comment: 'Sieht unglaublich cool aus und ist dabei super warm. Ein echtes Statement-Stück.' },
+        { author: 'Victor', rating: 5, comment: 'Die Qualität des Lammfells ist außergewöhnlich. Ein Kunstwerk.' },
+        { author: 'Margot', rating: 4, comment: 'Wunderschöne Jacke. Der Schnitt ist sehr tailliert, man sollte eventuell eine Nummer größer nehmen.' },
+        { author: 'Louis', rating: 3, comment: 'Tolles Design, aber sehr schwer auf den Schultern. Nicht für lange Spaziergänge.' }
+    ],
   },
   {
     id: 'prod-winter-6',
@@ -80,7 +110,13 @@ export const products: Product[] = [
     description_fr: 'Un basique hivernal essentiel, ce pull à col roulé en fine laine mérinos de Paul Smith est aussi doux que polyvalent.',
     category: 'mens-clothing',
     images: ['pull-col-roule-laine-merinos-paul-smith'],
-    reviews: [],
+    reviews: [
+        { author: 'Tim', rating: 5, comment: 'Perfektes Basic. Super weich und kratzt nicht.' },
+        { author: 'Clara', rating: 5, comment: 'Die Farbe ist brillant und die Qualität ist top. Passt zu allem.' },
+        { author: 'Felix', rating: 4, comment: 'Guter Pullover, fällt aber etwas klein aus. Lieber eine Nummer größer bestellen.' },
+        { author: 'Sandra', rating: 5, comment: 'Ein eleganter und bequemer Pullover. Sehr empfehlenswert.' },
+        { author: 'Peter', rating: 3, comment: 'Nach ein paar Mal Waschen hat er etwas an Form verloren, obwohl ich die Anweisungen befolgt habe.' }
+    ],
   },
   {
     id: 'prod-winter-7',
@@ -92,7 +128,13 @@ export const products: Product[] = [
     description_fr: 'La surchemise en flanelle de laine doublée d\'Acne Studios, parfaite pour les superpositions de mi-saison avec une touche scandinave.',
     category: 'mens-clothing',
     images: ['surchemise-doublee-acne-studios-homme'],
-    reviews: [],
+    reviews: [
+        { author: 'Oskar', rating: 5, comment: 'Perfekt für den Herbst. Sieht toll aus und ist sehr gut verarbeitet.' },
+        { author: 'Freja', rating: 5, comment: 'Cooler Oversize-Look. Die Qualität des Wollflanells ist super.' },
+        { author: 'Emil', rating: 5, comment: 'Mein neues Lieblingsteil für Lagenlooks.' },
+        { author: 'Astrid', rating: 4, comment: 'Sehr stylisch, aber die Ärmel sind für mich ein wenig zu lang.' },
+        { author: 'Gustav', rating: 3, comment: 'Der Stoff ist etwas kratzig auf der Haut. Ich muss immer ein Langarmshirt darunter tragen.' }
+    ],
   },
   {
     id: 'prod-winter-8',
@@ -104,7 +146,13 @@ export const products: Product[] = [
     description_fr: 'Légère et pratique, cette doudoune sans manches est un classique de Polo Ralph Lauren, idéale sur un pull ou sous un manteau.',
     category: 'winter-clothing',
     images: ['doudoune-sans-manche-polo-ralph-lauren'],
-    reviews: [],
+    reviews: [
+        { author: 'Paul', rating: 5, comment: 'Ein Klassiker. Perfekt für die Übergangszeit.' },
+        { author: 'Marie', rating: 4, comment: 'Gute Qualität, wie von Ralph Lauren erwartet. Hätte mir etwas mehr Daunenfüllung gewünscht.' },
+        { author: 'Jonas', rating: 5, comment: 'Sehr praktisch und vielseitig. Trage sie ständig.' },
+        { author: 'Laura', rating: 5, comment: 'Sieht sportlich und gleichzeitig schick aus.' },
+        { author: 'Kevin', rating: 3, comment: 'Die Passform ist etwas kastig. Nicht ideal für schlanke Personen.' }
+    ],
   },
   {
     id: 'prod-winter-9',
@@ -116,7 +164,13 @@ export const products: Product[] = [
     description_fr: 'L\'iconique trench-coat de Burberry. Une pièce intemporelle et résistante aux intempéries, symbole de l\'élégance britannique.',
     category: 'winter-clothing',
     images: ['manteau-trench-double-burberry'],
-    reviews: [],
+    reviews: [
+        { author: 'James', rating: 5, comment: 'Ein absolutes Muss in jeder Garderobe. Die Qualität ist unbestreitbar.' },
+        { author: 'Amelia', rating: 5, comment: 'Der Schnitt ist perfekt. Ein Mantel fürs Leben.' },
+        { author: 'William', rating: 5, comment: 'Zeitlose Eleganz. Schützt perfekt vor Regen und Wind.' },
+        { author: 'Olivia', rating: 4, comment: 'Wunderschön, aber der Preis ist natürlich sehr hoch. Man zahlt für die Marke.' },
+        { author: 'Henry', rating: 3, comment: 'Das Material ist steifer als erwartet. Ich dachte, er wäre etwas weicher.' }
+    ],
   },
   {
     id: 'prod-winter-10',
@@ -128,7 +182,13 @@ export const products: Product[] = [
     description_fr: 'Un pull richement texturé en laine et cachemire, orné de torsades classiques. Une pièce maîtresse de Dior.',
     category: 'mens-clothing',
     images: ['pull-torsade-epais-dior-homme'],
-    reviews: [],
+    reviews: [
+        { author: 'Antoine', rating: 5, comment: 'Unglaublich weich und warm. Das Zopfmuster ist wunderschön gearbeitet.' },
+        { author: 'Camille', rating: 5, comment: 'Ein sehr luxuriöser Pullover. Der hohe Preis ist durch die Qualität gerechtfertigt.' },
+        { author: 'Lucas', rating: 5, comment: 'Man spürt die Handwerkskunst. Ein wirklich besonderes Stück.' },
+        { author: 'Manon', rating: 4, comment: 'Sehr schön, aber auch sehr dick. Man kann ihn nur an wirklich kalten Tagen tragen.' },
+        { author: 'Hugo', rating: 3, comment: 'Ich habe Bedenken wegen Pilling. Bei einem so teuren Pullover sollte das kein Thema sein.' }
+    ],
   },
   {
     id: 'prod-winter-11',
@@ -140,7 +200,13 @@ export const products: Product[] = [
     description_fr: 'Issue de la ligne haut de gamme de The North Face, cette veste combine un design futuriste avec une protection maximale contre les éléments.',
     category: 'winter-clothing',
     images: ['veste-technique-impermeable-tnf-black-series'],
-    reviews: [],
+    reviews: [
+        { author: 'Kenji', rating: 5, comment: 'Techwear vom Feinsten. Absolut wasserdicht und sieht mega aus.' },
+        { author: 'Yuki', rating: 5, comment: 'Das Design ist der Wahnsinn. Funktionalität und Stil in einem.' },
+        { author: 'Ryo', rating: 4, comment: 'Top Jacke. Der Schnitt ist sehr modern und vielleicht nicht für jeden geeignet.' },
+        { author: 'Mei', rating: 5, comment: 'Hält mich bei jedem Wetter trocken. Und die Details sind unglaublich.' },
+        { author: 'Kai', rating: 3, comment: 'Das Material ist etwas laut, es knistert bei jeder Bewegung. Das stört mich ein wenig.' }
+    ],
   },
   // Winter Wear - Women
   {
@@ -153,7 +219,13 @@ export const products: Product[] = [
     description_fr: 'Une robe midi en crêpe de soie par Gucci, ornée d\'un imprimé audacieux pour une élégance maximale.',
     category: 'womens-clothing',
     images: ['robe-midi-en-soie-gucci'],
-    reviews: [],
+    reviews: [
+        { author: 'Chiara', rating: 5, comment: 'Ein absoluter Traum von einem Kleid. Der Stoff fällt wunderschön.' },
+        { author: 'Alessia', rating: 5, comment: 'Der Druck ist einzigartig und sehr Gucci. Ich habe so viele Komplimente bekommen.' },
+        { author: 'Marco', rating: 5, comment: 'Habe es meiner Frau geschenkt. Sie sah atemberaubend aus.' },
+        { author: 'Giulia', rating: 4, comment: 'Wunderschön, aber die Seide ist sehr empfindlich und muss professionell gereinigt werden.' },
+        { author: 'Paolo', rating: 3, comment: 'Das Muster ist mir persönlich zu auffällig. Weniger wäre mehr gewesen.' }
+    ],
   },
   {
     id: 'prod-winter-13',
@@ -165,7 +237,13 @@ export const products: Product[] = [
     description_fr: 'L\'iconique blazer croisé Balmain avec ses boutons dorés, une pièce forte qui structure la silhouette avec audace.',
     category: 'womens-clothing',
     images: ['blazer-croise-balmain'],
-    reviews: [],
+    reviews: [
+        { author: 'Victoire', rating: 5, comment: 'Dieser Blazer ist eine Rüstung. Man fühlt sich sofort stark und selbstbewusst.' },
+        { author: 'Chloé', rating: 5, comment: 'Die Schulterpolster sind ikonisch. Perfekte Passform.' },
+        { author: 'Olivier', rating: 5, comment: 'Ein zeitloses Stück, das jedes Outfit aufwertet.' },
+        { author: 'Léa', rating: 4, comment: 'Ich liebe ihn, aber die goldenen Knöpfe sind sehr auffällig. Man muss den Rest des Outfits schlicht halten.' },
+        { author: 'Juliette', rating: 3, comment: 'Der Schnitt ist für meine Figur etwas zu streng. Er wirkt sehr kastig an mir.' }
+    ],
   },
   {
     id: 'prod-winter-14',
@@ -177,7 +255,13 @@ export const products: Product[] = [
     description_fr: 'La quintessence du luxe et du confort. Ce pull à col roulé de Loro Piana en pur cachemire est comme une seconde peau.',
     category: 'womens-clothing',
     images: ['pull-col-roule-cachemire-loro-piana-femme'],
-    reviews: [],
+    reviews: [
+        { author: 'Eleonora', rating: 5, comment: 'Der weichste Pullover, den ich je besessen habe. Es ist, als würde man eine Wolke tragen.' },
+        { author: 'Beatrice', rating: 5, comment: 'Unglaubliche Qualität. Man spürt den Unterschied sofort.' },
+        { author: 'Filippo', rating: 5, comment: 'Ein perfektes, luxuriöses Basic.' },
+        { author: 'Sofia', rating: 4, comment: 'Wunderbar, aber man muss extrem vorsichtig beim Waschen sein.' },
+        { author: 'Leonardo', rating: 3, comment: 'Für einen so einfachen Pullover ist der Preis astronomisch. Ja, er ist weich, aber... wow.' }
+    ],
   },
   {
     id: 'prod-winter-15',
@@ -189,7 +273,13 @@ export const products: Product[] = [
     description_fr: 'Un pantalon large à la coupe parfaite en laine fluide par Max Mara pour un look chic et décontracté.',
     category: 'womens-clothing',
     images: ['pantalon-large-en-laine-max-mara'],
-    reviews: [],
+    reviews: [
+        { author: 'Gabriella', rating: 5, comment: 'Der Stoff fällt so elegant. Perfekte Hose fürs Büro und darüber hinaus.' },
+        { author: 'Martina', rating: 5, comment: 'Sehr bequem und trotzdem unglaublich schick. Liebe die weite Passform.' },
+        { author: 'Riccardo', rating: 5, comment: 'Max Mara kann einfach Hosen. Der Schnitt ist tadellos.' },
+        { author: 'Valentina', rating: 4, comment: 'Musste sie kürzen lassen, da sie sehr lang ausfällt, aber ansonsten perfekt.' },
+        { author: 'Andrea', rating: 3, comment: 'Die Farbe war online etwas anders als in echt. Ein wenig blasser.' }
+    ],
   },
   {
     id: 'prod-winter-16',
@@ -201,7 +291,13 @@ export const products: Product[] = [
     description_fr: 'Un jean slim à la coupe parfaite et au délavage subtil en denim de haute qualité par Diesel.',
     category: 'womens-clothing',
     images: ['jean-slim-premium-diesel'],
-    reviews: [],
+    reviews: [
+        { author: 'Francesca', rating: 5, comment: 'Die beste Jeans, die ich je hatte. Sitzt wie eine zweite Haut.' },
+        { author: 'Davide', rating: 5, comment: 'Toller Stretch-Anteil, sehr bequem.' },
+        { author: 'Elena', rating: 4, comment: 'Gute Passform, aber die Waschung ist sehr dezent, fast nicht sichtbar.' },
+        { author: 'Matteo', rating: 5, comment: 'Diesel-Qualität, wie man sie kennt. Top.' },
+        { author: 'Silvia', rating: 3, comment: 'Fällt eine Nummer kleiner aus. Musste sie zurückschicken und neu bestellen.' }
+    ],
   },
   {
     id: 'prod-winter-17',
@@ -213,7 +309,13 @@ export const products: Product[] = [
     description_fr: 'Élégance et modernité se rencontrent dans ce chemisier fluide en soie à l\'imprimé exclusif Saint Laurent.',
     category: 'womens-clothing',
     images: ['chemisier-en-soie-imprimee-saint-laurent'],
-    reviews: [],
+    reviews: [
+        { author: 'Inès', rating: 5, comment: 'Der Druck ist so schick und die Seide fühlt sich himmlisch an.' },
+        { author: 'Théo', rating: 5, comment: 'Ein echtes Kunstwerk. Verwandelt ein einfaches Outfit in einen Hingucker.' },
+        { author: 'Juliette', rating: 4, comment: 'Sehr transparent, man muss ein Top darunter tragen, was ich nicht erwartet hatte.' },
+        { author: 'Gaspard', rating: 5, comment: 'Typisch Saint Laurent. Cool, schick, perfekt.' },
+        { author: 'Éloïse', rating: 3, comment: 'Wunderschön, aber der Preis für eine Bluse ist einfach atemberaubend.' }
+    ],
   },
   {
     id: 'prod-winter-18',
@@ -225,7 +327,13 @@ export const products: Product[] = [
     description_fr: 'Une robe courte à la silhouette structurée en laine fine, emblématique du minimalisme chic de Prada.',
     category: 'womens-clothing',
     images: ['robe-courte-en-laine-prada'],
-    reviews: [],
+    reviews: [
+        { author: 'Miuccia', rating: 5, comment: 'Prada-Minimalismus in Perfektion. Ein Kleid für die Ewigkeit.' },
+        { author: 'Patrizio', rating: 5, comment: 'Der Schnitt ist so schmeichelhaft. Sehr architektonisch.' },
+        { author: 'Donatella', rating: 4, comment: 'Sehr schick, aber das Wollmaterial ist ein wenig kratzig. Hätte etwas Weicheres erwartet.' },
+        { author: 'Giorgio', rating: 5, comment: 'Ein zeitloses, elegantes Stück.' },
+        { author: 'Franca', rating: 3, comment: 'Es ist SEHR kurz. Definitiv nichts für jeden Anlass oder jede Figur.' }
+    ],
   },
   {
     id: 'prod-winter-19',
@@ -237,7 +345,13 @@ export const products: Product[] = [
     description_fr: "L'iconique manteau 'Manuela' de Max Mara en pur cachemire, une pièce intemporelle d\'une élégance absolue.",
     category: 'womens-clothing',
     images: ['manteau-long-en-cachemire-max-mara'],
-    reviews: [],
+    reviews: [
+        { author: 'Carine', rating: 5, comment: 'Es gibt einen Grund, warum dieser Mantel eine Ikone ist. Perfektion.' },
+        { author: 'Anna', rating: 5, comment: 'Man hüllt sich in puren Luxus. Jederzeit wieder.' },
+        { author: 'Emmanuelle', rating: 5, comment: 'Ein Investment, das sich lohnt. Der Schnitt, das Material... alles ist perfekt.' },
+        { author: 'Franca', rating: 4, comment: 'Ein Traum von einem Mantel, aber die Pflege ist sehr aufwendig.' },
+        { author: 'Grace', rating: 3, comment: 'Ich bin 1,60 m groß und der Mantel war leider viel zu lang für mich, sah aus wie ein Bademantel.' }
+    ],
   },
   {
     id: 'prod-winter-20',
@@ -249,7 +363,13 @@ export const products: Product[] = [
     description_fr: 'Une veste courte matelassée qui allie la performance Moncler à une silhouette féminine et moderne.',
     category: 'womens-clothing',
     images: ['veste-courte-matelassee-moncler'],
-    reviews: [],
+    reviews: [
+        { author: 'Nina', rating: 5, comment: 'Schöne, taillierte Passform. Nicht so klobig wie andere Daunenjacken.' },
+        { author: 'Eva', rating: 5, comment: 'Hält super warm und sieht trotzdem sehr modisch aus.' },
+        { author: 'Max', rating: 4, comment: 'Gute Jacke, aber für den Preis hätte ich eine etwas bessere Daunenqualität erwartet.' },
+        { author: 'Lena', rating: 5, comment: 'Ich liebe den kürzeren Schnitt. Perfekt zu hochgeschnittenen Hosen.' },
+        { author: 'Ben', rating: 3, comment: 'Die Ärmel sind etwas kurz geraten für meine Armlänge.' }
+    ],
   },
   {
     id: 'prod-winter-21',
@@ -261,7 +381,13 @@ export const products: Product[] = [
     description_fr: 'Un pull oversize en grosse maille torsadée qui incarne le romantisme bohème de la maison Chloé.',
     category: 'womens-clothing',
     images: ['pull-oversize-torsade-chloe'],
-    reviews: [],
+    reviews: [
+        { author: 'Gabriela', rating: 5, comment: 'So gemütlich und trotzdem total schick. Der perfekte Winterpullover.' },
+        { author: 'Natacha', rating: 5, comment: 'Die Wolle ist traumhaft weich und das Muster ist wunderschön.' },
+        { author: 'Stella', rating: 4, comment: 'Er ist wirklich SEHR oversize. Man muss diesen Look mögen. Aber die Qualität ist top.' },
+        { author: 'Clémence', rating: 5, comment: 'Ein echtes Statement-Stück, das man für immer behalten wird.' },
+        { author: 'Aurore', rating: 3, comment: 'Leider kratzt er ein wenig. Für diesen Preis hatte ich eine weichere Wolle erwartet.' }
+    ],
   },
   {
     id: 'prod-winter-22',
@@ -273,7 +399,13 @@ export const products: Product[] = [
     description_fr: 'Une jupe crayon parfaitement coupée en laine stretch par Hugo Boss, indispensable pour une garde-robe professionnelle.',
     category: 'womens-clothing',
     images: ['jupe-crayon-en-laine-hugo-boss'],
-    reviews: [],
+    reviews: [
+        { author: 'Anke', rating: 5, comment: 'Perfekter Rock fürs Büro. Sehr professionell und bequem.' },
+        { author: 'Birgit', rating: 5, comment: 'Der Schnitt ist sehr schmeichelhaft. Macht eine tolle Figur.' },
+        { author: 'Heike', rating: 4, comment: 'Gute Qualität, aber der Bund ist etwas eng. Besser eine Nummer größer probieren.' },
+        { author: 'Sabine', rating: 5, comment: 'Ein klassisches Teil, das in keinem Kleiderschrank fehlen sollte.' },
+        { author: 'Ingrid', rating: 3, comment: 'Das Futter im Inneren verrutscht manchmal, was etwas nervig ist.' }
+    ],
   },
   {
     id: 'prod-winter-23',
@@ -285,7 +417,13 @@ export const products: Product[] = [
     description_fr: 'Une création spectaculaire de Valentino, cette longue robe en tissu plissé flotte à chaque mouvement.',
     category: 'womens-clothing',
     images: ['robe-longue-plissee-valentino'],
-    reviews: [],
+    reviews: [
+        { author: 'Pierpaolo', rating: 5, comment: 'Ein Kunstwerk. Jede Falte ist perfekt platziert.' },
+        { author: 'Maria Grazia', rating: 5, comment: 'Man fühlt sich wie eine Göttin in diesem Kleid. Unglaublich.' },
+        { author: 'Zendaya', rating: 5, comment: 'Atemberaubend auf dem roten Teppich. Es bewegt sich so schön.' },
+        { author: 'Florence', rating: 4, comment: 'Ein wunderschönes Kleid, aber es ist extrem lang. Man braucht hohe Absätze.' },
+        { author: 'Adut', rating: 3, comment: 'Der Stoff ist sehr empfindlich. Ich hatte Angst, es zu beschädigen.' }
+    ],
   },
   {
     id: 'prod-winter-24',
@@ -297,7 +435,13 @@ export const products: Product[] = [
     description_fr: 'Une chemise blanche impeccable en coton premium, rehaussée de détails discrets comme le tartan iconique à l\'intérieur du col.',
     category: 'womens-clothing',
     images: ['chemise-en-coton-premium-burberry'],
-    reviews: [],
+    reviews: [
+        { author: 'Victoria', rating: 5, comment: 'Das perfekte weiße Hemd. Die Baumwolle ist von außergewöhnlicher Qualität.' },
+        { author: 'David', rating: 5, comment: 'Die kleinen Burberry-Details machen den Unterschied. Sehr edel.' },
+        { author: 'Kate', rating: 4, comment: 'Sehr schönes Hemd, aber es knittert ziemlich schnell.' },
+        { author: 'William', rating: 5, comment: 'Ein Klassiker, der sein Geld wert ist.' },
+        { author: 'Meghan', rating: 3, comment: 'Der Schnitt ist sehr gerade, nicht sehr feminin. Ich musste es taillieren lassen.' }
+    ],
   },
   {
     id: 'prod-winter-25',
@@ -309,7 +453,13 @@ export const products: Product[] = [
     description_fr: 'L\'iconique robe portefeuille DVF en jersey de soie, une pièce qui flatte toutes les silhouettes avec une élégance intemporelle.',
     category: 'womens-clothing',
     images: ['robe-portefeuille-en-soie-diane-von-furstenberg'],
-    reviews: [],
+    reviews: [
+        { author: 'Diane', rating: 5, comment: 'Ein Kleid, in dem sich jede Frau schön und selbstbewusst fühlt.' },
+        { author: 'Talita', rating: 5, comment: 'So schmeichelhaft und bequem. Ein Muss!' },
+        { author: 'Sarah Jessica', rating: 5, comment: 'Ein Klassiker aus gutem Grund. Funktioniert immer.' },
+        { author: 'Michelle', rating: 4, comment: 'Ich liebe das Konzept, aber das Muster war nicht ganz meins.' },
+        { author: 'Whitney', rating: 3, comment: 'Der Ausschnitt ist sehr tief. Fürs Büro musste ich ein Top darunter tragen.' }
+    ],
   },
   {
     id: 'prod-winter-26',
@@ -321,7 +471,13 @@ export const products: Product[] = [
     description_fr: 'Un pantalon de tailleur à la coupe impeccable, qui reflète le savoir-faire et l\'élégance de la maison Dior.',
     category: 'womens-clothing',
     images: ['pantalon-tailleur-dior-femme'],
-    reviews: [],
+    reviews: [
+        { author: 'Maria', rating: 5, comment: 'Perfekter Schnitt, perfekter Fall. Dior-Handwerkskunst.' },
+        { author: 'Raf', rating: 5, comment: 'Die eleganteste Hose, die ich besitze.' },
+        { author: 'Hedi', rating: 4, comment: 'Sehr hohe Taille, das muss man mögen. Aber die Qualität ist hervorragend.' },
+        { author: 'John', rating: 5, comment: 'Ein Kunstwerk der Schneiderei.' },
+        { author: 'Kim', rating: 3, comment: 'Für den Preis hätte ich einen etwas haltbareren Stoff erwartet. Er scheint empfindlich.' }
+    ],
   },
   {
     id: 'prod-winter-27',
@@ -333,7 +489,13 @@ export const products: Product[] = [
     description_fr: 'Un pull classique à encolure bateau en maille fine, une pièce polyvalente et chic de Ralph Lauren.',
     category: 'womens-clothing',
     images: ['pull-col-bateau-ralph-lauren'],
-    reviews: [],
+    reviews: [
+        { author: 'Lauren', rating: 5, comment: 'Zeitlose amerikanische Eleganz. Liebe den U-Boot-Ausschnitt.' },
+        { author: 'Ricky', rating: 5, comment: 'Sehr weich und angenehm zu tragen.' },
+        { author: 'Jessica', rating: 4, comment: 'Fällt etwas größer aus. Ich würde empfehlen, eine Nummer kleiner zu nehmen.' },
+        { author: 'Gwyneth', rating: 5, comment: 'Perfekt zu Jeans oder einem Rock. Sehr vielseitig.' },
+        { author: 'Blake', rating: 3, comment: 'Der Strick ist sehr fein und wirkt etwas durchsichtig.' }
+    ],
   },
   {
     id: 'prod-winter-28',
@@ -345,7 +507,13 @@ export const products: Product[] = [
     description_fr: 'La quintessence du luxe décontracté. Ce long et enveloppant cardigan est tricoté dans le plus fin des cachemires.',
     category: 'womens-clothing',
     images: ['cardigan-long-en-cachemire-brunello-cucinelli'],
-    reviews: [],
+    reviews: [
+        { author: 'Brunello', rating: 5, comment: 'Philosophie in Form von Kleidung. Weichheit und Seele.' },
+        { author: 'Federica', rating: 5, comment: 'Es ist, als würde man von einer warmen Wolke umarmt werden. Jeden Tag.' },
+        { author: 'Carolina', rating: 5, comment: 'Der Inbegriff von "Quiet Luxury". Unaufdringlich perfekt.' },
+        { author: 'Jennifer', rating: 5, comment: 'Ich lebe in diesem Cardigan. Er ist jeden Cent wert.' },
+        { author: 'Gisele', rating: 3, comment: 'Wunderschön, aber so empfindlich. Ich habe Angst, ihn zu tragen und zu ruinieren.' }
+    ],
   },
   {
     id: 'prod-winter-29',
@@ -357,7 +525,13 @@ export const products: Product[] = [
     description_fr: 'Une robe noire à la coupe asymétrique audacieuse, emblématique du style architectural et moderne de Givenchy.',
     category: 'womens-clothing',
     images: ['robe-asymetrique-givenchy'],
-    reviews: [],
+    reviews: [
+        { author: 'Audrey', rating: 5, comment: 'Einfach, aber so wirkungsvoll. Das kleine Schwarze, neu erfunden.' },
+        { author: 'Hubert', rating: 5, comment: 'Die Linie ist alles. Dieses Kleid hat eine unglaubliche Linie.' },
+        { author: 'Riccardo', rating: 4, comment: 'Sehr avantgardistisch. Man braucht das Selbstbewusstsein, um es zu tragen.' },
+        { author: 'Clare', rating: 5, comment: 'Eine Hommage an die Stärke der Frauen. Kraftvoll und elegant.' },
+        { author: 'Matthew', rating: 3, comment: 'Der asymmetrische Saum ist gewöhnungsbedürftig. Er sah an mir seltsam aus.' }
+    ],
   },
   {
     id: 'prod-winter-30',
@@ -369,7 +543,13 @@ export const products: Product[] = [
     description_fr: 'Une blouse fluide et élégante en satin de soie durable, parfaite pour un look sophistiqué et conscient.',
     category: 'womens-clothing',
     images: ['blouse-satinee-stella-mccartney'],
-    reviews: [],
+    reviews: [
+        { author: 'Stella', rating: 5, comment: 'Luxus, der die Welt nicht kostet. Fühlt sich gut an, in jeder Hinsicht.' },
+        { author: 'Paul', rating: 5, comment: 'Nachhaltig und trotzdem so schick. Ein tolles Statement.' },
+        { author: 'Mary', rating: 4, comment: 'Der Glanz ist wunderschön, aber der Stoff knittert sehr leicht.' },
+        { author: 'Linda', rating: 5, comment: 'Tolle Farbe und fällt sehr schön.' },
+        { author: 'Liv', rating: 3, comment: 'Der Schnitt ist sehr locker. Ich musste sie enger nähen lassen.' }
+    ],
   },
   {
     id: 'prod-winter-31',
@@ -381,7 +561,13 @@ export const products: Product[] = [
     description_fr: 'Une pièce forte au design avant-gardiste. Cette combinaison-pantalon Balenciaga sculpte une silhouette moderne et puissante.',
     category: 'womens-clothing',
     images: ['combinaison-pantalon-balenciaga'],
-    reviews: [],
+    reviews: [
+        { author: 'Demna', rating: 5, comment: 'Mode als Kommentar. Dieser Jumpsuit ist eine Aussage.' },
+        { author: 'Cristóbal', rating: 5, comment: 'Die Form ist alles. Eine Skulptur zum Anziehen.' },
+        { author: 'Kim', rating: 4, comment: 'Sehr cool, aber nicht sehr praktisch im Alltag, besonders beim Toilettengang.' },
+        { author: 'Nicole', rating: 5, comment: 'Ein unglaublicher Power-Look. Man fühlt sich unbesiegbar.' },
+        { author: 'Isabelle', rating: 3, comment: 'Das Material ist sehr steif und nicht besonders bequem.' }
+    ],
   },
   {
     id: 'prod-winter-32',
@@ -393,7 +579,13 @@ export const products: Product[] = [
     description_fr: 'Un manteau oversize en laine double face, caractéristique du style cool et minimaliste d\'Acne Studios.',
     category: 'womens-clothing',
     images: ['manteau-oversize-acne-studios'],
-    reviews: [],
+    reviews: [
+        { author: 'Jonny', rating: 5, comment: 'Der Inbegriff von Stockholm-Chic. Lässig und trotzdem elegant.' },
+        { author: 'Elsa', rating: 5, comment: 'Perfekter Oversize-Schnitt. Man kann dicke Pullover darunter tragen.' },
+        { author: 'Henrik', rating: 4, comment: 'Die Farbe ist etwas dunkler als auf den Fotos, aber immer noch sehr schön.' },
+        { author: 'Ingrid', rating: 5, comment: 'So gemütlich und stilvoll. Ich liebe ihn.' },
+        { author: 'Mikael', rating: 3, comment: 'Sehr schwer. Nach einem ganzen Tag Tragen spüre ich ihn auf den Schultern.' }
+    ],
   },
   {
     id: 'prod-winter-33',
@@ -405,7 +597,13 @@ export const products: Product[] = [
     description_fr: 'Alliant confort et élégance, cette robe-pull en pur cachemire est une pièce luxueuse et confortable pour l\'hiver.',
     category: 'womens-clothing',
     images: ['robe-pull-en-cachemire-max-mara'],
-    reviews: [],
+    reviews: [
+        { author: 'Gigi', rating: 5, comment: 'So schick und bequem. Das perfekte Kleid für kalte Tage.' },
+        { author: 'Bella', rating: 5, comment: 'Der Kaschmir ist von höchster Qualität. Fühlt sich unglaublich an.' },
+        { author: 'Irina', rating: 4, comment: 'Wunderschön, aber sehr figurbetont. Zeigt alles.' },
+        { author: 'Karlie', rating: 5, comment: 'Ein luxuriöses Wohlfühlkleid.' },
+        { author: 'Rosie', rating: 3, comment: 'Es hat nach dem ersten Waschen (Handwäsche!) an Länge verloren. Sehr enttäuschend.' }
+    ],
   },
   {
     id: 'prod-winter-34',
@@ -417,7 +615,13 @@ export const products: Product[] = [
     description_fr: 'Un pantalon skinny en cuir d\'agneau stretch, une pièce iconique du vestiaire rock et chic de Saint Laurent.',
     category: 'womens-clothing',
     images: ['pantalon-en-cuir-saint-laurent'],
-    reviews: [],
+    reviews: [
+        { author: 'Kate', rating: 5, comment: 'Perfekte Rock-Chic-Hose. Sitzt wie eine zweite Haut.' },
+        { author: 'Anthony', rating: 5, comment: 'Das Leder ist so weich. Eine Investition, die sich lohnt.' },
+        { author: 'Zoë', rating: 5, comment: 'Ich trage sie ständig. Passt zu allem.' },
+        { author: 'Lenny', rating: 4, comment: 'Sehr eng geschnitten. Man braucht die richtige Figur dafür.' },
+        { author: 'Hailey', rating: 3, comment: 'Das Leder hat sich nach ein paar Mal Tragen an den Knien etwas geweitet.' }
+    ],
   },
   {
     id: 'prod-winter-35',
@@ -429,7 +633,13 @@ export const products: Product[] = [
     description_fr: 'Une jupe midi au délicat plissé soleil qui ondule gracieusement à chaque pas. Une pièce iconique de Valentino.',
     category: 'womens-clothing',
     images: ['jupe-plissee-midi-valentino'],
-    reviews: [],
+    reviews: [
+        { author: 'Anne', rating: 5, comment: 'Ein absolut traumhafter Rock. Die Bewegung ist magisch.' },
+        { author: 'Jessica', rating: 5, comment: 'So feminin und elegant. Ich fühle mich wie eine Prinzessin.' },
+        { author: 'Naomi', rating: 5, comment: 'Valentino-Rot ist einfach unschlagbar. Ein wunderschönes Stück.' },
+        { author: 'Gwyneth', rating: 4, comment: 'Sehr empfindlich. Die Plisseefalten müssen sorgfältig behandelt werden.' },
+        { author: 'Charlize', rating: 3, comment: 'Der Bund ist nicht elastisch und sitzt sehr hoch, was für mich unbequem war.' }
+    ],
   },
   {
     id: 'prod-winter-36',
@@ -441,7 +651,13 @@ export const products: Product[] = [
     description_fr: 'Un t-shirt en coton de qualité supérieure, rehaussé du logo Gucci brodé pour une touche de luxe décontracté.',
     category: 'womens-clothing',
     images: ['t-shirt-brode-logo-gucci'],
-    reviews: [],
+    reviews: [
+        { author: 'Alessandro', rating: 5, comment: 'Ein einfaches T-Shirt, aber die Stickerei macht es besonders.' },
+        { author: 'Jared', rating: 5, comment: 'Cool und bequem. Was will man mehr?' },
+        { author: 'Harry', rating: 4, comment: 'Gute Qualität, aber es ist immer noch ein T-Shirt für über 500 Euro. Das ist verrückt.' },
+        { author: 'Dakota', rating: 5, comment: 'Ich liebe den Vintage-Vibe des Logos.' },
+        { author: 'Billie', rating: 3, comment: 'Fällt sehr groß aus. Der Oversize-Look ist nicht für jeden.' }
+    ],
   },
   {
     id: 'prod-winter-37',
@@ -453,7 +669,13 @@ export const products: Product[] = [
     description_fr: 'Un pull romantique avec une élégante encolure bateau et des manches ballon volumineuses, typique du style Chloé.',
     category: 'womens-clothing',
     images: ['pull-col-bateau-manches-ballon-chloe'],
-    reviews: [],
+    reviews: [
+        { author: 'Gaby', rating: 5, comment: 'So romantisch und feminin. Die Ärmel sind ein Traum.' },
+        { author: 'Natacha', rating: 5, comment: 'Der Chloé-Geist in einem Pullover. Wunderschön.' },
+        { author: 'Chemena', rating: 5, comment: 'Weich, bequem und einzigartig.' },
+        { author: 'Sienna', rating: 4, comment: 'Die Ballonärmel sind toll, aber im Alltag manchmal etwas unpraktisch.' },
+        { author: 'Katie', rating: 3, comment: 'Der U-Boot-Ausschnitt ist sehr weit und rutscht ständig von meinen Schultern.' }
+    ],
   },
   {
     id: 'prod-winter-38',
@@ -465,7 +687,13 @@ export const products: Product[] = [
     description_fr: 'Une robe-chemise à la coupe oversize audacieuse pour un look déconstruit et conceptuel par Balenciaga.',
     category: 'womens-clothing',
     images: ['robe-chemise-oversize-balenciaga'],
-    reviews: [],
+    reviews: [
+        { author: 'Alexa', rating: 5, comment: 'Cooler geht es nicht. Perfekt mit klobigen Stiefeln.' },
+        { author: 'Rihanna', rating: 5, comment: 'Bequem und High-Fashion zugleich.' },
+        { author: 'Justin', rating: 4, comment: 'Es ist im Grunde ein riesiges Hemd. Man muss wissen, wie man es stylt.' },
+        { author: 'Kanye', rating: 5, comment: 'Die Zukunft der Mode.' },
+        { author: 'Anna W.', rating: 3, comment: 'Konzeptionell interessant, aber für die meisten Menschen untragbar.' }
+    ],
   },
   {
     id: 'prod-winter-39',
@@ -477,7 +705,13 @@ export const products: Product[] = [
     description_fr: 'Un pantalon palazzo large et fluide en laine vierge qui allonge la silhouette avec une élégance spectaculaire.',
     category: 'womens-clothing',
     images: ['pantalon-palazzo-en-laine-max-mara'],
-    reviews: [],
+    reviews: [
+        { author: 'Cate', rating: 5, comment: 'Die eleganteste Hose, die man sich vorstellen kann. Der Fall des Stoffes ist perfekt.' },
+        { author: 'Julianne', rating: 5, comment: 'Macht unendlich lange Beine. Sehr schmeichelhaft.' },
+        { author: 'Amal', rating: 5, comment: 'Perfekt fürs Büro, aber auch für einen schicken Abend.' },
+        { author: 'Angelina', rating: 4, comment: 'Sehr, sehr lang. Selbst mit hohen Absätzen musste ich sie kürzen lassen.' },
+        { author: 'Jennifer G.', rating: 3, comment: 'Der Bund sitzt sehr hoch, was ich nicht so bequem finde.' }
+    ],
   },
   {
     id: 'prod-winter-40',
@@ -489,7 +723,13 @@ export const products: Product[] = [
     description_fr: 'Inspiré du smoking, ce blazer en satin duchesse offre un look nocturne et ultra-raffiné.',
     category: 'womens-clothing',
     images: ['blazer-satin-saint-laurent'],
-    reviews: [],
+    reviews: [
+        { author: 'Betty', rating: 5, comment: 'Der "Le Smoking" Vibe ist unübertroffen. Ein ikonisches Stück.' },
+        { author: 'Catherine', rating: 5, comment: 'Pure Eleganz. Der Satin-Glanz ist dezent und sehr edel.' },
+        { author: 'Charlotte', rating: 5, comment: 'Ein Blazer, der Selbstvertrauen ausstrahlt.' },
+        { author: 'Anja', rating: 4, comment: 'Wunderschön, aber der Satin ist extrem empfindlich gegenüber Flecken.' },
+        { author: 'Freja B.E.', rating: 3, comment: 'Der Schnitt ist sehr schmal. Für Frauen mit Kurven eher schwierig.' }
+    ],
   },
   {
     id: 'prod-winter-41',
@@ -501,7 +741,13 @@ export const products: Product[] = [
     description_fr: 'Une somptueuse robe de soirée en velours de soie, opulente mais d\'une grande pureté de ligne.',
     category: 'womens-clothing',
     images: ['robe-longue-en-velours-valentino'],
-    reviews: [],
+    reviews: [
+        { author: 'Lady Gaga', rating: 5, comment: 'Dramatisch, luxuriös, unvergesslich. Alles, was man von einem Abendkleid will.' },
+        { author: 'Rihanna', rating: 5, comment: 'Der Samt ist so tief und satt in der Farbe. Wunderschön.' },
+        { author: 'Zendaya', rating: 5, comment: 'Ein Red-Carpet-Moment in einem Kleid.' },
+        { author: 'Anya', rating: 4, comment: 'Es ist sehr schwer wegen des vielen Stoffes, aber man fühlt sich wie eine Königin.' },
+        { author: 'Margot', rating: 3, comment: 'Samt ist ein schwieriges Material. Es zieht jeden Fussel an.' }
+    ],
   },
 ];
 

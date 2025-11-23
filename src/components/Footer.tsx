@@ -42,47 +42,49 @@ export function Footer() {
   return (
     <footer className="border-t bg-card">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
-          <div className="col-span-2 mb-8 md:col-span-4 lg:col-span-1 lg:mb-0">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="lg:col-span-1">
             <div className="flex items-center space-x-2">
-              <Image src="/images/logo.png" alt="EZCENTIALS Logo" width={60} height={60} />
+              <Image src="/images/logo.png" alt="EZCENTIALS Logo" width={50} height={50} />
               <span className="font-bold font-headline text-2xl">EZCENTIALS</span>
             </div>
             <p className="mt-2 text-sm text-muted-foreground"><TranslatedText fr="Élégance discrète et sophistication.">Dezente Eleganz und Raffinesse.</TranslatedText></p>
           </div>
 
-          {footerLinks.map((section) => (
-            <div key={section.title}>
-              <h5 className="font-semibold"><TranslatedText fr={section.title_fr}>{section.title}</TranslatedText></h5>
-              <ul className="mt-4 space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
-                      <TranslatedText fr={link.name_fr}>{link.name}</TranslatedText>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <div className="col-span-2 md:col-span-4 lg:col-span-5">
-              <Separator className="my-8" />
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-3">
+            {footerLinks.map((section) => (
+              <div key={section.title}>
+                <h5 className="font-semibold"><TranslatedText fr={section.title_fr}>{section.title}</TranslatedText></h5>
+                <ul className="mt-4 space-y-2">
+                  {section.links.map((link) => (
+                    <li key={link.name}>
+                      <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground">
+                        <TranslatedText fr={link.name_fr}>{link.name}</TranslatedText>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-          
-          <div className="col-span-2 md:col-span-2 lg:col-span-2">
+        </div>
+
+        <Separator className="my-8" />
+        
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div>
               <h5 className="font-semibold"><TranslatedText fr="Restez en contact">Bleiben Sie in Kontakt</TranslatedText></h5>
               <p className="mt-2 text-sm text-muted-foreground"><TranslatedText fr="Inscrivez-vous à notre newsletter pour recevoir des mises à jour sur les nouveautés et les offres spéciales.">Melden Sie sich für unseren Newsletter an, um Updates zu Neuankömmlingen und Sonderangeboten zu erhalten.</TranslatedText></p>
-              <form className="mt-4 flex gap-2">
+              <form className="mt-4 flex max-w-md gap-2">
                 <Input type="email" placeholder="Geben Sie Ihre E-Mail-Adresse ein" className="max-w-xs" />
                 <Button type="submit"><TranslatedText fr="S'abonner">Abonnieren</TranslatedText></Button>
               </form>
-          </div>
+            </div>
+             <div className="text-center md:text-right text-sm text-muted-foreground self-end">
+                <p>&copy; {new Date().getFullYear()} <TranslatedText fr="EZCENTIALS. Tous droits réservés.">EZCENTIALS. Alle Rechte vorbehalten.</TranslatedText></p>
+            </div>
         </div>
 
-        <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} <TranslatedText fr="EZCENTIALS. Tous droits réservés.">EZCENTIALS. Alle Rechte vorbehalten.</TranslatedText></p>
-        </div>
       </div>
     </footer>
   );
