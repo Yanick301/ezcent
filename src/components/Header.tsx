@@ -44,7 +44,8 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
-          <div className="hidden lg:flex items-center gap-4">
+          
+          <div className="hidden lg:flex lg:items-center lg:gap-4">
              <nav className="flex items-center space-x-6 text-sm font-medium">
                 {categories.slice(0, 2).map((category) => (
                 <Link
@@ -59,14 +60,15 @@ export function Header() {
           </div>
         </div>
 
-        {/* Desktop Logo (Centered) */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+        {/* Desktop Logo (Centered) - Mobile Logo (Left) */}
+        <div className="lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 flex items-center justify-center">
           <Link href="/" className="flex items-center space-x-2">
             <span className="font-bold font-headline text-2xl tracking-wider">
               EZCENTIALS
             </span>
           </Link>
         </div>
+
 
         {/* Right items */}
         <div className="flex flex-1 items-center justify-end space-x-1 md:space-x-2 flex-nowrap shrink-0">
