@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -41,7 +42,7 @@ export default function AccountLayout({
           <h2 className="mb-6 font-headline text-2xl hidden md:block">
             <TranslatedText fr="Mon compte">Mein Konto</TranslatedText>
           </h2>
-          <nav className="flex flex-row space-x-2 md:flex-col md:space-x-0 md:space-y-2 overflow-x-auto -mx-4 px-4 pb-2 md:pb-0 md:p-0 md:overflow-visible">
+          <nav className="flex flex-row space-x-2 md:flex-col md:space-x-0 md:space-y-1">
             {accountNav.map((item) => (
               <Link
                 key={item.name}

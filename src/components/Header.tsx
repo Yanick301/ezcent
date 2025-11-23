@@ -21,7 +21,7 @@ export function Header() {
         <div className="flex flex-1 items-center justify-start">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="lg:hidden">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Menü umschalten</span>
               </Button>
@@ -45,8 +45,18 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
-          <div className="hidden md:flex items-center gap-4">
-            <SearchDialog />
+          <div className="hidden lg:flex items-center gap-4">
+             <nav className="flex items-center space-x-6 text-sm font-medium">
+                {categories.slice(0, 2).map((category) => (
+                <Link
+                    key={category.id}
+                    href={`/products/${category.slug}`}
+                    className="transition-colors hover:text-primary text-foreground/80"
+                >
+                    <TranslatedText fr={category.name_fr}>{category.name}</TranslatedText>
+                </Link>
+                ))}
+            </nav>
           </div>
         </div>
 
@@ -62,7 +72,7 @@ export function Header() {
         {/* Right items */}
         <div className="flex flex-1 items-center justify-end space-x-1 md:space-x-2 flex-nowrap shrink-0">
           <nav className="hidden lg:flex lg:items-center lg:space-x-6 text-sm font-medium">
-            {categories.map((category) => (
+             {categories.slice(2).map((category) => (
               <Link
                 key={category.id}
                 href={`/products/${category.slug}`}
@@ -72,9 +82,7 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <div className="md:hidden">
-            <SearchDialog />
-          </div>
+          <SearchDialog />
           <LanguageSelector />
           <UserButton />
           <CartButton />

@@ -28,7 +28,7 @@ export default function HomePage() {
               Entdecken Sie zeitlose Stücke, in denen handwerkliches Können auf außergewöhnliches Design trifft.
             </TranslatedText>
           </p>
-          <Button size="lg" asChild className="mt-8 rounded-full">
+          <Button size="lg" asChild className="mt-8">
             <Link href="/products/all">
               <TranslatedText fr="Explorer la collection">Die Kollektion entdecken</TranslatedText>
             </Link>
@@ -36,9 +36,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-16 lg:py-24">
+      <section className="w-full bg-background py-16 lg:py-24">
         <div className="container mx-auto px-4">
-            <h2 className="mb-12 text-center font-headline text-4xl md:text-5xl text-black">
+            <h2 className="mb-12 text-center font-headline text-4xl md:text-5xl text-foreground">
                 <TranslatedText fr="Menu Maison">Menu Maison</TranslatedText>
             </h2>
              <Carousel
@@ -104,9 +104,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="w-full bg-white py-16 lg:py-24">
+      <section className="w-full bg-background py-16 lg:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-headline text-4xl md:text-5xl text-black">
+          <h2 className="mb-12 text-center font-headline text-4xl md:text-5xl text-foreground">
             <TranslatedText fr="Produits Phares">Ausgewählte Produkte</TranslatedText>
           </h2>
           <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">

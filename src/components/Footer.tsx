@@ -37,11 +37,11 @@ export function Footer() {
   return (
     <footer className="border-t bg-background text-foreground">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:flex lg:justify-between">
-            <div className="col-span-2 mb-8 lg:mb-0 lg:col-span-1">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
+            <div className="col-span-2 mb-8 lg:col-span-2 lg:mb-0">
                 <h5 className="font-headline text-xl font-semibold tracking-wider">EZCENTIALS</h5>
             </div>
-            <div className="grid grid-cols-2 gap-8 col-span-2 md:col-span-4 lg:flex lg:gap-16">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 col-span-2 md:col-span-4 lg:col-span-3">
                 {footerSections.map((section) => (
                 <div key={section.title}>
                     <h5 className="font-headline text-lg font-semibold tracking-wider">
