@@ -11,6 +11,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
+import { CollectionHighlight } from '@/components/CollectionHighlight';
 
 export default function HomePage() {
   const featuredProducts = getFeaturedProducts(4);
@@ -104,18 +105,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="w-full bg-background py-16 lg:py-24">
-        <div className="container mx-auto px-4">
-          <h2 className="mb-12 text-center font-headline text-3xl md:text-5xl text-foreground">
-            <TranslatedText fr="Produits Phares">Ausgewählte Produkte</TranslatedText>
-          </h2>
-          <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <CollectionHighlight 
+        supertitle={<TranslatedText fr="COLLECTION HIVER">WINTER KOLLEKTION</TranslatedText>}
+        title={<TranslatedText fr="Élégance Hivernale">Winterliche Eleganz</TranslatedText>}
+        description={<TranslatedText fr="Nos collections d'hiver allient confort, chaleur et style intemporel. Chaque pièce est sélectionnée pour sa qualité exceptionnelle et ses finitions impeccables.">Unsere Winterkollektionen vereinen Komfort, Wärme und zeitlosen Stil. Jedes Stück wird aufgrund seiner außergewöhnlichen Qualität und tadellosen Verarbeitung ausgewählt.</TranslatedText>}
+        stats={[
+          { value: '40+', label: <TranslatedText fr="PRODUITS">PRODUKTE</TranslatedText> },
+          { value: '4.9/5', label: <TranslatedText fr="ÉVALUATION">BEWERTUNG</TranslatedText> },
+          { value: '100%', label: 'PREMIUM' },
+        ]}
+        imageIds={[
+          'manteau-long-laine-hugo-boss',
+          'doudoune-matelassee-moncler',
+          'parka-arctic-canada-goose',
+          'pull-col-roule-laine-merinos-paul-smith',
+        ]}
+        primaryActionLink="/products/winter-clothing"
+        primaryActionText={<TranslatedText fr="Voir la Collection">Kollektion ansehen</TranslatedText>}
+        secondaryActionLink="/products/all"
+        secondaryActionText={<TranslatedText fr="Explorer">Erkunden</TranslatedText>}
+      />
+
     </div>
   );
 }
