@@ -33,7 +33,7 @@
     {
       "id": "men-1",
       "description": "Classic Linen Shirt",
-      "imageUrl": "https://images.unsplash.com/photo-1713881842156-3d9ef36418cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsaW5lbiUyMHNoaXJ0fGVufDB8fHx8MTc2Mzg4NDgyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/products/men-1.jpg",
       "imageHint": "linen shirt"
     },
     {
@@ -81,50 +81,47 @@
     {
       "id": "acc-1",
       "description": "Leather Chronograph Watch",
-      "imageUrl": "https://images.unsplash.com/photo-1641060311626-9362cbf0c7a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsZWF0aGVyJTIwd2F0Y2h8ZW58MHx8fHwxNzYzODk1MTI0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1641060311626-9362cbf0c7a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsZWF0aGVyJTIwd2F0Y2h8ZW58MHx8fHwxNzYzODk1MTI0fDA&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "leather watch"
     },
     {
       "id": "acc-1-alt",
       "description": "Leather Chronograph Watch Alt",
-      "imageUrl": "https://images.unsplash.com/photo-1755078231930-fbf6783343e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3YXRjaCUyMGZhY2V8ZW58MHx8fHwxNzYzODY4MzMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1755078231930-fbf6783343e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3YXRjaCUyMGZhY2V8ZW58MHx8fHwxNzYzODY4MzMxfDA&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "watch face"
     },
     {
       "id": "acc-2",
       "description": "Woven Silk Scarf",
-      "imageUrl": "https://images.unsplash.com/photo-1606259458027-54d2a728b6ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzaWxrJTIwc2NhcmZ8ZW58MHx8fHwxNzYzOTEzMjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1606259458027-54d2a728b6ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzaWxrJTIwc2NhcmZ8ZW58MHx8fHwxNzYzOTEzMjMxfDA&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "silk scarf"
     },
     {
       "id": "acc-3",
       "description": "Minimalist Silver Ring",
-      "imageUrl": "https://images.unsplash.com/photo-1749635705571-a262d6c6134c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzaWx2ZXIlMjByaW5nfGVufDB8fHx8MTc2Mzg5NzIzMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1749635705571-a262d6c6134c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzaWx2ZXIlMjByaW5nfGVufDB8fHx8MTc2Mzg5NzIzMXww&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "silver ring"
     },
     {
       "id": "winter-1",
       "description": "Cashmere Turtleneck Sweater",
-      "imageUrl": "https://images.unsplash.com/photo-1687275166296-7766371fd254?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXNobWVyZSUyMHN3ZWF0ZXJ8ZW58MHx8fHwxNzYzODg0ODIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1687275166296-7766371fd254?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXNobWVyZSUyMHN3ZWF0ZXJ8ZW58MHx8fHwxNzYzODg0ODIzfDA&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "cashmere sweater"
     },
     {
       "id": "winter-1-alt",
       "description": "Cashmere Turtleneck Sweater Alt",
-      "imageUrl": "https://images.unsplash.com/photo-1633008004964-730029021e62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzd2VhdGVyJTIwa25pdHxlbnwwfHx8fDE3NjM4MjE4MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1633008004964-730029021e62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzd2VhdGVyJTIwa25pdHxlbnwwfHx8fDE3NjM4MjE4MTZ8MA&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "sweater knit"
     },
     {
       "id": "winter-2",
       "description": "Elegant Wool Coat",
-      "imageUrl": "https://images.unsplash.com/photo-1649566169356-e47e8d9809e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b29sJTIwY29hdHxlbnwwfHx8fDE3NjM4ODI2NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1649566169356-e47e8d9809e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3b29sJTIwY29hdHxlbnwwfHx8fDE3NjM4ODI2NDJ8MA&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "wool coat"
     },
     {
       "id": "winter-3",
       "description": "Insulated Parka",
-      "imageUrl": "https://images.unsplash.com/photo-1731341869905-5ef9bcd272f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwYXJrYSUyMGphY2tldHxlbnwwfHx8fDE3NjM5MTMyMzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "parka jacket"
-    }
-  ]
-}
+      "imageUrl": "https://images.unsplash.com/photo-1731341869905-5ef9bcd272f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwYXJrYSUyMGphY2tldHxlbnwwfHx8fDE3NjM5MTMyMzF8MA&ixlib.rb-4.1.0&q=80&w=1080",
+      
