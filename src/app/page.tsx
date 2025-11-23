@@ -12,9 +12,16 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { CollectionHighlight } from '@/components/CollectionHighlight';
+import { categories } from '@/lib/data';
 
 export default function HomePage() {
   const featuredProducts = getFeaturedProducts(4);
+  const mensCategory = categories.find(c => c.slug === 'mens-clothing');
+  const womensCategory = categories.find(c => c.slug === 'womens-clothing');
+  const accessoriesCategory = categories.find(c => c.slug === 'accessories');
+  const shoesCategory = categories.find(c => c.slug === 'shoes');
+  const winterCategory = categories.find(c => c.slug === 'winter-clothing');
+
 
   return (
     <div className="flex flex-col">
@@ -48,66 +55,93 @@ export default function HomePage() {
             <h2 className="mb-12 text-center font-headline text-3xl md:text-5xl text-foreground">
                 <TranslatedText fr="Menu Maison">Menu Maison</TranslatedText>
             </h2>
-             <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4">
-                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
-                    <CategoryCard 
-                        pretitle={<TranslatedText fr="PRÉCISION SARTORIALE">SARTORIALE PRÄZISION</TranslatedText>}
-                        title={<TranslatedText fr="Atelier Tailoring">Atelier Schneiderei</TranslatedText>}
-                        description={<TranslatedText fr="Costumes architecturés et précision sartoriale.">Strukturierte Anzüge und satoriale Präzision.</TranslatedText>}
-                        linkText={<TranslatedText fr="EXPLORER HOMMES">HERREN ENTDECKEN</TranslatedText>}
-                        href="/products/mens-clothing"
-                        imageId="mens-category"
-                    />
-                </CarouselItem>
-                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
-                    <CategoryCard 
-                        pretitle={<TranslatedText fr="MAISON LUMIÈRE">MAISON LUMIÈRE</TranslatedText>}
-                        title={<TranslatedText fr="Couture & Soirée">Couture & Abendmode</TranslatedText>}
-                        description={<TranslatedText fr="Robes fluides, soies lumineuses et couture contemporaine.">Fließende Kleider, leuchtende Seide und zeitgenössische Couture.</TranslatedText>}
-                        linkText={<TranslatedText fr="EXPLORER FEMMES">DAMEN ENTDECKEN</TranslatedText>}
-                        href="/products/womens-clothing"
-                        imageId="womens-category"
-                    />
-                </CarouselItem>
-                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
-                    <CategoryCard 
-                        pretitle={<TranslatedText fr="GALERIE SÉLECTION">GALERIE AUSWAHL</TranslatedText>}
-                        title={<TranslatedText fr="Salon Accessoires">Accessoires Salon</TranslatedText>}
-                        description={<TranslatedText fr="Bags iconiques, parfums signature et bijoux modernes.">Ikonische Taschen, Signature-Düfte und moderner Schmuck.</TranslatedText>}
-                        linkText={<TranslatedText fr="EXPLORER ACCESSOIRES">ACCESSOIRES ENTDECKEN</TranslatedText>}
-                        href="/products/accessories"
-                        imageId="accessories-category"
-                    />
-                </CarouselItem>
-                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
-                    <CategoryCard
-                        pretitle={<TranslatedText fr="ART DE LA MARCHE">KUNST DES GEHENS</TranslatedText>}
-                        title={<TranslatedText fr="Studio Chaussures">Schuhstudio</TranslatedText>}
-                        description={<TranslatedText fr="Souliers d'exception, entre savoir-faire et design audacieux.">Außergewöhnliche Schuhe, zwischen Handwerkskunst und kühnem Design.</TranslatedText>}
-                        linkText={<TranslatedText fr="EXPLORER CHAUSSURES">SCHUHE ENTDECKEN</TranslatedText>}
-                        href="/products/shoes"
-                        imageId="shoes-category"
-                    />
-                </CarouselItem>
-                <CarouselItem className="pl-4 basis-4/5 md:basis-1/3 lg:basis-1/4">
-                    <CategoryCard
-                        pretitle={<TranslatedText fr="REFUGE D'HIVER">WINTER-REFUGIUM</TranslatedText>}
-                        title={<TranslatedText fr="Collection Neige">Schneekollektion</TranslatedText>}
-                        description={<TranslatedText fr="Pièces chaudes et luxueuses pour affronter le froid avec style.">Warme und luxuriöse Stücke, um der Kälte mit Stil zu trotzen.</TranslatedText>}
-                        linkText={<TranslatedText fr="EXPLORER HIVER">WINTER ENTDECKEN</TranslatedText>}
-                        href="/products/winter-clothing"
-                        imageId="winter-category"
-                    />
-                </CarouselItem>
-              </CarouselContent>
-            </Carousel>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {mensCategory && (
+                    <div className="lg:col-span-1">
+                        <CategoryCard 
+                            pretitle={<TranslatedText fr="PRÉCISION SARTORIALE">SARTORIALE PRÄZISION</TranslatedText>}
+                            title={<TranslatedText fr="Atelier Tailoring">Atelier Schneiderei</TranslatedText>}
+                            description={<TranslatedText fr="Costumes architecturés et précision sartoriale.">Strukturierte Anzüge und satoriale Präzision.</TranslatedText>}
+                            linkText={<TranslatedText fr="EXPLORER HOMMES">HERREN ENTDECKEN</TranslatedText>}
+                            href={`/products/${mensCategory.slug}`}
+                            imageId={mensCategory.imageId}
+                        />
+                    </div>
+                )}
+                {womensCategory && (
+                     <div className="lg:col-span-2">
+                        <CategoryCard 
+                            pretitle={<TranslatedText fr="MAISON LUMIÈRE">MAISON LUMIÈRE</TranslatedText>}
+                            title={<TranslatedText fr="Couture & Soirée">Couture & Abendmode</TranslatedText>}
+                            description={<TranslatedText fr="Robes fluides, soies lumineuses et couture contemporaine.">Fließende Kleider, leuchtende Seide und zeitgenössische Couture.</TranslatedText>}
+                            linkText={<TranslatedText fr="EXPLORER FEMMES">DAMEN ENTDECKEN</TranslatedText>}
+                             href={`/products/${womensCategory.slug}`}
+                            imageId={womensCategory.imageId}
+                        />
+                    </div>
+                )}
+                {accessoriesCategory && (
+                    <div className="lg:col-span-2">
+                        <CategoryCard 
+                            pretitle={<TranslatedText fr="GALERIE SÉLECTION">GALERIE AUSWAHL</TranslatedText>}
+                            title={<TranslatedText fr="Salon Accessoires">Accessoires Salon</TranslatedText>}
+                            description={<TranslatedText fr="Bags iconiques, parfums signature et bijoux modernes.">Ikonische Taschen, Signature-Düfte und moderner Schmuck.</TranslatedText>}
+                            linkText={<TranslatedText fr="EXPLORER ACCESSOIRES">ACCESSOIRES ENTDECKEN</TranslatedText>}
+                            href={`/products/${accessoriesCategory.slug}`}
+                            imageId={accessoriesCategory.imageId}
+                        />
+                    </div>
+                )}
+                {shoesCategory && (
+                    <div className="lg:col-span-1">
+                        <CategoryCard
+                            pretitle={<TranslatedText fr="ART DE LA MARCHE">KUNST DES GEHENS</TranslatedText>}
+                            title={<TranslatedText fr="Studio Chaussures">Schuhstudio</TranslatedText>}
+                            description={<TranslatedText fr="Souliers d'exception, entre savoir-faire et design audacieux.">Außergewöhnliche Schuhe, zwischen Handwerkskunst und kühnem Design.</TranslatedText>}
+                            linkText={<TranslatedText fr="EXPLORER CHAUSSURES">SCHUHE ENTDECKEN</TranslatedText>}
+                            href={`/products/${shoesCategory.slug}`}
+                            imageId={shoesCategory.imageId}
+                        />
+                    </div>
+                )}
+                 {winterCategory && (
+                    <div className="lg:col-span-3">
+                        <CategoryCard
+                            pretitle={<TranslatedText fr="REFUGE D'HIVER">WINTER-REFUGIUM</TranslatedText>}
+                            title={<TranslatedText fr="Collection Neige">Schneekollektion</TranslatedText>}
+                            description={<TranslatedText fr="Pièces chaudes et luxueuses pour affronter le froid avec style.">Warme und luxuriöse Stücke, um der Kälte mit Stil zu trotzen.</TranslatedText>}
+                            linkText={<TranslatedText fr="EXPLORER HIVER">WINTER ENTDECKEN</TranslatedText>}
+                            href={`/products/${winterCategory.slug}`}
+                            imageId={winterCategory.imageId}
+                        />
+                    </div>
+                )}
+            </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-muted/50 py-16 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h2 className="font-headline text-3xl md:text-5xl text-foreground">
+              <TranslatedText fr="Nos Pièces Signatures">Unsere Signature-Stücke</TranslatedText>
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
+              <TranslatedText fr="Une sélection de nos créations les plus emblématiques, choisies pour leur design intemporel et leur savoir-faire exceptionnel.">
+                Eine Auswahl unserer ikonischsten Kreationen, ausgewählt für ihr zeitloses Design und ihre außergewöhnliche Handwerkskunst.
+              </TranslatedText>
+            </p>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Button asChild size="lg">
+                <Link href="/products/all"><TranslatedText fr="Voir tous les produits">Alle Produkte anzeigen</TranslatedText></Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -135,3 +169,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+    
