@@ -3,7 +3,7 @@
     {
       "id": "hero",
       "description": "Hero fashion model",
-      "imageUrl": "/images/products/class.jpg",
+      "imageUrl": "/images/header.jpg",
       "imageHint": "fashion model"
     },
     {
@@ -240,6 +240,156 @@
       "id": "robe-longue-en-velours-valentino",
       "imageUrl": "/images/products/robe-longue-en-velours-valentino.jpg",
       "imageHint": "velvet dress"
+    },
+    {
+      "id": "chemise-slim-fit-tom-ford",
+      "imageUrl": "/images/products/chemise-slim-fit-tom-ford.jpg",
+      "imageHint": "slim-fit shirt"
+    },
+    {
+      "id": "polo-pique-ralph-lauren",
+      "imageUrl": "/images/products/polo-pique-ralph-lauren.jpg",
+      "imageHint": "pique polo"
+    },
+    {
+      "id": "pull-col-roule-cachemire-loro-piana",
+      "imageUrl": "/images/products/pull-col-roule-cachemire-loro-piana.jpg",
+      "imageHint": "cashmere turtleneck"
+    },
+    {
+      "id": "t-shirt-col-rond-hugo-boss",
+      "imageUrl": "/images/products/t-shirt-col-rond-hugo-boss.jpg",
+      "imageHint": "crewneck t-shirt"
+    },
+    {
+      "id": "pantalon-chino-stretch-burberry",
+      "imageUrl": "/images/products/pantalon-chino-stretch-burberry.jpg",
+      "imageHint": "stretch chino"
+    },
+    {
+      "id": "jean-coupe-ajustee-diesel",
+      "imageUrl": "/images/products/jean-coupe-ajustee-diesel.jpg",
+      "imageHint": "slim-fit jeans"
+    },
+    {
+      "id": "bomber-nylon-moncler",
+      "imageUrl": "/images/products/bomber-nylon-moncler.jpg",
+      "imageHint": "nylon bomber"
+    },
+    {
+      "id": "blouson-cuir-saint-laurent",
+      "imageUrl": "/images/products/blouson-cuir-saint-laurent.jpg",
+      "imageHint": "leather jacket"
+    },
+    {
+      "id": "veste-costume-giorgio-armani",
+      "imageUrl": "/images/products/veste-costume-giorgio-armani.jpg",
+      "imageHint": "suit jacket"
+    },
+    {
+      "id": "costume-2-pieces-zegna",
+      "imageUrl": "/images/products/costume-2-pieces-zegna.jpg",
+      "imageHint": "2-piece suit"
+    },
+    {
+      "id": "sweat-a-capuche-off-white",
+      "imageUrl": "/images/products/sweat-a-capuche-off-white.jpg",
+      "imageHint": "hoodie"
+    },
+    {
+      "id": "t-shirt-essential-fear-of-god",
+      "imageUrl": "/images/products/t-shirt-essential-fear-of-god.jpg",
+      "imageHint": "essential t-shirt"
+    },
+    {
+      "id": "pull-laine-merinos-lacoste",
+      "imageUrl": "/images/products/pull-laine-merinos-lacoste.jpg",
+      "imageHint": "merino wool sweater"
+    },
+    {
+      "id": "chemise-oversize-balenciaga",
+      "imageUrl": "/images/products/chemise-oversize-balenciaga.jpg",
+      "imageHint": "oversize shirt"
+    },
+    {
+      "id": "surchemise-flanelle-acne-studios",
+      "imageUrl": "/images/products/surchemise-flanelle-acne-studios.jpg",
+      "imageHint": "flannel overshirt"
+    },
+    {
+      "id": "short-cargo-stone-island",
+      "imageUrl": "/images/products/short-cargo-stone-island.jpg",
+      "imageHint": "cargo shorts"
+    },
+    {
+      "id": "doudoune-legere-canada-goose",
+      "imageUrl": "/images/products/doudoune-legere-canada-goose.jpg",
+      "imageHint": "lightweight down jacket"
+    },
+    {
+      "id": "parka-expedition-the-north-face-black-series",
+      "imageUrl": "/images/products/parka-expedition-the-north-face-black-series.jpg",
+      "imageHint": "expedition parka"
+    },
+    {
+      "id": "cardigan-zippe-cachemire-brunello-cucinelli",
+      "imageUrl": "/images/products/cardigan-zippe-cachemire-brunello-cucinelli.jpg",
+      "imageHint": "cashmere zip cardigan"
+    },
+    {
+      "id": "manteau-long-laine-max-mara-homme",
+      "imageUrl": "/images/products/manteau-long-laine-max-mara-homme.jpg",
+      "imageHint": "long wool coat"
+    },
+    {
+      "id": "veste-denim-levis-made-crafted",
+      "imageUrl": "/images/products/veste-denim-levis-made-crafted.jpg",
+      "imageHint": "denim jacket"
+    },
+    {
+      "id": "pantalon-tailleur-dior-homme",
+      "imageUrl": "/images/products/pantalon-tailleur-dior-homme.jpg",
+      "imageHint": "tailored trousers"
+    },
+    {
+      "id": "chemise-soie-versace",
+      "imageUrl": "/images/products/chemise-soie-versace.jpg",
+      "imageHint": "silk shirt"
+    },
+    {
+      "id": "hoodie-imprime-palm-angels",
+      "imageUrl": "/images/products/hoodie-imprime-palm-angels.jpg",
+      "imageHint": "printed hoodie"
+    },
+    {
+      "id": "veste-matelassee-barbour-international",
+      "imageUrl": "/images/products/veste-matelassee-barbour-international.jpg",
+      "imageHint": "quilted jacket"
+    },
+    {
+      "id": "pull-torsade-paul-smith",
+      "imageUrl": "/images/products/pull-torsade-paul-smith.jpg",
+      "imageHint": "cable-knit sweater"
+    },
+    {
+      "id": "t-shirt-logo-givenchy",
+      "imageUrl": "/images/products/t-shirt-logo-givenchy.jpg",
+      "imageHint": "logo t-shirt"
+    },
+    {
+      "id": "survetement-luxe-adidas-gucci",
+      "imageUrl": "/images/products/survetement-luxe-adidas-gucci.jpg",
+      "imageHint": "luxury tracksuit"
+    },
+    {
+      "id": "veste-technique-nike-acg",
+      "imageUrl": "/images/products/veste-technique-nike-acg.jpg",
+      "imageHint": "technical jacket"
+    },
+    {
+      "id": "gilet-sans-manches-prada",
+      "imageUrl": "/images/products/gilet-sans-manches-prada.jpg",
+      "imageHint": "sleeveless vest"
     }
   ]
 }
