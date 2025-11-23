@@ -5,6 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Toaster } from '@/components/ui/toaster';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
+import { CloudBackground } from '@/components/CloudBackground';
 
 
 export const metadata: Metadata = {
@@ -28,9 +29,10 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
+        <CloudBackground />
         <FirebaseClientProvider>
           <AppProviders>
-            <div className="flex min-h-screen flex-col">
+            <div className="relative z-10 flex min-h-screen flex-col">
               <Header />
               <main className="flex-grow">{children}</main>
               <Footer />
