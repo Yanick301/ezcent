@@ -10,6 +10,7 @@ type TranslatedTextProps = {
 
 // A simple in-memory cache for translations
 const translationCache = new Map<string, string>();
+const apiKeyIsSet = !!process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
 export function TranslatedText({ children }: TranslatedTextProps) {
   const { language } = useLanguage();
@@ -19,6 +20,11 @@ export function TranslatedText({ children }: TranslatedTextProps) {
   const cacheKey = useMemo(() => `${language}:${children}`, [language, children]);
 
   useEffect(() => {
+    // Do not translate on the server or if the key is not set
+    if (typeof window === 'undefined' && !apiKeyIsSet) {
+      return;
+    }
+
     if (language === 'en') {
       setTranslatedText(children);
       return;

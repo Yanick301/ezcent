@@ -124,4 +124,7 @@
       "id": "winter-3",
       "description": "Insulated Parka",
       "imageUrl": "https://images.unsplash.com/photo-1731341869905-5ef9bcd272f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwYXJrYSUyMGphY2tldHxlbnwwfHx8fDE3NjM5MTMyMzF8MA&ixlib.rb-4.1.0&q=80&w=1080",
-      
+      "imageHint": "parka jacket"
+    }
+  ]
+}
