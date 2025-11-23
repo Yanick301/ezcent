@@ -66,8 +66,8 @@ export function Header() {
           </div>
         </div>
 
-        {/* Desktop Logo (Centered) - Mobile Logo (Left) */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:hidden">
+        {/* Centered Logo on Desktop, Left-aligned logo on mobile (in Sheet) */}
+        <div className="flex flex-1 items-center justify-center lg:hidden">
            <Link href="/" className="flex items-center space-x-2">
             <span className="font-bold font-headline text-2xl tracking-wider">
               EZCENTIALS
