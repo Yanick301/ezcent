@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, Search } from 'lucide-react';
@@ -13,11 +14,11 @@ import { TranslatedText } from './TranslatedText';
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+      <div className="container flex h-20 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Image src="/images/products/logo.png" alt="EZCENTIALS Logo" width={150} height={50} className="h-16 w-auto" />
-            <span className="font-bold font-headline text-xl">EZCENTIALS</span>
+            <Image src="/images/products/logo.png" alt="EZCENTIALS Logo" width={180} height={60} className="h-20 w-auto" />
+            <span className="font-bold font-headline text-2xl">EZCENTIALS</span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             {categories.map((category) => (
@@ -41,8 +42,8 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="left">
             <Link href="/" className="mb-6 flex items-center space-x-2">
-               <Image src="/images/products/logo.png" alt="EZCENTIALS Logo" width={150} height={50} className="h-16 w-auto" />
-               <span className="font-bold font-headline text-xl">EZCENTIALS</span>
+               <Image src="/images/products/logo.png" alt="EZCENTIALS Logo" width={180} height={60} className="h-20 w-auto" />
+               <span className="font-bold font-headline text-2xl">EZCENTIALS</span>
             </Link>
             <nav className="flex flex-col space-y-4">
               {categories.map((category) => (
