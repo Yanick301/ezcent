@@ -109,7 +109,6 @@ export default function LoginPage() {
       }
 
     } catch (error: any) {
-      console.error(error);
       const errorMessage = error.code === 'auth/invalid-credential' 
         ? (language === 'fr' ? 'Email ou mot de passe incorrect.' : language === 'en' ? 'Incorrect email or password.' : 'Falsche E-Mail oder falsches Passwort.')
         : (language === 'fr' ? 'Une erreur est survenue lors de la connexion.' : language === 'en' ? 'An error occurred during login.' : 'Bei der Anmeldung ist ein Fehler aufgetreten.');
