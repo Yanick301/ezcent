@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useCart } from '@/context/CartContext';
@@ -28,6 +27,9 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { useFirestore, useUser } from '@/firebase';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { useToast } from '@/hooks/use-toast';
 
 const { placeholderImages } = placeholderImagesData;
 
@@ -46,6 +48,9 @@ type ShippingFormInputs = z.infer<typeof shippingSchema>;
 export default function CheckoutPage() {
   const { cart, subtotal, clearCart } = useCart();
   const router = useRouter();
+  const { user } = useUser();
+  const firestore = useFirestore();
+  const { toast } = useToast();
 
   const form = useForm<ShippingFormInputs>({
     resolver: zodResolver(shippingSchema),
@@ -78,11 +83,51 @@ export default function CheckoutPage() {
   const taxes = subtotal * 0.08;
   const total = subtotal + shipping + taxes;
 
-  const handlePlaceOrder: SubmitHandler<ShippingFormInputs> = (data) => {
-    console.log('Order placed with shipping info:', data);
-    // In a real app, this would save the order
-    clearCart();
-    router.push('/checkout/thank-you');
+  const handlePlaceOrder: SubmitHandler<ShippingFormInputs> = async (data) => {
+    if (!user) {
+        toast({
+            variant: "destructive",
+            title: "Authentification requise",
+            description: "Vous devez être connecté pour passer une commande.",
+        });
+        router.push('/login');
+        return;
+    }
+    
+    try {
+        const orderData = {
+            userId: user.uid,
+            shippingInfo: data,
+            items: cart.map(item => ({
+                productId: item.product.id,
+                name: item.product.name,
+                name_fr: item.product.name_fr,
+                price: item.product.price,
+                quantity: item.quantity,
+            })),
+            subtotal,
+            shipping,
+            taxes,
+            totalAmount: total,
+            orderDate: serverTimestamp(),
+            paymentStatus: 'pending',
+            receiptImageURL: '',
+        };
+
+        const ordersCollection = collection(firestore, `users/${user.uid}/orders`);
+        await addDoc(ordersCollection, orderData);
+
+        clearCart();
+        router.push('/checkout/thank-you');
+
+    } catch (error) {
+        console.error("Error placing order: ", error);
+        toast({
+            variant: "destructive",
+            title: "Erreur lors de la commande",
+            description: "Une erreur est survenue. Veuillez réessayer.",
+        });
+    }
   };
 
   return (

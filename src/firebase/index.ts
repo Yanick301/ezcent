@@ -1,3 +1,5 @@
+// IMPORTANT: Do not modify this file. It is a an auto-generated file that is part of the
+// app's Firebase scaffolding. It is intended to be modified by the Studio AI agent.
 'use client';
 
 import { firebaseConfig } from '@/firebase/config';
@@ -46,5 +48,6 @@ export * from './firestore/use-collection';
 export * from './firestore/use-doc';
 export * from './non-blocking-updates';
 export * from './non-blocking-login';
+export * from './auth/use-user';
 export * from './errors';
 export * from './error-emitter';
