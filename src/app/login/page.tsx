@@ -17,7 +17,7 @@ import { Separator } from '@/components/ui/separator';
 import { useAuth, useFirestore } from '@/firebase';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, UserCredential } from 'firebase/auth';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import {
   Form,
@@ -48,6 +48,7 @@ export default function LoginPage() {
   const auth = useAuth();
   const firestore = useFirestore();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { toast } = useToast();
   const { language } = useLanguage();
 
@@ -65,17 +66,22 @@ export default function LoginPage() {
     const user = userCredential.user;
     if (!user || !firestore) return;
 
-    const userRef = doc(firestore, 'users', user.uid);
+    const userRef = doc(firestore, 'userProfiles', user.uid);
     const userDoc = await getDoc(userRef);
 
     if (!userDoc.exists()) {
-      await setDoc(userRef, {
-        id: user.uid,
-        email: user.email,
-        firstName: user.displayName?.split(' ')[0] || '',
-        lastName: user.displayName?.split(' ').slice(1).join(' ') || '',
-        registrationDate: serverTimestamp(),
-      });
+      try {
+        await setDoc(userRef, {
+          id: user.uid,
+          email: user.email,
+          firstName: user.displayName?.split(' ')[0] || '',
+          lastName: user.displayName?.split(' ').slice(1).join(' ') || '',
+          registrationDate: serverTimestamp(),
+        });
+      } catch (error) {
+        console.error("Error creating user profile in Firestore: ", error);
+        // Optionnel: Gérer l'erreur, par exemple en affichant un toast
+      }
     }
   };
 
@@ -87,7 +93,8 @@ export default function LoginPage() {
         title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
         description: language === 'fr' ? 'Bienvenue à nouveau !' : language === 'en' ? 'Welcome back!' : 'Willkommen zurück!',
       });
-      router.push('/account');
+      const redirectUrl = searchParams.get('redirect') || '/account';
+      router.push(redirectUrl);
     } catch (error: any) {
       console.error(error);
       const errorMessage = error.code === 'auth/invalid-credential' 
@@ -111,7 +118,8 @@ export default function LoginPage() {
             title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
             description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
         });
-        router.push('/account');
+        const redirectUrl = searchParams.get('redirect') || '/account';
+        router.push(redirectUrl);
     } catch (error: any) {
         console.error(error);
         toast({

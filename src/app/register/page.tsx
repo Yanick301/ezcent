@@ -17,7 +17,7 @@ import { Separator } from '@/components/ui/separator';
 import { useAuth, useFirestore } from '@/firebase';
 import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile, UserCredential, sendEmailVerification } from 'firebase/auth';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import {
   Form,
@@ -50,6 +50,7 @@ export default function RegisterPage() {
   const auth = useAuth();
   const firestore = useFirestore();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { toast } = useToast();
   const { language } = useLanguage();
 
@@ -68,7 +69,7 @@ export default function RegisterPage() {
     const user = userCredential.user;
     if (!user || !firestore) return;
 
-    const userRef = doc(firestore, 'users', user.uid);
+    const userRef = doc(firestore, 'userProfiles', user.uid);
     const userDoc = await getDoc(userRef);
 
     if (!userDoc.exists()) {
@@ -131,7 +132,8 @@ export default function RegisterPage() {
             title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
             description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
         });
-        router.push('/account');
+        const redirectUrl = searchParams.get('redirect') || '/account';
+        router.push(redirectUrl);
     } catch (error: any) {
         console.error(error);
         toast({
