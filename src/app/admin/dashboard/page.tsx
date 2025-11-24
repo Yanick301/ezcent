@@ -36,13 +36,13 @@ export default function AdminDashboardPage() {
       } else if (!isAdmin) {
         toast({
           variant: 'destructive',
-          title: 'Accès non autorisé',
-          description: "Vous n'avez pas les permissions pour voir cette page.",
+          title: language === 'fr' ? 'Accès non autorisé' : language === 'en' ? 'Unauthorized Access' : 'Unbefugter Zugriff',
+          description: language === 'fr' ? "Vous n'avez pas les permissions pour voir cette page." : language === 'en' ? "You do not have permission to view this page." : "Sie haben keine Berechtigung, diese Seite anzuzeigen.",
         });
         router.push('/account');
       }
     }
-  }, [user, isAdmin, isUserLoading, router, toast]);
+  }, [user, isAdmin, isUserLoading, router, toast, language]);
 
   const handleValidateOrder = async (orderId: string) => {
     if (!firestore) return;
@@ -50,15 +50,15 @@ export default function AdminDashboardPage() {
       const orderRef = doc(firestore, 'orders', orderId);
       await updateDoc(orderRef, { paymentStatus: 'completed' });
       toast({
-        title: 'Commande validée',
-        description: `Le paiement pour la commande ${orderId} a été validé.`,
+        title: language === 'fr' ? 'Commande validée' : language === 'en' ? 'Order Validated' : 'Bestellung validiert',
+        description: `${language === 'fr' ? 'Le paiement pour la commande' : language === 'en' ? 'Payment for order' : 'Zahlung für Bestellung'} ${orderId} ${language === 'fr' ? 'a été validé.' : language === 'en' ? 'has been validated.' : 'wurde validiert.'}`,
       });
     } catch (error) {
       console.error('Error validating order:', error);
       toast({
         variant: 'destructive',
         title: 'Erreur',
-        description: 'Impossible de valider la commande.',
+        description: language === 'fr' ? 'Impossible de valider la commande.' : language === 'en' ? 'Could not validate the order.' : 'Bestellung konnte nicht validiert werden.',
       });
     }
   };
@@ -79,6 +79,14 @@ export default function AdminDashboardPage() {
         en: { pending: 'Action Required', processing: 'Processing', completed: 'Payment validated' },
     };
     return texts[language]?.[status] || status;
+  }
+  
+  const getDateLocale = () => {
+    switch(language) {
+      case 'fr': return fr;
+      case 'en': return enUS;
+      default: return de;
+    }
   }
 
   if (isUserLoading || !isAdmin || isLoadingOrders) {
@@ -101,7 +109,7 @@ export default function AdminDashboardPage() {
                 <div>
                   <CardTitle>Commande #{order.id.substring(0, 7)}...</CardTitle>
                   <CardDescription>
-                    {order.orderDate?.toDate ? format(order.orderDate.toDate(), 'PPPpp', { locale: language === 'fr' ? fr : language === 'en' ? enUS : de }) : 'Date not available'}
+                    {order.orderDate?.toDate ? format(order.orderDate.toDate(), 'PPPpp', { locale: getDateLocale() }) : 'Date not available'}
                   </CardDescription>
                    <p className="text-sm text-muted-foreground mt-1">Client: {order.userEmail || 'N/A'}</p>
                 </div>

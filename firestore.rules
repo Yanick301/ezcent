@@ -11,45 +11,30 @@ service cloud.firestore {
       return isSignedIn() && request.auth.uid == userId;
     }
     
-    function isExistingOwner(userId) {
-      return isOwner(userId) && resource != null;
-    }
-
     function isAdmin() {
-      // Check for a custom claim 'admin' on the user's token
       return isSignedIn() && request.auth.token.admin == true;
     }
 
     match /users/{userId} {
-      allow get: if isOwner(userId) || isAdmin();
+      allow get, update: if isOwner(userId) || isAdmin();
       allow list: if isAdmin();
-      allow create: if isOwner(userId) && request.resource.data.id == userId;
-      allow update: if isExistingOwner(userId) || isAdmin();
+      allow create: if isOwner(userId);
       allow delete: if false;
     }
 
     match /products/{productId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if isAdmin();
-      allow update: if isAdmin();
-      allow delete: if isAdmin();
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
     }
 
     match /products/{productId}/reviews/{reviewId} {
-      allow get: if true;
-      allow list: if true;
+      allow get, list: if true;
       allow create: if isSignedIn();
-      allow update: if (resource != null && isOwner(resource.data.author)) || isAdmin();
-      allow delete: if (resource != null && isOwner(resource.data.author)) || isAdmin();
+      allow update, delete: if (resource.data.author == request.auth.uid) || isAdmin();
     }
 
     match /users/{userId}/cartItems/{cartItemId} {
-      allow get: if isOwner(userId);
-      allow list: if isOwner(userId);
-      allow create: if isOwner(userId);
-      allow update: if isExistingOwner(userId);
-      allow delete: if isExistingOwner(userId);
+      allow get, list, create, update, delete: if isOwner(userId);
     }
 
     match /orders/{orderId} {
@@ -57,13 +42,13 @@ service cloud.firestore {
       allow create: if isOwner(request.resource.data.userId);
 
       // An owner can read their own order. An admin can read any order.
-      allow get: if (resource != null && isOwner(resource.data.userId)) || isAdmin();
+      allow get: if (isOwner(resource.data.userId)) || isAdmin();
       
       // Only admins can list all orders. Users cannot list all orders.
       allow list: if isAdmin();
       
       // An owner can update their order (e.g., upload receipt). An admin can update any order (e.g., change status).
-      allow update: if (resource != null && isOwner(resource.data.userId)) || isAdmin();
+      allow update: if (isOwner(resource.data.userId)) || isAdmin();
       
       // Only admins can delete orders.
       allow delete: if isAdmin();

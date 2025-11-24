@@ -22,6 +22,29 @@ import { useLanguage } from '@/context/LanguageContext';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useToast } from '@/hooks/use-toast';
 
+// Helper function to safely convert a Firestore Timestamp or a Date object
+const getSafeDate = (order: any): Date => {
+  if (!order || !order.orderDate) {
+    return new Date(); // Return current date as a fallback
+  }
+  // If it's a Firestore Timestamp, it has a toDate method
+  if (typeof order.orderDate.toDate === 'function') {
+    return order.orderDate.toDate();
+  }
+  // If it's already a Date object
+  if (order.orderDate instanceof Date) {
+    return order.orderDate;
+  }
+  // If it's a string or number, try to parse it
+  const parsedDate = new Date(order.orderDate);
+  if (!isNaN(parsedDate.getTime())) {
+    return parsedDate;
+  }
+  // Fallback if parsing fails
+  return new Date();
+};
+
+
 export default function OrdersPage() {
   const { user } = useUser();
   const firestore = useFirestore();
@@ -143,18 +166,6 @@ export default function OrdersPage() {
       default: return de;
     }
   }
-  
-  const getSafeDate = (order: any) => {
-    if (order.orderDate && typeof order.orderDate.toDate === 'function') {
-        return order.orderDate.toDate();
-    }
-    if (order.orderDate instanceof Timestamp) {
-        return order.orderDate.toDate();
-    }
-    // Fallback for newly created orders that might not have a full Timestamp object yet
-    return new Date();
-  }
-
 
   if (isLoading) {
     return <div className="text-center p-12"><Loader2 className="mx-auto h-8 w-8 animate-spin text-muted-foreground" /></div>;
@@ -174,7 +185,7 @@ export default function OrdersPage() {
       </h1>
       {orders && orders.length > 0 ? (
         <div className="space-y-6">
-          {(orders as any[]).sort((a,b) => getSafeDate(b).getTime() - getSafeDate(a).getTime()).map((order: any) => (
+          {[...(orders as any[])].sort((a, b) => getSafeDate(b).getTime() - getSafeDate(a).getTime()).map((order: any) => (
             <Card key={order.id}>
               <CardHeader className="flex-row items-center justify-between">
                 <div>
