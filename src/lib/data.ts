@@ -45,6 +45,150 @@ export const products: Product[] = [
     ],
   },
   {
+    id: 'prod-21',
+    name: 'Robe pull en cachemire',
+    name_fr: 'Robe pull en cachemire',
+    name_en: 'Cashmere Sweater Dress',
+    slug: 'robe-pull-en-cachemire-max-mara',
+    price: 1200,
+    description: 'Eine luxuriöse Pulloverkleid aus reinem Kaschmir, für eine komfortable und warme Eleganz. Seine lockere Passform und die Weichheit des Materials machen es zu einem Kokon des Luxus für den Winter.',
+    description_fr: 'Une robe pull luxueuse en pur cachemire, pour une élégance confortable et chaleureuse. Sa coupe décontractée et la douceur de sa maille en font un cocon de luxe pour l\'hiver.',
+    description_en: 'A luxurious sweater dress in pure cashmere, for comfortable and warm elegance. Its relaxed fit and the softness of its knit make it a cocoon of luxury for the winter.',
+    category: 'womens-clothing',
+    images: ['robe-pull-en-cachemire-max-mara'],
+    reviews: [
+      { author: 'Elodie', rating: 5, comment: 'Incroyablement douce et confortable, tout en restant très chic.' },
+    ]
+  },
+  {
+    id: 'prod-22',
+    name: 'Pantalon en cuir',
+    name_fr: 'Pantalon en cuir',
+    name_en: 'Leather Trousers',
+    slug: 'pantalon-en-cuir-saint-laurent',
+    price: 1500,
+    description: 'Ein Statement-Stück par excellence. Dieser Slim-Fit-Hose aus geschmeidigem Lammleder formt die Silhouette für einen entschieden rockigen und schicken Look. Ein starkes Stück, das die Zeiten überdauert.',
+    description_fr: 'La pièce forte par excellence. Ce pantalon slim en cuir d\'agneau souple sculpte la silhouette pour un look résolument rock et chic. Une pièce forte qui traverse les époques.',
+    description_en: 'The ultimate statement piece. These slim-fit trousers in supple lambskin sculpt the silhouette for a resolutely rock and chic look. A strong piece that stands the test of time.',
+    category: 'womens-clothing',
+    images: ['pantalon-en-cuir-saint-laurent'],
+    reviews: [
+      { author: 'Victoria', rating: 5, comment: 'Un cuir de rêve, souple et confortable. La coupe est parfaite.' },
+    ]
+  },
+  {
+    id: 'prod-23',
+    name: 'Jupe plissée midi',
+    name_fr: 'Jupe plissée midi',
+    name_en: 'Pleated Midi Skirt',
+    slug: 'jupe-plissee-midi-valentino',
+    price: 850,
+    description: 'Eine Ode an die Weiblichkeit und Bewegung. Dieser fließende und leichte Midirock mit Sonnenplissee tanzt bei jedem Schritt und schafft eine anmutige und luftige Silhouette.',
+    description_fr: 'Une ode à la féminité et au mouvement. Cette jupe midi plissée soleil, fluide et légère, danse à chacun de vos pas, créant une silhouette gracieuse et aérienne.',
+    description_en: 'An ode to femininity and movement. This fluid and light sunray pleated midi skirt dances with every step, creating a graceful and airy silhouette.',
+    category: 'womens-clothing',
+    images: ['jupe-plissee-midi-valentino'],
+    reviews: [
+      { author: 'Olivia', rating: 5, comment: 'Le mouvement de cette jupe est magique. Très élégante.' },
+    ]
+  },
+  {
+    id: 'prod-24',
+    name: 'T-shirt brodé logo',
+    name_fr: 'T-shirt brodé logo',
+    name_en: 'Logo Embroidered T-shirt',
+    slug: 't-shirt-brode-logo-gucci',
+    price: 450,
+    description: 'Ein Luxus-Basic. Dieses T-Shirt aus hochwertiger Baumwolle wird durch das ikonische Logo des Hauses, das sorgfältig auf der Brust gestickt ist, aufgewertet. Ein Symbol für Zugehörigkeit und lässigen Stil.',
+    description_fr: 'Le basique de luxe. Ce t-shirt en coton de qualité supérieure est rehaussé du logo emblématique de la maison, minutieusement brodé sur la poitrine. Un symbole d\'appartenance et de style décontracté.',
+    description_en: 'The luxury basic. This high-quality cotton T-shirt is enhanced by the house\'s iconic logo, meticulously embroidered on the chest. A symbol of belonging and casual style.',
+    category: 'womens-clothing',
+    images: ['t-shirt-brode-logo-gucci'],
+    reviews: [
+      { author: 'Anna', rating: 5, comment: 'Même pour un t-shirt, la qualité est incroyable. Très confortable.' },
+    ]
+  },
+  {
+    id: 'prod-25',
+    name: 'Pull col bateau manches ballon',
+    name_fr: 'Pull col bateau à manches ballon',
+    name_en: 'Balloon-Sleeve Boatneck Sweater',
+    slug: 'pull-col-bateau-manches-ballon-chloe',
+    price: 790,
+    description: 'Eine romantische und moderne Silhouette. Dieser Pullover mit U-Boot-Ausschnitt zeichnet sich durch seine voluminösen Ballonärmel aus und verleiht jedem Outfit einen Hauch von Couture.',
+    description_fr: 'Une silhouette romantique et moderne. Ce pull à col bateau se distingue par ses manches ballon volumineuses, apportant une touche couture à n\'importe quelle tenue.',
+    description_en: 'A romantic and modern silhouette. This boatneck sweater is distinguished by its voluminous balloon sleeves, bringing a couture touch to any outfit.',
+    category: 'womens-clothing',
+    images: ['pull-col-bateau-manches-ballon-chloe'],
+    reviews: [
+      { author: 'Emma', rating: 5, comment: 'Les manches sont magnifiques, c\'est une pièce très originale.' },
+    ]
+  },
+  {
+    id: 'prod-26',
+    name: 'Robe-chemise oversize',
+    name_fr: 'Robe-chemise oversize',
+    name_en: 'Oversize Shirtdress',
+    slug: 'robe-chemise-oversize-balenciaga',
+    price: 1150,
+    description: 'Der Inbegriff von lässigem Chic. Diese Oversize-Hemdbluse in makellosem Weiß kann als Kleid oder offen über einer Hose getragen werden und bietet einen avantgardistischen und vielseitigen Stil.',
+    description_fr: 'Le summum du chic décontracté. Cette robe-chemise oversize d\'un blanc immaculé peut être portée seule ou ouverte sur un pantalon, offrant un style avant-gardiste et polyvalent.',
+    description_en: 'The height of casual chic. This immaculate white oversized shirtdress can be worn alone or open over trousers, offering an avant-garde and versatile style.',
+    category: 'womens-clothing',
+    images: ['robe-chemise-oversize-balenciaga'],
+    reviews: [
+      { author: 'Chloé', rating: 5, comment: 'La coupe est incroyable. Très mode et facile à porter.' },
+    ]
+  },
+  {
+    id: 'prod-27',
+    name: 'Pantalon palazzo en laine',
+    name_fr: 'Pantalon palazzo en laine',
+    name_en: 'Wool Palazzo Pants',
+    slug: 'pantalon-palazzo-en-laine-max-mara',
+    price: 680,
+    description: 'Eine majestätische Silhouette. Diese Palazzo-Hose aus fließender Wolle verlängert das Bein und bietet eine anmutige und kraftvolle Bewegung. Perfekt für einen anspruchsvollen Büro-Look oder einen eleganten Abend.',
+    description_fr: 'Une allure majestueuse. Ce pantalon palazzo en laine fluide allonge la jambe et offre un mouvement gracieux et puissant. Parfait pour un look de bureau sophistiqué ou une soirée élégante.',
+    description_en: 'A majestic allure. These fluid wool palazzo pants lengthen the leg and offer graceful and powerful movement. Perfect for a sophisticated office look or an elegant evening out.',
+    category: 'womens-clothing',
+    images: ['pantalon-palazzo-en-laine-max-mara'],
+    reviews: [
+      { author: 'Juliette', rating: 5, comment: 'Le tombé de ce pantalon est juste sublime. Très confortable.' },
+    ]
+  },
+  {
+    id: 'prod-28',
+    name: 'Blazer en satin',
+    name_fr: 'Blazer en satin',
+    name_en: 'Satin Blazer',
+    slug: 'blazer-satin-saint-laurent',
+    price: 2200,
+    description: 'Ein Juwel für den Abend. Dieser Smoking-Blazer aus luxuriösem Seidensatin mit seinem schimmernden Revers ist das ultimative Stück für einen unvergesslichen und glamourösen Auftritt.',
+    description_fr: 'Un bijou pour le soir. Ce blazer smoking en satin de soie luxueux, avec son revers chatoyant, est la pièce ultime pour une allure inoubliable et glamour.',
+    description_en: 'An evening jewel. This luxurious silk satin tuxedo blazer, with its shimmering lapel, is the ultimate piece for an unforgettable and glamorous look.',
+    category: 'womens-clothing',
+    images: ['blazer-satin-saint-laurent'],
+    reviews: [
+      { author: 'Garance', rating: 5, comment: 'Une pièce d\'exception. La qualité est visible au premier coup d\'œil.' },
+    ]
+  },
+  {
+    id: 'prod-29',
+    name: 'Robe longue en velours',
+    name_fr: 'Robe longue en velours',
+    name_en: 'Long Velvet Dress',
+    slug: 'robe-longue-en-velours-valentino',
+    price: 2800,
+    description: 'Eine königliche Eleganz. Diese lange Robe aus tiefschwarzem Samt umhüllt die Silhouette mit einer geheimnisvollen und opulenten Anmut. Ein Meisterwerk für die exklusivsten Anlässe.',
+    description_fr: 'Une élégance royale. Cette robe longue en velours noir profond enveloppe la silhouette d\'une grâce mystérieuse et opulente. Une pièce maîtresse pour les occasions les plus exclusives.',
+    description_en: 'A royal elegance. This long dress in deep black velvet envelops the silhouette with a mysterious and opulent grace. A masterpiece for the most exclusive occasions.',
+    category: 'womens-clothing',
+    images: ['robe-longue-en-velours-valentino'],
+    reviews: [
+      { author: 'Constance', rating: 5, comment: 'Je me suis sentie comme une reine. La robe est spectaculaire.' },
+    ]
+  },
+  {
     id: 'prod-30',
     name: 'Slim-Fit Hemd',
     name_fr: 'Chemise Slim-Fit',
@@ -95,6 +239,118 @@ export const products: Product[] = [
     ]
   },
   {
+    id: 'prod-33',
+    name: 'T-Shirt mit Rundhalsausschnitt',
+    name_fr: 'T-shirt col rond',
+    name_en: 'Crewneck T-Shirt',
+    slug: 't-shirt-col-rond-hugo-boss',
+    price: 80,
+    description: 'Das perfekte Basic. Aus Pima-Baumwolle gefertigt, bietet dieses T-Shirt außergewöhnliche Weichheit und eine perfekte Passform. Ein Beweis dafür, dass wahrer Luxus in der Einfachheit liegt.',
+    description_fr: 'Le basique parfait. Confectionné en coton Pima, ce t-shirt offre une douceur exceptionnelle et une coupe impeccable. La preuve que le vrai luxe réside dans la simplicité.',
+    description_en: 'The perfect basic. Made from Pima cotton, this T-shirt offers exceptional softness and an impeccable fit. Proof that true luxury lies in simplicity.',
+    category: 'mens-clothing',
+    images: ['t-shirt-col-rond-hugo-boss'],
+    reviews: [
+      { author: 'Luc', rating: 5, comment: 'Un coton d\'une douceur rare. Le meilleur t-shirt que j\'ai jamais eu.'},
+    ]
+  },
+  {
+    id: 'prod-34',
+    name: 'Stretch-Chino-Hose',
+    name_fr: 'Pantalon chino stretch',
+    name_en: 'Stretch Chino Trousers',
+    slug: 'pantalon-chino-stretch-burberry',
+    price: 280,
+    description: 'Die moderne Eleganz. Diese Chino-Hose, leicht dehnbar für optimalen Komfort, hat eine schlanke und moderne Passform. Sie ist der vielseitige Verbündete für alle Ihre lässig-schicken Looks.',
+    description_fr: 'L\'élégance moderne. Ce pantalon chino, légèrement extensible pour un confort optimal, présente une coupe ajustée et contemporaine. L\'allié polyvalent de tous vos looks casual-chic.',
+    description_en: 'Modern elegance. This slightly stretchy chino for optimal comfort features a slim, contemporary fit. The versatile ally for all your casual-chic looks.',
+    category: 'mens-clothing',
+    images: ['pantalon-chino-stretch-burberry'],
+    reviews: [
+      { author: 'Mathieu', rating: 5, comment: 'Très confortable et la coupe est parfaite. Je l\'ai pris en plusieurs couleurs.'},
+    ]
+  },
+  {
+    id: 'prod-35',
+    name: 'Slim-Fit-Jeans',
+    name_fr: 'Jean coupe ajustée',
+    name_en: 'Slim-Fit Jeans',
+    slug: 'jean-coupe-ajustee-diesel',
+    price: 220,
+    description: 'Eine zweite Haut. Diese Jeans aus hochwertigem japanischem Denim passt sich perfekt an die Körperform an und bietet gleichzeitig eine bemerkenswerte Bewegungsfreiheit. Der Inbegriff von coolem Stil.',
+    description_fr: 'Une seconde peau. Ce jean, taillé dans un denim japonais de première qualité, épouse les formes tout en offrant une liberté de mouvement remarquable. La quintessence du style cool.',
+    description_en: 'A second skin. These jeans, cut from premium Japanese denim, hug the body while offering remarkable freedom of movement. The quintessence of cool style.',
+    category: 'mens-clothing',
+    images: ['jean-coupe-ajustee-diesel'],
+    reviews: [
+      { author: 'Alex', rating: 5, comment: 'Le meilleur jean que j\'ai jamais porté. La toile est incroyable.'},
+    ]
+  },
+  {
+    id: 'prod-36',
+    name: 'Nylon-Bomberjacke',
+    name_fr: 'Bomber en nylon',
+    name_en: 'Nylon Bomber Jacket',
+    slug: 'bomber-nylon-moncler',
+    price: 1100,
+    description: 'Ein urbaner Klassiker, neu interpretiert. Diese Bomberjacke aus glänzendem Nylon, gefüttert mit feinsten Daunen, vereint Streetwear-Stil und High-End-Performance. Ein Must-have für die Zwischensaison.',
+    description_fr: 'Un classique urbain réinventé. Ce bomber en nylon brillant, doublé du plus fin duvet, allie style streetwear et performance haut de gamme. Un must-have de la mi-saison.',
+    description_en: 'A reinvented urban classic. This shiny nylon bomber, lined with the finest down, combines streetwear style and high-end performance. A mid-season must-have.',
+    category: 'mens-clothing',
+    images: ['bomber-nylon-moncler'],
+    reviews: [
+      { author: 'Nico', rating: 5, comment: 'Légère, chaude et incroyablement stylée. Parfaite.'},
+    ]
+  },
+  {
+    id: 'prod-37',
+    name: 'Lederjacke',
+    name_fr: 'Blouson en cuir',
+    name_en: 'Leather Jacket',
+    slug: 'blouson-cuir-saint-laurent',
+    price: 3500,
+    description: 'Eine Legende. Diese Bikerjacke aus geschmeidigem und robustem Lammleder ist mehr als nur ein Kleidungsstück, sie ist ein Symbol für Rebellion und zeitlosen Stil. Sie wird mit den Jahren immer schöner.',
+    description_fr: 'Une légende. Ce blouson de motard en cuir d\'agneau, souple et robuste, est plus qu\'un vêtement, c\'est un symbole de rébellion et de style intemporel. Il se bonifiera avec les années.',
+    description_en: 'A legend. This biker jacket in soft and sturdy lambskin is more than a piece of clothing, it is a symbol of rebellion and timeless style. It will get better with age.',
+    category: 'mens-clothing',
+    images: ['blouson-cuir-saint-laurent'],
+    reviews: [
+      { author: 'Chris', rating: 5, comment: 'La perfection. Un investissement pour la vie.'},
+    ]
+  },
+  {
+    id: 'prod-38',
+    name: 'Anzugjacke',
+    name_fr: 'Veste de costume',
+    name_en: 'Suit Jacket',
+    slug: 'veste-costume-giorgio-armani',
+    price: 1800,
+    description: 'Die Essenz der italienischen Eleganz. Diese unstrukturierte Jacke aus einem exklusiven Woll-Seiden-Gemisch bietet einen fließenden und leichten Fall, der die Silhouette mit unvergleichlicher Anmut umhüllt.',
+    description_fr: 'L\'essence de l\'élégance italienne. Cette veste déstructurée, dans un mélange exclusif de laine et de soie, offre un tombé fluide et léger, enveloppant la silhouette d\'une grâce inégalée.',
+    description_en: 'The essence of Italian elegance. This deconstructed jacket, in an exclusive blend of wool and silk, offers a fluid and light drape, enveloping the silhouette with unparalleled grace.',
+    category: 'mens-clothing',
+    images: ['veste-costume-giorgio-armani'],
+    reviews: [
+      { author: 'Hugo', rating: 5, comment: 'On sent la qualité et le savoir-faire. C\'est une autre dimension.'},
+    ]
+  },
+  {
+    id: 'prod-39',
+    name: '2-teiliger Anzug',
+    name_fr: 'Costume 2 pièces',
+    name_en: '2-Piece Suit',
+    slug: 'costume-2-pieces-zegna',
+    price: 3200,
+    description: 'Die Rüstung des modernen Verführers. Dieser Anzug, der aus der renommierten Trofeo-Wolle geschnitten ist, zeichnet sich durch seine Widerstandsfähigkeit und seinen makellosen Fall aus. Ein Meisterwerk für den Mann von Welt.',
+    description_fr: 'L\'armure du séducteur moderne. Taillé dans la prestigieuse laine Trofeo, ce costume se distingue par sa résilience et son tombé impeccable. Une pièce maîtresse pour l\'homme de pouvoir.',
+    description_en: 'The armor of the modern seducer. Cut from the prestigious Trofeo wool, this suit is distinguished by its resilience and flawless drape. A masterpiece for the man of power.',
+    category: 'mens-clothing',
+    images: ['costume-2-pieces-zegna'],
+    reviews: [
+      { author: 'Arthur', rating: 5, comment: 'Un costume qui vous transforme. La coupe est exceptionnelle.'},
+    ]
+  },
+  {
     id: 'prod-40',
     name: 'Seidenhemd',
     name_fr: 'Chemise en soie',
@@ -108,6 +364,102 @@ export const products: Product[] = [
     images: ['chemise-soie-versace'],
     reviews: [
         { author: 'Stéphane', rating: 5, comment: 'Pièce maîtresse de ma garde-robe. Les regards se tournent vers moi.'}
+    ]
+  },
+  {
+    id: 'prod-41',
+    name: 'Kapuzenpullover',
+    name_fr: 'Sweat à capuche',
+    name_en: 'Hoodie',
+    slug: 'sweat-a-capuche-off-white',
+    price: 450,
+    description: 'Die Fusion von Streetwear und Luxus. Dieser Hoodie aus dickem Fleece zeichnet sich durch seine grafischen Signaturen aus und ist das Emblem einer rebellischen und hochkreativen Mode.',
+    description_fr: 'La fusion du streetwear et du luxe. Ce sweat à capuche en molleton épais, marqué de ses signatures graphiques, est l\'emblème d\'une mode rebelle et hautement créative.',
+    description_en: 'The fusion of streetwear and luxury. This thick fleece hoodie, marked with its graphic signatures, is the emblem of a rebellious and highly creative fashion.',
+    category: 'mens-clothing',
+    images: ['sweat-a-capuche-off-white'],
+    reviews: [
+      { author: 'Léo', rating: 5, comment: 'Plus qu\'un sweat, c\'est une pièce de designer. Confortable et stylé.'},
+    ]
+  },
+  {
+    id: 'prod-42',
+    name: 'Essential T-Shirt',
+    name_fr: 'T-shirt Essential',
+    name_en: 'Essential T-Shirt',
+    slug: 't-shirt-essential-fear-of-god',
+    price: 150,
+    description: 'Die Neudefinition des Basics. Mit seiner lockeren Passform, den überschnittenen Schultern und dem minimalistischen Branding verkörpert dieses T-Shirt einen unaufdringlichen und durchdachten Luxus. Ein moderner Klassiker.',
+    description_fr: 'La redéfinition du basique. Avec sa coupe ample, ses épaules tombantes et son branding minimaliste, ce t-shirt incarne un luxe discret et réfléchi. Un classique moderne.',
+    description_en: 'The redefinition of the basic. With its loose fit, dropped shoulders, and minimalist branding, this t-shirt embodies a discreet and thoughtful luxury. A modern classic.',
+    category: 'mens-clothing',
+    images: ['t-shirt-essential-fear-of-god'],
+    reviews: [
+      { author: 'Noah', rating: 5, comment: 'La coupe est parfaite. Le tissu est lourd et de grande qualité.'},
+    ]
+  },
+  {
+    id: 'prod-43',
+    name: 'Merino Wool Sweater',
+    name_fr: 'Pull Laine Merinos',
+    name_en: 'Merino Wool Sweater',
+    slug: 'pull-laine-merinos-lacoste',
+    price: 180,
+    description: 'Die zeitlose Eleganz von Merinowolle. Dieser Pullover bietet unübertroffene Weichheit und natürliche Thermoregulation. Ein Must-Have für eine anspruchsvolle und komfortable Garderobe.',
+    description_fr: 'L\'élégance intemporelle de la laine mérinos. Ce pull offre une douceur inégalée et une thermorégulation naturelle. Un indispensable pour une garde-robe sophistiquée et confortable.',
+    description_en: 'The timeless elegance of merino wool. This sweater offers unparalleled softness and natural thermoregulation. An essential for a sophisticated and comfortable wardrobe.',
+    category: 'mens-clothing',
+    images: ['pull-laine-merinos-lacoste'],
+    reviews: [
+        { author: 'Bastien', rating: 5, comment: 'Doux, chaud et élégant. La qualité Lacoste est au rendez-vous.'}
+    ]
+  },
+  {
+    id: 'prod-44',
+    name: 'Oversize Shirt',
+    name_fr: 'Chemise Oversize',
+    name_en: 'Oversize Shirt',
+    slug: 'chemise-oversize-balenciaga',
+    price: 600,
+    description: 'Eine kühne Neuinterpretation der klassischen Hemdbluse. Mit ihrem Oversize-Schnitt und der makellosen Baumwolle ist sie ein starkes Stück, das einen avantgardistischen und trendigen Look schafft.',
+    description_fr: 'Une réinterprétation audacieuse de la chemise classique. Avec sa coupe oversize et son coton impeccable, c\'est une pièce forte qui crée un look avant-gardiste et tendance.',
+    description_en: 'A bold reinterpretation of the classic shirt. With its oversized cut and impeccable cotton, it\'s a strong piece that creates an avant-garde and trendy look.',
+    category: 'mens-clothing',
+    images: ['chemise-oversize-balenciaga'],
+    reviews: [
+        { author: 'Raphael', rating: 5, comment: 'Une coupe incroyable. Très conceptuel, j\'adore.'}
+    ]
+  },
+  {
+    id: 'prod-45',
+    name: 'Flannel Overshirt',
+    name_fr: 'Surchemise Flanelle',
+    name_en: 'Flannel Overshirt',
+    slug: 'surchemise-flanelle-acne-studios',
+    price: 320,
+    description: 'Das ideale Layering-Stück. Diese Surchemise aus weicher Flanell bietet Wärme und Stil. Perfekt über einem T-Shirt oder unter einem Mantel für einen modernen und lässigen Look.',
+    description_fr: 'La pièce de superposition idéale. Cette surchemise en flanelle douce apporte chaleur et style. Parfaite sur un t-shirt ou sous un manteau pour un look moderne et décontracté.',
+    description_en: 'The ideal layering piece. This soft flannel overshirt provides warmth and style. Perfect over a t-shirt or under a coat for a modern and casual look.',
+    category: 'mens-clothing',
+    images: ['surchemise-flanelle-acne-studios'],
+    reviews: [
+        { author: 'Theo', rating: 5, comment: 'Très confortable et la qualité est top.'}
+    ]
+  },
+  {
+    id: 'prod-46',
+    name: 'Cargo Shorts',
+    name_fr: 'Short Cargo',
+    name_en: 'Cargo Shorts',
+    slug: 'short-cargo-stone-island',
+    price: 250,
+    description: 'Funktionalität trifft auf High-End-Stil. Diese Cargo-Shorts aus technischem Stoff sind sowohl praktisch als auch modisch und verfügen über das ikonische Logo der Marke.',
+    description_fr: 'La fonctionnalité rencontre le style haut de gamme. Ce short cargo en tissu technique est à la fois pratique et tendance, arborant le logo iconique de la marque.',
+    description_en: 'Functionality meets high-end style. These technical fabric cargo shorts are both practical and trendy, featuring the brand\'s iconic logo.',
+    category: 'mens-clothing',
+    images: ['short-cargo-stone-island'],
+    reviews: [
+        { author: 'Enzo', rating: 5, comment: 'Très bien coupé et le tissu est incroyable.'}
     ]
   },
   {
@@ -289,6 +641,214 @@ export const products: Product[] = [
     reviews: [
       { author: 'Tom', rating: 5, comment: 'Aussi confortables que stylées. Le nubuck est très doux.' },
       { author: 'Lucas', rating: 5, comment: 'Un luxe discret et moderne. J\'adore.'}
+    ]
+  },
+  {
+    id: 'prod-58',
+    name: 'Lightweight Down Jacket',
+    name_fr: 'Doudoune Légère',
+    name_en: 'Lightweight Down Jacket',
+    slug: 'doudoune-legere-canada-goose',
+    price: 750,
+    description: 'Essentielle Wärme ohne das Volumen. Diese leichte Daunenjacke bietet außergewöhnliche Isolierung in einem schlanken, vielseitigen Paket. Ideal für Reisen oder als Schicht an kühleren Tagen.',
+    description_fr: 'La chaleur essentielle sans l\'encombrement. Cette doudoune légère offre une isolation exceptionnelle dans un format fin et polyvalent. Idéale pour le voyage ou comme couche intermédiaire les jours plus frais.',
+    description_en: 'Essential warmth without the bulk. This lightweight down jacket offers exceptional insulation in a slim, versatile package. Ideal for travel or as a layer on cooler days.',
+    category: 'mens-clothing',
+    images: ['doudoune-legere-canada-goose'],
+    reviews: [
+        { author: 'Adam', rating: 5, comment: 'Incroyablement légère et chaude. Parfaite pour la mi-saison.'}
+    ]
+  },
+  {
+    id: 'prod-59',
+    name: 'Expedition Parka',
+    name_fr: 'Parka d\'Expédition',
+    name_en: 'Expedition Parka',
+    slug: 'parka-expedition-the-north-face-black-series',
+    price: 1300,
+    description: 'Ultimativer Schutz vor den Elementen. Dieser Parka aus der Black Series ist für extreme Bedingungen konzipiert und kombiniert modernste technische Materialien mit einem urbanen, anspruchsvollen Design.',
+    description_fr: 'La protection ultime contre les éléments. Conçue pour les conditions extrêmes, cette parka de la Black Series allie des matériaux techniques de pointe à un design urbain et sophistiqué.',
+    description_en: 'Ultimate protection against the elements. Designed for extreme conditions, this Black Series parka combines cutting-edge technical materials with an urban, sophisticated design.',
+    category: 'mens-clothing',
+    images: ['parka-expedition-the-north-face-black-series'],
+    reviews: [
+        { author: 'Xavier', rating: 5, comment: 'Un véritable bouclier contre le froid. Chaque détail est pensé.'}
+    ]
+  },
+  {
+    id: 'prod-60',
+    name: 'Cashmere Zip Cardigan',
+    name_fr: 'Cardigan Zippé Cachemire',
+    name_en: 'Cashmere Zip Cardigan',
+    slug: 'cardigan-zippe-cachemire-brunello-cucinelli',
+    price: 1600,
+    description: 'Der lässige Luxus in seiner reinsten Form. Dieser Cardigan mit Reißverschluss aus reinem Kaschmir ist unglaublich weich und vielseitig und kann allein oder als Schicht getragen werden.',
+    description_fr: 'Le luxe décontracté à son paroxysme. Ce cardigan zippé en pur cachemire est d\'une douceur et d\'une polyvalence inégalées, à porter seul ou en superposition.',
+    description_en: 'Casual luxury at its finest. This pure cashmere zip-up cardigan is incredibly soft and versatile, to be worn alone or as a layer.',
+    category: 'mens-clothing',
+    images: ['cardigan-zippe-cachemire-brunello-cucinelli'],
+    reviews: [
+        { author: 'Gaspard', rating: 5, comment: 'Une pièce d\'une qualité exceptionnelle. Le prix est justifié.'}
+    ]
+  },
+  {
+    id: 'prod-61',
+    name: 'Long Wool Coat',
+    name_fr: 'Manteau Long en Laine',
+    name_en: 'Long Wool Coat',
+    slug: 'manteau-long-laine-max-mara-homme',
+    price: 1500,
+    description: 'Eine imposante und zeitlose Silhouette. Dieser lange Mantel aus reiner Schurwolle bietet eine elegante Struktur und eine unvergleichliche Wärme für einen makellosen Winterstil.',
+    description_fr: 'Une silhouette imposante et intemporelle. Ce long manteau en pure laine vierge offre une structure élégante et une chaleur inégalée pour un style hivernal impeccable.',
+    description_en: 'An imposing and timeless silhouette. This long coat in pure virgin wool offers an elegant structure and unparalleled warmth for an impeccable winter style.',
+    category: 'mens-clothing',
+    images: ['manteau-long-laine-max-mara-homme'],
+    reviews: [
+        { author: 'Augustin', rating: 5, comment: 'La coupe est majestueuse. Un manteau pour la vie.'}
+    ]
+  },
+  {
+    id: 'prod-62',
+    name: 'Denim Jacket',
+    name_fr: 'Veste en Jean',
+    name_en: 'Denim Jacket',
+    slug: 'veste-denim-levis-made-crafted',
+    price: 280,
+    description: 'Die Ikone der amerikanischen Garderobe, neu interpretiert. Diese Jacke aus hochwertigem Denim ist eine Hommage an das Erbe von Levi\'s mit einer modernen Passform und hochwertigen Oberflächen.',
+    description_fr: 'L\'icône du vestiaire américain, réinventée. Cette veste en denim de première qualité rend hommage à l\'héritage Levi\'s avec une coupe moderne et des finitions haut de gamme.',
+    description_en: 'The icon of the American wardrobe, reinvented. This premium denim jacket pays homage to the Levi\'s heritage with a modern cut and high-end finishes.',
+    category: 'mens-clothing',
+    images: ['veste-denim-levis-made-crafted'],
+    reviews: [
+        { author: 'Oscar', rating: 5, comment: 'Une veste en jean parfaite. Ni trop large, ni trop serrée.'}
+    ]
+  },
+  {
+    id: 'prod-63',
+    name: 'Tailored Trousers',
+    name_fr: 'Pantalon de Costume',
+    name_en: 'Tailored Trousers',
+    slug: 'pantalon-tailleur-dior-homme',
+    price: 700,
+    description: 'Die Essenz der Schneiderkunst. Diese Hose mit perfektem Fall und makellosem Schnitt ist das Fundament einer eleganten Garderobe, die sowohl im Büro als auch bei formellen Anlässen getragen werden kann.',
+    description_fr: 'L\'essence du savoir-faire tailleur. Ce pantalon au tombé parfait et à la coupe impeccable est le fondement d\'une garde-robe élégante, à porter au bureau comme lors d\'événements formels.',
+    description_en: 'The essence of tailoring expertise. These trousers with a perfect drape and impeccable cut are the foundation of an elegant wardrobe, to be worn at the office as well as at formal events.',
+    category: 'mens-clothing',
+    images: ['pantalon-tailleur-dior-homme'],
+    reviews: [
+        { author: 'Victor', rating: 5, comment: 'La coupe est absolument parfaite.'}
+    ]
+  },
+  {
+    id: 'prod-64',
+    name: 'Printed Hoodie',
+    name_fr: 'Hoodie Imprimé',
+    name_en: 'Printed Hoodie',
+    slug: 'hoodie-imprime-palm-angels',
+    price: 480,
+    description: 'Der Geist Kaliforniens in einem Hoodie. Mit seinem kühnen Druck und dem lässigen Schnitt verkörpert dieses Stück den coolen und luxuriösen Geist von Palm Angels.',
+    description_fr: 'L\'esprit de la Californie dans un hoodie. Avec son imprimé audacieux et sa coupe décontractée, cette pièce incarne l\'esprit cool et luxueux de Palm Angels.',
+    description_en: 'The spirit of California in a hoodie. With its bold print and relaxed fit, this piece embodies the cool and luxurious spirit of Palm Angels.',
+    category: 'mens-clothing',
+    images: ['hoodie-imprime-palm-angels'],
+    reviews: [
+        { author: 'Samuel', rating: 5, comment: 'Très stylé, l\'imprimé est de super qualité.'}
+    ]
+  },
+  {
+    id: 'prod-65',
+    name: 'Quilted Jacket',
+    name_fr: 'Veste Matelassée',
+    name_en: 'Quilted Jacket',
+    slug: 'veste-matelassee-barbour-international',
+    price: 350,
+    description: 'Die britische Eleganz in einer Outdoor-Version. Diese gesteppte Jacke ist leicht, warm und unglaublich vielseitig und ideal für einen Ausflug aufs Land oder einen Spaziergang in der Stadt.',
+    description_fr: 'L\'élégance britannique en version outdoor. Cette veste matelassée est légère, chaude et incroyablement polyvalente, idéale pour une escapade à la campagne ou une balade en ville.',
+    description_en: 'British elegance in an outdoor version. This quilted jacket is lightweight, warm, and incredibly versatile, ideal for a countryside getaway or a city stroll.',
+    category: 'mens-clothing',
+    images: ['veste-matelassee-barbour-international'],
+    reviews: [
+        { author: 'Louis', rating: 5, comment: 'Un classique. Toujours élégant et très pratique.'}
+    ]
+  },
+  {
+    id: 'prod-66',
+    name: 'Cable-Knit Sweater',
+    name_fr: 'Pull Torsadé',
+    name_en: 'Cable-Knit Sweater',
+    slug: 'pull-torsade-paul-smith',
+    price: 300,
+    description: 'Ein zeitloser Klassiker neu interpretiert. Dieser Pullover mit Zopfmuster ist aus weicher Wolle gefertigt und verfügt über die für Paul Smith typischen subtilen Farbakzente.',
+    description_fr: 'Un classique intemporel revisité. Ce pull à torsades est confectionné dans une laine douce et présente les touches de couleur subtiles signatures de Paul Smith.',
+    description_en: 'A timeless classic revisited. This cable-knit sweater is made of soft wool and features the subtle color touches signature of Paul Smith.',
+    category: 'mens-clothing',
+    images: ['pull-torsade-paul-smith'],
+    reviews: [
+        { author: 'Adrien', rating: 5, comment: 'Très beau pull, la petite touche de couleur fait toute la différence.'}
+    ]
+  },
+  {
+    id: 'prod-67',
+    name: 'Logo T-Shirt',
+    name_fr: 'T-shirt Logo',
+    name_en: 'Logo T-Shirt',
+    slug: 't-shirt-logo-givenchy',
+    price: 390,
+    description: 'Ein starkes Statement. Dieses T-Shirt mit dem ikonischen Givenchy-Logo ist ein Muss für Liebhaber des urbanen Luxus, das einen einfachen Look sofort aufwertet.',
+    description_fr: 'Une affirmation de style forte. Ce t-shirt arborant le logo iconique de Givenchy est un must-have pour les amateurs de luxe urbain, rehaussant instantanément un look simple.',
+    description_en: 'A strong style statement. This t-shirt featuring the iconic Givenchy logo is a must-have for lovers of urban luxury, instantly elevating a simple look.',
+    category: 'mens-clothing',
+    images: ['t-shirt-logo-givenchy'],
+    reviews: [
+        { author: 'Mehdi', rating: 5, comment: 'Le logo est imposant mais classe. Tissu de grande qualité.'}
+    ]
+  },
+  {
+    id: 'prod-68',
+    name: 'Luxury Tracksuit',
+    name_fr: 'Survêtement de Luxe',
+    name_en: 'Luxury Tracksuit',
+    slug: 'survetement-luxe-adidas-gucci',
+    price: 1800,
+    description: 'Die ultimative Fusion von Sport und Luxus. Diese Zusammenarbeit zwischen Adidas und Gucci definiert den Trainingsanzug mit hochwertigen Stoffen und einem kühnen Co-Branding neu.',
+    description_fr: 'La fusion ultime du sport et du luxe. Cette collaboration entre Adidas et Gucci redéfinit le survêtement avec des tissus nobles et un co-branding audacieux.',
+    description_en: 'The ultimate fusion of sport and luxury. This collaboration between Adidas and Gucci redefines the tracksuit with noble fabrics and bold co-branding.',
+    category: 'mens-clothing',
+    images: ['survetement-luxe-adidas-gucci'],
+    reviews: [
+        { author: 'Kevin', rating: 5, comment: 'Une pièce de collection. Incroyable.'}
+    ]
+  },
+  {
+    id: 'prod-69',
+    name: 'Technical Jacket',
+    name_fr: 'Veste Technique',
+    name_en: 'Technical Jacket',
+    slug: 'veste-technique-nike-acg',
+    price: 450,
+    description: 'Für den urbanen Entdecker. Diese Jacke aus der ACG-Linie von Nike ist für alle Bedingungen konzipiert und kombiniert technische Leistung mit einem scharfen Street-Design.',
+    description_fr: 'Pour l\'explorateur urbain. Conçue pour toutes les conditions, cette veste de la ligne ACG de Nike allie performance technique et design street affûté.',
+    description_en: 'For the urban explorer. Designed for all conditions, this jacket from Nike\'s ACG line combines technical performance with a sharp street design.',
+    category: 'mens-clothing',
+    images: ['veste-technique-nike-acg'],
+    reviews: [
+        { author: 'Sami', rating: 5, comment: 'Parfaite pour la ville quand il pleut. Très bien pensée.'}
+    ]
+  },
+  {
+    id: 'prod-70',
+    name: 'Sleeveless Vest',
+    name_fr: 'Gilet Sans Manches',
+    name_en: 'Sleeveless Vest',
+    slug: 'gilet-sans-manches-prada',
+    price: 950,
+    description: 'Eine schicke und funktionale Schicht. Diese ärmellose Weste aus dem ikonischen Nylon von Prada verleiht jedem Outfit einen Hauch von modernem und anspruchsvollem Luxus.',
+    description_fr: 'Une couche chic et fonctionnelle. Ce gilet sans manches, en nylon iconique de Prada, ajoute une touche de luxe moderne et sophistiqué à n\'importe quelle tenue.',
+    description_en: 'A chic and functional layer. This sleeveless vest, in Prada\'s iconic nylon, adds a touch of modern and sophisticated luxury to any outfit.',
+    category: 'mens-clothing',
+    images: ['gilet-sans-manches-prada'],
+    reviews: [
+        { author: 'David', rating: 5, comment: 'Très polyvalent. Je le porte sur une chemise ou sous un manteau.'}
     ]
   },
   {
@@ -772,294 +1332,6 @@ export const products: Product[] = [
     images: ['pochette-soiree-shine-night-premium'],
     reviews: [
         { author: 'Eva', rating: 5, comment: 'Parfaite pour un mariage. J\'ai reçu beaucoup de compliments.'}
-    ]
-  },
-    {
-    id: 'prod-21',
-    name: 'Robe pull en cachemire',
-    name_fr: 'Robe pull en cachemire',
-    name_en: 'Cashmere Sweater Dress',
-    slug: 'robe-pull-en-cachemire-max-mara',
-    price: 1200,
-    description: 'Eine luxuriöse Pulloverkleid aus reinem Kaschmir, für eine komfortable und warme Eleganz. Seine lockere Passform und die Weichheit des Materials machen es zu einem Kokon des Luxus für den Winter.',
-    description_fr: 'Une robe pull luxueuse en pur cachemire, pour une élégance confortable et chaleureuse. Sa coupe décontractée et la douceur de sa maille en font un cocon de luxe pour l\'hiver.',
-    description_en: 'A luxurious sweater dress in pure cashmere, for comfortable and warm elegance. Its relaxed fit and the softness of its knit make it a cocoon of luxury for the winter.',
-    category: 'womens-clothing',
-    images: ['robe-pull-en-cachemire-max-mara'],
-    reviews: [
-      { author: 'Elodie', rating: 5, comment: 'Incroyablement douce et confortable, tout en restant très chic.' },
-    ]
-  },
-  {
-    id: 'prod-22',
-    name: 'Pantalon en cuir',
-    name_fr: 'Pantalon en cuir',
-    name_en: 'Leather Trousers',
-    slug: 'pantalon-en-cuir-saint-laurent',
-    price: 1500,
-    description: 'Ein Statement-Stück par excellence. Dieser Slim-Fit-Hose aus geschmeidigem Lammleder formt die Silhouette für einen entschieden rockigen und schicken Look. Ein starkes Stück, das die Zeiten überdauert.',
-    description_fr: 'La pièce forte par excellence. Ce pantalon slim en cuir d\'agneau souple sculpte la silhouette pour un look résolument rock et chic. Une pièce forte qui traverse les époques.',
-    description_en: 'The ultimate statement piece. These slim-fit trousers in supple lambskin sculpt the silhouette for a resolutely rock and chic look. A strong piece that stands the test of time.',
-    category: 'womens-clothing',
-    images: ['pantalon-en-cuir-saint-laurent'],
-    reviews: [
-      { author: 'Victoria', rating: 5, comment: 'Un cuir de rêve, souple et confortable. La coupe est parfaite.' },
-    ]
-  },
-  {
-    id: 'prod-23',
-    name: 'Jupe plissée midi',
-    name_fr: 'Jupe plissée midi',
-    name_en: 'Pleated Midi Skirt',
-    slug: 'jupe-plissee-midi-valentino',
-    price: 850,
-    description: 'Eine Ode an die Weiblichkeit und Bewegung. Dieser fließende und leichte Midirock mit Sonnenplissee tanzt bei jedem Schritt und schafft eine anmutige und luftige Silhouette.',
-    description_fr: 'Une ode à la féminité et au mouvement. Cette jupe midi plissée soleil, fluide et légère, danse à chacun de vos pas, créant une silhouette gracieuse et aérienne.',
-    description_en: 'An ode to femininity and movement. This fluid and light sunray pleated midi skirt dances with every step, creating a graceful and airy silhouette.',
-    category: 'womens-clothing',
-    images: ['jupe-plissee-midi-valentino'],
-    reviews: [
-      { author: 'Olivia', rating: 5, comment: 'Le mouvement de cette jupe est magique. Très élégante.' },
-    ]
-  },
-  {
-    id: 'prod-24',
-    name: 'T-shirt brodé logo',
-    name_fr: 'T-shirt brodé logo',
-    name_en: 'Logo Embroidered T-shirt',
-    slug: 't-shirt-brode-logo-gucci',
-    price: 450,
-    description: 'Ein Luxus-Basic. Dieses T-Shirt aus hochwertiger Baumwolle wird durch das ikonische Logo des Hauses, das sorgfältig auf der Brust gestickt ist, aufgewertet. Ein Symbol für Zugehörigkeit und lässigen Stil.',
-    description_fr: 'Le basique de luxe. Ce t-shirt en coton de qualité supérieure est rehaussé du logo emblématique de la maison, minutieusement brodé sur la poitrine. Un symbole d\'appartenance et de style décontracté.',
-    description_en: 'The luxury basic. This high-quality cotton T-shirt is enhanced by the house\'s iconic logo, meticulously embroidered on the chest. A symbol of belonging and casual style.',
-    category: 'womens-clothing',
-    images: ['t-shirt-brode-logo-gucci'],
-    reviews: [
-      { author: 'Anna', rating: 5, comment: 'Même pour un t-shirt, la qualité est incroyable. Très confortable.' },
-    ]
-  },
-  {
-    id: 'prod-25',
-    name: 'Pull col bateau manches ballon',
-    name_fr: 'Pull col bateau à manches ballon',
-    name_en: 'Balloon-Sleeve Boatneck Sweater',
-    slug: 'pull-col-bateau-manches-ballon-chloe',
-    price: 790,
-    description: 'Eine romantische und moderne Silhouette. Dieser Pullover mit U-Boot-Ausschnitt zeichnet sich durch seine voluminösen Ballonärmel aus und verleiht jedem Outfit einen Hauch von Couture.',
-    description_fr: 'Une silhouette romantique et moderne. Ce pull à col bateau se distingue par ses manches ballon volumineuses, apportant une touche couture à n\'importe quelle tenue.',
-    description_en: 'A romantic and modern silhouette. This boatneck sweater is distinguished by its voluminous balloon sleeves, bringing a couture touch to any outfit.',
-    category: 'womens-clothing',
-    images: ['pull-col-bateau-manches-ballon-chloe'],
-    reviews: [
-      { author: 'Emma', rating: 5, comment: 'Les manches sont magnifiques, c\'est une pièce très originale.' },
-    ]
-  },
-  {
-    id: 'prod-26',
-    name: 'Robe-chemise oversize',
-    name_fr: 'Robe-chemise oversize',
-    name_en: 'Oversize Shirtdress',
-    slug: 'robe-chemise-oversize-balenciaga',
-    price: 1150,
-    description: 'Der Inbegriff von lässigem Chic. Diese Oversize-Hemdbluse in makellosem Weiß kann als Kleid oder offen über einer Hose getragen werden und bietet einen avantgardistischen und vielseitigen Stil.',
-    description_fr: 'Le summum du chic décontracté. Cette robe-chemise oversize d\'un blanc immaculé peut être portée seule ou ouverte sur un pantalon, offrant un style avant-gardiste et polyvalent.',
-    description_en: 'The height of casual chic. This immaculate white oversized shirtdress can be worn alone or open over trousers, offering an avant-garde and versatile style.',
-    category: 'womens-clothing',
-    images: ['robe-chemise-oversize-balenciaga'],
-    reviews: [
-      { author: 'Chloé', rating: 5, comment: 'La coupe est incroyable. Très mode et facile à porter.' },
-    ]
-  },
-  {
-    id: 'prod-27',
-    name: 'Pantalon palazzo en laine',
-    name_fr: 'Pantalon palazzo en laine',
-    name_en: 'Wool Palazzo Pants',
-    slug: 'pantalon-palazzo-en-laine-max-mara',
-    price: 680,
-    description: 'Eine majestätische Silhouette. Diese Palazzo-Hose aus fließender Wolle verlängert das Bein und bietet eine anmutige und kraftvolle Bewegung. Perfekt für einen anspruchsvollen Büro-Look oder einen eleganten Abend.',
-    description_fr: 'Une allure majestueuse. Ce pantalon palazzo en laine fluide allonge la jambe et offre un mouvement gracieux et puissant. Parfait pour un look de bureau sophistiqué ou une soirée élégante.',
-    description_en: 'A majestic allure. These fluid wool palazzo pants lengthen the leg and offer graceful and powerful movement. Perfect for a sophisticated office look or an elegant evening out.',
-    category: 'womens-clothing',
-    images: ['pantalon-palazzo-en-laine-max-mara'],
-    reviews: [
-      { author: 'Juliette', rating: 5, comment: 'Le tombé de ce pantalon est juste sublime. Très confortable.' },
-    ]
-  },
-  {
-    id: 'prod-28',
-    name: 'Blazer en satin',
-    name_fr: 'Blazer en satin',
-    name_en: 'Satin Blazer',
-    slug: 'blazer-satin-saint-laurent',
-    price: 2200,
-    description: 'Ein Juwel für den Abend. Dieser Smoking-Blazer aus luxuriösem Seidensatin mit seinem schimmernden Revers ist das ultimative Stück für einen unvergesslichen und glamourösen Auftritt.',
-    description_fr: 'Un bijou pour le soir. Ce blazer smoking en satin de soie luxueux, avec son revers chatoyant, est la pièce ultime pour une allure inoubliable et glamour.',
-    description_en: 'An evening jewel. This luxurious silk satin tuxedo blazer, with its shimmering lapel, is the ultimate piece for an unforgettable and glamorous look.',
-    category: 'womens-clothing',
-    images: ['blazer-satin-saint-laurent'],
-    reviews: [
-      { author: 'Garance', rating: 5, comment: 'Une pièce d\'exception. La qualité est visible au premier coup d\'œil.' },
-    ]
-  },
-  {
-    id: 'prod-29',
-    name: 'Robe longue en velours',
-    name_fr: 'Robe longue en velours',
-    name_en: 'Long Velvet Dress',
-    slug: 'robe-longue-en-velours-valentino',
-    price: 2800,
-    description: 'Eine königliche Eleganz. Diese lange Robe aus tiefschwarzem Samt umhüllt die Silhouette mit einer geheimnisvollen und opulenten Anmut. Ein Meisterwerk für die exklusivsten Anlässe.',
-    description_fr: 'Une élégance royale. Cette robe longue en velours noir profond enveloppe la silhouette d\'une grâce mystérieuse et opulente. Une pièce maîtresse pour les occasions les plus exclusives.',
-    description_en: 'A royal elegance. This long dress in deep black velvet envelops the silhouette with a mysterious and opulent grace. A masterpiece for the most exclusive occasions.',
-    category: 'womens-clothing',
-    images: ['robe-longue-en-velours-valentino'],
-    reviews: [
-      { author: 'Constance', rating: 5, comment: 'Je me suis sentie comme une reine. La robe est spectaculaire.' },
-    ]
-  },
-  {
-    id: 'prod-33',
-    name: 'T-Shirt mit Rundhalsausschnitt',
-    name_fr: 'T-shirt col rond',
-    name_en: 'Crewneck T-Shirt',
-    slug: 't-shirt-col-rond-hugo-boss',
-    price: 80,
-    description: 'Das perfekte Basic. Aus Pima-Baumwolle gefertigt, bietet dieses T-Shirt außergewöhnliche Weichheit und eine perfekte Passform. Ein Beweis dafür, dass wahrer Luxus in der Einfachheit liegt.',
-    description_fr: 'Le basique parfait. Confectionné en coton Pima, ce t-shirt offre une douceur exceptionnelle et une coupe impeccable. La preuve que le vrai luxe réside dans la simplicité.',
-    description_en: 'The perfect basic. Made from Pima cotton, this T-shirt offers exceptional softness and an impeccable fit. Proof that true luxury lies in simplicity.',
-    category: 'mens-clothing',
-    images: ['t-shirt-col-rond-hugo-boss'],
-    reviews: [
-      { author: 'Luc', rating: 5, comment: 'Un coton d\'une douceur rare. Le meilleur t-shirt que j\'ai jamais eu.'},
-    ]
-  },
-  {
-    id: 'prod-34',
-    name: 'Stretch-Chino-Hose',
-    name_fr: 'Pantalon chino stretch',
-    name_en: 'Stretch Chino Trousers',
-    slug: 'pantalon-chino-stretch-burberry',
-    price: 280,
-    description: 'Die moderne Eleganz. Diese Chino-Hose, leicht dehnbar für optimalen Komfort, hat eine schlanke und moderne Passform. Sie ist der vielseitige Verbündete für alle Ihre lässig-schicken Looks.',
-    description_fr: 'L\'élégance moderne. Ce pantalon chino, légèrement extensible pour un confort optimal, présente une coupe ajustée et contemporaine. L\'allié polyvalent de tous vos looks casual-chic.',
-    description_en: 'Modern elegance. This slightly stretchy chino for optimal comfort features a slim, contemporary fit. The versatile ally for all your casual-chic looks.',
-    category: 'mens-clothing',
-    images: ['pantalon-chino-stretch-burberry'],
-    reviews: [
-      { author: 'Mathieu', rating: 5, comment: 'Très confortable et la coupe est parfaite. Je l\'ai pris en plusieurs couleurs.'},
-    ]
-  },
-  {
-    id: 'prod-35',
-    name: 'Slim-Fit-Jeans',
-    name_fr: 'Jean coupe ajustée',
-    name_en: 'Slim-Fit Jeans',
-    slug: 'jean-coupe-ajustee-diesel',
-    price: 220,
-    description: 'Eine zweite Haut. Diese Jeans aus hochwertigem japanischem Denim passt sich perfekt an die Körperform an und bietet gleichzeitig eine bemerkenswerte Bewegungsfreiheit. Der Inbegriff von coolem Stil.',
-    description_fr: 'Une seconde peau. Ce jean, taillé dans un denim japonais de première qualité, épouse les formes tout en offrant une liberté de mouvement remarquable. La quintessence du style cool.',
-    description_en: 'A second skin. These jeans, cut from premium Japanese denim, hug the body while offering remarkable freedom of movement. The quintessence of cool style.',
-    category: 'mens-clothing',
-    images: ['jean-coupe-ajustee-diesel'],
-    reviews: [
-      { author: 'Alex', rating: 5, comment: 'Le meilleur jean que j\'ai jamais porté. La toile est incroyable.'},
-    ]
-  },
-  {
-    id: 'prod-36',
-    name: 'Nylon-Bomberjacke',
-    name_fr: 'Bomber en nylon',
-    name_en: 'Nylon Bomber Jacket',
-    slug: 'bomber-nylon-moncler',
-    price: 1100,
-    description: 'Ein urbaner Klassiker, neu interpretiert. Diese Bomberjacke aus glänzendem Nylon, gefüttert mit feinsten Daunen, vereint Streetwear-Stil und High-End-Performance. Ein Must-have für die Zwischensaison.',
-    description_fr: 'Un classique urbain réinventé. Ce bomber en nylon brillant, doublé du plus fin duvet, allie style streetwear et performance haut de gamme. Un must-have de la mi-saison.',
-    description_en: 'A reinvented urban classic. This shiny nylon bomber, lined with the finest down, combines streetwear style and high-end performance. A mid-season must-have.',
-    category: 'mens-clothing',
-    images: ['bomber-nylon-moncler'],
-    reviews: [
-      { author: 'Nico', rating: 5, comment: 'Légère, chaude et incroyablement stylée. Parfaite.'},
-    ]
-  },
-  {
-    id: 'prod-37',
-    name: 'Lederjacke',
-    name_fr: 'Blouson en cuir',
-    name_en: 'Leather Jacket',
-    slug: 'blouson-cuir-saint-laurent',
-    price: 3500,
-    description: 'Eine Legende. Diese Bikerjacke aus geschmeidigem und robustem Lammleder ist mehr als nur ein Kleidungsstück, sie ist ein Symbol für Rebellion und zeitlosen Stil. Sie wird mit den Jahren immer schöner.',
-    description_fr: 'Une légende. Ce blouson de motard en cuir d\'agneau, souple et robuste, est plus qu\'un vêtement, c\'est un symbole de rébellion et de style intemporel. Il se bonifiera avec les années.',
-    description_en: 'A legend. This biker jacket in soft and sturdy lambskin is more than a piece of clothing, it is a symbol of rebellion and timeless style. It will get better with age.',
-    category: 'mens-clothing',
-    images: ['blouson-cuir-saint-laurent'],
-    reviews: [
-      { author: 'Chris', rating: 5, comment: 'La perfection. Un investissement pour la vie.'},
-    ]
-  },
-  {
-    id: 'prod-38',
-    name: 'Anzugjacke',
-    name_fr: 'Veste de costume',
-    name_en: 'Suit Jacket',
-    slug: 'veste-costume-giorgio-armani',
-    price: 1800,
-    description: 'Die Essenz der italienischen Eleganz. Diese unstrukturierte Jacke aus einem exklusiven Woll-Seiden-Gemisch bietet einen fließenden und leichten Fall, der die Silhouette mit unvergleichlicher Anmut umhüllt.',
-    description_fr: 'L\'essence de l\'élégance italienne. Cette veste déstructurée, dans un mélange exclusif de laine et de soie, offre un tombé fluide et léger, enveloppant la silhouette d\'une grâce inégalée.',
-    description_en: 'The essence of Italian elegance. This deconstructed jacket, in an exclusive blend of wool and silk, offers a fluid and light drape, enveloping the silhouette with unparalleled grace.',
-    category: 'mens-clothing',
-    images: ['veste-costume-giorgio-armani'],
-    reviews: [
-      { author: 'Hugo', rating: 5, comment: 'On sent la qualité et le savoir-faire. C\'est une autre dimension.'},
-    ]
-  },
-  {
-    id: 'prod-39',
-    name: '2-teiliger Anzug',
-    name_fr: 'Costume 2 pièces',
-    name_en: '2-Piece Suit',
-    slug: 'costume-2-pieces-zegna',
-    price: 3200,
-    description: 'Die Rüstung des modernen Verführers. Dieser Anzug, der aus der renommierten Trofeo-Wolle geschnitten ist, zeichnet sich durch seine Widerstandsfähigkeit und seinen makellosen Fall aus. Ein Meisterwerk für den Mann von Welt.',
-    description_fr: 'L\'armure du séducteur moderne. Taillé dans la prestigieuse laine Trofeo, ce costume se distingue par sa résilience et son tombé impeccable. Une pièce maîtresse pour l\'homme de pouvoir.',
-    description_en: 'The armor of the modern seducer. Cut from the prestigious Trofeo wool, this suit is distinguished by its resilience and flawless drape. A masterpiece for the man of power.',
-    category: 'mens-clothing',
-    images: ['costume-2-pieces-zegna'],
-    reviews: [
-      { author: 'Arthur', rating: 5, comment: 'Un costume qui vous transforme. La coupe est exceptionnelle.'},
-    ]
-  },
-  {
-    id: 'prod-41',
-    name: 'Kapuzenpullover',
-    name_fr: 'Sweat à capuche',
-    name_en: 'Hoodie',
-    slug: 'sweat-a-capuche-off-white',
-    price: 450,
-    description: 'Die Fusion von Streetwear und Luxus. Dieser Hoodie aus dickem Fleece zeichnet sich durch seine grafischen Signaturen aus und ist das Emblem einer rebellischen und hochkreativen Mode.',
-    description_fr: 'La fusion du streetwear et du luxe. Ce sweat à capuche en molleton épais, marqué de ses signatures graphiques, est l\'emblème d\'une mode rebelle et hautement créative.',
-    description_en: 'The fusion of streetwear and luxury. This thick fleece hoodie, marked with its graphic signatures, is the emblem of a rebellious and highly creative fashion.',
-    category: 'mens-clothing',
-    images: ['sweat-a-capuche-off-white'],
-    reviews: [
-      { author: 'Léo', rating: 5, comment: 'Plus qu\'un sweat, c\'est une pièce de designer. Confortable et stylé.'},
-    ]
-  },
-  {
-    id: 'prod-42',
-    name: 'Essential T-Shirt',
-    name_fr: 'T-shirt Essential',
-    name_en: 'Essential T-Shirt',
-    slug: 't-shirt-essential-fear-of-god',
-    price: 150,
-    description: 'Die Neudefinition des Basics. Mit seiner lockeren Passform, den überschnittenen Schultern und dem minimalistischen Branding verkörpert dieses T-Shirt einen unaufdringlichen und durchdachten Luxus. Ein moderner Klassiker.',
-    description_fr: 'La redéfinition du basique. Avec sa coupe ample, ses épaules tombantes et son branding minimaliste, ce t-shirt incarne un luxe discret et réfléchi. Un classique moderne.',
-    description_en: 'The redefinition of the basic. With its loose fit, dropped shoulders, and minimalist branding, this t-shirt embodies a discreet and thoughtful luxury. A modern classic.',
-    category: 'mens-clothing',
-    images: ['t-shirt-essential-fear-of-god'],
-    reviews: [
-      { author: 'Noah', rating: 5, comment: 'La coupe est parfaite. Le tissu est lourd et de grande qualité.'},
     ]
   }
 ];
