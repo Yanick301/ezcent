@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/form";
 import { useLanguage } from '@/context/LanguageContext';
 
+const ADMIN_EMAIL = 'ezcentials@gmail.com';
 
 const loginSchemaFR = z.object({
   email: z.string().email({ message: 'Adresse e-mail invalide.' }),
@@ -77,6 +78,7 @@ export default function LoginPage() {
           firstName: user.displayName?.split(' ')[0] || '',
           lastName: user.displayName?.split(' ').slice(1).join(' ') || '',
           registrationDate: serverTimestamp(),
+          isAdmin: user.email === ADMIN_EMAIL,
         });
       } catch (error) {
         console.error("Error creating user profile in Firestore: ", error);
@@ -89,12 +91,21 @@ export default function LoginPage() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
       await handleUserCreation(userCredential);
+      
+      const isAdmin = userCredential.user.email === ADMIN_EMAIL;
+
       toast({
         title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
         description: language === 'fr' ? 'Bienvenue à nouveau !' : language === 'en' ? 'Welcome back!' : 'Willkommen zurück!',
       });
-      const redirectUrl = searchParams.get('redirect') || '/account';
-      router.push(redirectUrl);
+      
+      if (isAdmin) {
+        router.push('/admin/dashboard');
+      } else {
+        const redirectUrl = searchParams.get('redirect') || '/account';
+        router.push(redirectUrl);
+      }
+
     } catch (error: any) {
       console.error(error);
       const errorMessage = error.code === 'auth/invalid-credential' 
@@ -114,12 +125,21 @@ export default function LoginPage() {
         const provider = new GoogleAuthProvider();
         const userCredential = await signInWithPopup(auth, provider);
         await handleUserCreation(userCredential);
+
+        const isAdmin = userCredential.user.email === ADMIN_EMAIL;
+
         toast({
             title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
             description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
         });
-        const redirectUrl = searchParams.get('redirect') || '/account';
-        router.push(redirectUrl);
+        
+        if (isAdmin) {
+            router.push('/admin/dashboard');
+        } else {
+            const redirectUrl = searchParams.get('redirect') || '/account';
+            router.push(redirectUrl);
+        }
+
     } catch (error: any) {
         console.error(error);
         toast({
