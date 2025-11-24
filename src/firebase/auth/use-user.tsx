@@ -6,6 +6,7 @@ import { useAuth } from '@/firebase/provider';
 
 export interface UserHookResult {
   user: User | null;
+  isAdmin: boolean;
   isUserLoading: boolean;
   userError: Error | null;
 }
@@ -13,6 +14,7 @@ export interface UserHookResult {
 export const useUser = (): UserHookResult => {
   const auth = useAuth();
   const [user, setUser] = useState<User | null>(auth.currentUser);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isUserLoading, setIsUserLoading] = useState(true);
   const [userError, setUserError] = useState<Error | null>(null);
 
@@ -22,13 +24,21 @@ export const useUser = (): UserHookResult => {
       return;
     }
 
-    const unsubscribe = auth.onAuthStateChanged(
-      (user) => {
+    const unsubscribe = auth.onIdTokenChanged(
+      async (user) => {
         setUser(user);
+        if (user) {
+          const tokenResult = await user.getIdTokenResult();
+          const claims = tokenResult.claims;
+          setIsAdmin(!!claims.isAdmin);
+        } else {
+          setIsAdmin(false);
+        }
         setIsUserLoading(false);
       },
       (error) => {
         setUserError(error);
+        setIsAdmin(false);
         setIsUserLoading(false);
       }
     );
@@ -36,5 +46,5 @@ export const useUser = (): UserHookResult => {
     return () => unsubscribe();
   }, [auth]);
 
-  return { user, isUserLoading, userError };
+  return { user, isAdmin, isUserLoading, userError };
 };
