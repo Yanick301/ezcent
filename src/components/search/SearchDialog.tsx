@@ -14,24 +14,34 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { TranslatedText } from '../TranslatedText';
-import { products, categories } from '@/lib/data';
+import { categories } from '@/lib/data';
 import type { Product } from '@/lib/types';
 import placeholderImagesData from '@/lib/placeholder-images.json';
 import Link from 'next/link';
 import { Separator } from '../ui/separator';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection, query } from 'firebase/firestore';
 
 const { placeholderImages } = placeholderImagesData;
 
 export function SearchDialog() {
   const [isOpen, setIsOpen] = useState(false);
-  const [query, setQuery] = useState('');
+  const [queryTerm, setQueryTerm] = useState('');
   const router = useRouter();
+  const firestore = useFirestore();
+
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'products'));
+  }, [firestore]);
+
+  const { data: products, isLoading } = useCollection<Product>(productsQuery);
 
   const searchResults = useMemo(() => {
-    if (!query.trim()) {
+    if (!queryTerm.trim() || !products) {
       return [];
     }
-    const lowerCaseQuery = query.toLowerCase();
+    const lowerCaseQuery = queryTerm.toLowerCase();
     return products.filter(
       (product) =>
         product.name.toLowerCase().includes(lowerCaseQuery) ||
@@ -39,12 +49,12 @@ export function SearchDialog() {
         product.name_fr.toLowerCase().includes(lowerCaseQuery) ||
         product.description_fr.toLowerCase().includes(lowerCaseQuery)
     ).slice(0, 5); // Limit to 5 results
-  }, [query]);
+  }, [queryTerm, products]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (query.trim()) {
-      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+    if (queryTerm.trim()) {
+      router.push(`/search?q=${encodeURIComponent(queryTerm.trim())}`);
       setIsOpen(false);
     }
   };
@@ -52,7 +62,7 @@ export function SearchDialog() {
   // Reset query when opening/closing
   useEffect(() => {
     if (isOpen) {
-      setQuery('');
+      setQueryTerm('');
     }
   }, [isOpen]);
 
@@ -71,8 +81,8 @@ export function SearchDialog() {
         <div className="p-6 pt-2">
             <form onSubmit={handleSearchSubmit} className="flex items-center space-x-2">
             <Input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                value={queryTerm}
+                onChange={(e) => setQueryTerm(e.target.value)}
                 aria-label="Suche"
                 className="text-base"
             />
@@ -83,7 +93,7 @@ export function SearchDialog() {
         </div>
 
         <div className="px-6 pb-6 space-y-4">
-          {query.trim() === '' ? (
+          {queryTerm.trim() === '' ? (
             <div>
               <h4 className="text-sm font-medium text-muted-foreground mb-4"><TranslatedText fr="Catégories populaires">Beliebte Kategorien</TranslatedText></h4>
               <div className="flex flex-wrap gap-2">
@@ -96,6 +106,10 @@ export function SearchDialog() {
                 ))}
               </div>
             </div>
+          ) : isLoading ? (
+            <p className="text-center text-sm text-muted-foreground py-8">
+              <TranslatedText fr="Recherche en cours...">Recherche...</TranslatedText>
+            </p>
           ) : searchResults.length > 0 ? (
             <ul className="divide-y divide-border -mx-6">
               {searchResults.map((product) => {
@@ -131,11 +145,11 @@ export function SearchDialog() {
             </p>
           )}
 
-          {query.trim() !== '' && searchResults.length > 0 && (
+          {queryTerm.trim() !== '' && searchResults.length > 0 && (
             <>
                 <Separator />
                 <Button variant="ghost" className="w-full" onClick={handleSearchSubmit}>
-                    <TranslatedText fr={`Voir tous les résultats pour "${query}"`}>Alle Ergebnisse für "{query}" anzeigen</TranslatedText>
+                    <TranslatedText fr={`Voir tous les résultats pour "${queryTerm}"`}>Alle Ergebnisse für "{queryTerm}" anzeigen</TranslatedText>
                 </Button>
             </>
           )}

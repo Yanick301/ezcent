@@ -1,7 +1,14 @@
+'use client';
+
 import { getProductsByCategory, categories } from '@/lib/data';
 import { ProductCard } from '@/components/ProductCard';
 import { notFound } from 'next/navigation';
 import { TranslatedText } from '@/components/TranslatedText';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { useMemo } from 'react';
+import { collection, query } from 'firebase/firestore';
+import type { Product } from '@/lib/types';
+
 
 type CategoryPageProps = {
   params: {
@@ -9,33 +16,32 @@ type CategoryPageProps = {
   };
 };
 
-export function generateStaticParams() {
-  const allCategories = [{ slug: 'all' }, ...categories];
-  return allCategories.map((category) => ({
-    category: category.slug,
-  }));
-}
-
-export async function generateMetadata({ params }: CategoryPageProps) {
-  const categorySlug = params.category;
-  const category = categories.find((c) => c.slug === categorySlug);
-  const title = categorySlug === 'all' ? 'Alle Produkte' : category?.name;
-
-  return {
-    title: `${title} | EZCENTIALS`,
-  };
-}
-
-
 export default function CategoryPage({ params }: CategoryPageProps) {
   const { category: categorySlug } = params;
-  const products = getProductsByCategory(categorySlug);
+  const firestore = useFirestore();
+
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'products'));
+  }, [firestore]);
+
+  const { data: allProducts, isLoading } = useCollection<Product>(productsQuery as any);
+  
+  const products = useMemo(() => {
+    if (!allProducts) return [];
+    return getProductsByCategory(allProducts, categorySlug);
+  }, [allProducts, categorySlug]);
+
   const category = categories.find((c) => c.slug === categorySlug);
 
   const title = categorySlug === 'all' ? 'Alle Produkte' : category?.name;
   const titleFr = categorySlug === 'all' ? 'Tous les produits' : category?.name_fr;
 
-  if (!products) {
+  if (isLoading) {
+      return <div className="text-center py-12">Chargement des produits...</div>;
+  }
+  
+  if (!isLoading && !products) {
     notFound();
   }
 

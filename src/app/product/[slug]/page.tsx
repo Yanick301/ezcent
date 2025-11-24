@@ -1,11 +1,11 @@
 
 'use client';
 
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { Star } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 
-import { getProductBySlug, getProductsByCategory } from '@/lib/data';
+import { getProductsByCategory, getProductBySlug } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -18,6 +18,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/context/LanguageContext';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection, query, where, limit } from 'firebase/firestore';
+import type { Product } from '@/lib/types';
+
 
 const { placeholderImages } = placeholderImagesData;
 
@@ -28,20 +32,40 @@ type ProductPageProps = {
 };
 
 export default function ProductPage({ params }: ProductPageProps) {
-  const product = getProductBySlug(params.slug);
+  const { slug } = params;
+  const firestore = useFirestore();
   const { toast } = useToast();
   const { language } = useLanguage();
   const [newReviewRating, setNewReviewRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [newReviewComment, setNewReviewComment] = useState('');
 
-  if (!product) {
-    notFound();
+  const productQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'products'), where('slug', '==', slug), limit(1));
+  }, [firestore, slug]);
+
+  const { data: productData, isLoading: isProductLoading } = useCollection<Product>(productQuery as any);
+  const product = useMemo(() => (productData && productData.length > 0 ? productData[0] : null), [productData]);
+
+  const relatedProductsQuery = useMemoFirebase(() => {
+    if (!firestore || !product) return null;
+    return query(collection(firestore, 'products'), where('category', '==', product.category), where('id', '!=', product.id), limit(4));
+  }, [firestore, product]);
+
+  const { data: relatedProducts, isLoading: areRelatedLoading } = useCollection<Product>(relatedProductsQuery as any);
+
+  useEffect(() => {
+    if (!isProductLoading && !product) {
+      notFound();
+    }
+  }, [isProductLoading, product]);
+  
+  if (isProductLoading || !product) {
+    return <div className="text-center py-12">Chargement du produit...</div>;
   }
-
-  const relatedProducts = getProductsByCategory(product.category, 4, product.id);
-
-  const averageRating = product.reviews.length > 0 ? product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length : 0;
+  
+  const averageRating = product.reviews && product.reviews.length > 0 ? product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length : 0;
   
   const mainImage = placeholderImages.find(p => p.id === product.images[0]);
   const altImages = product.images.slice(1).map(id => placeholderImages.find(p => p.id === id));
@@ -108,7 +132,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 <Star key={i} className={`h-5 w-5 ${i < Math.floor(averageRating) ? 'text-yellow-500 fill-yellow-500' : 'text-muted'}`} />
               ))}
             </div>
-            <span className="text-sm text-muted-foreground">({product.reviews.length} <TranslatedText fr="avis">Bewertungen</TranslatedText>)</span>
+            <span className="text-sm text-muted-foreground">({product.reviews?.length || 0} <TranslatedText fr="avis">Bewertungen</TranslatedText>)</span>
           </div>
 
           <p className="mt-6 text-base leading-relaxed">
@@ -136,7 +160,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             </TabsContent>
             <TabsContent value="reviews" className="mt-4">
               <div className="space-y-8">
-                {product.reviews.length > 0 ? (
+                {product.reviews && product.reviews.length > 0 ? (
                   product.reviews.map((review, index) => (
                     <div key={index}>
                       <div className="flex items-center gap-2">
@@ -210,11 +234,15 @@ export default function ProductPage({ params }: ProductPageProps) {
         <h2 className="mb-12 text-center font-headline text-3xl md:text-4xl">
           <TranslatedText fr="Vous pourriez aussi aimer">Das könnte Ihnen auch gefallen</TranslatedText>
         </h2>
-        <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-          {relatedProducts.map((relatedProduct) => (
-            <ProductCard key={relatedProduct.id} product={relatedProduct} />
-          ))}
-        </div>
+        {areRelatedLoading ? (
+            <div className="text-center">Chargement...</div>
+        ) : (
+            <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+              {relatedProducts && relatedProducts.map((relatedProduct) => (
+                <ProductCard key={relatedProduct.id} product={relatedProduct} />
+              ))}
+            </div>
+        )}
       </div>
     </div>
   );

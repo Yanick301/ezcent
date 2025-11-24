@@ -1,4 +1,5 @@
 
+'use client';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
@@ -13,9 +14,25 @@ import {
 } from "@/components/ui/carousel"
 import { CollectionHighlight } from '@/components/CollectionHighlight';
 import { categories } from '@/lib/data';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { useMemo } from 'react';
+import { collection, query } from 'firebase/firestore';
 
 export default function HomePage() {
-  const featuredProducts = getFeaturedProducts(4);
+  const firestore = useFirestore();
+  
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'products'));
+  }, [firestore]);
+
+  const { data: products, isLoading } = useCollection(productsQuery as any);
+  
+  const featuredProducts = useMemo(() => {
+    if (!products) return [];
+    return getFeaturedProducts(products, 4);
+  }, [products]);
+
 
   return (
     <div className="flex flex-col">
@@ -85,11 +102,15 @@ export default function HomePage() {
               </TranslatedText>
             </p>
           </div>
-          <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          {isLoading ? (
+            <div className="text-center mt-12">Chargement des produits...</div>
+          ) : (
+            <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+              {featuredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
           <div className="mt-12 text-center">
             <Button asChild size="lg">
                 <Link href="/products/all"><TranslatedText fr="Voir tous les produits">Alle Produkte anzeigen</TranslatedText></Link>

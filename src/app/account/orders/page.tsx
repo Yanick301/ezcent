@@ -11,9 +11,9 @@ import { TranslatedText } from '@/components/TranslatedText';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ShoppingBag, Upload, CheckCircle, Loader2 } from 'lucide-react';
-import { useCollection, useFirestore, useUser } from '@/firebase';
+import { useCollection, useFirestore, useUser, useMemoFirebase } from '@/firebase';
 import { collection, doc, updateDoc } from 'firebase/firestore';
-import { useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { fr, de } from 'date-fns/locale';
@@ -33,12 +33,12 @@ export default function OrdersPage() {
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
 
 
-  const ordersQuery = useMemo(() => {
+  const ordersQuery = useMemoFirebase(() => {
     if (!user) return null;
     return collection(firestore, `users/${user.uid}/orders`);
   }, [firestore, user]);
 
-  const { data: orders, isLoading } = useCollection(ordersQuery as any);
+  const { data: orders, isLoading } = useCollection(ordersQuery);
 
   const handleUploadClick = (orderId: string) => {
     setSelectedOrderId(orderId);
