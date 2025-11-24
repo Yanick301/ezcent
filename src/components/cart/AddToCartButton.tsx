@@ -23,9 +23,11 @@ export function AddToCartButton({ product, children, ...props }: AddToCartButton
         e.stopPropagation();
         addToCart(product);
         
-        const title = language === 'fr' ? "Ajouté au panier" : "Zum Warenkorb hinzugefügt";
+        const title = language === 'fr' ? "Ajouté au panier" : language === 'en' ? "Added to cart" : "Zum Warenkorb hinzugefügt";
         const description = language === 'fr' 
             ? `${product.name_fr} a été ajouté à votre panier.`
+            : language === 'en'
+            ? `${product.name_en} has been added to your cart.`
             : `${product.name} wurde Ihrem Warenkorb hinzugefügt.`;
 
         toast({

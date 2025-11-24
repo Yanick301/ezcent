@@ -27,12 +27,12 @@ export function CartButton() {
               {itemCount}
             </span>
           )}
-          <span className="sr-only"><TranslatedText fr="Ouvrir le panier">Warenkorb öffnen</TranslatedText></span>
+          <span className="sr-only"><TranslatedText fr="Ouvrir le panier" en="Open Cart">Warenkorb öffnen</TranslatedText></span>
         </Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle><TranslatedText fr="Panier">Warenkorb</TranslatedText></SheetTitle>
+          <SheetTitle><TranslatedText fr="Panier" en="Cart">Warenkorb</TranslatedText></SheetTitle>
         </SheetHeader>
         <CartSheetContent />
       </SheetContent>

@@ -17,34 +17,38 @@ export function Footer() {
     {
       title: 'Hilfe',
       title_fr: 'Aide',
+      title_en: 'Help',
       links: [
-        { name: 'Kontaktieren Sie uns', name_fr: 'Contactez-nous', href: '#' },
-        { name: 'FAQs', name_fr: 'FAQs', href: '#' },
-        { name: 'Produktpflege', name_fr: 'Entretien des produits', href: '#' },
-        { name: 'Rechtliche Hinweise', name_fr: 'Mentions légales', href: '#' },
+        { name: 'Kontaktieren Sie uns', name_fr: 'Contactez-nous', name_en: 'Contact Us', href: '#' },
+        { name: 'FAQs', name_fr: 'FAQs', name_en: 'FAQs', href: '#' },
+        { name: 'Produktpflege', name_fr: 'Entretien des produits', name_en: 'Product Care', href: '#' },
+        { name: 'Rechtliche Hinweise', name_fr: 'Mentions légales', name_en: 'Legal Notice', href: '#' },
       ],
     },
     {
       title: 'Dienstleistungen',
       title_fr: 'Services',
+      title_en: 'Services',
       links: [
-        { name: 'Reparaturen', name_fr: 'Réparations', href: '#' },
-        { name: 'Personalisierung', name_fr: 'Personnalisation', href: '#' },
-        { name: 'Geschenkkarten', name_fr: 'Cartes cadeaux', href: '#' },
+        { name: 'Reparaturen', name_fr: 'Réparations', name_en: 'Repairs', href: '#' },
+        { name: 'Personalisierung', name_fr: 'Personnalisation', name_en: 'Personalization', href: '#' },
+        { name: 'Geschenkkarten', name_fr: 'Cartes cadeaux', name_en: 'Gift Cards', href: '#' },
       ],
     },
     {
       title: 'Über EZCENTIALS',
       title_fr: 'À propos d\'EZCENTIALS',
+      title_en: 'About EZCENTIALS',
       links: [
-        { name: 'Modehäuser', name_fr: 'Maisons de mode', href: '#' },
-        { name: 'Nachhaltigkeit', name_fr: 'Durabilité', href: '#' },
-        { name: 'Karriere', name_fr: 'Carrières', href: '#' },
+        { name: 'Modehäuser', name_fr: 'Maisons de mode', name_en: 'Fashion Houses', href: '#' },
+        { name: 'Nachhaltigkeit', name_fr: 'Durabilité', name_en: 'Sustainability', href: '#' },
+        { name: 'Karriere', name_fr: 'Carrières', name_en: 'Careers', href: '#' },
       ],
     },
      {
       title: 'Réseaux sociaux',
       title_fr: 'Réseaux sociaux',
+      title_en: 'Social Media',
       isSocial: true,
       links: [
         { name: 'Instagram', href: '#', icon: InstagramIcon },
@@ -64,14 +68,14 @@ export function Footer() {
                 {footerSections.map((section) => (
                 <div key={section.title}>
                     <h5 className="font-headline text-lg font-semibold tracking-wider">
-                    <TranslatedText fr={section.title_fr}>{section.title}</TranslatedText>
+                    <TranslatedText fr={section.title_fr} en={section.title_en}>{section.title}</TranslatedText>
                     </h5>
                     <ul className={`mt-4 space-y-3 ${section.isSocial ? 'flex space-x-4 space-y-0' : ''}`}>
                     {section.links.map((link) => (
                         <li key={link.name}>
                         <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-2">
                            {link.icon && <link.icon />}
-                           {!section.isSocial && <TranslatedText fr={link.name_fr}>{link.name}</TranslatedText>}
+                           {!section.isSocial && <TranslatedText fr={link.name_fr} en={link.name_en}>{link.name}</TranslatedText>}
                         </Link>
                         </li>
                     ))}
@@ -81,7 +85,7 @@ export function Footer() {
             </div>
         </div>
         <div className="mt-16 pt-8 border-t text-center text-sm text-muted-foreground">
-           <p>&copy; {currentYear} <TranslatedText fr="EZCENTIALS. Tous droits réservés.">EZCENTIALS. Alle Rechte vorbehalten.</TranslatedText></p>
+           <p>&copy; {currentYear} <TranslatedText fr="EZCENTIALS. Tous droits réservés." en="EZCENTIALS. All rights reserved.">EZCENTIALS. Alle Rechte vorbehalten.</TranslatedText></p>
         </div>
       </div>
     </footer>

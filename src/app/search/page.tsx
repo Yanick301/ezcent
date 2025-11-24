@@ -23,7 +23,9 @@ function SearchPageClient() {
           product.name.toLowerCase().includes(lowerCaseQuery) ||
           product.description.toLowerCase().includes(lowerCaseQuery) ||
           product.name_fr.toLowerCase().includes(lowerCaseQuery) ||
-          product.description_fr.toLowerCase().includes(lowerCaseQuery)
+          product.description_fr.toLowerCase().includes(lowerCaseQuery) ||
+          product.name_en.toLowerCase().includes(lowerCaseQuery) ||
+          product.description_en.toLowerCase().includes(lowerCaseQuery)
       );
       setResults(filteredProducts);
     } else {
@@ -35,16 +37,16 @@ function SearchPageClient() {
   return (
     <div className="container mx-auto px-4 py-12">
       {isLoading ? (
-        <p className="text-center"><TranslatedText fr="Recherche...">Suche...</TranslatedText></p>
+        <p className="text-center"><TranslatedText fr="Recherche..." en="Searching...">Suche...</TranslatedText></p>
       ) : (
         <>
           <h1 className="mb-8 text-center font-headline text-3xl md:text-5xl break-words">
             {queryParam && results.length > 0 ? (
               <>
-                <TranslatedText fr="Résultats de recherche pour">Suchergebnisse für</TranslatedText>: "{queryParam}"
+                <TranslatedText fr="Résultats de recherche pour" en="Search results for">Suchergebnisse für</TranslatedText>: "{queryParam}"
               </>
             ) : (
-                <TranslatedText fr={`Aucun résultat trouvé pour "${queryParam}"`}>Keine Ergebnisse gefunden für "{queryParam}"</TranslatedText>
+                <TranslatedText fr={`Aucun résultat trouvé pour "${queryParam}"`} en={`No results found for "${queryParam}"`}>Keine Ergebnisse gefunden für "{queryParam}"</TranslatedText>
             )}
           </h1>
           {results.length > 0 ? (
@@ -56,7 +58,7 @@ function SearchPageClient() {
           ) : (
              !queryParam && (
                 <p className="text-center text-muted-foreground">
-                    <TranslatedText fr="Veuillez entrer un terme de recherche pour trouver des produits.">Bitte geben Sie einen Suchbegriff ein, um Produkte zu finden.</TranslatedText>
+                    <TranslatedText fr="Veuillez entrer un terme de recherche pour trouver des produits." en="Please enter a search term to find products.">Bitte geben Sie einen Suchbegriff ein, um Produkte zu finden.</TranslatedText>
                 </p>
              )
           )}
@@ -69,7 +71,7 @@ function SearchPageClient() {
 
 export default function SearchPage() {
     return (
-        <Suspense fallback={<div className="text-center p-12"><TranslatedText fr="Chargement...">Laden...</TranslatedText></div>}>
+        <Suspense fallback={<div className="text-center p-12"><TranslatedText fr="Chargement..." en="Loading...">Laden...</TranslatedText></div>}>
             <SearchPageClient />
         </Suspense>
     )

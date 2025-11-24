@@ -30,7 +30,7 @@ export function Header() {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Menü umschalten</span>
+                <span className="sr-only"><TranslatedText fr="Ouvrir le menu" en="Toggle menu">Menü umschalten</TranslatedText></span>
               </Button>
             </SheetTrigger>
             <SheetContent
@@ -58,7 +58,7 @@ export function Header() {
                                 className="text-xl text-foreground/80 transition-colors hover:text-foreground"
                                 onClick={handleLinkClick}
                             >
-                                <TranslatedText fr={category.name_fr}>
+                                <TranslatedText fr={category.name_fr} en={category.name_en}>
                                 {category.name}
                                 </TranslatedText>
                             </Link>
@@ -101,7 +101,7 @@ export function Header() {
                 href={`/products/${category.slug}`}
                 className="transition-colors hover:text-primary text-foreground/80"
               >
-                <TranslatedText fr={category.name_fr}>
+                <TranslatedText fr={category.name_fr} en={category.name_en}>
                   {category.name}
                 </TranslatedText>
               </Link>

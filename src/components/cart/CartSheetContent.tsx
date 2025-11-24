@@ -19,8 +19,8 @@ export function CartSheetContent() {
     return (
       <div className="flex h-full flex-col items-center justify-center text-center">
         <ShoppingBagIcon className="h-24 w-24 text-muted" />
-        <h3 className="mt-4 text-lg font-semibold"><TranslatedText fr="Votre panier est vide">Ihr Warenkorb ist leer</TranslatedText></h3>
-        <p className="mt-2 text-sm text-muted-foreground"><TranslatedText fr="Ajoutez des produits pour commencer.">Fügen Sie einige Produkte hinzu, um loszulegen.</TranslatedText></p>
+        <h3 className="mt-4 text-lg font-semibold"><TranslatedText fr="Votre panier est vide" en="Your cart is empty">Ihr Warenkorb ist leer</TranslatedText></h3>
+        <p className="mt-2 text-sm text-muted-foreground"><TranslatedText fr="Ajoutez des produits pour commencer." en="Add some products to get started.">Fügen Sie einige Produkte hinzu, um loszulegen.</TranslatedText></p>
       </div>
     );
   }
@@ -48,7 +48,7 @@ export function CartSheetContent() {
                     <div>
                       <div className="flex justify-between text-base font-medium text-foreground">
                         <h3>
-                          <Link href={`/product/${item.product.slug}`}><TranslatedText fr={item.product.name_fr}>{item.product.name}</TranslatedText></Link>
+                          <Link href={`/product/${item.product.slug}`}><TranslatedText fr={item.product.name_fr} en={item.product.name_en}>{item.product.name}</TranslatedText></Link>
                         </h3>
                         <p className="ml-4">${(item.product.price * item.quantity).toFixed(2)}</p>
                       </div>
@@ -94,15 +94,15 @@ export function CartSheetContent() {
 
       <div className="border-t border-border px-4 py-6 sm:px-6">
         <div className="flex justify-between text-base font-medium text-foreground">
-          <p><TranslatedText fr="Sous-total">Zwischensumme</TranslatedText></p>
+          <p><TranslatedText fr="Sous-total" en="Subtotal">Zwischensumme</TranslatedText></p>
           <p>${subtotal.toFixed(2)}</p>
         </div>
         <p className="mt-0.5 text-sm text-muted-foreground">
-          <TranslatedText fr="Les frais de port et les taxes sont calculés au moment du paiement.">Versand und Steuern werden an der Kasse berechnet.</TranslatedText>
+          <TranslatedText fr="Les frais de port et les taxes sont calculés au moment du paiement." en="Shipping and taxes calculated at checkout.">Versand und Steuern werden an der Kasse berechnet.</TranslatedText>
         </p>
         <div className="mt-6">
           <Button asChild className="w-full">
-            <Link href="/checkout"><TranslatedText fr="Paiement">Kasse</TranslatedText></Link>
+            <Link href="/checkout"><TranslatedText fr="Paiement" en="Checkout">Kasse</TranslatedText></Link>          
           </Button>
         </div>
       </div>

@@ -26,31 +26,40 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { useLanguage } from '@/context/LanguageContext';
 
-const forgotPasswordSchema = z.object({
+
+const forgotPasswordSchemaDE = z.object({
   email: z.string().email({ message: 'Ungültige E-Mail-Adresse.' }),
 });
-
-type ForgotPasswordFormInputs = z.infer<typeof forgotPasswordSchema>;
+const forgotPasswordSchemaFR = z.object({
+  email: z.string().email({ message: 'Adresse e-mail invalide.' }),
+});
+const forgotPasswordSchemaEN = z.object({
+  email: z.string().email({ message: 'Invalid email address.' }),
+});
 
 
 export default function ForgotPasswordPage() {
     const auth = useAuth();
     const { toast } = useToast();
+    const { language } = useLanguage();
 
-    const form = useForm<ForgotPasswordFormInputs>({
-        resolver: zodResolver(forgotPasswordSchema),
+    const currentSchema = language === 'fr' ? forgotPasswordSchemaFR : language === 'en' ? forgotPasswordSchemaEN : forgotPasswordSchemaDE;
+
+    const form = useForm<z.infer<typeof currentSchema>>({
+        resolver: zodResolver(currentSchema),
         defaultValues: {
             email: '',
         },
     });
 
-    const onSubmit: SubmitHandler<ForgotPasswordFormInputs> = async (data) => {
+    const onSubmit: SubmitHandler<z.infer<typeof currentSchema>> = async (data) => {
         try {
             await sendPasswordResetEmail(auth, data.email);
             toast({
-                title: 'E-Mail gesendet',
-                description: 'Überprüfen Sie Ihren Posteingang für den Link zum Zurücksetzen des Passworts.',
+                title: language === 'fr' ? 'E-mail envoyé' : language === 'en' ? 'Email Sent' : 'E-Mail gesendet',
+                description: language === 'fr' ? 'Vérifiez votre boîte de réception pour le lien de réinitialisation du mot de passe.' : language === 'en' ? 'Check your inbox for the password reset link.' : 'Überprüfen Sie Ihren Posteingang für den Link zum Zurücksetzen des Passworts.',
             });
         } catch (error: any) {
             console.error(error);
@@ -68,10 +77,10 @@ export default function ForgotPasswordPage() {
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-headline">
-            <TranslatedText fr="Mot de passe oublié">Passwort vergessen</TranslatedText>
+            <TranslatedText fr="Mot de passe oublié" en="Forgot Password">Passwort vergessen</TranslatedText>
           </CardTitle>
           <CardDescription>
-            <TranslatedText fr="Entrez votre e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.">
+            <TranslatedText fr="Entrez votre e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe." en="Enter your email and we'll send you a link to reset your password.">
               Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.
             </TranslatedText>
           </CardDescription>
@@ -84,7 +93,7 @@ export default function ForgotPasswordPage() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel><TranslatedText fr="Email">Email</TranslatedText></FormLabel>
+                                <FormLabel><TranslatedText fr="Email" en="Email">Email</TranslatedText></FormLabel>
                                 <FormControl>
                                     <Input type="email" {...field} />
                                 </FormControl>
@@ -93,12 +102,12 @@ export default function ForgotPasswordPage() {
                         )}
                     />
                     <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                        {form.formState.isSubmitting ? 'Senden...' : <TranslatedText fr="Envoyer le lien de réinitialisation">Link zum Zurücksetzen senden</TranslatedText>}
+                        {form.formState.isSubmitting ? <TranslatedText fr="Envoi..." en="Sending...">Senden...</TranslatedText> : <TranslatedText fr="Envoyer le lien de réinitialisation" en="Send Reset Link">Link zum Zurücksetzen senden</TranslatedText>}
                     </Button>
                 </form>
             </Form>
           <Button variant="ghost" asChild className="mt-4 w-full">
-            <Link href="/login"><TranslatedText fr="Retour à la connexion">Zurück zum Login</TranslatedText></Link>
+            <Link href="/login"><TranslatedText fr="Retour à la connexion" en="Back to Login">Zurück zum Login</TranslatedText></Link>
           </Button>
         </CardContent>
       </Card>

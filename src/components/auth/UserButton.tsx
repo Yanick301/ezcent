@@ -17,23 +17,25 @@ import { signOut } from 'firebase/auth';
 import { useToast } from '@/hooks/use-toast';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Skeleton } from '../ui/skeleton';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function UserButton() {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
   const { toast } = useToast();
+  const { language } = useLanguage();
 
   const handleSignOut = async () => {
     try {
       await signOut(auth);
       toast({
-        title: 'Abgemeldet',
-        description: 'Sie wurden erfolgreich abgemeldet.',
+        title: language === 'fr' ? 'Déconnecté' : language === 'en' ? 'Logged Out' : 'Abgemeldet',
+        description: language === 'fr' ? 'Vous avez été déconnecté avec succès.' : language === 'en' ? 'You have been successfully logged out.' : 'Sie wurden erfolgreich abgemeldet.',
       });
     } catch (error: any) {
       toast({
         variant: 'destructive',
-        title: 'Abmeldung fehlgeschlagen',
+        title: language === 'fr' ? 'Échec de la déconnexion' : language === 'en' ? 'Logout Failed' : 'Abmeldung fehlgeschlagen',
         description: error.message,
       });
     }
@@ -68,18 +70,18 @@ export function UserButton() {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem asChild>
-            <Link href="/account"><User className="mr-2 h-4 w-4" /> <TranslatedText fr="Mon compte">Mein Konto</TranslatedText></Link>
+            <Link href="/account"><User className="mr-2 h-4 w-4" /> <TranslatedText fr="Mon compte" en="My Account">Mein Konto</TranslatedText></Link>
           </DropdownMenuItem>
            <DropdownMenuItem asChild>
-            <Link href="/account/orders"><ListOrdered className="mr-2 h-4 w-4" /> <TranslatedText fr="Mes commandes">Meine Bestellungen</TranslatedText></Link>
+            <Link href="/account/orders"><ListOrdered className="mr-2 h-4 w-4" /> <TranslatedText fr="Mes commandes" en="My Orders">Meine Bestellungen</TranslatedText></Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/account/favorites"><Heart className="mr-2 h-4 w-4" /> <TranslatedText fr="Mes favoris">Meine Favoriten</TranslatedText></Link>
+            <Link href="/account/favorites"><Heart className="mr-2 h-4 w-4" /> <TranslatedText fr="Mes favoris" en="My Favorites">Meine Favoriten</TranslatedText></Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleSignOut}>
             <LogOut className="mr-2 h-4 w-4" />
-            <TranslatedText fr="Se déconnecter">Abmelden</TranslatedText>
+            <TranslatedText fr="Se déconnecter" en="Log Out">Abmelden</TranslatedText>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -88,7 +90,7 @@ export function UserButton() {
 
   return (
    <Button variant="ghost" asChild>
-    <Link href="/login"><TranslatedText fr="Se connecter">Anmelden</TranslatedText></Link>
+    <Link href="/login"><TranslatedText fr="Se connecter" en="Log In">Anmelden</TranslatedText></Link>
    </Button>
   );
 }

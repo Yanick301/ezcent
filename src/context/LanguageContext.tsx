@@ -14,16 +14,20 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const storedLang = localStorage.getItem('ezcentials-lang');
-    if (storedLang && ['de', 'fr'].includes(storedLang)) {
+    if (storedLang && ['de', 'fr', 'en'].includes(storedLang)) {
       setLanguageState(storedLang);
     } else {
         const browserLang = navigator.language.split('-')[0];
-        setLanguageState(browserLang === 'fr' ? 'fr' : 'de');
+        if (['de', 'fr', 'en'].includes(browserLang)) {
+            setLanguageState(browserLang);
+        } else {
+            setLanguageState('de');
+        }
     }
   }, []);
 
   const setLanguage = (lang: string) => {
-    if (['de', 'fr'].includes(lang)) {
+    if (['de', 'fr', 'en'].includes(lang)) {
         setLanguageState(lang);
         localStorage.setItem('ezcentials-lang', lang);
     }

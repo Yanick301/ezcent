@@ -26,7 +26,7 @@ export function AddToFavoritesButton({
         e.stopPropagation();
         toggleFavorite(productId);
       }}
-      aria-label={isFav ? 'Aus den Favoriten entfernen' : 'Zu den Favoriten hinzufügen'}
+      aria-label={isFav ? 'Remove from favorites' : 'Add to favorites'}
       {...props}
     >
       <Heart
@@ -35,7 +35,7 @@ export function AddToFavoritesButton({
           'text-muted-foreground': !isFav,
         })}
       />
-       <span className="sr-only"><TranslatedText>Zu den Favoriten hinzufügen</TranslatedText></span>
+       <span className="sr-only"><TranslatedText fr="Ajouter aux favoris" en="Add to favorites">Zu den Favoriten hinzufügen</TranslatedText></span>
     </Button>
   );
 }

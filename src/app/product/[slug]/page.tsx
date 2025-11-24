@@ -71,8 +71,8 @@ export default function ProductPage({ params }: ProductPageProps) {
     if (newReviewRating === 0 || newReviewComment.trim() === '') {
       toast({
         variant: 'destructive',
-        title: language === 'fr' ? 'Champs requis' : 'Erforderliche Felder',
-        description: language === 'fr' ? 'Veuillez fournir une note et un commentaire.' : 'Bitte geben Sie eine Bewertung und einen Kommentar ab.',
+        title: language === 'fr' ? 'Champs requis' : language === 'en' ? 'Required Fields' : 'Erforderliche Felder',
+        description: language === 'fr' ? 'Veuillez fournir une note et un commentaire.' : language === 'en' ? 'Please provide a rating and a comment.' : 'Bitte geben Sie eine Bewertung und einen Kommentar ab.',
       });
       return;
     }
@@ -80,8 +80,8 @@ export default function ProductPage({ params }: ProductPageProps) {
     console.log({ rating: newReviewRating, comment: newReviewComment });
 
     toast({
-      title: language === 'fr' ? 'Avis soumis' : 'Bewertung abgegeben',
-      description: language === 'fr' ? 'Merci pour votre avis !' : 'Vielen Dank für Ihre Bewertung!',
+      title: language === 'fr' ? 'Avis soumis' : language === 'en' ? 'Review Submitted' : 'Bewertung abgegeben',
+      description: language === 'fr' ? 'Merci pour votre avis !' : language === 'en' ? 'Thank you for your review!' : 'Vielen Dank für Ihre Bewertung!',
     });
 
     setNewReviewRating(0);
@@ -119,7 +119,7 @@ export default function ProductPage({ params }: ProductPageProps) {
 
         {/* Product Info */}
         <div>
-          <h1 className="font-headline text-3xl md:text-4xl"><TranslatedText fr={product.name_fr}>{product.name}</TranslatedText></h1>
+          <h1 className="font-headline text-3xl md:text-4xl"><TranslatedText fr={product.name_fr} en={product.name_en}>{product.name}</TranslatedText></h1>
           <p className="mt-2 text-2xl text-muted-foreground">${product.price.toFixed(2)}</p>
           
           <div className="mt-4 flex items-center gap-2">
@@ -128,11 +128,11 @@ export default function ProductPage({ params }: ProductPageProps) {
                 <Star key={i} className={`h-5 w-5 ${i < Math.floor(averageRating) ? 'text-yellow-500 fill-yellow-500' : 'text-muted'}`} />
               ))}
             </div>
-            <span className="text-sm text-muted-foreground">({product.reviews?.length || 0} <TranslatedText fr="avis">Bewertungen</TranslatedText>)</span>
+            <span className="text-sm text-muted-foreground">({product.reviews?.length || 0} <TranslatedText fr="avis" en="reviews">Bewertungen</TranslatedText>)</span>
           </div>
 
           <p className="mt-6 text-base leading-relaxed">
-            <TranslatedText fr={product.description_fr}>{product.description}</TranslatedText>
+            <TranslatedText fr={product.description_fr} en={product.description_en}>{product.description}</TranslatedText>
           </p>
 
           <div className="mt-8 flex items-center gap-4">
@@ -144,14 +144,14 @@ export default function ProductPage({ params }: ProductPageProps) {
           
           <Tabs defaultValue="details" className="w-full">
             <TabsList>
-              <TabsTrigger value="details"><TranslatedText fr="Détails">Details</TranslatedText></TabsTrigger>
-              <TabsTrigger value="reviews"><TranslatedText fr="Avis">Bewertungen</TranslatedText></TabsTrigger>
+              <TabsTrigger value="details"><TranslatedText fr="Détails" en="Details">Details</TranslatedText></TabsTrigger>
+              <TabsTrigger value="reviews"><TranslatedText fr="Avis" en="Reviews">Bewertungen</TranslatedText></TabsTrigger>
             </TabsList>
             <TabsContent value="details" className="mt-4 text-sm text-muted-foreground">
               <ul className="list-disc pl-5 space-y-2">
-                <li><TranslatedText fr="Fabriqué avec des matériaux de haute qualité">Hergestellt aus hochwertigen Materialien</TranslatedText></li>
-                <li><TranslatedText fr="Conçu pour le confort et le style">Entworfen für Komfort und Stil</TranslatedText></li>
-                <li><TranslatedText fr="Approvisionnement durable">Nachhaltig bezogen</TranslatedText></li>
+                <li><TranslatedText fr="Fabriqué avec des matériaux de haute qualité" en="Made with high-quality materials">Hergestellt aus hochwertigen Materialien</TranslatedText></li>
+                <li><TranslatedText fr="Conçu pour le confort et le style" en="Designed for comfort and style">Entworfen für Komfort und Stil</TranslatedText></li>
+                <li><TranslatedText fr="Approvisionnement durable" en="Sustainably sourced">Nachhaltig bezogen</TranslatedText></li>
               </ul>
             </TabsContent>
             <TabsContent value="reviews" className="mt-4">
@@ -171,16 +171,16 @@ export default function ProductPage({ params }: ProductPageProps) {
                     </div>
                   ))
                 ) : (
-                  <p className="text-sm text-muted-foreground"><TranslatedText fr="Pas encore d'avis pour ce produit.">Noch keine Bewertungen für dieses Produkt.</TranslatedText></p>
+                  <p className="text-sm text-muted-foreground"><TranslatedText fr="Pas encore d'avis pour ce produit." en="No reviews for this product yet.">Noch keine Bewertungen für dieses Produkt.</TranslatedText></p>
                 )}
 
                 <Separator />
 
                 <div>
-                    <h3 className="text-lg font-semibold mb-4"><TranslatedText fr="Laissez votre avis">Hinterlassen Sie eine Bewertung</TranslatedText></h3>
+                    <h3 className="text-lg font-semibold mb-4"><TranslatedText fr="Laissez votre avis" en="Leave a review">Hinterlassen Sie eine Bewertung</TranslatedText></h3>
                     <form onSubmit={handleReviewSubmit} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-muted-foreground mb-2"><TranslatedText fr="Note">Bewertung</TranslatedText></label>
+                            <label className="block text-sm font-medium text-muted-foreground mb-2"><TranslatedText fr="Note" en="Rating">Bewertung</TranslatedText></label>
                             <div className="flex items-center gap-1" onMouseLeave={() => setHoverRating(0)}>
                                 {[...Array(5)].map((_, index) => {
                                     const ratingValue = index + 1;
@@ -206,7 +206,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                             </div>
                         </div>
                          <div>
-                            <label htmlFor="comment" className="block text-sm font-medium text-muted-foreground mb-2"><TranslatedText fr="Commentaire">Kommentar</TranslatedText></label>
+                            <label htmlFor="comment" className="block text-sm font-medium text-muted-foreground mb-2"><TranslatedText fr="Commentaire" en="Comment">Kommentar</TranslatedText></label>
                             <Textarea
                                 id="comment"
                                 value={newReviewComment}
@@ -215,7 +215,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                             />
                         </div>
                         <Button type="submit">
-                            <TranslatedText fr="Soumettre l'avis">Bewertung abschicken</TranslatedText>
+                            <TranslatedText fr="Soumettre l'avis" en="Submit Review">Bewertung abschicken</TranslatedText>
                         </Button>
                     </form>
                 </div>
@@ -228,7 +228,7 @@ export default function ProductPage({ params }: ProductPageProps) {
       {/* Related Products */}
       <div className="mt-24">
         <h2 className="mb-12 text-center font-headline text-3xl md:text-4xl">
-          <TranslatedText fr="Vous pourriez aussi aimer">Das könnte Ihnen auch gefallen</TranslatedText>
+          <TranslatedText fr="Vous pourriez aussi aimer" en="You Might Also Like">Das könnte Ihnen auch gefallen</TranslatedText>
         </h2>
         {relatedProducts && relatedProducts.length > 0 ? (
             <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">

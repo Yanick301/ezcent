@@ -35,12 +35,12 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="pt-4 text-left flex-grow flex flex-col">
             <div className="flex justify-between items-start">
                 <h3 className="font-headline text-xl text-foreground flex-grow pr-2">
-                    <Link href={`/product/${product.slug}`}><TranslatedText fr={product.name_fr}>{product.name}</TranslatedText></Link>
+                    <Link href={`/product/${product.slug}`}><TranslatedText fr={product.name_fr} en={product.name_en}>{product.name}</TranslatedText></Link>
                 </h3>
                 <AddToFavoritesButton productId={product.id} variant="ghost" size="icon" className="h-9 w-9 rounded-full flex-shrink-0" />
             </div>
             <p className="mt-1 text-sm text-muted-foreground flex-grow">
-              <TranslatedText fr={product.description_fr.substring(0, 50) + '...'}>{product.description.substring(0,50) + '...'}</TranslatedText>
+              <TranslatedText fr={product.description_fr.substring(0, 50) + '...'} en={product.description_en.substring(0, 50) + '...'}>{product.description.substring(0,50) + '...'}</TranslatedText>
             </p>
             <div className="mt-2 flex items-center gap-1">
               {[...Array(5)].map((_, i) => (

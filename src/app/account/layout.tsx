@@ -14,18 +14,21 @@ const accountNav = [
   {
     name: 'Kontodetails',
     name_fr: 'Détails du compte',
+    name_en: 'Account Details',
     href: '/account',
     icon: User,
   },
   {
     name: 'Bestellverlauf',
     name_fr: 'Historique des commandes',
+    name_en: 'Order History',
     href: '/account/orders',
     icon: ListOrdered,
   },
   {
     name: 'Meine Favoriten',
     name_fr: 'Mes favoris',
+    name_en: 'My Favorites',
     href: '/account/favorites',
     icon: Heart,
   },
@@ -59,7 +62,7 @@ export default function AccountLayout({
       <div className="grid grid-cols-1 gap-8 md:grid-cols-4 lg:grid-cols-5">
         <aside className="md:col-span-1">
           <h2 className="mb-6 font-headline text-2xl hidden md:block">
-            <TranslatedText fr="Mon compte">Mein Konto</TranslatedText>
+            <TranslatedText fr="Mon compte" en="My Account">Mein Konto</TranslatedText>
           </h2>
           <nav className="flex flex-row space-x-2 md:flex-col md:space-x-0 md:space-y-1">
             {accountNav.map((item) => (
@@ -74,7 +77,7 @@ export default function AccountLayout({
                 )}
               >
                 <item.icon className="h-5 w-5" />
-                <span className="hidden md:inline"><TranslatedText fr={item.name_fr}>{item.name}</TranslatedText></span>
+                <span className="hidden md:inline"><TranslatedText fr={item.name_fr} en={item.name_en}>{item.name}</TranslatedText></span>
               </Link>
             ))}
           </nav>

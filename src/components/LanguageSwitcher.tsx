@@ -26,6 +26,20 @@ const GermanyFlag = () => (
     </svg>
 );
 
+const UKFlag = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="h-4 w-5 mr-2">
+      <clipPath id="a"><path d="M0 0v30h60V0z"/></clipPath>
+      <clipPath id="b"><path d="M30 15h30v15zm0 0v15H0zm0 0H0V0zm0 0v-15h30z"/></clipPath>
+      <g clipPath="url(#a)">
+        <path d="M0 0v30h60V0z" fill="#012169"/>
+        <path d="M0 0l60 30m0-30L0 30" stroke="#fff" strokeWidth="6"/>
+        <path d="M0 0l60 30m0-30L0 30" clipPath="url(#b)" stroke="#C8102E" strokeWidth="4"/>
+        <path d="M30 0v30M0 15h60" stroke="#fff" strokeWidth="10"/>
+        <path d="M30 0v30M0 15h60" stroke="#C8102E" strokeWidth="6"/>
+      </g>
+    </svg>
+)
+
 export function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
 
@@ -51,6 +65,13 @@ export function LanguageSwitcher() {
             Français
           </div>
           {language === 'fr' && <Check className="h-4 w-4" />}
+        </DropdownMenuItem>
+         <DropdownMenuItem onClick={() => setLanguage('en')} className="flex items-center justify-between">
+          <div className="flex items-center">
+             <UKFlag />
+            English
+          </div>
+          {language === 'en' && <Check className="h-4 w-4" />}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

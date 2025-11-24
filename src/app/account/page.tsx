@@ -18,11 +18,13 @@ import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'fire
 import { updateProfile } from 'firebase/auth';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function AccountPage() {
   const { user } = useUser();
   const auth = useAuth();
   const { toast } = useToast();
+  const { language } = useLanguage();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState(false);
 
@@ -57,18 +59,16 @@ export default function AccountPage() {
 
       await updateProfile(user, { photoURL: downloadURL });
       
-      // Force a refresh of the user object by re-fetching or relying on onAuthStateChanged
-      // For simplicity, we can toast and the UI will update on next refresh or via the listener
       toast({
-        title: "Photo de profil mise à jour",
-        description: "Votre nouvelle photo de profil a été enregistrée.",
+        title: language === 'fr' ? "Photo de profil mise à jour" : language === 'en' ? "Profile picture updated" : "Profilbild aktualisiert",
+        description: language === 'fr' ? "Votre nouvelle photo de profil a été enregistrée." : language === 'en' ? "Your new profile picture has been saved." : "Ihr neues Profilbild wurde gespeichert.",
       });
 
     } catch (error) {
        toast({
         variant: "destructive",
-        title: "Erreur de téléversement",
-        description: "Impossible de mettre à jour la photo de profil.",
+        title: language === 'fr' ? "Erreur de téléversement" : language === 'en' ? "Upload Error" : "Upload-Fehler",
+        description: language === 'fr' ? "Impossible de mettre à jour la photo de profil." : language === 'en' ? "Could not update profile picture." : "Profilbild konnte nicht aktualisiert werden.",
       });
       console.error("Error uploading profile picture:", error);
     } finally {
@@ -89,7 +89,7 @@ export default function AccountPage() {
         accept="image/png, image/jpeg"
       />
       <h1 className="mb-8 font-headline text-3xl">
-        <TranslatedText fr="Aperçu du compte">Kontoübersicht</TranslatedText>
+        <TranslatedText fr="Aperçu du compte" en="Account Overview">Kontoübersicht</TranslatedText>
       </h1>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -122,22 +122,22 @@ export default function AccountPage() {
                 <Card className="hover:bg-muted/50 transition-colors">
                      <Link href="/account/orders">
                         <CardHeader className="flex flex-row items-center justify-between pb-2">
-                            <CardTitle className="text-sm font-medium"><TranslatedText fr="Commandes récentes">Letzte Bestellungen</TranslatedText></CardTitle>
+                            <CardTitle className="text-sm font-medium"><TranslatedText fr="Commandes récentes" en="Recent Orders">Letzte Bestellungen</TranslatedText></CardTitle>
                             <ListOrdered className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
                         <CardContent>
-                            <p className="text-xs text-muted-foreground"><TranslatedText fr="Afficher l'historique de vos commandes">Ihren Bestellverlauf anzeigen</TranslatedText></p>
+                            <p className="text-xs text-muted-foreground"><TranslatedText fr="Afficher l'historique de vos commandes" en="View your order history">Ihren Bestellverlauf anzeigen</TranslatedText></p>
                         </CardContent>
                     </Link>
                 </Card>
                  <Card className="hover:bg-muted/50 transition-colors">
                      <Link href="/account/favorites">
                         <CardHeader className="flex flex-row items-center justify-between pb-2">
-                            <CardTitle className="text-sm font-medium"><TranslatedText fr="Vos favoris">Ihre Favoriten</TranslatedText></CardTitle>
+                            <CardTitle className="text-sm font-medium"><TranslatedText fr="Vos favoris" en="Your Favorites">Ihre Favoriten</TranslatedText></CardTitle>
                             <Heart className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
                         <CardContent>
-                            <p className="text-xs text-muted-foreground"><TranslatedText fr="Afficher les articles que vous avez aimés">Artikel anzeigen, die Ihnen gefallen haben</TranslatedText></p>
+                            <p className="text-xs text-muted-foreground"><TranslatedText fr="Afficher les articles que vous avez aimés" en="View items you have liked">Artikel anzeigen, die Ihnen gefallen haben</TranslatedText></p>
                         </CardContent>
                     </Link>
                 </Card>
@@ -145,16 +145,16 @@ export default function AccountPage() {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-lg">
                             <User className="h-5 w-5" />
-                            <TranslatedText fr="Détails du profil">Profildetails</TranslatedText>
+                            <TranslatedText fr="Détails du profil" en="Profile Details">Profildetails</TranslatedText>
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div>
-                            <h3 className="text-sm font-medium text-muted-foreground"><TranslatedText fr="Nom complet">Vollständiger Name</TranslatedText></h3>
+                            <h3 className="text-sm font-medium text-muted-foreground"><TranslatedText fr="Nom complet" en="Full Name">Vollständiger Name</TranslatedText></h3>
                             <p>{user.displayName || 'N/A'}</p>
                         </div>
                         <div>
-                            <h3 className="text-sm font-medium text-muted-foreground"><TranslatedText fr="Adresse e-mail">E-Mail-Adresse</TranslatedText></h3>
+                            <h3 className="text-sm font-medium text-muted-foreground"><TranslatedText fr="Adresse e-mail" en="Email Address">E-Mail-Adresse</TranslatedText></h3>
                             <p>{user.email}</p>
                         </div>
                     </CardContent>

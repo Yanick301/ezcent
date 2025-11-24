@@ -27,24 +27,36 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useLanguage } from '@/context/LanguageContext';
 
 
-const registerSchema = z.object({
+const registerSchemaFR = z.object({
     name: z.string().min(2, { message: 'Le nom doit contenir au moins 2 caractères.' }),
     email: z.string().email({ message: 'Adresse e-mail invalide.' }),
     password: z.string().min(6, { message: 'Le mot de passe doit contenir au moins 6 caractères.' }),
 });
-
-type RegisterFormInputs = z.infer<typeof registerSchema>;
+const registerSchemaDE = z.object({
+    name: z.string().min(2, { message: 'Der Name muss mindestens 2 Zeichen enthalten.' }),
+    email: z.string().email({ message: 'Ungültige E-Mail-Adresse.' }),
+    password: z.string().min(6, { message: 'Das Passwort muss mindestens 6 Zeichen lang sein.' }),
+});
+const registerSchemaEN = z.object({
+    name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+    email: z.string().email({ message: 'Invalid email address.' }),
+    password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
+});
 
 export default function RegisterPage() {
   const auth = useAuth();
   const firestore = useFirestore();
   const router = useRouter();
   const { toast } = useToast();
+  const { language } = useLanguage();
 
-  const form = useForm<RegisterFormInputs>({
-    resolver: zodResolver(registerSchema),
+  const currentSchema = language === 'fr' ? registerSchemaFR : language === 'en' ? registerSchemaEN : registerSchemaDE;
+
+  const form = useForm<z.infer<typeof currentSchema>>({
+    resolver: zodResolver(currentSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -71,7 +83,7 @@ export default function RegisterPage() {
     }
   };
 
-  const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
+  const onSubmit: SubmitHandler<z.infer<typeof currentSchema>> = async (data) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
       
@@ -84,18 +96,18 @@ export default function RegisterPage() {
       await handleUserCreation(userCredential, data.name);
 
       toast({
-        title: 'Compte créé avec succès',
-        description: 'Bienvenue ! Vous allez être redirigé.',
+        title: language === 'fr' ? 'Compte créé avec succès' : language === 'en' ? 'Account created successfully' : 'Konto erfolgreich erstellt',
+        description: language === 'fr' ? 'Bienvenue ! Vous allez être redirigé.' : language === 'en' ? 'Welcome! You will be redirected.' : 'Willkommen! Sie werden weitergeleitet.',
       });
       router.push('/account');
     } catch (error: any) {
       console.error(error);
        const errorMessage = error.code === 'auth/email-already-in-use' 
-        ? 'Cette adresse e-mail est déjà utilisée.'
-        : 'Une erreur est survenue lors de l\'inscription.';
+        ? (language === 'fr' ? 'Cette adresse e-mail est déjà utilisée.' : language === 'en' ? 'This email address is already in use.' : 'Diese E-Mail-Adresse wird bereits verwendet.')
+        : (language === 'fr' ? 'Une erreur est survenue lors de l\'inscription.' : language === 'en' ? 'An error occurred during registration.' : 'Bei der Registrierung ist ein Fehler aufgetreten.');
       toast({
         variant: 'destructive',
-        title: 'Échec de l\'inscription',
+        title: language === 'fr' ? 'Échec de l\'inscription' : language === 'en' ? 'Registration Failed' : 'Registrierung fehlgeschlagen',
         description: errorMessage,
       });
     }
@@ -108,15 +120,15 @@ export default function RegisterPage() {
         const userCredential = await signInWithPopup(auth, provider);
         await handleUserCreation(userCredential);
         toast({
-            title: 'Connexion réussie',
-            description: 'Bienvenue !',
+            title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
+            description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
         });
         router.push('/account');
     } catch (error: any) {
         console.error(error);
         toast({
             variant: 'destructive',
-            title: 'Échec de la connexion Google',
+            title: language === 'fr' ? 'Échec de la connexion Google' : language === 'en' ? 'Google Sign-In Failed' : 'Google-Anmeldung fehlgeschlagen',
             description: error.message,
         });
     }
@@ -126,12 +138,12 @@ export default function RegisterPage() {
     <div className="flex min-h-[calc(100vh-80px)] w-full flex-col items-center justify-center p-4">
         <div className="mb-8 text-center">
             <h1 className="font-headline text-5xl tracking-tighter">EZCENTIALS</h1>
-            <p className="mt-2 text-sm uppercase tracking-widest text-muted-foreground"><TranslatedText fr="COLLECTION PREMIUM">PREMIUM COLLECTION</TranslatedText></p>
+            <p className="mt-2 text-sm uppercase tracking-widest text-muted-foreground"><TranslatedText fr="COLLECTION PREMIUM" en="PREMIUM COLLECTION">PREMIUM COLLECTION</TranslatedText></p>
         </div>
 
         <Card className="w-full max-w-sm rounded-2xl border-none shadow-lg">
             <CardContent className="p-8">
-                <h2 className="mb-6 text-2xl font-semibold"><TranslatedText fr="Créer un compte">Créer un compte</TranslatedText></h2>
+                <h2 className="mb-6 text-2xl font-semibold"><TranslatedText fr="Créer un compte" en="Create an Account">Créer un compte</TranslatedText></h2>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
                         <FormField
@@ -139,7 +151,7 @@ export default function RegisterPage() {
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel><TranslatedText fr="Nom complet">Nom complet</TranslatedText></FormLabel>
+                                    <FormLabel><TranslatedText fr="Nom complet" en="Full Name">Nom complet</TranslatedText></FormLabel>
                                     <FormControl>
                                         <Input {...field} className="border-0 bg-input" />
                                     </FormControl>
@@ -152,7 +164,7 @@ export default function RegisterPage() {
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel><TranslatedText fr="Email">Email</TranslatedText></FormLabel>
+                                    <FormLabel><TranslatedText fr="Email" en="Email">Email</TranslatedText></FormLabel>
                                     <FormControl>
                                         <Input type="email" {...field} className="border-0 bg-input" />
                                     </FormControl>
@@ -165,7 +177,7 @@ export default function RegisterPage() {
                             name="password"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel><TranslatedText fr="Mot de passe">Mot de passe</TranslatedText></FormLabel>
+                                    <FormLabel><TranslatedText fr="Mot de passe" en="Password">Mot de passe</TranslatedText></FormLabel>
                                     <FormControl>
                                         <Input type="password" {...field} className="border-0 bg-input"/>
                                     </FormControl>
@@ -174,7 +186,7 @@ export default function RegisterPage() {
                             )}
                         />
                         <Button type="submit" className="w-full mt-4 rounded-full" size="lg" disabled={form.formState.isSubmitting}>
-                            {form.formState.isSubmitting ? 'Création...' : <TranslatedText fr="Créer un compte">Créer un compte</TranslatedText>}
+                            {form.formState.isSubmitting ? <TranslatedText fr="Création..." en="Creating...">Création...</TranslatedText> : <TranslatedText fr="Créer un compte" en="Create Account">Créer un compte</TranslatedText>}
                         </Button>
                     </form>
                 </Form>
@@ -185,20 +197,20 @@ export default function RegisterPage() {
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
                         <span className="bg-card px-2 text-muted-foreground">
-                            <TranslatedText fr="Ou">OU</TranslatedText>
+                            <TranslatedText fr="Ou" en="OR">OU</TranslatedText>
                         </span>
                     </div>
                 </div>
                 
                 <GoogleSignInButton onClick={handleGoogleSignIn}>
-                    <TranslatedText fr="S'inscrire avec Google">S'inscrire avec Google</TranslatedText>
+                    <TranslatedText fr="S'inscrire avec Google" en="Sign up with Google">S'inscrire avec Google</TranslatedText>
                 </GoogleSignInButton>
                 
                 <div className="mt-6 text-center text-sm">
                     <p className="text-muted-foreground">
-                        <TranslatedText fr="Vous avez déjà un compte ?">Vous avez déjà un compte ?</TranslatedText>{' '}
+                        <TranslatedText fr="Vous avez déjà un compte ?" en="Already have an account?">Vous avez déjà un compte ?</TranslatedText>{' '}
                         <Link href="/login" className="font-semibold text-foreground hover:underline">
-                            <TranslatedText fr="Se connecter">Se connecter</TranslatedText>
+                            <TranslatedText fr="Se connecter" en="Log In">Se connecter</TranslatedText>
                         </Link>
                     </p>
                 </div>

@@ -32,17 +32,17 @@ export default function HomePage() {
         />
         <div className="container px-4 z-10">
           <p className="text-sm uppercase tracking-widest text-white animate-fade-in-up">
-             <TranslatedText fr="BIENVENUE CHEZ EZCENTIALS">WILLKOMMEN BEI EZCENTIALS</TranslatedText>
+             <TranslatedText fr="BIENVENUE CHEZ EZCENTIALS" en="WELCOME TO EZCENTIALS">WILLKOMMEN BEI EZCENTIALS</TranslatedText>
           </p>
           <h1 className="mt-4 font-headline text-6xl md:text-9xl animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <TranslatedText fr="L'Excellence du Luxe">Die Exzellenz des Luxus</TranslatedText>
+            <TranslatedText fr="L'Excellence du Luxe" en="The Excellence of Luxury">Die Exzellenz des Luxus</TranslatedText>
           </h1>
           <p className="mt-6 max-w-2xl mx-auto text-base md:text-lg text-white/90 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-             <TranslatedText fr="Découvrez notre sélection exclusive de vêtements et accessoires haut de gamme.">Entdecken Sie unsere exklusive Auswahl an hochwertiger Kleidung und Accessoires.</TranslatedText>
+             <TranslatedText fr="Découvrez notre sélection exclusive de vêtements et accessoires haut de gamme." en="Discover our exclusive selection of high-end clothing and accessories.">Entdecken Sie unsere exklusive Auswahl an hochwertiger Kleidung und Accessoires.</TranslatedText>
           </p>
           <Button size="lg" asChild className="mt-8 bg-white text-black hover:bg-white/90 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             <Link href="/products/all">
-              <TranslatedText fr="Explorer la collection">Die Kollektion entdecken</TranslatedText>
+              <TranslatedText fr="Explorer la collection" en="Explore the Collection">Die Kollektion entdecken</TranslatedText>
             </Link>
           </Button>
         </div>
@@ -51,7 +51,7 @@ export default function HomePage() {
       <section className="w-full bg-background py-16 lg:py-24">
         <div className="container mx-auto px-4">
             <h2 className="mb-12 text-center font-headline text-3xl md:text-5xl text-foreground">
-                <TranslatedText fr="Menu Maison">Menu Maison</TranslatedText>
+                <TranslatedText fr="Menu Maison" en="Home Menu">Menu Maison</TranslatedText>
             </h2>
              <Carousel
                 opts={{
@@ -63,10 +63,10 @@ export default function HomePage() {
                     {categories.map((category, index) => (
                         <CarouselItem key={index} className="basis-4/5 md:basis-1/2 lg:basis-1/3">
                              <CategoryCard 
-                                pretitle={<TranslatedText fr="CATÉGORIE">KATEGORIE</TranslatedText>}
-                                title={<TranslatedText fr={category.name_fr}>{category.name}</TranslatedText>}
-                                description={<TranslatedText fr={`Explorez notre collection ${category.name_fr}.`}>Entdecken Sie unsere {category.name}-Kollektion.</TranslatedText>}
-                                linkText={<TranslatedText fr="EXPLORER">ENTDECKEN</TranslatedText>}
+                                pretitle={<TranslatedText fr="CATÉGORIE" en="CATEGORY">KATEGORIE</TranslatedText>}
+                                title={<TranslatedText fr={category.name_fr} en={category.name_en}>{category.name}</TranslatedText>}
+                                description={<TranslatedText fr={`Explorez notre collection ${category.name_fr}.`} en={`Explore our ${category.name_en} collection.`}>Entdecken Sie unsere {category.name}-Kollektion.</TranslatedText>}
+                                linkText={<TranslatedText fr="EXPLORER" en="DISCOVER">ENTDECKEN</TranslatedText>}
                                 href={`/products/${category.slug}`}
                                 imageId={category.imageId}
                             />
@@ -81,10 +81,10 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="font-headline text-3xl md:text-5xl text-foreground">
-              <TranslatedText fr="Produits Tendances">Trendprodukte</TranslatedText>
+              <TranslatedText fr="Produits Tendances" en="Trending Products">Trendprodukte</TranslatedText>
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-              <TranslatedText fr="Découvrez la sélection du moment. Des pièces désirables qui allient style contemporain et qualité intemporelle.">
+              <TranslatedText fr="Découvrez la sélection du moment. Des pièces désirables qui allient style contemporain et qualité intemporelle." en="Discover the selection of the moment. Desirable pieces that combine contemporary style and timeless quality.">
                 Entdecken Sie die aktuelle Auswahl. Begehrte Stücke, die zeitgenössischen Stil und zeitlose Qualität vereinen.
               </TranslatedText>
             </p>
@@ -100,19 +100,19 @@ export default function HomePage() {
           )}
           <div className="mt-12 text-center">
             <Button asChild size="lg">
-                <Link href="/products/all"><TranslatedText fr="Voir tous les produits">Alle Produkte anzeigen</TranslatedText></Link>
+                <Link href="/products/all"><TranslatedText fr="Voir tous les produits" en="View All Products">Alle Produkte anzeigen</TranslatedText></Link>
             </Button>
           </div>
         </div>
       </section>
 
       <CollectionHighlight 
-        supertitle={<TranslatedText fr="COLLECTION HIVER">WINTER KOLLEKTION</TranslatedText>}
-        title={<TranslatedText fr="Élégance Hivernale">Winterliche Eleganz</TranslatedText>}
-        description={<TranslatedText fr="Nos collections d'hiver allient confort, chaleur et style intemporel. Chaque pièce est sélectionnée pour sa qualité exceptionnelle et ses finitions impeccables.">Unsere Winterkollektionen vereinen Komfort, Wärme und zeitlosen Stil. Jedes Stück wird aufgrund seiner außergewöhnlichen Qualität und tadellosen Verarbeitung ausgewählt.</TranslatedText>}
+        supertitle={<TranslatedText fr="COLLECTION HIVER" en="WINTER COLLECTION">WINTER KOLLEKTION</TranslatedText>}
+        title={<TranslatedText fr="Élégance Hivernale" en="Winter Elegance">Winterliche Eleganz</TranslatedText>}
+        description={<TranslatedText fr="Nos collections d'hiver allient confort, chaleur et style intemporel. Chaque pièce est sélectionnée pour sa qualité exceptionnelle et ses finitions impeccables." en="Our winter collections combine comfort, warmth, and timeless style. Each piece is selected for its exceptional quality and flawless finishes.">Unsere Winterkollektionen vereinen Komfort, Wärme und zeitlosen Stil. Jedes Stück wird aufgrund seiner außergewöhnlichen Qualität und tadellosen Verarbeitung ausgewählt.</TranslatedText>}
         stats={[
-          { value: '40+', label: <TranslatedText fr="PRODUITS">PRODUKTE</TranslatedText> },
-          { value: '4.9/5', label: <TranslatedText fr="ÉVALUATION">BEWERTUNG</TranslatedText> },
+          { value: '40+', label: <TranslatedText fr="PRODUITS" en="PRODUCTS">PRODUKTE</TranslatedText> },
+          { value: '4.9/5', label: <TranslatedText fr="ÉVALUATION" en="RATING">BEWERTUNG</TranslatedText> },
           { value: '100%', label: 'PREMIUM' },
         ]}
         imageIds={[
@@ -122,9 +122,9 @@ export default function HomePage() {
           'pull-col-roule-laine-merinos-paul-smith',
         ]}
         primaryActionLink="/products/winter-clothing"
-        primaryActionText={<TranslatedText fr="Voir la Collection">Kollektion ansehen</TranslatedText>}
+        primaryActionText={<TranslatedText fr="Voir la Collection" en="View the Collection">Kollektion ansehen</TranslatedText>}
         secondaryActionLink="/products/all"
-        secondaryActionText={<TranslatedText fr="Explorer">Erkunden</TranslatedText>}
+        secondaryActionText={<TranslatedText fr="Explorer" en="Explore">Erkunden</TranslatedText>}
       />
 
     </div>
