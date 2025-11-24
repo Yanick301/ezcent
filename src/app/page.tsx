@@ -20,9 +20,8 @@ export default function HomePage() {
   const saleProducts = useMemo(() => {
     // Get only parkas and beanies for the homepage sale section
     const allSaleProducts = getWinterSaleProducts(products);
-    const parkas = allSaleProducts.filter(p => p.name_fr.toLowerCase().includes('parka')).slice(0, 2);
-    const beanies = allSaleProducts.filter(p => p.slug.includes('bonnet')).slice(0, 2);
-    return [...parkas, ...beanies];
+    const shoes = allSaleProducts.filter(p => p.category === 'shoes').slice(0, 4);
+    return shoes;
   }, []);
 
   return (
@@ -134,4 +133,3 @@ export default function HomePage() {
     </div>
   );
 }
-

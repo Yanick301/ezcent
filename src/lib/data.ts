@@ -235,7 +235,7 @@ export const products: Product[] = [
     description: 'Erleben Sie die Umarmung von purem Luxus. Dieser Rollkragenpullover aus feinstem mongolischem Kaschmir bietet unübertroffene Weichheit und wohlige Wärme. Ein Kunstwerk der Strickerei für die kältesten Tage.',
     description_fr: 'Vivez l\'étreinte du luxe pur. Ce pull à col roulé, confectionné dans le plus fin cachemire de Mongolie, offre une douceur inégalée et une chaleur réconfortante. Une œuvre d\'art du tricotage pour les jours les plus froids.',
     description_en: 'Experience the embrace of pure luxury. This turtleneck sweater, crafted from the finest Mongolian cashmere, offers unparalleled softness and comforting warmth. A work of knitting art for the coldest days.',
-    category: 'mens-clothing',
+    category: 'winter-clothing',
     images: ['pull-col-roule-cachemire-loro-piana'],
     reviews: [
         { author: 'François', rating: 5, comment: 'Une douceur incroyable. On ne veut plus le quitter.'},
@@ -300,7 +300,7 @@ export const products: Product[] = [
     description: 'Ein urbaner Klassiker, neu interpretiert. Diese Bomberjacke aus glänzendem Nylon, gefüttert mit feinsten Daunen, vereint Streetwear-Stil und High-End-Performance. Ein Must-have für die Zwischensaison.',
     description_fr: 'Un classique urbain réinventé. Ce bomber en nylon brillant, doublé du plus fin duvet, allie style streetwear et performance haut de gamme. Un must-have de la mi-saison.',
     description_en: 'A reinvented urban classic. This shiny nylon bomber, lined with the finest down, combines streetwear style and high-end performance. A mid-season must-have.',
-    category: 'mens-clothing',
+    category: 'winter-clothing',
     images: ['bomber-nylon-moncler'],
     reviews: [
       { author: 'Nico', rating: 5, comment: 'Légère, chaude et incroyablement stylée. Parfaite.'},
@@ -396,7 +396,7 @@ export const products: Product[] = [
     description: 'Die zeitlose Eleganz von Merinowolle. Dieser Pullover bietet unübertroffene Weichheit und natürliche Thermoregulation. Ein Must-Have für eine anspruchsvolle und komfortable Garderobe.',
     description_fr: 'L\'élégance intemporelle de la laine mérinos. Ce pull offre une douceur inégalée et une thermorégulation naturelle. Un indispensable pour une garde-robe sophistiquée et confortable.',
     description_en: 'The timeless elegance of merino wool. This sweater offers unparalleled softness and natural thermoregulation. An essential for a sophisticated and comfortable wardrobe.',
-    category: 'mens-clothing',
+    category: 'winter-clothing',
     images: ['pull-laine-merinos-lacoste'],
     reviews: [
         { author: 'Bastien', rating: 5, comment: 'Doux, chaud et élégant. La qualité Lacoste est au rendez-vous.'}
@@ -1881,6 +1881,149 @@ export const products: Product[] = [
     category: 'sport',
     images: ['bogner-ski-parka'],
     reviews: []
+  },
+  {
+    id: 'shoe-1',
+    name: 'Sorel Caribou Stiefel',
+    name_fr: 'Bottes Sorel Caribou',
+    name_en: 'Sorel Caribou Boots',
+    slug: 'sorel-caribou',
+    price: 180,
+    oldPrice: 220,
+    description: 'Der ikonische Stiefel, um den härtesten Wintern zu trotzen. Wasserdicht und isoliert für optimalen Komfort.',
+    description_fr: 'La botte iconique pour affronter les hivers les plus rudes. Imperméable et isolée pour un confort optimal.',
+    description_en: 'The iconic boot to face the harshest winters. Waterproof and insulated for optimal comfort.',
+    category: 'shoes',
+    images: ['Sorel_Caribou'],
+    reviews: []
+  },
+  {
+    id: 'shoe-2',
+    name: 'Sorel Caribou Horizon GTX',
+    name_fr: 'Sorel Caribou Horizon GTX',
+    name_en: 'Sorel Caribou Horizon GTX',
+    slug: 'sorel-caribou-horizon-gtx',
+    price: 240,
+    description: 'Die moderne Version des Caribou mit GORE-TEX-Technologie für verbesserte Atmungsaktivität und Wasserdichtigkeit.',
+    description_fr: 'La version moderne de la Caribou, avec la technologie GORE-TEX pour une respirabilité et une imperméabilité accrues.',
+    description_en: 'The modern version of the Caribou, with GORE-TEX technology for increased breathability and waterproofing.',
+    category: 'shoes',
+    images: ['Sorel_Caribou_Horizon_GTX'],
+    reviews: []
+  },
+  {
+    id: 'shoe-3',
+    name: 'Sorel 1964 PAC',
+    name_fr: 'Sorel 1964 PAC',
+    name_en: 'Sorel 1964 PAC',
+    slug: 'sorel-1964-pac',
+    price: 160,
+    description: 'Ein klassischer und vielseitiger Winterstiefel, der Stil und Funktionalität für den täglichen Gebrauch vereint.',
+    description_fr: 'Une botte d\'hiver classique et polyvalente, alliant style et fonctionnalité pour un usage quotidien.',
+    description_en: 'A classic and versatile winter boot, combining style and functionality for daily use.',
+    category: 'shoes',
+    images: ['Sorel_1964_PAC'],
+    reviews: []
+  },
+  {
+    id: 'shoe-4',
+    name: 'Salomon X Ultra Snow Pilot',
+    name_fr: 'Salomon X Ultra Snow Pilot',
+    name_en: 'Salomon X Ultra Snow Pilot',
+    slug: 'salomon-x-ultra-snow-pilot',
+    price: 190,
+    oldPrice: 230,
+    description: 'Leichter und agiler Stiefel für Winterwanderungen, der Grip und Wärme bietet.',
+    description_fr: 'Botte légère et agile pour la randonnée hivernale, offrant adhérence et chaleur.',
+    description_en: 'Lightweight and agile boot for winter hiking, offering grip and warmth.',
+    category: 'shoes',
+    images: ['Salomon_X_Ultra_Snow_Pilot'],
+    reviews: []
+  },
+  {
+    id: 'shoe-5',
+    name: 'Columbia Bugaboot III',
+    name_fr: 'Columbia Bugaboot III',
+    name_en: 'Columbia Bugaboot III',
+    slug: 'columbia-bugaboot-iii',
+    price: 130,
+    description: 'Ein robuster und zuverlässiger Stiefel für extreme Kälte, mit Omni-Heat-Technologie.',
+    description_fr: 'Une botte robuste et fiable pour le grand froid, dotée de la technologie Omni-Heat.',
+    description_en: 'A robust and reliable boot for extreme cold, featuring Omni-Heat technology.',
+    category: 'shoes',
+    images: ['Columbia_Bugaboot_III'],
+    reviews: []
+  },
+  {
+    id: 'shoe-6',
+    name: 'The North Face Chilkat V 400',
+    name_fr: 'The North Face Chilkat V 400',
+    name_en: 'The North Face Chilkat V 400',
+    slug: 'the-north-face-chilkat-v-400',
+    price: 150,
+    description: 'Hochleistungs-Winterstiefel mit überlegenem Grip und Isolierung für anspruchsvolles Gelände.',
+    description_fr: 'Botte d\'hiver haute performance avec une adhérence et une isolation supérieures pour les terrains difficiles.',
+    description_en: 'High-performance winter boot with superior grip and insulation for challenging terrains.',
+    category: 'shoes',
+    images: ['The_North_Face_Chilkat_V_400'],
+    reviews: []
+  },
+  {
+    id: 'shoe-7',
+    name: 'Baffin Impact',
+    name_fr: 'Baffin Impact',
+    name_en: 'Baffin Impact',
+    slug: 'baffin-impact',
+    price: 300,
+    description: 'Entwickelt für arktische Bedingungen, bietet dieser Stiefel extremen Schutz bis -100°C.',
+    description_fr: 'Conçue pour les conditions arctiques, cette botte offre une protection extrême jusqu\'à -100°C.',
+    description_en: 'Designed for arctic conditions, this boot offers extreme protection down to -100°C.',
+    category: 'shoes',
+    images: ['Baffin_Impact'],
+    reviews: []
+  },
+  {
+    id: 'shoe-8',
+    name: 'Merrell Thermo Chill 2 Mid',
+    name_fr: 'Merrell Thermo Chill 2 Mid',
+    name_en: 'Merrell Thermo Chill 2 Mid',
+    slug: 'merrell-thermo-chill-2-mid',
+    price: 140,
+    oldPrice: 170,
+    description: 'Ein vielseitiger Wanderstiefel für den Winter, der Komfort und Schutz vor den Elementen bietet.',
+    description_fr: 'Une botte de randonnée polyvalente pour l\'hiver, offrant confort et protection contre les éléments.',
+    description_en: 'A versatile hiking boot for winter, offering comfort and protection from the elements.',
+    category: 'shoes',
+    images: ['Merrell_Thermo_Chill_2_Mid'],
+    reviews: []
+  },
+  {
+    id: 'shoe-9',
+    name: 'UGG Butte',
+    name_fr: 'UGG Butte',
+    name_en: 'UGG Butte',
+    slug: 'ugg-butte',
+    price: 250,
+    description: 'Die perfekte Kombination aus urbanem Stil und Winterkomfort, mit einem Futter aus reiner Wolle.',
+    description_fr: 'Le mariage parfait entre style urbain et confort hivernal, avec une doublure en laine pure.',
+    description_en: 'The perfect marriage of urban style and winter comfort, with a pure wool lining.',
+    category: 'shoes',
+    images: ['UGG_Butte'],
+    reviews: []
+  },
+  {
+    id: 'shoe-10',
+    name: 'Muck Boot Arctic Ice Tall',
+    name_fr: 'Muck Boot Arctic Ice Tall',
+    name_en: 'Muck Boot Arctic Ice Tall',
+    slug: 'muck-boot-arctic-ice-tall',
+    price: 200,
+    description: 'Hoher Gummistiefel, der für extreme Kälte und nasse Bedingungen entwickelt wurde und einen außergewöhnlichen Grip auf Eis bietet.',
+    description_fr: 'Botte haute en caoutchouc conçue pour le froid extrême et les conditions humides, offrant une adhérence exceptionnelle sur la glace.',
+    description_en: 'High rubber boot designed for extreme cold and wet conditions, offering exceptional grip on ice.',
+    category: 'shoes',
+    images: ['Muck_Boot_Arctic_Ice_Tall'],
+    reviews: []
   }
 ];
 
@@ -1922,18 +2065,16 @@ export function getFeaturedProducts(products: Product[], limit: number = 4): Pro
 
 
 export function getWinterSaleProducts(products: Product[], limit?: number): Product[] {
-  const saleProducts = products.filter(p => (p.category === 'winter-clothing' || p.slug.includes('bonnet')) && p.oldPrice);
+  const saleProducts = products.filter(p => (p.category === 'winter-clothing' || p.slug.includes('bonnet') || p.category === 'shoes') && p.oldPrice);
 
-  const parkas = saleProducts.filter(p => p.name_fr.toLowerCase().includes('parka'));
+  const parkas = saleProducts.filter(p => p.category === 'winter-clothing');
   const beanies = saleProducts.filter(p => p.slug.includes('bonnet'));
+  const shoes = saleProducts.filter(p => p.category === 'shoes');
 
-  let combined = [...parkas, ...beanies];
+  let combined = [...parkas, ...beanies, ...shoes];
 
   if (limit) {
     return combined.slice(0, limit);
   }
   return combined;
 }
-
-
-

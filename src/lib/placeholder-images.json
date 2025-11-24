@@ -776,6 +776,56 @@
       "id": "bogner-ski-parka",
       "imageUrl": "/images/products/Bogner_Ski_Parka.jpg",
       "imageHint": "ski parka"
+    },
+    {
+      "id": "Sorel_Caribou",
+      "imageUrl": "/images/products/Sorel_Caribou.jpg",
+      "imageHint": "winter boots"
+    },
+    {
+      "id": "Sorel_Caribou_Horizon_GTX",
+      "imageUrl": "/images/products/Sorel_Caribou_Horizon_GTX.jpg",
+      "imageHint": "winter boots"
+    },
+    {
+      "id": "Sorel_1964_PAC",
+      "imageUrl": "/images/products/Sorel_1964_PAC.jpg",
+      "imageHint": "winter boots"
+    },
+    {
+      "id": "Salomon_X_Ultra_Snow_Pilot",
+      "imageUrl": "/images/products/Salomon_X_Ultra_Snow_Pilot.jpg",
+      "imageHint": "snow boots"
+    },
+    {
+      "id": "Columbia_Bugaboot_III",
+      "imageUrl": "/images/products/Columbia_Bugaboot_III.jpg",
+      "imageHint": "snow boots"
+    },
+    {
+      "id": "The_North_Face_Chilkat_V_400",
+      "imageUrl": "/images/products/The_North_Face_Chilkat_V_400.jpg",
+      "imageHint": "snow boots"
+    },
+    {
+      "id": "Baffin_Impact",
+      "imageUrl": "/images/products/Baffin_Impact.jpg",
+      "imageHint": "arctic boots"
+    },
+    {
+      "id": "Merrell_Thermo_Chill_2_Mid",
+      "imageUrl": "/images/products/Merrell_Thermo_Chill_2_Mid.jpg",
+      "imageHint": "hiking boots"
+    },
+    {
+      "id": "UGG_Butte",
+      "imageUrl": "/images/products/UGG_Butte.jpg",
+      "imageHint": "winter boots"
+    },
+    {
+      "id": "Muck_Boot_Arctic_Ice_Tall",
+      "imageUrl": "/images/products/Muck_Boot_Arctic_Ice_Tall.jpg",
+      "imageHint": "rubber boots"
     }
   ]
 }
