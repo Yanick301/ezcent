@@ -250,120 +250,41 @@
     ]
   },
   "firestore": {
-    "structure": [
-      {
-        "path": "/products/{productId}",
-        "definition": {
-          "entityName": "Product",
-          "schema": {
-            "$ref": "#/backend/entities/Product"
-          },
-          "description": "Stores product information. Accessible to all users for reading.",
-          "params": [
-            {
-              "name": "productId",
-              "description": "The unique identifier for the product."
-            }
-          ]
-        }
+    "/products/{productId}": {
+      "schema": {
+        "$ref": "#/backend/entities/Product"
       },
-      {
-        "path": "/products/{productId}/reviews/{reviewId}",
-        "definition": {
-          "entityName": "Review",
-          "schema": {
-            "$ref": "#/backend/entities/Review"
-          },
-          "description": "Stores reviews for each product. Anyone can create a review for any product, but listing reviews is open.",
-          "params": [
-            {
-              "name": "productId",
-              "description": "The unique identifier for the product."
-            },
-            {
-              "name": "reviewId",
-              "description": "The unique identifier for the review."
-            }
-          ]
-        }
+      "description": "Stores product information. Accessible to all users for reading."
+    },
+    "/products/{productId}/reviews/{reviewId}": {
+      "schema": {
+        "$ref": "#/backend/entities/Review"
       },
-      {
-        "path": "/userProfiles/{userId}",
-        "definition": {
-          "entityName": "UserProfile",
-          "schema": {
-            "$ref": "#/backend/entities/UserProfile"
-          },
-          "description": "Stores user profile information. Only the authenticated user can read/write their own profile.",
-          "params": [
-            {
-              "name": "userId",
-              "description": "The unique identifier for the user. Must match auth.uid."
-            }
-          ]
-        }
+      "description": "Stores reviews for each product. Anyone can create a review for any product, but listing reviews is open."
+    },
+    "/userProfiles/{userId}": {
+      "schema": {
+        "$ref": "#/backend/entities/UserProfile"
       },
-      {
-        "path": "/userProfiles/{userId}/orders/{orderId}",
-        "definition": {
-          "entityName": "Order",
-          "schema": {
-            "$ref": "#/backend/entities/Order"
-          },
-          "description": "Stores order information for each user. Only the authenticated user can read/write their own orders.",
-          "params": [
-            {
-              "name": "userId",
-              "description": "The unique identifier for the user. Must match auth.uid."
-            },
-            {
-              "name": "orderId",
-              "description": "The unique identifier for the order."
-            }
-          ]
-        }
+      "description": "Stores user profile information. Only the authenticated user can read/write their own profile."
+    },
+    "/userProfiles/{userId}/orders": {
+      "schema": {
+        "$ref": "#/backend/entities/Order"
       },
-      {
-        "path": "/userProfiles/{userId}/orders/{orderId}/orderItems/{orderItemId}",
-        "definition": {
-          "entityName": "OrderItem",
-          "schema": {
-            "$ref": "#/backend/entities/OrderItem"
-          },
-          "description": "Stores order items for each order. Only the authenticated user can read/write their own order items.",
-          "params": [
-            {
-              "name": "userId",
-              "description": "The unique identifier for the user. Must match auth.uid."
-            },
-            {
-              "name": "orderId",
-              "description": "The unique identifier for the order."
-            },
-            {
-              "name": "orderItemId",
-              "description": "The unique identifier for the order item."
-            }
-          ]
-        }
+      "description": "Stores order information for each user. Only the authenticated user can read/write their own orders."
+    },
+    "/userProfiles/{userId}/orders/{orderId}/orderItems/{orderItemId}": {
+      "schema": {
+        "$ref": "#/backend/entities/OrderItem"
       },
-      {
-        "path": "/cartItems/{cartItemId}",
-        "definition": {
-          "entityName": "CartItem",
-          "schema": {
-            "$ref": "#/backend/entities/CartItem"
-          },
-          "description": "Stores cart items for each user.  The 'userId' field within the document data MUST match the document ID.  This enforces that only the user owning a specific cart item can access/modify it.",
-          "params": [
-            {
-              "name": "cartItemId",
-              "description": "The unique identifier for the cart item.  This should match the userId to enforce ownership."
-            }
-          ]
-        }
-      }
-    ],
-    "reasoning": "The Firestore structure is designed to support an e-commerce application ('Atelier Luxe') with a focus on user authentication and order management. Key considerations include protecting order submissions to authenticated users and enabling product browsing for guests. The structure prioritizes authorization independence and clear access control. Products are stored in a flat `products` collection. User profiles are stored in a dedicated `userProfiles` collection, which enables authenticated-only write access to user-specific data. Orders are placed in a subcollection under each user's profile (`userProfiles/{userId}/orders`), ensuring that only the authenticated user can create or view their orders. Order items are stored in a subcollection under each order (`userProfiles/{userId}/orders/{orderId}/orderItems`). Reviews are stored in a subcollection under each product (`products/{productId}/reviews`). This design ensures proper data segregation and aligns with the principle of homogeneous security posture.\n\n**Authorization Independence:** The `orders` and `orderItems` subcollections under `userProfiles/{userId}` achieve authorization independence. The security rules only need to verify the `userId` in the path against `request.auth.uid`, without needing to fetch any parent document data.  Similarly, `reviews` are nested under `products` without authorization dependencies, as any user can create a review.\n\n**QAPs (Rules are not Filters):** The structure enables secure `list` operations.  Listing products is open to all, and listing orders is restricted to the authenticated user via the path-based ownership model (`/userProfiles/{userId}/orders`). This structure also ensures that security rules do not act as filters, as the data is already segregated based on access control requirements."
+      "description": "Stores order items for each order. Only the authenticated user can read/write their own order items."
+    },
+    "/cartItems/{cartItemId}": {
+      "schema": {
+        "$ref": "#/backend/entities/CartItem"
+      },
+      "description": "Stores cart items for each user.  The 'userId' field within the document data MUST match the document ID.  This enforces that only the user owning a specific cart item can access/modify it."
+    }
   }
 }
