@@ -8,27 +8,35 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+      // For now, no one is an admin to simplify rules.
+      // This can be changed later to `return get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.isAdmin == true;`
+      return false;
     }
 
     match /products/{productId} {
       allow read: if true;
       allow write: if false; 
-
-      match /reviews/{reviewId} {
-        allow read: if true;
-        allow create, update, delete: if isOwner(request.resource.data.userId);
-      }
+    }
+    
+    match /products/{productId}/reviews/{reviewId} {
+      allow read: if true;
+      allow create, update, delete: if isOwner(request.resource.data.userId);
     }
 
     match /userProfiles/{userId} {
       allow create: if isOwner(userId);
       allow read, update, delete: if isOwner(userId);
+
+      match /orders/{orderId} {
+        allow read, create: if isOwner(userId);
+        allow update, delete: if false; // Orders are immutable for clients
+      }
     }
     
-    match /orders/{orderId} {
-      allow read, update: if isOwner(resource.data.userId) || isAdmin();
-      allow create: if isOwner(request.resource.data.userId);
+    // CartItems are at the root, access is controlled by the userId field inside the doc
+    match /cartItems/{cartItemId} {
+       allow read, write: if isOwner(resource.data.userId);
+       allow create: if isOwner(request.resource.data.userId);
     }
 
   }

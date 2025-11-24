@@ -31,9 +31,6 @@ import {
   updateDoc,
   query,
   orderBy,
-  collectionGroup,
-  addDoc,
-  serverTimestamp,
   where,
 } from 'firebase/firestore';
 import { useRef, useState } from 'react';
@@ -83,18 +80,14 @@ export default function OrdersPage() {
 
   const ordersQuery = useMemoFirebase(() => {
     if (!user || !firestore) return null;
-    if (isAdmin) {
-      return query(
-        collection(firestore, `orders`),
-        orderBy('orderDate', 'desc')
-      );
-    }
+    
+    // For now, admins see their own orders just like regular users.
+    // An admin-specific view can be built later.
     return query(
-      collection(firestore, `orders`),
-      where('userId', '==', user.uid),
+      collection(firestore, `userProfiles/${user.uid}/orders`),
       orderBy('orderDate', 'desc')
     );
-  }, [firestore, user, isAdmin]);
+  }, [firestore, user]);
 
   const { data: orders, isLoading } = useCollection(ordersQuery);
 
@@ -129,7 +122,7 @@ export default function OrdersPage() {
       const uploadResult = await uploadBytes(fileRef, file);
       const downloadURL = await getDownloadURL(uploadResult.ref);
       
-      const orderDocRef = doc(firestore, `orders`, selectedOrderId);
+      const orderDocRef = doc(firestore, `userProfiles/${user.uid}/orders`, selectedOrderId);
       await updateDoc(orderDocRef, {
         receiptImageURL: downloadURL,
         paymentStatus: 'processing',
@@ -176,12 +169,13 @@ export default function OrdersPage() {
   };
 
   const handleValidateOrder = async (orderId: string) => {
-    if (!firestore || !orders) return;
+    if (!firestore || !orders || !user) return;
     try {
       const orderToValidate = orders.find(o => o.id === orderId);
       if (!orderToValidate) throw new Error("Order not found");
 
-      const orderRef = doc(firestore, `orders`, orderId);
+      // Admins would need a different path to update orders if they are not the owner
+      const orderRef = doc(firestore, `userProfiles/${user.uid}/orders`, orderId);
       await updateDoc(orderRef, { paymentStatus: 'completed' });
       toast({
         title:

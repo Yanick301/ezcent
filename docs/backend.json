@@ -268,11 +268,11 @@
       },
       "description": "Stores user profile information. Only the authenticated user can read/write their own profile."
     },
-    "/orders/{orderId}": {
+    "/userProfiles/{userId}/orders/{orderId}": {
       "schema": {
         "$ref": "#/backend/entities/Order"
       },
-      "description": "Stores order information. A user can only access their own orders."
+      "description": "Stores order information for a user. A user can only access their own orders."
     },
     "/cartItems/{cartItemId}": {
       "schema": {
