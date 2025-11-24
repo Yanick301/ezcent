@@ -29,7 +29,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useFirestore, useUser } from '@/firebase';
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp, writeBatch, doc } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -146,7 +146,7 @@ export default function CheckoutPage() {
 
   const handlePlaceOrder: SubmitHandler<ShippingFormInputs> = async (data) => {
     setIsSubmitting(true);
-    if (!user) { 
+    if (!user || !firestore) { 
         toast({
             variant: "destructive",
             title: language === 'fr' ? "Authentification requise" : language === 'en' ? "Authentication Required" : "Authentifizierung erforderlich",
@@ -158,11 +158,8 @@ export default function CheckoutPage() {
     }
     
     try {
-      const ordersCollectionRef = collection(firestore, `userProfiles/${user.uid}/orders`);
-      
-      await addDoc(ordersCollectionRef, {
+      const orderData = {
           userId: user.uid,
-          userEmail: user.email,
           shippingInfo: data,
           items: cart.map(item => ({
               productId: item.product.id,
@@ -177,9 +174,21 @@ export default function CheckoutPage() {
           taxes,
           totalAmount: total,
           orderDate: serverTimestamp(),
-          paymentStatus: 'pending', // Initial status
+          paymentStatus: 'pending',
           receiptImageURL: '',
-      });
+      };
+
+      const batch = writeBatch(firestore);
+
+      // 1. Create order in the global collection
+      const globalOrderRef = doc(collection(firestore, 'orders'));
+      batch.set(globalOrderRef, orderData);
+
+      // 2. Create order in the user's subcollection with the SAME ID
+      const userOrderRef = doc(firestore, `userProfiles/${user.uid}/orders`, globalOrderRef.id);
+      batch.set(userOrderRef, orderData);
+      
+      await batch.commit();
 
       clearCart();
       router.push('/checkout/thank-you');

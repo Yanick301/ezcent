@@ -1,15 +1,130 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '@/components/ui/card';
 import { TranslatedText } from '@/components/TranslatedText';
-import { Loader2, ShieldX } from 'lucide-react';
-import { useUser } from '@/firebase';
+import {
+  Loader2,
+  ShieldX,
+  AlertCircle,
+  Clock,
+  CheckCircle,
+  FileCheck,
+} from 'lucide-react';
+import { useUser, useFirestore, useMemoFirebase } from '@/firebase';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState, useMemo } from 'react';
+import {
+  collection,
+  query,
+  orderBy,
+  doc,
+  updateDoc,
+} from 'firebase/firestore';
+import { useCollection } from '@/firebase/firestore/use-collection';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { format } from 'date-fns';
+import { fr, de, enUS } from 'date-fns/locale';
+import { useLanguage } from '@/context/LanguageContext';
+import { useToast } from '@/hooks/use-toast';
 
 export default function AdminDashboardPage() {
   const { user, isAdmin, isUserLoading } = useUser();
   const router = useRouter();
+  const firestore = useFirestore();
+  const { toast } = useToast();
+  const { language } = useLanguage();
+
+  const [updatingOrderId, setUpdatingOrderId] = useState<string | null>(null);
+
+  const ordersQuery = useMemoFirebase(() => {
+    if (!isAdmin || !firestore) return null;
+    return query(collection(firestore, 'orders'), orderBy('orderDate', 'desc'));
+  }, [isAdmin, firestore]);
+
+  const { data: orders, isLoading } = useCollection(ordersQuery);
+
+  const getDateLocale = () => {
+    switch (language) {
+      case 'fr': return fr;
+      case 'en': return enUS;
+      default: return de;
+    }
+  };
+
+  const getSafeDate = (order: any): Date => {
+    if (order?.orderDate?.toDate) {
+      return order.orderDate.toDate();
+    }
+    return new Date();
+  };
+
+  const handleValidatePayment = async (orderId: string, userId: string) => {
+    if (!firestore) return;
+    setUpdatingOrderId(orderId);
+    try {
+      // Update global order
+      const globalOrderRef = doc(firestore, 'orders', orderId);
+      await updateDoc(globalOrderRef, { paymentStatus: 'completed' });
+
+      // Update user-specific order
+      const userOrderRef = doc(firestore, `userProfiles/${userId}/orders`, orderId);
+      await updateDoc(userOrderRef, { paymentStatus: 'completed' });
+
+      toast({
+        title: 'Paiement Validé',
+        description: `La commande ${orderId} a été marquée comme terminée.`,
+      });
+    } catch (error) {
+      console.error('Error validating payment:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Erreur',
+        description: 'Impossible de valider le paiement.',
+      });
+    } finally {
+      setUpdatingOrderId(null);
+    }
+  };
+
+  const { pendingOrders, processingOrders, completedOrders } = useMemo(() => {
+    if (!orders) {
+      return {
+        pendingOrders: [],
+        processingOrders: [],
+        completedOrders: [],
+      };
+    }
+    const pending: any[] = [];
+    const processing: any[] = [];
+    const completed: any[] = [];
+    (orders as any[]).forEach((order) => {
+      switch (order.paymentStatus) {
+        case 'pending':
+          pending.push(order);
+          break;
+        case 'processing':
+          processing.push(order);
+          break;
+        case 'completed':
+          completed.push(order);
+          break;
+        default:
+          break;
+      }
+    });
+    return {
+      pendingOrders: pending,
+      processingOrders: processing,
+      completedOrders: completed,
+    };
+  }, [orders]);
 
   useEffect(() => {
     if (!isUserLoading && !isAdmin) {
@@ -17,7 +132,7 @@ export default function AdminDashboardPage() {
     }
   }, [user, isAdmin, isUserLoading, router]);
 
-  if (isUserLoading) {
+  if (isUserLoading || !isAdmin) {
     return (
       <div className="container mx-auto flex h-[60vh] items-center justify-center p-12 text-center">
         <Loader2 className="mx-auto h-12 w-12 animate-spin text-muted-foreground" />
@@ -25,53 +140,93 @@ export default function AdminDashboardPage() {
     );
   }
 
-  if (!isAdmin) {
+  const renderOrderList = (orderList: any[], title: React.ReactNode) => {
     return (
-      <div className="container mx-auto px-4 py-12">
-        <Card className="border-2 border-dashed border-destructive shadow-none">
-          <CardContent className="flex flex-col items-center justify-center p-12 text-center">
-            <ShieldX className="h-16 w-16 text-destructive" />
-            <h3 className="mt-4 text-xl font-semibold text-destructive">
-              <TranslatedText fr="Accès non autorisé" en="Unauthorized Access">
-                Unbefugter Zugriff
-              </TranslatedText>
-            </h3>
-            <p className="mt-2 text-muted-foreground">
-              <TranslatedText
-                fr="Vous n'avez pas les permissions nécessaires pour accéder à cette page."
-                en="You do not have the required permissions to access this page."
-              >
-                Sie haben nicht die erforderlichen Berechtigungen, um auf diese
-                Seite zuzugreifen.
-              </TranslatedText>
-            </p>
-          </CardContent>
-        </Card>
-      </div>
+      <Card>
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {orderList.length === 0 ? (
+            <p className="text-sm text-muted-foreground">Aucune commande ici.</p>
+          ) : (
+            <div className="space-y-4">
+              {orderList.map((order) => (
+                <Card key={order.id} className="p-4">
+                   <div className="flex justify-between items-start">
+                     <div>
+                        <p className="font-semibold">
+                          {format(getSafeDate(order), 'PPP', { locale: getDateLocale() })}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          ID: {order.id} | User: {order.shippingInfo.email}
+                        </p>
+                     </div>
+                     <p className="font-bold text-lg">€{order.totalAmount.toFixed(2)}</p>
+                  </div>
+                  <div className="mt-4 border-t pt-4">
+                     <p className="text-sm font-medium">Produits:</p>
+                      <ul className="list-disc pl-5 text-sm text-muted-foreground">
+                        {order.items.map((item: any) => (
+                          <li key={item.productId}>
+                            {item.quantity} x {item.name}
+                          </li>
+                        ))}
+                      </ul>
+                  </div>
+
+                  {order.paymentStatus === 'processing' && (
+                    <div className="mt-4 flex gap-4">
+                        <Button
+                          asChild
+                          variant="outline"
+                        >
+                            <a href={order.receiptImageURL} target="_blank" rel="noopener noreferrer">
+                                <FileCheck className="mr-2 h-4 w-4" />
+                                Voir le reçu
+                            </a>
+                        </Button>
+                        <Button
+                            onClick={() => handleValidatePayment(order.id, order.userId)}
+                            disabled={updatingOrderId === order.id}
+                        >
+                            {updatingOrderId === order.id ? (
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            ) : (
+                                <CheckCircle className="mr-2 h-4 w-4" />
+                            )}
+                            Valider la Commande
+                        </Button>
+                    </div>
+                  )}
+                </Card>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
     );
-  }
+  };
+
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <Card>
-        <CardHeader>
-          <CardTitle>
-            <TranslatedText
-              fr="Tableau de bord administrateur"
-              en="Admin Dashboard"
-            >
-              Admin-Dashboard
-            </TranslatedText>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>
-            <TranslatedText fr="En cours de construction..." en="Under construction...">
-              In Arbeit...
-            </TranslatedText>
-          </p>
-        </CardContent>
-      </Card>
+        <h1 className="mb-8 font-headline text-4xl">Tableau de Bord Administrateur</h1>
+        {isLoading ? (
+             <div className="text-center p-12"><Loader2 className="mx-auto h-8 w-8 animate-spin text-muted-foreground" /></div>
+        ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div className="lg:col-span-1 space-y-8">
+                     {renderOrderList(pendingOrders, <div className="flex items-center gap-2"><AlertCircle className="text-destructive h-5 w-5"/> Commandes en attente de paiement</div>)}
+                </div>
+                <div className="lg:col-span-1 space-y-8">
+                    {renderOrderList(processingOrders, <div className="flex items-center gap-2"><Clock className="text-blue-500 h-5 w-5"/> Commandes en attente de validation</div>)}
+                </div>
+                <div className="lg:col-span-1 space-y-8">
+                    {renderOrderList(completedOrders, <div className="flex items-center gap-2"><CheckCircle className="text-green-500 h-5 w-5"/> Commandes terminées</div>)}
+                </div>
+            </div>
+        )}
     </div>
   );
 }

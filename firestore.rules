@@ -1,9 +1,14 @@
 rules_version = '2';
+
+function isAdmin() {
+  return get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.isAdmin == true;
+}
+
 service cloud.firestore {
   match /databases/{database}/documents {
     match /products/{productId} {
       allow read: if true;
-      allow write: if false;
+      allow write: if false; // Products are managed statically
     }
 
     match /products/{productId}/reviews/{reviewId} {
@@ -11,8 +16,23 @@ service cloud.firestore {
       allow create, update, delete: if request.auth != null && request.auth.uid == request.resource.data.userId;
     }
 
-    match /userProfiles/{userId}/{documents=**} {
+    match /userProfiles/{userId} {
+      // Users can read and write their own profile
       allow read, write: if request.auth != null && request.auth.uid == userId;
+      // Admins can read any profile
+      allow get: if isAdmin();
+    }
+    
+    match /userProfiles/{userId}/orders/{orderId} {
+        // A user can read and write to their own orders subcollection
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Global orders collection for admin access
+    match /orders/{orderId} {
+      // Admins can read, write, create, and delete any order document
+      allow read, write, create, delete: if isAdmin();
+      // Regular users cannot access this collection at all
     }
   }
 }
