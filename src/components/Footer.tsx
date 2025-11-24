@@ -2,8 +2,6 @@
 'use client';
 import Link from 'next/link';
 import { TranslatedText } from './TranslatedText';
-import { InstagramIcon } from './InstagramIcon';
-import { SnapchatIcon } from './SnapchatIcon';
 import { useState, useEffect } from 'react';
 
 export function Footer() {
@@ -51,8 +49,8 @@ export function Footer() {
       title_en: 'Social Media',
       isSocial: true,
       links: [
-        { name: 'Instagram', href: 'https://www.instagram.com/ezcentials_?igsh=MWQ2aTR60WgyYnpvag%3D%3D&utm_source=qr', icon: InstagramIcon },
-        { name: 'Snapchat', href: 'https://snapchat.com/t/qez0Z1z0', icon: SnapchatIcon },
+        { name: 'Instagram', href: 'https://www.instagram.com/ezcentials_?igsh=MWQ2aTR60WgyYnpvag%3D%3D&utm_source=qr', image: '/images/insta.png' },
+        { name: 'Snapchat', href: 'https://snapchat.com/t/qez0Z1z0', image: '/images/snap.png' },
       ],
     },
   ];
@@ -73,10 +71,10 @@ export function Footer() {
                     <ul className={`mt-4 space-y-3 ${section.isSocial ? 'flex space-x-4 space-y-0' : ''}`}>
                     {section.links.map((link) => (
                         <li key={link.name}>
-                        <Link href={link.href} className="text-sm text-stone-300 hover:text-white flex items-center gap-2">
-                           {link.icon && <link.icon />}
+                        <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-stone-300 hover:text-white flex items-center gap-2">
+                           {link.image && <img src={link.image} alt={`${link.name} logo`} className="h-6 w-6" />}
                            {!section.isSocial && <TranslatedText fr={link.name_fr} en={link.name_en}>{link.name}</TranslatedText>}
-                        </Link>
+                        </a>
                         </li>
                     ))}
                     </ul>
