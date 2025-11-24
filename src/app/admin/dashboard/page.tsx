@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -5,6 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  CardDescription
 } from '@/components/ui/card';
 import {
   Loader2,
@@ -78,7 +80,7 @@ export default function AdminDashboardPage() {
 
       toast({
         title: 'Paiement Validé',
-        description: `La commande ${orderId} a été marquée comme terminée.`,
+        description: `La commande ${orderId} a été marquée comme terminée. Le client sera notifié.`,
       });
     } catch (error) {
       console.error('Error validating payment:', error);
@@ -153,18 +155,21 @@ export default function AdminDashboardPage() {
                         <p className="font-semibold">
                           {format(getSafeDate(order), 'PPP', { locale: getDateLocale() })}
                         </p>
-                        <p className="text-xs text-muted-foreground">
-                          ID: {order.id} | User: {order.shippingInfo.email}
+                        <CardDescription>
+                          ID: {order.id}
+                        </CardDescription>
+                        <p className="text-sm font-medium">
+                          Client: {order.shippingInfo.email}
                         </p>
                      </div>
                      <p className="font-bold text-lg">€{order.totalAmount.toFixed(2)}</p>
                   </div>
                   <div className="mt-4 border-t pt-4">
-                     <p className="text-sm font-medium">Produits:</p>
-                      <ul className="list-disc pl-5 text-sm text-muted-foreground">
+                     <p className="text-sm font-medium mb-2">Produits commandés:</p>
+                      <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
                         {order.items.map((item: any) => (
                           <li key={item.productId}>
-                            {item.quantity} x {item.name}
+                            {item.quantity} x {item.name_fr}
                           </li>
                         ))}
                       </ul>

@@ -9,6 +9,7 @@ import {
   LogOut,
   Loader2,
   ShieldOff,
+  Users,
 } from 'lucide-react';
 import { signOut } from 'firebase/auth';
 import Link from 'next/link';
@@ -66,11 +67,28 @@ export default function AdminLayout({
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
-      <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-background px-6">
-        <Link href="/admin/dashboard" className="flex items-center gap-2 font-semibold">
-          <LayoutDashboard className="h-6 w-6" />
-          <span>EZCENTIALS Admin</span>
-        </Link>
+       <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-background px-6">
+        <nav className="flex items-center gap-6 text-lg font-medium">
+          <Link
+            href="/admin/dashboard"
+            className="flex items-center gap-2 text-lg font-semibold"
+          >
+            <LayoutDashboard className="h-6 w-6" />
+            <span className="sr-only">Tableau de bord</span>
+          </Link>
+          <Link
+            href="/admin/dashboard"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Commandes
+          </Link>
+          <Link
+            href="/admin/clients"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Clients
+          </Link>
+        </nav>
         <div className="flex items-center gap-4">
           <span className="font-medium">{user.email}</span>
           <Button variant="ghost" size="icon" onClick={handleSignOut}>
