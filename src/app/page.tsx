@@ -78,11 +78,11 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="font-headline text-3xl md:text-5xl text-foreground">
-              <TranslatedText fr="Nos Pièces Signatures">Unsere Signature-Stücke</TranslatedText>
+              <TranslatedText fr="Produits Tendances">Trendprodukte</TranslatedText>
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-              <TranslatedText fr="Une sélection de nos créations les plus emblématiques, choisies pour leur design intemporel et leur savoir-faire exceptionnel.">
-                Eine Auswahl unserer ikonischsten Kreationen, ausgewählt für ihr zeitloses Design und ihre außergewöhnliche Handwerkskunst.
+              <TranslatedText fr="Découvrez la sélection du moment. Des pièces désirables qui allient style contemporain et qualité intemporelle.">
+                Entdecken Sie die aktuelle Auswahl. Begehrte Stücke, die zeitgenössischen Stil und zeitlose Qualität vereinen.
               </TranslatedText>
             </p>
           </div>
