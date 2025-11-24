@@ -45,17 +45,21 @@ export default function AdminDashboardPage() {
   const { language } = useLanguage();
 
   useEffect(() => {
-    if (!isUserLoading) {
-      if (!user) {
-        router.push('/login');
-      } else if (!isAdmin) {
-        toast({
-          variant: 'destructive',
-          title: language === 'fr' ? 'Accès non autorisé' : language === 'en' ? 'Unauthorized Access' : 'Unbefugter Zugriff',
-          description: language === 'fr' ? "Vous n'avez pas les permissions pour voir cette page." : language === 'en' ? "You do not have permission to view this page." : "Sie haben keine Berechtigung, diese Seite anzuzeigen.",
-        });
-        router.push('/account');
-      }
+    if (isUserLoading) {
+      return; // Do nothing while loading
+    }
+    if (!user) {
+      router.push('/login');
+      return;
+    }
+    if (!isAdmin) {
+      toast({
+        variant: 'destructive',
+        title: language === 'fr' ? 'Accès non autorisé' : language === 'en' ? 'Unauthorized Access' : 'Unbefugter Zugriff',
+        description: language === 'fr' ? "Vous n'avez pas les permissions pour voir cette page." : language === 'en' ? "You do not have permission to view this page." : "Sie haben keine Berechtigung, diese Seite anzuzeigen.",
+      });
+      router.push('/account');
+      return;
     }
   }, [user, isAdmin, isUserLoading, router, toast, language]);
 
@@ -112,7 +116,7 @@ export default function AdminDashboardPage() {
     }
   }
 
-  if (isUserLoading || !isAdmin) {
+  if (isUserLoading || !isAdmin || !user) {
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
