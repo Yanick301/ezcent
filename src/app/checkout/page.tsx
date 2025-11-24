@@ -73,10 +73,19 @@ export default function CheckoutPage() {
   const { language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const currentSchema = language === 'fr' ? shippingSchemaFR : language === 'en' ? shippingSchemaEN : shippingSchemaDE;
+  const getValidationSchema = (lang: string) => {
+    switch (lang) {
+      case 'fr':
+        return shippingSchemaFR;
+      case 'en':
+        return shippingSchemaEN;
+      default:
+        return shippingSchemaDE;
+    }
+  };
 
   const form = useForm<ShippingFormInputs>({
-    resolver: zodResolver(currentSchema),
+    resolver: zodResolver(getValidationSchema(language)),
     defaultValues: {
       name: '',
       email: '',
@@ -86,6 +95,10 @@ export default function CheckoutPage() {
       country: '',
     },
   });
+  
+  useEffect(() => {
+    form.reset(undefined, { keepValues: true });
+  }, [language, form]);
 
   useEffect(() => {
     if (cart.length === 0 && !form.formState.isSubmitSuccessful) {
