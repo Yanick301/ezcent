@@ -39,7 +39,7 @@
     {
       "id": "sport-category",
       "description": "Sport Category",
-      "imageUrl": "/images/products/survetement-luxe-adidas-gucci.jpg",
+      "imageUrl": "/images/products/Adidas_by_Stella_McCartney_Veste.jpg",
       "imageHint": "sport fashion"
     },
     {
@@ -298,11 +298,6 @@
       "imageHint": "2-piece suit"
     },
     {
-      "id": "sweat-a-capuche-off-white",
-      "imageUrl": "/images/products/sweat-a-capuche-off-white.jpg",
-      "imageHint": "hoodie"
-    },
-    {
       "id": "t-shirt-essential-fear-of-god",
       "imageUrl": "/images/products/t-shirt-essential-fear-of-god.jpg",
       "imageHint": "essential t-shirt"
@@ -363,11 +358,6 @@
       "imageHint": "silk shirt"
     },
     {
-      "id": "hoodie-imprime-palm-angels",
-      "imageUrl": "/images/products/hoodie-imprime-palm-angels.jpg",
-      "imageHint": "printed hoodie"
-    },
-    {
       "id": "veste-matelassee-barbour-international",
       "imageUrl": "/images/products/veste-matelassee-barbour-international.jpg",
       "imageHint": "quilted jacket"
@@ -381,16 +371,6 @@
       "id": "t-shirt-logo-givenchy",
       "imageUrl": "/images/products/t-shirt-logo-givenchy.jpg",
       "imageHint": "logo t-shirt"
-    },
-    {
-      "id": "survetement-luxe-adidas-gucci",
-      "imageUrl": "/images/products/survetement-luxe-adidas-gucci.jpg",
-      "imageHint": "luxury tracksuit"
-    },
-    {
-      "id": "veste-technique-nike-acg",
-      "imageUrl": "/images/products/veste-technique-nike-acg.jpg",
-      "imageHint": "technical jacket"
     },
     {
       "id": "gilet-sans-manches-prada",
@@ -448,19 +428,9 @@
       "imageHint": "leather sandals"
     },
     {
-      "id": "sneakers-luxe-cuir-nubuck-runway",
-      "imageUrl": "/images/products/sneakers-luxe-cuir-nubuck-runway.jpg",
-      "imageHint": "luxury sneakers"
-    },
-    {
       "id": "montre-acier-inoxydable-noire-chrono-luxe",
       "imageUrl": "/images/products/montre-acier-inoxydable-noire-chrono-luxe.jpg",
       "imageHint": "black watch"
-    },
-    {
-      "id": "montre-sport-silicone-hydrosport-5-atm",
-      "imageUrl": "/images/products/montre-sport-silicone-hydrosport-5-atm.jpg",
-      "imageHint": "sport watch"
     },
     {
       "id": "montre-cuir-brun-heritage-classique",
@@ -473,19 +443,9 @@
       "imageHint": "silver watch"
     },
     {
-      "id": "montre-digitale-led-urban-tech",
-      "imageUrl": "/images/products/montre-digitale-led-urban-tech.jpg",
-      "imageHint": "digital watch"
-    },
-    {
       "id": "montre-cadran-or-rose-executive-elite",
       "imageUrl": "/images/products/montre-cadran-or-rose-executive-elite.jpg",
       "imageHint": "rose gold watch"
-    },
-    {
-      "id": "montre-chronographe-titan-steel-pro",
-      "imageUrl": "/images/products/montre-chronographe-titan-steel-pro.jpg",
-      "imageHint": "titanium watch"
     },
     {
       "id": "bonnet-laine-torsadee-noir-nordic-luxe",
@@ -653,106 +613,6 @@
       "imageHint": "lipstick case"
     },
     {
-      "id": "nike-air-zoom-pegasus-40-running-shoes",
-      "imageUrl": "/images/products/nike-air-zoom-pegasus-40-running-shoes.jpg",
-      "imageHint": "running shoes"
-    },
-    {
-      "id": "adidas-ultraboost-light-running-shoes",
-      "imageUrl": "/images/products/adidas-ultraboost-light-running-shoes.jpg",
-      "imageHint": "running shoes"
-    },
-    {
-      "id": "puma-spectra-pro-training-jacket",
-      "imageUrl": "/images/products/puma-spectra-pro-training-jacket.jpg",
-      "imageHint": "training jacket"
-    },
-    {
-      "id": "under-armour-heatgear-compression-set",
-      "imageUrl": "/images/products/under-armour-heatgear-compression-set.jpg",
-      "imageHint": "compression set"
-    },
-    {
-      "id": "nike-tech-fleece-jogger-pants",
-      "imageUrl": "/images/products/nike-tech-fleece-jogger-pants.jpg",
-      "imageHint": "jogger pants"
-    },
-    {
-      "id": "adidas-tiro-24-elite-tracksuit",
-      "imageUrl": "/images/products/adidas-tiro-24-elite-tracksuit.jpg",
-      "imageHint": "tracksuit"
-    },
-    {
-      "id": "north-face-summit-series-trail-backpack-20l",
-      "imageUrl": "/images/products/north-face-summit-series-trail-backpack-20l.jpg",
-      "imageHint": "trail backpack"
-    },
-    {
-      "id": "salomon-speedcross-6-trail-shoes",
-      "imageUrl": "/images/products/salomon-speedcross-6-trail-shoes.jpg",
-      "imageHint": "trail shoes"
-    },
-    {
-      "id": "garmin-forerunner-55-gps-sports-watch",
-      "imageUrl": "/images/products/garmin-forerunner-55-gps-sports-watch.jpg",
-      "imageHint": "sports watch"
-    },
-    {
-      "id": "polar-h10-heart-rate-sensor-pro",
-      "imageUrl": "/images/products/polar-h10-heart-rate-sensor-pro.jpg",
-      "imageHint": "heart rate sensor"
-    },
-    {
-      "id": "wilson-pro-staff-elite-tennis-racket",
-      "imageUrl": "/images/products/wilson-pro-staff-elite-tennis-racket.jpg",
-      "imageHint": "tennis racket"
-    },
-    {
-      "id": "head-graphene-360-speed-mp-tennis-racket",
-      "imageUrl": "/images/products/head-graphene-360-speed-mp-tennis-racket.jpg",
-      "imageHint": "tennis racket"
-    },
-    {
-      "id": "spalding-nba-evolution-official-basketball",
-      "imageUrl": "/images/products/spalding-nba-evolution-official-basketball.jpg",
-      "imageHint": "basketball"
-    },
-    {
-      "id": "everlast-elite-punching-gloves-14oz",
-      "imageUrl": "/images/products/everlast-elite-punching-gloves-14oz.jpg",
-      "imageHint": "punching gloves"
-    },
-    {
-      "id": "adidas-predator-league-shin-guards",
-      "imageUrl": "/images/products/adidas-predator-league-shin-guards.jpg",
-      "imageHint": "shin guards"
-    },
-    {
-      "id": "nike-dri-fit-adv-training-hoodie",
-      "imageUrl": "/images/products/nike-dri-fit-adv-training-hoodie.jpg",
-      "imageHint": "training hoodie"
-    },
-    {
-      "id": "reebok-nano-x4-cross-training-shoes",
-      "imageUrl": "/images/products/reebok-nano-x4-cross-training-shoes.jpg",
-      "imageHint": "training shoes"
-    },
-    {
-      "id": "columbia-omniheat-winter-sports-jacket",
-      "imageUrl": "/images/products/columbia-omniheat-winter-sports-jacket.jpg",
-      "imageHint": "sports jacket"
-    },
-    {
-      "id": "oakley-radar-ev-path-sport-sunglasses",
-      "imageUrl": "/images/products/oakley-radar-ev-path-sport-sunglasses.jpg",
-      "imageHint": "sport sunglasses"
-    },
-    {
-      "id": "under-armour-storm-waterproof-training-bag-50l",
-      "imageUrl": "/images/products/under-armour-storm-waterproof-training-bag-50l.jpg",
-      "imageHint": "training bag"
-    },
-    {
       "id": "canada-goose-macmillan-parka",
       "imageUrl": "/images/products/Canada_Goose_MacMillan_Parka.jpg",
       "imageHint": "winter parka"
@@ -825,6 +685,96 @@
     {
       "id": "bogner-fire-ice-ski-parka",
       "imageUrl": "/images/products/Bogner_Fire_Ice_Ski_Parka.jpg",
+      "imageHint": "ski parka"
+    },
+    {
+      "id": "adidas-stella-mccartney-veste",
+      "imageUrl": "/images/products/Adidas_by_Stella_McCartney_Veste.jpg",
+      "imageHint": "sport jacket"
+    },
+    {
+      "id": "adidas-stella-mccartney-legging",
+      "imageUrl": "/images/products/Adidas_by_Stella_McCartney_Legging.jpg",
+      "imageHint": "sport legging"
+    },
+    {
+      "id": "alo-yoga-veste-zippee",
+      "imageUrl": "/images/products/Alo_Yoga_Veste_Zippee.jpg",
+      "imageHint": "yoga jacket"
+    },
+    {
+      "id": "alo-yoga-haut-entrainement",
+      "imageUrl": "/images/products/Alo_Yoga_Haut_Entrainement.jpg",
+      "imageHint": "training top"
+    },
+    {
+      "id": "haute-motion-fleece-polaire",
+      "imageUrl": "/images/products/HAUTE_Motion_Fleece_Polaire.jpg",
+      "imageHint": "fleece jacket"
+    },
+    {
+      "id": "haute-legging-nomad",
+      "imageUrl": "/images/products/HAUTE_Legging_Nomad.jpg",
+      "imageHint": "sport legging"
+    },
+    {
+      "id": "loewe-on-brassiere-sport",
+      "imageUrl": "/images/products/Loewe_On_Brassiere_Sport.jpg",
+      "imageHint": "sport bra"
+    },
+    {
+      "id": "loewe-on-legging-actif",
+      "imageUrl": "/images/products/Loewe_On_Legging_Actif.jpg",
+      "imageHint": "active legging"
+    },
+    {
+      "id": "loewe-on-storm-active-jacket",
+      "imageUrl": "/images/products/Loewe_On_Storm_Active_Jacket.jpg",
+      "imageHint": "active jacket"
+    },
+    {
+      "id": "under-armour-halo-bonded-legging",
+      "imageUrl": "/images/products/Under_Armour_Halo_Bonded_Legging.jpg",
+      "imageHint": "sport legging"
+    },
+    {
+      "id": "diesel-sport-track-jacket",
+      "imageUrl": "/images/products/Diesel_Sport_Track_Jacket.jpg",
+      "imageHint": "track jacket"
+    },
+    {
+      "id": "nagnata-laine-combinaison-yoga",
+      "imageUrl": "/images/products/Nagnata_Laine_Combinaison_Yoga.jpg",
+      "imageHint": "yoga jumpsuit"
+    },
+    {
+      "id": "lululemon-veste-premium",
+      "imageUrl": "/images/products/Lululemon_Veste_Premium.jpg",
+      "imageHint": "premium jacket"
+    },
+    {
+      "id": "peak-performance-tech-jacket",
+      "imageUrl": "/images/products/Peak_Performance_Tech_Jacket.jpg",
+      "imageHint": "tech jacket"
+    },
+    {
+      "id": "craft-running-tech-shirt",
+      "imageUrl": "/images/products/Craft_Running_Tech_Shirt.jpg",
+      "imageHint": "running shirt"
+    },
+    {
+      "id": "gore-wear-cycling-jersey",
+      "imageUrl": "/images/products/Gore_Wear_Cycling_Jersey.jpg",
+      "imageHint": "cycling jersey"
+    },
+    {
+      "id": "satisfy-running-short",
+      "imageUrl": "/images/products/Satisfy_Running_Short.jpg",
+      "imageHint": "running shorts"
+    },
+    {
+      "id": "bogner-ski-parka",
+      "imageUrl": "/images/products/Bogner_Ski_Parka.jpg",
       "imageHint": "ski parka"
     }
   ]

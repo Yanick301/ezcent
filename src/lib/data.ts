@@ -371,22 +371,6 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 'prod-41',
-    name: 'Kapuzenpullover',
-    name_fr: 'Sweat à capuche',
-    name_en: 'Hoodie',
-    slug: 'sweat-a-capuche-off-white',
-    price: 310,
-    description: 'Die Fusion von Streetwear und Luxus. Dieser Hoodie aus dickem Fleece zeichnet sich durch seine grafischen Signaturen aus und ist das Emblem einer rebellischen und hochkreativen Mode.',
-    description_fr: 'La fusion du streetwear et du luxe. Ce sweat à capuche en molleton épais, marqué de ses signatures graphiques, est l\'emblème d\'une mode rebelle et hautement créative.',
-    description_en: 'The fusion of streetwear and luxury. This thick fleece hoodie, marked with its graphic signatures, is the emblem of a rebellious and highly creative fashion.',
-    category: 'sport',
-    images: ['sweat-a-capuche-off-white'],
-    reviews: [
-      { author: 'Léo', rating: 5, comment: 'Plus qu\'un sweat, c\'est une pièce de designer. Confortable et stylé.'},
-    ]
-  },
-  {
     id: 'prod-42',
     name: 'Essential T-Shirt',
     name_fr: 'T-shirt Essential',
@@ -631,23 +615,6 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 'prod-57',
-    name: 'Luxus-Sneakers aus Nubukleder',
-    name_fr: 'Sneakers de luxe en cuir nubuck Runway',
-    name_en: 'Luxury Nubuck Leather Sneakers',
-    slug: 'sneakers-luxe-cuir-nubuck-runway',
-    price: 450,
-    description: 'Überschreiten Sie die Grenzen zwischen lässig und luxuriös. Diese Sneakers sind aus samtigem Nubukleder gefertigt und auf einer maßgefertigten Sohle montiert, die Komfort und High-Fashion-Stil vereint.',
-    description_fr: 'Transcendez les frontières entre le décontracté et le luxe. Ces sneakers sont fabriquées en cuir nubuck velouté et montées sur une semelle designée sur mesure, alliant confort et style haute-couture.',
-    description_en: 'Transcend the boundaries between casual and luxury. These sneakers are made of velvety nubuck leather and mounted on a custom-designed sole, combining comfort and high-fashion style.',
-    category: 'sport',
-    images: ['sneakers-luxe-cuir-nubuck-runway'],
-    reviews: [
-      { author: 'Tom', rating: 5, comment: 'Aussi confortables que stylées. Le nubuck est très doux.' },
-      { author: 'Lucas', rating: 5, comment: 'Un luxe discret et moderne. J\'adore.'}
-    ]
-  },
-  {
     id: 'prod-58',
     name: 'Lightweight Down Jacket',
     name_fr: 'Doudoune Légère',
@@ -744,22 +711,6 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 'prod-64',
-    name: 'Printed Hoodie',
-    name_fr: 'Hoodie Imprimé',
-    name_en: 'Printed Hoodie',
-    slug: 'hoodie-imprime-palm-angels',
-    price: 330,
-    description: 'Der Geist Kaliforniens in einem Hoodie. Mit seinem kühnen Druck und dem lässigen Schnitt verkörpert dieses Stück den coolen und luxuriösen Geist von Palm Angels.',
-    description_fr: 'L\'esprit de la Californie dans un hoodie. Avec son imprimé audacieux et sa coupe décontractée, cette pièce incarne l\'esprit cool et luxueux de Palm Angels.',
-    description_en: 'The spirit of California in a hoodie. With its bold print and relaxed fit, this piece embodies the cool and luxurious spirit of Palm Angels.',
-    category: 'sport',
-    images: ['hoodie-imprime-palm-angels'],
-    reviews: [
-        { author: 'Samuel', rating: 5, comment: 'Très stylé, l\'imprimé est de super qualité.'}
-    ]
-  },
-  {
     id: 'prod-65',
     name: 'Quilted Jacket',
     name_fr: 'Veste Matelassée',
@@ -808,38 +759,6 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 'prod-68',
-    name: 'Luxury Tracksuit',
-    name_fr: 'Survêtement de Luxe',
-    name_en: 'Luxury Tracksuit',
-    slug: 'survetement-luxe-adidas-gucci',
-    price: 1250,
-    description: 'Die ultimative Fusion von Sport und Luxus. Diese Zusammenarbeit zwischen Adidas und Gucci definiert den Trainingsanzug mit hochwertigen Stoffen und einem kühnen Co-Branding neu.',
-    description_fr: 'La fusion ultime du sport et du luxe. Cette collaboration entre Adidas et Gucci redéfinit le survêtement avec des tissus nobles et un co-branding audacieux.',
-    description_en: 'The ultimate fusion of sport and luxury. This collaboration between Adidas and Gucci redefines the tracksuit with noble fabrics and bold co-branding.',
-    category: 'sport',
-    images: ['survetement-luxe-adidas-gucci'],
-    reviews: [
-        { author: 'Kevin', rating: 5, comment: 'Une pièce de collection. Incroyable.'}
-    ]
-  },
-  {
-    id: 'prod-69',
-    name: 'Technical Jacket',
-    name_fr: 'Veste Technique',
-    name_en: 'Technical Jacket',
-    slug: 'veste-technique-nike-acg',
-    price: 310,
-    description: 'Für den urbanen Entdecker. Diese Jacke aus der ACG-Linie von Nike ist für alle Bedingungen konzipiert und kombiniert technische Leistung mit einem scharfen Street-Design.',
-    description_fr: 'Pour l\'explorateur urbain. Conçue pour toutes les conditions, cette veste de la ligne ACG de Nike allie performance technique et design street affûté.',
-    description_en: 'For the urban explorer. Designed for all conditions, this jacket from Nike\'s ACG line combines technical performance with a sharp street design.',
-    category: 'sport',
-    images: ['veste-technique-nike-acg'],
-    reviews: [
-        { author: 'Sami', rating: 5, comment: 'Parfaite pour la ville quand il pleut. Très bien pensée.'}
-    ]
-  },
-  {
     id: 'prod-70',
     name: 'Sleeveless Vest',
     name_fr: 'Gilet Sans Manches',
@@ -870,22 +789,6 @@ export const products: Product[] = [
     reviews: [
         { author: 'Marc', rating: 5, comment: 'Superbe montre, très classe et agréable à porter.' },
         { author: 'David', rating: 5, comment: 'Le noir mat est magnifique. Elle ne quitte plus mon poignet.'}
-    ]
-  },
-  {
-    id: 'acc-2',
-    name: 'Hydrosport Sportuhr',
-    name_fr: 'Montre sport Hydrosport',
-    name_en: 'Hydrosport Sports Watch',
-    slug: 'montre-sport-silicone-hydrosport-5-atm',
-    price: 170,
-    description: 'Der ideale Begleiter für den modernen Abenteurer. Mit ihrem widerstandsfähigen Silikonarmband und einer Wasserdichtigkeit von 5 ATM ist diese Uhr für jede Herausforderung bereit, ohne jemals auf Stil zu verzichten.',
-    description_fr: 'Le compagnon idéal de l\'aventurier moderne. Avec son bracelet en silicone résistant et son étanchéité à 5 ATM, cette montre est conçue pour affronter tous les défis sans jamais sacrifier le style.',
-    description_en: 'The ideal companion for the modern adventurer. With its durable silicone strap and 5 ATM water resistance, this watch is designed to tackle any challenge without ever sacrificing style.',
-    category: 'sport',
-    images: ['montre-sport-silicone-hydrosport-5-atm'],
-    reviews: [
-        { author: 'Kevin', rating: 5, comment: 'Robuste et stylée, parfaite pour mes activités sportives.'}
     ]
   },
   {
@@ -922,22 +825,6 @@ export const products: Product[] = [
     ]
   },
   {
-    id: 'acc-5',
-    name: 'Urban Tech Digitaluhr',
-    name_fr: 'Montre digitale Urban Tech',
-    name_en: 'Urban Tech Digital Watch',
-    slug: 'montre-digitale-led-urban-tech',
-    price: 120,
-    description: 'Ein Konzentrat aus Technologie und Stil. Diese digitale Uhr mit ihrem klaren LED-Display und minimalistischem Design ist das perfekte Accessoire für einen Look, der entschieden in der Zukunft verankert ist.',
-    description_fr: 'Un concentré de technologie et de style. Cette montre digitale, avec son affichage LED clair et son design minimaliste, est l\'accessoire parfait pour un look résolument ancré dans le futur.',
-    description_en: 'A concentrate of technology and style. This digital watch, with its clear LED display and minimalist design, is the perfect accessory for a look resolutely anchored in the future.',
-    category: 'sport',
-    images: ['montre-digitale-led-urban-tech'],
-    reviews: [
-        { author: 'Simon', rating: 4, comment: 'Design sympa et futuriste. Très légère.'}
-    ]
-  },
-  {
     id: 'acc-6',
     name: 'Executive Elite Uhr',
     name_fr: 'Montre Executive Elite',
@@ -951,22 +838,6 @@ export const products: Product[] = [
     images: ['montre-cadran-or-rose-executive-elite'],
     reviews: [
         { author: 'Charles', rating: 5, comment: 'Une montre qui impose le respect. Finitions impeccables.'}
-    ]
-  },
-  {
-    id: 'acc-7',
-    name: 'Titan Steel Pro Chronograph',
-    name_fr: 'Chronographe Titan Steel Pro',
-    name_en: 'Titan Steel Pro Chronograph',
-    slug: 'montre-chronographe-titan-steel-pro',
-    price: 420,
-    description: 'Gebaut für die Ewigkeit. Dieser Chronograph aus ultraleichtem und widerstandsfähigem Titan ist ein Konzentrat aus Leistung und Präzision. Sein technisches Design und seine Robustheit machen ihn zum Werkzeug für kompromisslose Männer.',
-    description_fr: 'Conçu pour durer. Ce chronographe en titane, ultra-léger et résistant, est un concentré de performance et de précision. Son design technique et sa robustesse en font l\'outil des hommes sans compromis.',
-    description_en: 'Built to last. This ultra-light and resistant titanium chronograph is a concentrate of performance and precision. Its technical design and robustness make it the tool for uncompromising men.',
-    category: 'sport',
-    images: ['montre-chronographe-titan-steel-pro'],
-    reviews: [
-      { author: 'Olivier', rating: 5, comment: 'Légère, robuste et très précise. Une montre d\'exception.'}
     ]
   },
   {
@@ -1544,286 +1415,6 @@ export const products: Product[] = [
     reviews: [{ author: 'Victoria', rating: 5, comment: 'C\'est l\'accessoire le plus mignon et le plus chic que je possède.' }]
   },
   {
-    id: 'sport-1',
-    name: 'Nike Air Zoom Pegasus 40 - Laufschuhe',
-    name_fr: 'Nike Air Zoom Pegasus 40 - Chaussures de running',
-    name_en: 'Nike Air Zoom Pegasus 40 – Running Shoes',
-    slug: 'nike-air-zoom-pegasus-40-running-shoes',
-    price: 145,
-    description: 'Hochleistungs-Laufschuhe mit Zoom Air-Dämpfung für das tägliche Training.',
-    description_fr: 'Chaussures de course haute performance avec amorti Zoom Air pour l\'entraînement quotidien.',
-    description_en: 'High-performance running shoes with Zoom Air cushioning for daily training.',
-    category: 'sport',
-    images: ['nike-air-zoom-pegasus-40-running-shoes'],
-    reviews: []
-  },
-  {
-    id: 'sport-2',
-    name: 'Adidas Ultraboost Light - Laufschuhe',
-    name_fr: 'Adidas Ultraboost Light - Chaussures de running',
-    name_en: 'Adidas Ultraboost Light – Running Shoes',
-    slug: 'adidas-ultraboost-light-running-shoes',
-    price: 180,
-    description: 'Leichte Premium-Laufschuhe mit überragender Energierückgabe.',
-    description_fr: 'Chaussures de course légères et haut de gamme avec un retour d\'énergie supérieur.',
-    description_en: 'Lightweight premium running shoes with superior energy return.',
-    category: 'sport',
-    images: ['adidas-ultraboost-light-running-shoes'],
-    reviews: []
-  },
-  {
-    id: 'sport-3',
-    name: 'Puma Spectra Pro Trainingsjacke',
-    name_fr: 'Veste d\'entraînement Puma Spectra Pro',
-    name_en: 'Puma Spectra Pro Training Jacket',
-    slug: 'puma-spectra-pro-training-jacket',
-    price: 120,
-    description: 'Atmungsaktive, leichte Trainingsjacke für intensive Outdoor-Einheiten.',
-    description_fr: 'Veste d\'entraînement respirante et légère conçue pour les sessions intenses en extérieur.',
-    description_en: 'Breathable, lightweight training jacket designed for intense outdoor sessions.',
-    category: 'sport',
-    images: ['puma-spectra-pro-training-jacket'],
-    reviews: []
-  },
-  {
-    id: 'sport-4',
-    name: 'Under Armour HeatGear Kompressions-Set',
-    name_fr: 'Ensemble de compression Under Armour HeatGear',
-    name_en: 'Under Armour HeatGear Compression Set',
-    slug: 'under-armour-heatgear-compression-set',
-    price: 135,
-    description: 'Professionelles Kompressions-Top und Leggings für verbesserte Körperunterstützung.',
-    description_fr: 'Haut et leggings de compression de qualité professionnelle pour un soutien corporel amélioré.',
-    description_en: 'Professional-grade compression top and leggings for enhanced body support.',
-    category: 'sport',
-    images: ['under-armour-heatgear-compression-set'],
-    reviews: []
-  },
-  {
-    id: 'sport-5',
-    name: 'Nike Tech Fleece Jogginghose',
-    name_fr: 'Pantalon de jogging Nike Tech Fleece',
-    name_en: 'Nike Tech Fleece Jogger Pants',
-    slug: 'nike-tech-fleece-jogger-pants',
-    price: 110,
-    description: 'Ikonische, warme und leichte Jogginghose, ideal für Sport und Streetwear.',
-    description_fr: 'Pantalon de jogging emblématique, chaud et léger, idéal pour le sport et le streetwear.',
-    description_en: 'Iconic warm and lightweight joggers ideal for sports and streetwear.',
-    category: 'sport',
-    images: ['nike-tech-fleece-jogger-pants'],
-    reviews: []
-  },
-  {
-    id: 'sport-6',
-    name: 'Adidas Tiro 24 Elite Trainingsanzug',
-    name_fr: 'Survêtement Adidas Tiro 24 Elite',
-    name_en: 'Adidas Tiro 24 Elite Tracksuit',
-    slug: 'adidas-tiro-24-elite-tracksuit',
-    price: 160,
-    description: 'Vollständiger Premium-Fußball-Trainingsanzug für Training und Aufwärmen.',
-    description_fr: 'Survêtement de football complet et haut de gamme pour l\'entraînement et les échauffements.',
-    description_en: 'Full premium football tracksuit for training and warm-ups.',
-    category: 'sport',
-    images: ['adidas-tiro-24-elite-tracksuit'],
-    reviews: []
-  },
-  {
-    id: 'sport-7',
-    name: 'North Face Summit Series Trail-Rucksack 20L',
-    name_fr: 'Sac à dos de trail North Face Summit Series 20L',
-    name_en: 'North Face Summit Series Trail Backpack 20L',
-    slug: 'north-face-summit-series-trail-backpack-20l',
-    price: 170,
-    description: 'Technischer, leichter Trail-Rucksack für lange Distanzen.',
-    description_fr: 'Sac à dos de trail technique et léger conçu pour les longues distances.',
-    description_en: 'Technical lightweight trail backpack built for long distances.',
-    category: 'sport',
-    images: ['north-face-summit-series-trail-backpack-20l'],
-    reviews: []
-  },
-  {
-    id: 'sport-8',
-    name: 'Salomon Speedcross 6 Trail-Schuhe',
-    name_fr: 'Chaussures de trail Salomon Speedcross 6',
-    name_en: 'Salomon Speedcross 6 Trail Shoes',
-    slug: 'salomon-speedcross-6-trail-shoes',
-    price: 150,
-    description: 'Trail-Laufschuhe mit aggressivem Grip für extremes Gelände.',
-    description_fr: 'Chaussures de trail running à adhérence agressive pour les terrains extrêmes.',
-    description_en: 'Aggressive-grip trail running shoes for extreme terrains.',
-    category: 'sport',
-    images: ['salomon-speedcross-6-trail-shoes'],
-    reviews: []
-  },
-  {
-    id: 'sport-9',
-    name: 'Garmin Forerunner 55 - GPS-Sportuhr',
-    name_fr: 'Garmin Forerunner 55 - Montre de sport GPS',
-    name_en: 'Garmin Forerunner 55 – GPS Sports Watch',
-    slug: 'garmin-forerunner-55-gps-sports-watch',
-    price: 220,
-    description: 'Fortschrittliche Sport-Smartwatch mit GPS, VO₂-Max und Trainingsfunktionen.',
-    description_fr: 'Montre de sport intelligente avancée avec GPS, VO₂ max et fonctionnalités d\'entraînement.',
-    description_en: 'Advanced sports smartwatch with GPS, VO₂ max and training features.',
-    category: 'sport',
-    images: ['garmin-forerunner-55-gps-sports-watch'],
-    reviews: []
-  },
-  {
-    id: 'sport-10',
-    name: 'Polar H10 Herzfrequenzsensor Pro',
-    name_fr: 'Capteur de fréquence cardiaque Polar H10 Pro',
-    name_en: 'Polar H10 Heart Rate Sensor Pro',
-    slug: 'polar-h10-heart-rate-sensor-pro',
-    price: 105,
-    description: 'Ultrapräziser Herzfrequenzsensor für Athleten.',
-    description_fr: 'Capteur de fréquence cardiaque ultra-précis pour les athlètes.',
-    description_en: 'Ultra-precise heart rate sensor for athletes.',
-    category: 'sport',
-    images: ['polar-h10-heart-rate-sensor-pro'],
-    reviews: []
-  },
-  {
-    id: 'sport-11',
-    name: 'Wilson Pro Staff Elite Tennisschläger',
-    name_fr: 'Raquette de tennis Wilson Pro Staff Elite',
-    name_en: 'Wilson Pro Staff Elite Tennis Racket',
-    slug: 'wilson-pro-staff-elite-tennis-racket',
-    price: 200,
-    description: 'Leichter Carbon-Schläger für Stabilität und Präzision.',
-    description_fr: 'Raquette en carbone légère conçue pour la stabilité et la précision.',
-    description_en: 'Lightweight carbon racket designed for stability and precision.',
-    category: 'sport',
-    images: ['wilson-pro-staff-elite-tennis-racket'],
-    reviews: []
-  },
-  {
-    id: 'sport-12',
-    name: 'Head Graphene 360 Speed MP Tennisschläger',
-    name_fr: 'Raquette de tennis Head Graphene 360 Speed MP',
-    name_en: 'Head Graphene 360 Speed MP Tennis Racket',
-    slug: 'head-graphene-360-speed-mp-tennis-racket',
-    price: 190,
-    description: 'Profi-Schläger mit explosiver Kraft und optimierter Energieübertragung.',
-    description_fr: 'Raquette professionnelle avec une puissance explosive et un transfert d\'énergie optimisé.',
-    description_en: 'Professional racket with explosive power and optimized energy transfer.',
-    category: 'sport',
-    images: ['head-graphene-360-speed-mp-tennis-racket'],
-    reviews: []
-  },
-  {
-    id: 'sport-13',
-    name: 'Spalding NBA Evolution Offizieller Basketball',
-    name_fr: 'Ballon de basket officiel Spalding NBA Evolution',
-    name_en: 'Spalding NBA Evolution Official Basketball',
-    slug: 'spalding-nba-evolution-official-basketball',
-    price: 120,
-    description: 'Offizieller Indoor-Basketball mit Premium-Grip und Haltbarkeit.',
-    description_fr: 'Ballon de basket d\'intérieur officiel avec une adhérence et une durabilité de première qualité.',
-    description_en: 'Official indoor basketball with premium grip and durability.',
-    category: 'sport',
-    images: ['spalding-nba-evolution-official-basketball'],
-    reviews: []
-  },
-  {
-    id: 'sport-14',
-    name: 'Everlast Elite Boxhandschuhe 14oz',
-    name_fr: 'Gants de boxe Everlast Elite 14oz',
-    name_en: 'Everlast Elite Punching Gloves 14oz',
-    slug: 'everlast-elite-punching-gloves-14oz',
-    price: 130,
-    description: 'Professionelle Boxhandschuhe mit überlegener Handgelenkstütze.',
-    description_fr: 'Gants de boxe professionnels avec un soutien supérieur du poignet.',
-    description_en: 'Professional boxing gloves with superior wrist support.',
-    category: 'sport',
-    images: ['everlast-elite-punching-gloves-14oz'],
-    reviews: []
-  },
-  {
-    id: 'sport-15',
-    name: 'Adidas Predator League Schienbeinschoner',
-    name_fr: 'Protège-tibias Adidas Predator League',
-    name_en: 'Adidas Predator League Shin Guards',
-    slug: 'adidas-predator-league-shin-guards',
-    price: 110,
-    description: 'Hochschutz-Schienbeinschoner mit ergonomischer Passform.',
-    description_fr: 'Protège-tibias haute protection avec un ajustement ergonomique.',
-    description_en: 'High-protection shin guards with ergonomic fit.',
-    category: 'sport',
-    images: ['adidas-predator-league-shin-guards'],
-    reviews: []
-  },
-  {
-    id: 'sport-16',
-    name: 'Nike Dri-Fit ADV Trainings-Hoodie',
-    name_fr: 'Sweat à capuche d\'entraînement Nike Dri-Fit ADV',
-    name_en: 'Nike Dri-Fit ADV Training Hoodie',
-    slug: 'nike-dri-fit-adv-training-hoodie',
-    price: 130,
-    description: 'Schweißableitender Performance-Hoodie für hochintensive Workouts.',
-    description_fr: 'Sweat à capuche performant anti-transpiration pour les entraînements de haute intensité.',
-    description_en: 'Sweat-proof performance hoodie for high-intensity workouts.',
-    category: 'sport',
-    images: ['nike-dri-fit-adv-training-hoodie'],
-    reviews: []
-  },
-  {
-    id: 'sport-17',
-    name: 'Reebok Nano X4 Cross-Training-Schuhe',
-    name_fr: 'Chaussures de cross-training Reebok Nano X4',
-    name_en: 'Reebok Nano X4 Cross-Training Shoes',
-    slug: 'reebok-nano-x4-cross-training-shoes',
-    price: 150,
-    description: 'Hochstabile Schuhe, perfekt für Fitnessstudio, CrossFit und HIIT.',
-    description_fr: 'Chaussures à haute stabilité parfaites pour la salle de sport, le CrossFit et le HIIT.',
-    description_en: 'High-stability shoes perfect for gym, CrossFit, and HIIT.',
-    category: 'sport',
-    images: ['reebok-nano-x4-cross-training-shoes'],
-    reviews: []
-  },
-  {
-    id: 'sport-18',
-    name: 'Columbia OmniHeat Wintersportjacke',
-    name_fr: 'Veste de sports d\'hiver Columbia OmniHeat',
-    name_en: 'Columbia OmniHeat Winter Sports Jacket',
-    slug: 'columbia-omniheat-winter-sports-jacket',
-    price: 195,
-    description: 'Leichte technische Jacke mit reflektierendem Thermofutter.',
-    description_fr: 'Veste technique légère avec doublure thermique réfléchissante.',
-    description_en: 'Lightweight technical jacket with reflective thermal lining.',
-    category: 'winter-clothing',
-    images: ['columbia-omniheat-winter-sports-jacket'],
-    reviews: []
-  },
-  {
-    id: 'sport-19',
-    name: 'Oakley Radar EV Path Sportsonnenbrille',
-    name_fr: 'Lunettes de soleil de sport Oakley Radar EV Path',
-    name_en: 'Oakley Radar EV Path Sport Sunglasses',
-    slug: 'oakley-radar-ev-path-sport-sunglasses',
-    price: 160,
-    description: 'Performance-Brille mit hochklaren Gläsern und UV-Schutz.',
-    description_fr: 'Lunettes de performance avec des verres haute clarté et une protection UV.',
-    description_en: 'Performance eyewear with high-clarity lenses and UV protection.',
-    category: 'sport',
-    images: ['oakley-radar-ev-path-sport-sunglasses'],
-    reviews: []
-  },
-  {
-    id: 'sport-20',
-    name: 'Under Armour Storm Wasserdichte Trainingstasche 50L',
-    name_fr: 'Sac d\'entraînement étanche Under Armour Storm 50L',
-    name_en: 'Under Armour Storm Waterproof Training Bag 50L',
-    slug: 'under-armour-storm-waterproof-training-bag-50l',
-    price: 140,
-    description: 'Robuste, wasserdichte Sporttasche mit mehreren Fächern.',
-    description_fr: 'Sac de sport étanche et durable avec plusieurs compartiments.',
-    description_en: 'Durable waterproof sports bag with multiple compartments.',
-    category: 'sport',
-    images: ['under-armour-storm-waterproof-training-bag-50l'],
-    reviews: []
-  },
-  {
     id: 'prod-80',
     name: 'Canada Goose MacMillan Parka',
     name_fr: 'Parka MacMillan Canada Goose',
@@ -2038,6 +1629,258 @@ export const products: Product[] = [
     category: 'winter-clothing',
     images: ['bogner-fire-ice-ski-parka'],
     reviews: []
+  },
+  {
+    id: 'sport-101',
+    name: 'Adidas by Stella McCartney Veste',
+    name_fr: 'Veste Adidas by Stella McCartney',
+    name_en: 'Adidas by Stella McCartney Jacket',
+    slug: 'adidas-stella-mccartney-veste',
+    price: 280,
+    description: 'Eine technische und schicke Jacke, perfekt für das Training bei kühlem Wetter, die Leistung und Stil vereint.',
+    description_fr: 'Une veste technique et chic, parfaite pour les entraînements par temps frais, alliant performance et style.',
+    description_en: 'A technical and chic jacket, perfect for cool weather training, combining performance and style.',
+    category: 'sport',
+    images: ['adidas-stella-mccartney-veste'],
+    reviews: []
+  },
+  {
+    id: 'sport-102',
+    name: 'Adidas by Stella McCartney Legging',
+    name_fr: 'Legging Adidas by Stella McCartney',
+    name_en: 'Adidas by Stella McCartney Legging',
+    slug: 'adidas-stella-mccartney-legging',
+    price: 150,
+    description: 'Hochleistungs-Leggings mit schmeichelhaftem Schnitt für optimale Bewegungsfreiheit.',
+    description_fr: 'Un legging haute performance avec une coupe flatteuse pour une liberté de mouvement optimale.',
+    description_en: 'High-performance leggings with a flattering cut for optimal freedom of movement.',
+    category: 'sport',
+    images: ['adidas-stella-mccartney-legging'],
+    reviews: []
+  },
+  {
+    id: 'sport-103',
+    name: 'Alo Yoga Veste Zippée',
+    name_fr: 'Veste Zippée Alo Yoga',
+    name_en: 'Alo Yoga Zip Jacket',
+    slug: 'alo-yoga-veste-zippee',
+    price: 180,
+    description: 'Eine weiche und bequeme Reißverschlussjacke, ideal zum Aufwärmen oder für einen lässigen Look nach dem Yoga.',
+    description_fr: 'Une veste zippée douce et confortable, idéale pour l\'échauffement ou pour un look décontracté post-yoga.',
+    description_en: 'A soft and comfortable zip jacket, ideal for warm-ups or for a casual post-yoga look.',
+    category: 'sport',
+    images: ['alo-yoga-veste-zippee'],
+    reviews: []
+  },
+  {
+    id: 'sport-104',
+    name: 'Alo Yoga Haut Entraînement',
+    name_fr: 'Haut d\'Entraînement Alo Yoga',
+    name_en: 'Alo Yoga Training Top',
+    slug: 'alo-yoga-haut-entrainement',
+    price: 90,
+    description: 'Ein atmungsaktives und stilvolles Trainingsoberteil, das für Komfort bei intensivsten Sitzungen entwickelt wurde.',
+    description_fr: 'Un haut d\'entraînement respirant et stylé, conçu pour le confort pendant les sessions les plus intenses.',
+    description_en: 'A breathable and stylish training top, designed for comfort during the most intense sessions.',
+    category: 'sport',
+    images: ['alo-yoga-haut-entrainement'],
+    reviews: []
+  },
+  {
+    id: 'sport-105',
+    name: 'HAUTE Motion Fleece Polaire',
+    name_fr: 'Polaire HAUTE Motion Fleece',
+    name_en: 'HAUTE Motion Fleece',
+    slug: 'haute-motion-fleece-polaire',
+    price: 220,
+    description: 'Ein luxuriöses Fleece für optimale Wärme, perfekt für Outdoor-Aktivitäten oder einen urbanen Winterlook.',
+    description_fr: 'Un polaire luxueux pour une chaleur optimale, parfait pour les activités de plein air ou un look urbain en hiver.',
+    description_en: 'A luxurious fleece for optimal warmth, perfect for outdoor activities or an urban winter look.',
+    category: 'sport',
+    images: ['haute-motion-fleece-polaire'],
+    reviews: []
+  },
+  {
+    id: 'sport-106',
+    name: 'HAUTE Legging Nomad',
+    name_fr: 'Legging Nomad HAUTE',
+    name_en: 'HAUTE Nomad Legging',
+    slug: 'haute-legging-nomad',
+    price: 130,
+    description: 'Technische Leggings mit modernem Design, die unübertroffenen Komfort und außergewöhnliche Haltbarkeit bieten.',
+    description_fr: 'Un legging technique au design moderne, offrant un confort inégalé et une durabilité exceptionnelle.',
+    description_en: 'Technical leggings with a modern design, offering unmatched comfort and exceptional durability.',
+    category: 'sport',
+    images: ['haute-legging-nomad'],
+    reviews: []
+  },
+  {
+    id: 'sport-107',
+    name: 'Loewe x On Brassière Sport',
+    name_fr: 'Brassière de Sport Loewe x On',
+    name_en: 'Loewe x On Sports Bra',
+    slug: 'loewe-on-brassiere-sport',
+    price: 190,
+    description: 'Die perfekte Kombination aus Luxus und Leistung, dieser Sport-BH bietet optimalen Halt mit einem Hauch von High-Fashion.',
+    description_fr: 'L\'alliance parfaite du luxe et de la performance, cette brassière de sport offre un maintien optimal avec une touche haute-couture.',
+    description_en: 'The perfect blend of luxury and performance, this sports bra offers optimal support with a high-fashion touch.',
+    category: 'sport',
+    images: ['loewe-on-brassiere-sport'],
+    reviews: []
+  },
+  {
+    id: 'sport-108',
+    name: 'Loewe x On Legging Actif',
+    name_fr: 'Legging Actif Loewe x On',
+    name_en: 'Loewe x On Active Legging',
+    slug: 'loewe-on-legging-actif',
+    price: 250,
+    description: 'Kombinieren Sie Stil und Funktion mit diesen Leggings, die aus der Zusammenarbeit zwischen Loewe und On hervorgegangen sind.',
+    description_fr: 'Associez style et fonctionnalité avec ce legging issu de la collaboration entre Loewe et On.',
+    description_en: 'Combine style and functionality with these leggings from the collaboration between Loewe and On.',
+    category: 'sport',
+    images: ['loewe-on-legging-actif'],
+    reviews: []
+  },
+  {
+    id: 'sport-109',
+    name: 'Loewe x On Storm Active Jacket',
+    name_fr: 'Veste Active Storm Loewe x On',
+    name_en: 'Loewe x On Storm Active Jacket',
+    slug: 'loewe-on-storm-active-jacket',
+    price: 450,
+    description: 'Eine technische Jacke, die für alle Bedingungen konzipiert wurde und Sie vor den Elementen schützt, ohne den Stil zu beeinträchtigen.',
+    description_fr: 'Une veste technique conçue pour toutes les conditions, vous protégeant des éléments sans compromis sur le style.',
+    description_en: 'A technical jacket designed for all conditions, protecting you from the elements without compromising on style.',
+    category: 'sport',
+    images: ['loewe-on-storm-active-jacket'],
+    reviews: []
+  },
+  {
+    id: 'sport-110',
+    name: 'Under Armour Halo Bonded Legging',
+    name_fr: 'Legging Halo Bonded Under Armour',
+    name_en: 'Under Armour Halo Bonded Legging',
+    slug: 'under-armour-halo-bonded-legging',
+    price: 110,
+    description: 'Innovatives Design für ein Gefühl wie eine zweite Haut und absoluten Komfort während des Trainings.',
+    description_fr: 'Un design innovant pour une sensation de seconde peau et un confort absolu pendant l\'effort.',
+    description_en: 'An innovative design for a second-skin feel and absolute comfort during exercise.',
+    category: 'sport',
+    images: ['under-armour-halo-bonded-legging'],
+    reviews: []
+  },
+  {
+    id: 'sport-111',
+    name: 'Diesel Sport Track Jacket',
+    name_fr: 'Veste de Survetement Diesel Sport',
+    name_en: 'Diesel Sport Track Jacket',
+    slug: 'diesel-sport-track-jacket',
+    price: 210,
+    description: 'Eine Trainingsjacke mit Retro-Look und modernem Touch, perfekt für einen sportlichen und trendigen Stil.',
+    description_fr: 'Une veste de survêtement au look rétro avec une touche moderne, parfaite pour un style sportif et tendance.',
+    description_en: 'A retro-look track jacket with a modern twist, perfect for a sporty and trendy style.',
+    category: 'sport',
+    images: ['diesel-sport-track-jacket'],
+    reviews: []
+  },
+  {
+    id: 'sport-112',
+    name: 'Nagnata Laine Combinaison Yoga',
+    name_fr: 'Combinaison de Yoga en Laine Nagnata',
+    name_en: 'Nagnata Wool Yoga Jumpsuit',
+    slug: 'nagnata-laine-combinaison-yoga',
+    price: 350,
+    description: 'Eine elegante und bequeme Yoga-Kombination aus Merinowolle für eine luxuriöse Praxis.',
+    description_fr: 'Une combinaison de yoga élégante et confortable en laine mérinos pour une pratique luxueuse.',
+    description_en: 'An elegant and comfortable merino wool yoga jumpsuit for a luxurious practice.',
+    category: 'sport',
+    images: ['nagnata-laine-combinaison-yoga'],
+    reviews: []
+  },
+  {
+    id: 'sport-113',
+    name: 'Lululemon Veste Premium',
+    name_fr: 'Veste Premium Lululemon',
+    name_en: 'Lululemon Premium Jacket',
+    slug: 'lululemon-veste-premium',
+    price: 250,
+    description: 'Eine hochwertige Jacke, die Leistung und Ästhetik für einen anspruchsvollen sportlichen Look vereint.',
+    description_fr: 'Une veste de qualité supérieure qui combine performance et esthétique pour un look sportif sophistiqué.',
+    description_en: 'A premium jacket that combines performance and aesthetics for a sophisticated sporty look.',
+    category: 'sport',
+    images: ['lululemon-veste-premium'],
+    reviews: []
+  },
+  {
+    id: 'sport-114',
+    name: 'Peak Performance Tech Jacket',
+    name_fr: 'Veste Technique Peak Performance',
+    name_en: 'Peak Performance Tech Jacket',
+    slug: 'peak-performance-tech-jacket',
+    price: 300,
+    description: 'Eine technische Jacke für Outdoor-Abenteuer, die optimalen Schutz und große Bewegungsfreiheit bietet.',
+    description_fr: 'Une veste technique pour les aventures en plein air, offrant une protection optimale et une grande liberté de mouvement.',
+    description_en: 'A technical jacket for outdoor adventures, offering optimal protection and great freedom of movement.',
+    category: 'sport',
+    images: ['peak-performance-tech-jacket'],
+    reviews: []
+  },
+  {
+    id: 'sport-115',
+    name: 'Craft Running Tech Shirt',
+    name_fr: 'T-shirt Technique de Course Craft',
+    name_en: 'Craft Running Tech Shirt',
+    slug: 'craft-running-tech-shirt',
+    price: 75,
+    description: 'Ein technisches Lauf-T-Shirt für maximale Leistung, das Atmungsaktivität und Komfort gewährleistet.',
+    description_fr: 'Un t-shirt de course technique pour une performance maximale, assurant respirabilité et confort.',
+    description_en: 'A technical running shirt for maximum performance, ensuring breathability and comfort.',
+    category: 'sport',
+    images: ['craft-running-tech-shirt'],
+    reviews: []
+  },
+  {
+    id: 'sport-116',
+    name: 'Gore Wear Cycling Jersey',
+    name_fr: 'Maillot de Cyclisme Gore Wear',
+    name_en: 'Gore Wear Cycling Jersey',
+    slug: 'gore-wear-cycling-jersey',
+    price: 160,
+    description: 'Ein professionelles Radtrikot für anspruchsvolle Radfahrer, das Aerodynamik und Komfort vereint.',
+    description_fr: 'Un maillot de cyclisme professionnel pour les cyclistes exigeants, alliant aérodynamisme et confort.',
+    description_en: 'A professional cycling jersey for demanding cyclists, combining aerodynamics and comfort.',
+    category: 'sport',
+    images: ['gore-wear-cycling-jersey'],
+    reviews: []
+  },
+  {
+    id: 'sport-117',
+    name: 'Satisfy Running Short',
+    name_fr: 'Short de Course Satisfy',
+    name_en: 'Satisfy Running Short',
+    slug: 'satisfy-running-short',
+    price: 140,
+    description: 'Laufshorts mit minimalistischem Design und technischen Stoffen für ein unvergleichliches Lauferlebnis.',
+    description_fr: 'Un short de course au design minimaliste et aux tissus techniques pour une expérience de course inégalée.',
+    description_en: 'Running shorts with a minimalist design and technical fabrics for an unparalleled running experience.',
+    category: 'sport',
+    images: ['satisfy-running-short'],
+    reviews: []
+  },
+  {
+    id: 'sport-118',
+    name: 'Bogner Ski Parka',
+    name_fr: 'Parka de Ski Bogner',
+    name_en: 'Bogner Ski Parka',
+    slug: 'bogner-ski-parka',
+    price: 1200,
+    description: 'Ein High-End-Skiparka, der Eleganz und Leistung für einen tadellosen Stil auf der Piste vereint.',
+    description_fr: 'Une parka de ski haut de gamme qui allie élégance et performance pour un style impeccable sur les pistes.',
+    description_en: 'A high-end ski parka that combines elegance and performance for an impeccable style on the slopes.',
+    category: 'sport',
+    images: ['bogner-ski-parka'],
+    reviews: []
   }
 ];
 
@@ -2091,4 +1934,5 @@ export function getWinterSaleProducts(products: Product[], limit?: number): Prod
   }
   return combined;
 }
+
 
