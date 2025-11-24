@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import { categories } from '@/lib/data';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { CartButton } from '@/components/cart/CartButton';
 import { UserButton } from './auth/UserButton';
 import { TranslatedText } from './TranslatedText';
@@ -37,6 +37,8 @@ export function Header() {
               side="left"
               className="flex w-[300px] flex-col bg-background p-0 sm:w-[350px]"
             >
+              {/* Visually hidden title for accessibility */}
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <header className="border-b p-6">
                     <Link
                         href="/"
