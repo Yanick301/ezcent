@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ShoppingBag, Upload, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import { useCollection, useFirestore, useUser, useMemoFirebase } from '@/firebase';
-import { collection, doc, updateDoc, query, where } from 'firebase/firestore';
+import { collection, doc, updateDoc, query, where, Timestamp } from 'firebase/firestore';
 import { useRef, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
@@ -143,6 +143,18 @@ export default function OrdersPage() {
       default: return de;
     }
   }
+  
+  const getSafeDate = (order: any) => {
+    if (order.orderDate && typeof order.orderDate.toDate === 'function') {
+        return order.orderDate.toDate();
+    }
+    if (order.orderDate instanceof Timestamp) {
+        return order.orderDate.toDate();
+    }
+    // Fallback for newly created orders that might not have a full Timestamp object yet
+    return new Date();
+  }
+
 
   if (isLoading) {
     return <div className="text-center p-12"><Loader2 className="mx-auto h-8 w-8 animate-spin text-muted-foreground" /></div>;
@@ -162,16 +174,16 @@ export default function OrdersPage() {
       </h1>
       {orders && orders.length > 0 ? (
         <div className="space-y-6">
-          {(orders as any[]).sort((a,b) => (b.orderDate?.toDate() || 0) - (a.orderDate?.toDate() || 0)).map((order: any) => (
+          {(orders as any[]).sort((a,b) => getSafeDate(b).getTime() - getSafeDate(a).getTime()).map((order: any) => (
             <Card key={order.id}>
               <CardHeader className="flex-row items-center justify-between">
                 <div>
                   <CardTitle className="text-lg">
                     <TranslatedText 
-                      fr={`Commande du ${order.orderDate ? format(order.orderDate.toDate(), 'PPP', { locale: fr }) : ''}`}
-                      en={`Order of ${order.orderDate ? format(order.orderDate.toDate(), 'PPP', { locale: enUS }) : ''}`}
+                      fr={`Commande du ${format(getSafeDate(order), 'PPP', { locale: fr })}`}
+                      en={`Order of ${format(getSafeDate(order), 'PPP', { locale: enUS })}`}
                     >
-                      Bestellung vom {order.orderDate ? format(order.orderDate.toDate(), 'PPP', { locale: de }) : ''}
+                      Bestellung vom {format(getSafeDate(order), 'PPP', { locale: de })}
                     </TranslatedText>
                   </CardTitle>
                   <CardDescription>
@@ -267,5 +279,3 @@ export default function OrdersPage() {
     </div>
   );
 }
-
-    
