@@ -5,38 +5,33 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  CardDescription,
 } from '@/components/ui/card';
-import { TranslatedText } from '@/components/TranslatedText';
 import {
   Loader2,
-  ShieldX,
   AlertCircle,
   Clock,
   CheckCircle,
   FileCheck,
 } from 'lucide-react';
 import { useUser, useFirestore, useMemoFirebase } from '@/firebase';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState, useMemo } from 'react';
 import {
   collection,
   query,
   orderBy,
   doc,
-  updateDoc,
+  writeBatch,
 } from 'firebase/firestore';
 import { useCollection } from '@/firebase/firestore/use-collection';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { fr, de, enUS } from 'date-fns/locale';
 import { useLanguage } from '@/context/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
+import { TranslatedText } from '@/components/TranslatedText';
 
 export default function AdminDashboardPage() {
   const { user, isAdmin, isUserLoading } = useUser();
-  const router = useRouter();
   const firestore = useFirestore();
   const { toast } = useToast();
   const { language } = useLanguage();
@@ -69,13 +64,17 @@ export default function AdminDashboardPage() {
     if (!firestore) return;
     setUpdatingOrderId(orderId);
     try {
+      const batch = writeBatch(firestore);
+
       // Update global order
       const globalOrderRef = doc(firestore, 'orders', orderId);
-      await updateDoc(globalOrderRef, { paymentStatus: 'completed' });
+      batch.update(globalOrderRef, { paymentStatus: 'completed' });
 
       // Update user-specific order
       const userOrderRef = doc(firestore, `userProfiles/${userId}/orders`, orderId);
-      await updateDoc(userOrderRef, { paymentStatus: 'completed' });
+      batch.update(userOrderRef, { paymentStatus: 'completed' });
+
+      await batch.commit();
 
       toast({
         title: 'Paiement Validé',
@@ -126,12 +125,6 @@ export default function AdminDashboardPage() {
     };
   }, [orders]);
 
-  useEffect(() => {
-    if (!isUserLoading && !isAdmin) {
-      router.push('/account');
-    }
-  }, [user, isAdmin, isUserLoading, router]);
-
   if (isUserLoading || !isAdmin) {
     return (
       <div className="container mx-auto flex h-[60vh] items-center justify-center p-12 text-center">
@@ -147,7 +140,9 @@ export default function AdminDashboardPage() {
           <CardTitle>{title}</CardTitle>
         </CardHeader>
         <CardContent>
-          {orderList.length === 0 ? (
+          {isLoading ? (
+             <div className="text-center p-4"><Loader2 className="mx-auto h-6 w-6 animate-spin text-muted-foreground" /></div>
+          ) : orderList.length === 0 ? (
             <p className="text-sm text-muted-foreground">Aucune commande ici.</p>
           ) : (
             <div className="space-y-4">
@@ -176,10 +171,11 @@ export default function AdminDashboardPage() {
                   </div>
 
                   {order.paymentStatus === 'processing' && (
-                    <div className="mt-4 flex gap-4">
+                    <div className="mt-4 flex flex-wrap gap-2">
                         <Button
                           asChild
                           variant="outline"
+                          size="sm"
                         >
                             <a href={order.receiptImageURL} target="_blank" rel="noopener noreferrer">
                                 <FileCheck className="mr-2 h-4 w-4" />
@@ -189,6 +185,7 @@ export default function AdminDashboardPage() {
                         <Button
                             onClick={() => handleValidatePayment(order.id, order.userId)}
                             disabled={updatingOrderId === order.id}
+                            size="sm"
                         >
                             {updatingOrderId === order.id ? (
                                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -211,22 +208,18 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-        <h1 className="mb-8 font-headline text-4xl">Tableau de Bord Administrateur</h1>
-        {isLoading ? (
-             <div className="text-center p-12"><Loader2 className="mx-auto h-8 w-8 animate-spin text-muted-foreground" /></div>
-        ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div className="lg:col-span-1 space-y-8">
-                     {renderOrderList(pendingOrders, <div className="flex items-center gap-2"><AlertCircle className="text-destructive h-5 w-5"/> Commandes en attente de paiement</div>)}
-                </div>
-                <div className="lg:col-span-1 space-y-8">
-                    {renderOrderList(processingOrders, <div className="flex items-center gap-2"><Clock className="text-blue-500 h-5 w-5"/> Commandes en attente de validation</div>)}
-                </div>
-                <div className="lg:col-span-1 space-y-8">
-                    {renderOrderList(completedOrders, <div className="flex items-center gap-2"><CheckCircle className="text-green-500 h-5 w-5"/> Commandes terminées</div>)}
-                </div>
+        <h1 className="mb-8 font-headline text-4xl"><TranslatedText fr="Tableau de Bord Administrateur" en="Admin Dashboard">Tableau de Bord Administrateur</TranslatedText></h1>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <div className="lg:col-span-1 space-y-8">
+                 {renderOrderList(pendingOrders, <div className="flex items-center gap-2"><AlertCircle className="text-destructive h-5 w-5"/> <TranslatedText fr="Commandes en attente de paiement" en="Pending Payment">Commandes en attente de paiement</TranslatedText></div>)}
             </div>
-        )}
+            <div className="lg:col-span-1 space-y-8">
+                {renderOrderList(processingOrders, <div className="flex items-center gap-2"><Clock className="text-blue-500 h-5 w-5"/> <TranslatedText fr="Commandes en attente de validation" en="Pending Validation">Commandes en attente de validation</TranslatedText></div>)}
+            </div>
+            <div className="lg:col-span-1 space-y-8">
+                {renderOrderList(completedOrders, <div className="flex items-center gap-2"><CheckCircle className="text-green-500 h-5 w-5"/> <TranslatedText fr="Commandes terminées" en="Completed Orders">Commandes terminées</TranslatedText></div>)}
+            </div>
+        </div>
     </div>
   );
 }

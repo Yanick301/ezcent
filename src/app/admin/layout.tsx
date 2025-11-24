@@ -13,6 +13,7 @@ import {
 import { signOut } from 'firebase/auth';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { TranslatedText } from '@/components/TranslatedText';
 
 export default function AdminLayout({
   children,
@@ -47,9 +48,9 @@ export default function AdminLayout({
           ) : (
             <>
               <ShieldOff className="mx-auto h-12 w-12 text-destructive" />
-              <p className="mt-4 text-lg font-semibold">Accès non autorisé</p>
+              <p className="mt-4 text-lg font-semibold"><TranslatedText fr="Accès non autorisé" en="Unauthorized Access">Accès non autorisé</TranslatedText></p>
               <p className="text-sm text-muted-foreground">
-                Vous allez être redirigé...
+                <TranslatedText fr="Vous allez être redirigé..." en="You will be redirected...">Vous allez être redirigé...</TranslatedText>
               </p>
             </>
           )}
@@ -59,6 +60,7 @@ export default function AdminLayout({
   }
 
   const handleSignOut = async () => {
+    if (!auth) return;
     await signOut(auth);
     router.push('/login');
   };
@@ -79,14 +81,14 @@ export default function AdminLayout({
               className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
             >
               <LayoutDashboard className="h-4 w-4" />
-              Tableau de bord
+              <TranslatedText fr="Tableau de bord" en="Dashboard">Tableau de bord</TranslatedText>
             </Link>
           </div>
         </nav>
         <div className="mt-auto border-t p-4">
           <Button variant="ghost" className="w-full justify-start gap-3" onClick={handleSignOut}>
             <LogOut className="h-4 w-4" />
-            Se déconnecter
+            <TranslatedText fr="Se déconnecter" en="Log Out">Se déconnecter</TranslatedText>
           </Button>
         </div>
       </aside>
