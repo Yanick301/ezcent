@@ -18,6 +18,8 @@ import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/context/LanguageContext';
 import { getProductBySlug, getProductsByCategory, products as allProducts } from '@/lib/data';
+import type { Review, Product } from '@/lib/types';
+import { useUser } from '@/firebase';
 
 
 const { placeholderImages } = placeholderImagesData;
@@ -30,7 +32,7 @@ type ProductPageProps = {
 
 export default function ProductPage({ params }: ProductPageProps) {
   const { slug } = params;
-  const [product, setProduct] = useState<ReturnType<typeof getProductBySlug>>(undefined);
+  const [product, setProduct] = useState<Product | undefined>(undefined);
   const [relatedProducts, setRelatedProducts] = useState<ReturnType<typeof getProductsByCategory>>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -39,29 +41,37 @@ export default function ProductPage({ params }: ProductPageProps) {
   const [newReviewRating, setNewReviewRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [newReviewComment, setNewReviewComment] = useState('');
+  const { user } = useUser();
 
   useEffect(() => {
     setIsLoading(true);
     const foundProduct = getProductBySlug(allProducts, slug);
-    setProduct(foundProduct);
-
+    
     if (foundProduct) {
-      const related = getProductsByCategory(allProducts, foundProduct.category, 4, foundProduct.id);
-      setRelatedProducts(related);
+        setProduct(foundProduct);
+        const related = getProductsByCategory(allProducts, foundProduct.category, 4, foundProduct.id);
+        setRelatedProducts(related);
     }
     
     setIsLoading(false);
   }, [slug]);
 
+  const averageRating = useMemo(() => {
+    if (!product || !product.reviews || product.reviews.length === 0) return 0;
+    return product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length;
+  }, [product]);
+  
   if (isLoading) {
     return <div className="container mx-auto px-4 py-12 text-center">Chargement du produit...</div>;
   }
   
-  if (!product) {
+  if (!isLoading && !product) {
     notFound();
   }
-  
-  const averageRating = product.reviews && product.reviews.length > 0 ? product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length : 0;
+
+  if (!product) {
+    return null; // Should be handled by notFound, but for type safety
+  }
   
   const mainImage = placeholderImages.find(p => p.id === product.images[0]);
   const altImages = product.images.slice(1).map(id => placeholderImages.find(p => p.id === id));
@@ -76,8 +86,18 @@ export default function ProductPage({ params }: ProductPageProps) {
       });
       return;
     }
-    // In a real app, you would submit this to a backend/database
-    console.log({ rating: newReviewRating, comment: newReviewComment });
+    
+    const newReview: Review = {
+        author: user?.displayName || (language === 'fr' ? 'Visiteur' : language === 'en' ? 'Guest' : 'Gast'),
+        rating: newReviewRating,
+        comment: newReviewComment.trim(),
+    };
+
+    setProduct(prevProduct => {
+        if (!prevProduct) return undefined;
+        const updatedReviews = [newReview, ...prevProduct.reviews];
+        return { ...prevProduct, reviews: updatedReviews };
+    });
 
     toast({
       title: language === 'fr' ? 'Avis soumis' : language === 'en' ? 'Review Submitted' : 'Bewertung abgegeben',
@@ -243,3 +263,5 @@ export default function ProductPage({ params }: ProductPageProps) {
     </div>
   );
 }
+
+    
