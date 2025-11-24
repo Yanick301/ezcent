@@ -844,13 +844,9 @@ export const products: Product[] = [
 // --- Data-fetching functions ---
 
 export function getProductsByCategory(products: Product[], categorySlug: string, limit?: number, excludeId?: string): Product[] {
-  let filteredProducts: Product[];
-
-  if (categorySlug === 'all') {
-    filteredProducts = products;
-  } else {
-    filteredProducts = products.filter((p) => p.category === categorySlug);
-  }
+  let filteredProducts = (categorySlug === 'all')
+    ? products
+    : products.filter((p) => p.category === categorySlug);
 
   if (excludeId) {
     filteredProducts = filteredProducts.filter((p) => p.id !== excludeId);
