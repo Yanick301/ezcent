@@ -15,8 +15,9 @@ type CategoryPageProps = {
   };
 };
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  const { category: categorySlug } = params;
+export default function CategoryPage() {
+  const params = useParams();
+  const categorySlug = params.category as string;
   
   const category = useMemo(() => {
     return categories.find((c) => c.slug === categorySlug);
