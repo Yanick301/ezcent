@@ -6,6 +6,7 @@ import { TranslatedText } from './TranslatedText';
 import { AddToFavoritesButton } from './favorites/AddToFavoritesButton';
 import { AddToCartButton } from './cart/AddToCartButton';
 import { Star } from 'lucide-react';
+import { ProductCardActions } from './ProductCardActions';
 
 const { placeholderImages } = placeholderImagesData;
 
@@ -20,18 +21,23 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div className="group flex h-full flex-col">
-        <Link href={`/product/${product.slug}`} className="block">
-            <div className="relative block aspect-[3/4] w-full overflow-hidden bg-gray-100 rounded-lg">
-                {productImage && (
-                <img
-                    src={productImage.imageUrl}
-                    alt={product.name}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    data-ai-hint={productImage.imageHint}
-                />
-                )}
+        <div className="relative block">
+            <Link href={`/product/${product.slug}`} className="block">
+                <div className="relative block aspect-[3/4] w-full overflow-hidden bg-gray-100 rounded-lg">
+                    {productImage && (
+                    <img
+                        src={productImage.imageUrl}
+                        alt={product.name}
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        data-ai-hint={productImage.imageHint}
+                    />
+                    )}
+                </div>
+            </Link>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 transform opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <ProductCardActions product={product} />
             </div>
-        </Link>
+        </div>
         <div className="pt-4 text-left flex-grow flex flex-col">
             <div className="flex justify-between items-start">
                 <h3 className="font-headline text-xl text-foreground flex-grow pr-2">
