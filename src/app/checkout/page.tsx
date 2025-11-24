@@ -157,58 +157,38 @@ export default function CheckoutPage() {
         return;
     }
     
-    // Instead of writing to firestore, we save to session storage and redirect.
     try {
-        const orderData = {
-            shippingInfo: data,
-            items: cart.map(item => ({
-                productId: item.product.id,
-                name: item.product.name,
-                name_fr: item.product.name_fr,
-                name_en: item.product.name_en,
-                price: item.product.price,
-                quantity: item.quantity,
-            })),
-            subtotal,
-            shipping,
-            taxes,
-            totalAmount: total,
-            // We'll add user and date info when we actually create the order
-        };
+      const ordersCollectionRef = collection(firestore, `userProfiles/${user.uid}/orders`);
+      
+      await addDoc(ordersCollectionRef, {
+          userId: user.uid,
+          userEmail: user.email,
+          shippingInfo: data,
+          items: cart.map(item => ({
+              productId: item.product.id,
+              name: item.product.name,
+              name_fr: item.product.name_fr,
+              name_en: item.product.name_en,
+              price: item.product.price,
+              quantity: item.quantity,
+          })),
+          subtotal,
+          shipping,
+          taxes,
+          totalAmount: total,
+          orderDate: serverTimestamp(),
+          paymentStatus: 'pending', // Initial status
+          receiptImageURL: '',
+      });
 
-        sessionStorage.setItem('stagedOrder', JSON.stringify(orderData));
-        
-        const ordersCollectionRef = collection(firestore, `userProfiles/${user.uid}/orders`);
-        
-        await addDoc(ordersCollectionRef, {
-            userId: user.uid,
-            userEmail: user.email,
-            shippingInfo: data,
-            items: cart.map(item => ({
-                productId: item.product.id,
-                name: item.product.name,
-                name_fr: item.product.name_fr,
-                name_en: item.product.name_en,
-                price: item.product.price,
-                quantity: item.quantity,
-            })),
-            subtotal,
-            shipping,
-            taxes,
-            totalAmount: total,
-            orderDate: serverTimestamp(),
-            paymentStatus: 'pending', // Initial status
-            receiptImageURL: '',
-        });
-
-        clearCart();
-        router.push('/checkout/thank-you');
+      clearCart();
+      router.push('/checkout/thank-you');
 
     } catch (error) {
-        console.error("Error staging order: ", error);
+        console.error("Error creating order: ", error);
         toast({
             variant: "destructive",
-            title: language === 'fr' ? "Erreur lors de la préparation de la commande" : language === 'en' ? "Error Preparing Order" : "Fehler bei der Bestellvorbereitung",
+            title: language === 'fr' ? "Erreur lors de la création de la commande" : language === 'en' ? "Error Creating Order" : "Fehler bei der Bestellerstellung",
             description: language === 'fr' ? "Une erreur est survenue. Veuillez réessayer." : language === 'en' ? "An error occurred. Please try again." : "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
         });
     } finally {
