@@ -92,6 +92,7 @@ export default function OrdersPage() {
   const { data: orders, isLoading } = useCollection(ordersQuery);
 
   const handleUploadClick = (orderId: string) => {
+    if (uploadingOrderId) return; // Prevent multiple uploads
     setSelectedOrderId(orderId);
     fileInputRef.current?.click();
   };
@@ -174,8 +175,9 @@ export default function OrdersPage() {
       const orderToValidate = orders.find(o => o.id === orderId);
       if (!orderToValidate) throw new Error("Order not found");
 
-      // Admins would need a different path to update orders if they are not the owner
-      const orderRef = doc(firestore, `userProfiles/${user.uid}/orders`, orderId);
+      // This logic assumes an admin is updating an order within a user's subcollection.
+      // For this to work, security rules must allow admins this specific write access.
+      const orderRef = doc(firestore, `userProfiles/${orderToValidate.userId}/orders`, orderId);
       await updateDoc(orderRef, { paymentStatus: 'completed' });
       toast({
         title:
