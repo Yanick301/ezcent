@@ -11,7 +11,7 @@ export interface UserHookResult {
   userError: Error | null;
 }
 
-const ADMIN_EMAIL = 'admin@ezcentials.com';
+const ADMIN_EMAIL = 'ezcentials@gmail.com';
 
 export const useUser = (): UserHookResult => {
   const auth = useAuth();
