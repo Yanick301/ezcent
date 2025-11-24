@@ -38,7 +38,7 @@ export default function OrdersPage() {
     return query(collection(firestore, `users/${user.uid}/orders`));
   }, [firestore, user]);
 
-  const { data: orders, isLoading } = useCollection(ordersQuery);
+  const { data: orders, isLoading } = useCollection(ordersQuery as any);
 
   const handleUploadClick = (orderId: string) => {
     setSelectedOrderId(orderId);
@@ -246,3 +246,5 @@ export default function OrdersPage() {
     </div>
   );
 }
+
+    
