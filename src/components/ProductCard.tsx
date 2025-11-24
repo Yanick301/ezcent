@@ -7,6 +7,7 @@ import { AddToFavoritesButton } from './favorites/AddToFavoritesButton';
 import { AddToCartButton } from './cart/AddToCartButton';
 import { Star } from 'lucide-react';
 import { ProductCardActions } from './ProductCardActions';
+import { Badge } from './ui/badge';
 
 const { placeholderImages } = placeholderImagesData;
 
@@ -32,6 +33,9 @@ export function ProductCard({ product }: ProductCardProps) {
                         data-ai-hint={productImage.imageHint}
                     />
                     )}
+                     {product.oldPrice && (
+                        <Badge variant="destructive" className="absolute top-3 left-3">PROMO</Badge>
+                    )}
                 </div>
             </Link>
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 transform opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -55,7 +59,12 @@ export function ProductCard({ product }: ProductCardProps) {
               <span className="text-xs text-muted-foreground ml-1">({product.reviews?.length || 0})</span>
             </div>
             <div className="mt-4 flex justify-between items-center">
-              <p className="text-lg font-medium text-foreground">€{product.price.toFixed(2)}</p>
+              <div className="flex items-baseline gap-2">
+                  <p className="text-lg font-medium text-foreground">€{product.price.toFixed(2)}</p>
+                  {product.oldPrice && (
+                      <p className="text-sm text-muted-foreground line-through">€{product.oldPrice.toFixed(2)}</p>
+                  )}
+              </div>
               <AddToCartButton product={product} variant="ghost" size="icon" />
             </div>
         </div>

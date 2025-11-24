@@ -11,6 +11,7 @@ export type Product = {
   name_en: string;
   slug: string;
   price: number;
+  oldPrice?: number;
   description: string;
   description_fr: string;
   description_en: string;

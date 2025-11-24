@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
-import { getFeaturedProducts, products } from '@/lib/data';
+import { getWinterSaleProducts, products } from '@/lib/data';
 import { ProductCard } from '@/components/ProductCard';
 import { TranslatedText } from '@/components/TranslatedText';
 import { CategoryCard } from '@/components/CategoryCard';
@@ -17,8 +17,8 @@ import { categories } from '@/lib/data';
 import { useMemo } from 'react';
 
 export default function HomePage() {
-  const featuredProducts = useMemo(() => {
-    return getFeaturedProducts(products, 4);
+  const saleProducts = useMemo(() => {
+    return getWinterSaleProducts(products, 4);
   }, []);
 
   return (
@@ -81,26 +81,26 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="font-headline text-3xl md:text-5xl text-foreground">
-              <TranslatedText fr="Produits Tendances" en="Trending Products">Trendprodukte</TranslatedText>
+              <TranslatedText fr="Promotions de Fin d'Année" en="End of Year Promotions">Endjahresaktionen</TranslatedText>
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-              <TranslatedText fr="Découvrez la sélection du moment. Des pièces désirables qui allient style contemporain et qualité intemporelle." en="Discover the selection of the moment. Desirable pieces that combine contemporary style and timeless quality.">
-                Entdecken Sie die aktuelle Auswahl. Begehrte Stücke, die zeitgenössischen Stil und zeitlose Qualität vereinen.
+              <TranslatedText fr="Profitez de nos offres exclusives sur la collection d'hiver. L'élégance intemporelle à prix réduit." en="Take advantage of our exclusive offers on the winter collection. Timeless elegance at a reduced price.">
+                Profitieren Sie von unseren exklusiven Angeboten für die Winterkollektion. Zeitlose Eleganz zum reduzierten Preis.
               </TranslatedText>
             </p>
           </div>
-          {featuredProducts.length === 0 ? (
+          {saleProducts.length === 0 ? (
             <div className="text-center mt-12">Chargement des produits...</div>
           ) : (
             <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-              {featuredProducts.map((product) => (
+              {saleProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
           )}
           <div className="mt-12 text-center">
             <Button asChild size="lg">
-                <Link href="/products/all"><TranslatedText fr="Voir tous les produits" en="View All Products">Alle Produkte anzeigen</TranslatedText></Link>
+                <Link href="/products/winter-clothing"><TranslatedText fr="Voir toutes les promotions" en="View All Promotions">Alle Angebote anzeigen</TranslatedText></Link>
             </Button>
           </div>
         </div>
