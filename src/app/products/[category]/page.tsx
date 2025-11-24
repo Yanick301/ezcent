@@ -1,6 +1,6 @@
 'use client';
 
-import { getProductsByCategory, categories } from '@/lib/data';
+import { getProductsByCategory, categories, products as allProducts } from '@/lib/data';
 import { ProductCard } from '@/components/ProductCard';
 import { notFound } from 'next/navigation';
 import { TranslatedText } from '@/components/TranslatedText';
@@ -20,12 +20,13 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const { category: categorySlug } = params;
   const firestore = useFirestore();
 
-  const productsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'products'));
-  }, [firestore]);
+  // const productsQuery = useMemoFirebase(() => {
+  //   if (!firestore) return null;
+  //   return query(collection(firestore, 'products'));
+  // }, [firestore]);
 
-  const { data: allProducts, isLoading } = useCollection<Product>(productsQuery as any);
+  // const { data: allProducts, isLoading } = useCollection<Product>(productsQuery);
+  const isLoading = false; // Using local data
   
   const products = useMemo(() => {
     if (!allProducts) return [];
