@@ -9,9 +9,10 @@ export interface UserHookResult {
   user: User | null;
   isUserLoading: boolean;
   userError: Error | null;
+  isAdmin: boolean;
 }
 
 export const useUser = (): UserHookResult => {
-  const { user, isUserLoading, userError } = useFirebase();
-  return { user, isUserLoading, userError };
+  const { user, isUserLoading, userError, isAdmin } = useFirebase();
+  return { user, isUserLoading, userError, isAdmin };
 };

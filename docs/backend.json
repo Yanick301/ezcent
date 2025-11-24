@@ -176,6 +176,13 @@
           "type": "string",
           "description": "Date the user registered.",
           "format": "date-time"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["admin", "customer"]
+          }
         }
       },
       "required": [
@@ -269,18 +276,14 @@
         }
       },
       {
-        "path": "/users/{userId}/orders/{orderId}",
+        "path": "/orders/{orderId}",
         "definition": {
           "entityName": "Order",
           "schema": {
             "$ref": "#/backend/entities/Order"
           },
-          "description": "Stores orders placed by a user. Includes receiptImageURL for uploaded payment receipts. Path-based ownership.",
+          "description": "Centralized collection for all user orders. Readable by the user who owns it and by admins. Admins can update the status.",
           "params": [
-            {
-              "name": "userId",
-              "description": "The unique identifier of the user."
-            },
             {
               "name": "orderId",
               "description": "The unique identifier of the order."

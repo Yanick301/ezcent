@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ShoppingBag, Upload, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import { useCollection, useFirestore, useUser, useMemoFirebase } from '@/firebase';
-import { collection, doc, updateDoc, query } from 'firebase/firestore';
+import { collection, doc, updateDoc, query, where } from 'firebase/firestore';
 import { useRef, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
@@ -35,7 +35,7 @@ export default function OrdersPage() {
 
   const ordersQuery = useMemoFirebase(() => {
     if (!user || !firestore) return null;
-    return query(collection(firestore, `users/${user.uid}/orders`));
+    return query(collection(firestore, `orders`), where("userId", "==", user.uid));
   }, [firestore, user]);
 
   const { data: orders, isLoading } = useCollection(ordersQuery);
@@ -60,7 +60,7 @@ export default function OrdersPage() {
       const uploadResult = await uploadBytes(fileRef, file);
       const downloadURL = await getDownloadURL(uploadResult.ref);
 
-      const orderDocRef = doc(firestore, `users/${user.uid}/orders`, selectedOrderId);
+      const orderDocRef = doc(firestore, `orders`, selectedOrderId);
       await updateDoc(orderDocRef, {
         receiptImageURL: downloadURL,
         paymentStatus: 'processing',
@@ -235,15 +235,17 @@ export default function OrdersPage() {
                         <p><TranslatedText fr="Paiement en cours de vérification" en="Payment under review">Zahlung wird überprüft</TranslatedText></p>
                     </div>
                 )}
-                {order.paymentStatus === 'completed' && order.receiptImageURL && (
+                {order.paymentStatus === 'completed' && (
                    <div className="mt-6 flex flex-col items-center justify-center text-sm font-semibold p-4 bg-green-50 text-green-700 rounded-md">
                       <div className="flex items-center">
                          <CheckCircle className="mr-2 h-5 w-5" />
-                         <p><TranslatedText fr="Paiement confirmé" en="Payment confirmed">Zahlung bestätigt</TranslatedText></p>
+                         <p><TranslatedText fr="Commande validée" en="Order Validated">Bestellung bestätigt</TranslatedText></p>
                       </div>
-                      <a href={order.receiptImageURL} target="_blank" rel="noopener noreferrer" className="text-xs mt-2 underline">
-                        <TranslatedText fr="Voir le reçu" en="View receipt">Beleg anzeigen</TranslatedText>
-                      </a>
+                      {order.receiptImageURL && (
+                        <a href={order.receiptImageURL} target="_blank" rel="noopener noreferrer" className="text-xs mt-2 underline">
+                          <TranslatedText fr="Voir le reçu" en="View receipt">Beleg anzeigen</TranslatedText>
+                        </a>
+                      )}
                    </div>
                 )}
               </CardContent>
@@ -265,5 +267,3 @@ export default function OrdersPage() {
     </div>
   );
 }
-
-    

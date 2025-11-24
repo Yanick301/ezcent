@@ -152,6 +152,7 @@ export default function CheckoutPage() {
     try {
         const orderData = {
             userId: user.uid,
+            userEmail: user.email,
             shippingInfo: data,
             items: cart.map(item => ({
                 productId: item.product.id,
@@ -170,7 +171,7 @@ export default function CheckoutPage() {
             receiptImageURL: '',
         };
 
-        const ordersCollection = collection(firestore, `users/${user.uid}/orders`);
+        const ordersCollection = collection(firestore, `orders`);
         await addDoc(ordersCollection, orderData);
 
         clearCart();
@@ -397,5 +398,3 @@ export default function CheckoutPage() {
     </div>
   );
 }
-
-    
