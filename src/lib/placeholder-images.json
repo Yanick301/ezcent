@@ -37,6 +37,12 @@
       "imageHint": "winter fashion"
     },
     {
+      "id": "sport-category",
+      "description": "Sport Category",
+      "imageUrl": "/images/products/survetement-luxe-adidas-gucci.jpg",
+      "imageHint": "sport fashion"
+    },
+    {
       "id": "manteau-long-laine-hugo-boss",
       "imageUrl": "/images/products/manteau-long-laine-hugo-boss.jpg",
       "imageHint": "wool coat"
