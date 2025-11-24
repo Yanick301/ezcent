@@ -44,12 +44,20 @@ export default function AccountLayout({
   const router = useRouter();
 
   useEffect(() => {
-    if (!isUserLoading && !user) {
-      router.push('/login');
+    if (isUserLoading) {
+        return; // Do nothing while loading
+    }
+    if (!user) {
+        router.push('/login');
+        return;
+    }
+    if (!user.emailVerified && user.providerData.some(p => p.providerId === 'password')) {
+        router.push('/verify-email');
+        return;
     }
   }, [user, isUserLoading, router]);
 
-  if (isUserLoading || !user) {
+  if (isUserLoading || !user || (!user.emailVerified && user.providerData.some(p => p.providerId === 'password'))) {
     return (
         <div className="container mx-auto px-4 py-12 text-center">
             <p>Laden...</p>

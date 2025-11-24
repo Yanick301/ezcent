@@ -15,7 +15,7 @@ import { GoogleSignInButton } from '@/components/auth/GoogleSignInButton';
 import { TranslatedText } from '@/components/TranslatedText';
 import { Separator } from '@/components/ui/separator';
 import { useAuth, useFirestore } from '@/firebase';
-import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile, UserCredential } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile, UserCredential, sendEmailVerification } from 'firebase/auth';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
@@ -73,6 +73,9 @@ export default function RegisterPage() {
 
     if (!userDoc.exists()) {
         const displayName = name || user.displayName;
+        if(displayName) {
+          await updateProfile(user, { displayName });
+        }
         await setDoc(userRef, {
             id: user.uid,
             email: user.email,
@@ -84,6 +87,10 @@ export default function RegisterPage() {
   };
 
   const onSubmit: SubmitHandler<z.infer<typeof currentSchema>> = async (data) => {
+    if (!auth) {
+      // Handle case where auth is not available
+      return;
+    }
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
       
@@ -91,15 +98,16 @@ export default function RegisterPage() {
         await updateProfile(userCredential.user, {
             displayName: data.name
         });
+        await sendEmailVerification(userCredential.user);
       }
       
       await handleUserCreation(userCredential, data.name);
 
       toast({
-        title: language === 'fr' ? 'Compte créé avec succès' : language === 'en' ? 'Account created successfully' : 'Konto erfolgreich erstellt',
-        description: language === 'fr' ? 'Bienvenue ! Vous allez être redirigé.' : language === 'en' ? 'Welcome! You will be redirected.' : 'Willkommen! Sie werden weitergeleitet.',
+        title: language === 'fr' ? 'Vérifiez votre e-mail' : language === 'en' ? 'Verify your email' : 'Überprüfen Sie Ihre E-Mail',
+        description: language === 'fr' ? 'Un lien de vérification a été envoyé à votre adresse e-mail.' : language === 'en' ? 'A verification link has been sent to your email address.' : 'Ein Bestätigungslink wurde an Ihre E-Mail-Adresse gesendet.',
       });
-      router.push('/account');
+      router.push('/verify-email');
     } catch (error: any) {
       console.error(error);
        const errorMessage = error.code === 'auth/email-already-in-use' 
