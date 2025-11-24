@@ -25,7 +25,9 @@ export default function CategoryPage() {
   
   const products = useMemo(() => {
     if (!categorySlug) return [];
-    return getProductsByCategory(allProducts, categorySlug);
+    const filtered = getProductsByCategory(allProducts, categorySlug);
+    // Sort products to ensure a stable order between server and client rendering
+    return filtered.sort((a, b) => a.id.localeCompare(b.id));
   }, [categorySlug]);
 
 
