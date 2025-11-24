@@ -71,4 +71,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  .dark .bg-footer {
+    background-color: hsl(25 30% 10%);
+  }
 }
