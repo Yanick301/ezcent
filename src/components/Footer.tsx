@@ -19,7 +19,7 @@ export function Footer() {
       links: [
         { name: 'Kontaktieren Sie uns', name_fr: 'Contactez-nous', name_en: 'Contact Us', href: 'mailto:contact-support@ezcentials.com', isExternal: true },
         { name: 'FAQs', name_fr: 'FAQs', name_en: 'FAQs', href: '/faq' },
-        { name: 'Produktpflege', name_fr: 'Entretien des produits', name_en: 'Product Care', href: '/products/all' },
+        { name: 'Produktpflege', name_fr: 'Entretien des produits', name_en: 'Product Care', href: '/product-care' },
         { name: 'Rechtliche Hinweise', name_fr: 'Mentions légales', name_en: 'Legal Notice', href: '/legal-notice' },
       ],
     },
@@ -28,7 +28,7 @@ export function Footer() {
       title_fr: 'Services',
       title_en: 'Services',
       links: [
-        { name: 'Reparaturen', name_fr: 'Réparations', name_en: 'Repairs', href: '/products/all' },
+        { name: 'Reparaturen', name_fr: 'Réparations', name_en: 'Repairs', href: '/repairs' },
         { name: 'Personalisierung', name_fr: 'Personnalisation', name_en: 'Personalization', href: '/products/all' },
         { name: 'Geschenkkarten', name_fr: 'Cartes cadeaux', name_en: 'Gift Cards', href: '/products/all' },
       ],
@@ -39,8 +39,8 @@ export function Footer() {
       title_en: 'About EZCENTIALS',
       links: [
         { name: 'Modehäuser', name_fr: 'Notre Maison', name_en: 'Our House', href: '/about' },
-        { name: 'Nachhaltigkeit', name_fr: 'Durabilité', name_en: 'Sustainability', href: '/' },
-        { name: 'Karriere', name_fr: 'Carrières', name_en: 'Careers', href: '/' },
+        { name: 'Nachhaltigkeit', name_fr: 'Durabilité', name_en: 'Sustainability', href: '/sustainability' },
+        { name: 'Karriere', name_fr: 'Carrières', name_en: 'Careers', href: '/careers' },
       ],
     },
      {
