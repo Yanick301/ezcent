@@ -16,13 +16,13 @@ export const products: Product[] = [
     name_fr: 'Robe midi en soie',
     slug: 'robe-midi-en-soie',
     price: 750,
-    description: 'Ein elegantes Midikleid aus reiner Seide, perfekt für besondere Anlässe. Fließender Stoff und schmeichelhafter Schnitt.',
-    description_fr: 'Une robe midi élégante en pure soie, parfaite pour les occasions spéciales. Tissu fluide et coupe flatteuse.',
+    description: 'Umhüllen Sie sich mit fließender Eleganz. Dieses Midikleid aus reiner Seide besticht durch seinen sanften Glanz und eine schmeichelhafte Silhouette, die bei jeder Bewegung tanzt. Ein Meisterwerk der Couture für unvergessliche Momente.',
+    description_fr: 'Enveloppez-vous d\'une élégance fluide. Cette robe midi en pure soie se distingue par son éclat délicat et une silhouette flatteuse qui danse à chaque mouvement. Une pièce maîtresse de la couture pour des moments inoubliables.',
     category: 'womens-clothing',
     images: ['robe-midi-en-soie-gucci', 'robe-midi-en-soie-gucci', 'robe-midi-en-soie-gucci'],
     reviews: [
-      { author: 'Sophie', rating: 5, comment: 'Absolut umwerfend! Die Qualität ist außergewöhnlich.' },
-      { author: 'Claire', rating: 4, comment: 'Sehr schick, aber die Größe fällt etwas klein aus.' },
+      { author: 'Sophie', rating: 5, comment: 'Absolument sublime. La qualité de la soie est exceptionnelle.' },
+      { author: 'Claire', rating: 4, comment: 'Très chic, mais attention elle taille un peu petit.' },
     ],
   },
   {
@@ -31,25 +31,29 @@ export const products: Product[] = [
     name_fr: 'Blazer croisé',
     slug: 'blazer-croise',
     price: 980,
-    description: 'Ein klassischer zweireihiger Blazer mit goldenen Knöpfen. Eine zeitlose Ergänzung für jede Garderobe.',
-    description_fr: 'Un blazer croisé classique avec des boutons dorés. Une pièce intemporelle pour toute garde-robe.',
+    description: 'Definieren Sie Autorität und Stil mit diesem zweireihigen Blazer. Seine strukturierten Schultern und die goldenen Knöpfe schaffen eine kraftvolle Silhouette. Gefertigt aus feinster Wolle, ist er eine Investition in zeitlose Eleganz.',
+    description_fr: 'Définissez l\'autorité et le style avec ce blazer croisé. Ses épaules structurées et ses boutons dorés créent une silhouette puissante. Confectionné dans une laine de premier choix, c\'est un investissement dans une élégance intemporelle.',
     category: 'womens-clothing',
     images: ['blazer-croise-balmain', 'blazer-croise-balmain', 'blazer-croise-balmain'],
     reviews: [
-      { author: 'Léa', rating: 5, comment: 'Perfekte Passform und sehr elegant.' },
+      { author: 'Léa', rating: 5, comment: 'La coupe est absolument parfaite et le tissu est magnifique.' },
+      { author: 'Inès', rating: 5, comment: 'Un classique instantané. Je me sens puissante en le portant.' },
     ],
   },
-    {
+  {
     id: 'prod-30',
     name: 'Slim-Fit Hemd',
     name_fr: 'Chemise Slim-Fit',
     slug: 'chemise-slim-fit-tom-ford',
     price: 350,
-    description: 'Ein perfekt geschnittenes Slim-Fit-Hemd aus hochwertiger Baumwolle für einen eleganten und modernen Look.',
-    description_fr: 'Une chemise slim-fit parfaitement coupée en coton de qualité supérieure pour un look élégant et moderne.',
+    description: 'Die Quintessenz der Raffinesse. Dieses Slim-Fit-Hemd, gefertigt aus luxuriöser ägyptischer Baumwolle, bietet eine unvergleichliche Passform und ein makelloses Finish. Der perfekte Begleiter für den modernen Gentleman.',
+    description_fr: 'La quintessence du raffinement. Cette chemise slim-fit, coupée dans un luxueux coton égyptien, offre une coupe inégalée et une finition impeccable. L\'alliée parfaite du gentleman moderne.',
     category: 'mens-clothing',
     images: ['chemise-slim-fit-tom-ford'],
-    reviews: []
+    reviews: [
+        { author: 'Thomas', rating: 5, comment: 'Une qualité de tissu exceptionnelle. Le tombé est parfait.'},
+        { author: 'Julien', rating: 5, comment: 'Enfin une chemise qui épouse parfaitement la silhouette.'}
+    ]
   },
   {
     id: 'prod-31',
@@ -57,11 +61,13 @@ export const products: Product[] = [
     name_fr: 'Polo piqué',
     slug: 'polo-pique-ralph-lauren',
     price: 120,
-    description: 'Das ikonische Piqué-Polo, ein Must-Have für eine lässig-schicke Garderobe. Bequem und zeitlos.',
-    description_fr: 'L\'iconique polo en piqué, un indispensable pour une garde-robe casual-chic. Confortable et intemporel.',
+    description: 'Eine Ikone der lässigen Eleganz. Dieses Polo aus atmungsaktivem Baumwoll-Piqué verbindet Komfort mit einem Hauch von aristokratischem Flair. Ein zeitloses Must-Have für jeden Anlass, vom Yachtclub bis zum Stadtbummel.',
+    description_fr: 'L\'icône de l\'élégance décontractée. Ce polo en piqué de coton respirant allie confort et une touche d\'aisance aristocratique. Un indispensable intemporel pour toutes les occasions, du yacht club à la ville.',
     category: 'mens-clothing',
     images: ['polo-pique-ralph-lauren'],
-    reviews: []
+    reviews: [
+        { author: 'Antoine', rating: 5, comment: 'La qualité est au rendez-vous. Un classique efficace.'}
+    ]
   },
   {
     id: 'prod-32',
@@ -69,11 +75,14 @@ export const products: Product[] = [
     name_fr: 'Pull col roulé cachemire',
     slug: 'pull-col-roule-cachemire-loro-piana',
     price: 900,
-    description: 'Ein luxuriöser Rollkragenpullover aus reinem Kaschmir für unübertroffene Weichheit und Wärme.',
-    description_fr: 'Un pull col roulé luxueux en pur cachemire pour une douceur et une chaleur inégalées.',
-    category: 'winter-clothing',
+    description: 'Erleben Sie die Umarmung von purem Luxus. Dieser Rollkragenpullover aus feinstem mongolischem Kaschmir bietet unübertroffene Weichheit und wohlige Wärme. Ein Kunstwerk der Strickerei für die kältesten Tage.',
+    description_fr: 'Vivez l\'étreinte du luxe pur. Ce pull à col roulé, confectionné dans le plus fin cachemire de Mongolie, offre une douceur inégalée et une chaleur réconfortante. Une œuvre d\'art du tricotage pour les jours les plus froids.',
+    category: 'mens-clothing',
     images: ['pull-col-roule-cachemire-loro-piana'],
-    reviews: []
+    reviews: [
+        { author: 'François', rating: 5, comment: 'Une douceur incroyable. On ne veut plus le quitter.'},
+        { author: 'Paul', rating: 5, comment: 'L\'investissement vaut chaque centime.'}
+    ]
   },
   {
     id: 'prod-40',
@@ -81,11 +90,13 @@ export const products: Product[] = [
     name_fr: 'Chemise en soie',
     slug: 'chemise-soie-versace',
     price: 650,
-    description: 'Ein gewagtes Seidenhemd mit ikonischem Druck, das Markenzeichen des Hauses Versace. Für einen unvergesslichen Stil.',
-    description_fr: 'Une chemise en soie audacieuse à l\'imprimé iconique, signature de la maison Versace. Pour un style mémorable.',
+    description: 'Machen Sie Eindruck mit diesem kühnen Seidenhemd. Der ikonische Barockdruck und die fließende Seide sind ein Markenzeichen des Hauses Versace und garantieren einen unvergesslichen Stil, der Selbstbewusstsein ausstrahlt.',
+    description_fr: 'Affirmez votre présence avec cette chemise en soie audacieuse. Son imprimé baroque iconique et la fluidité de la soie, signature de la maison Versace, garantissent un style mémorable qui respire la confiance.',
     category: 'mens-clothing',
     images: ['chemise-soie-versace'],
-    reviews: []
+    reviews: [
+        { author: 'Stéphane', rating: 5, comment: 'Pièce maîtresse de ma garde-robe. Les regards se tournent vers moi.'}
+    ]
   },
   {
     id: 'prod-47',
@@ -93,12 +104,13 @@ export const products: Product[] = [
     name_fr: 'Bottines Chelsea en cuir Citadin',
     slug: 'bottines-chelsea-cuir-citadin',
     price: 450,
-    description: 'Moderne und elegante Chelsea-Boots aus Glattleder. Perfekt, um jedes städtische Outfit zu vervollständigen.',
-    description_fr: 'Des bottines chelsea modernes et élégantes en cuir lisse. Parfaites pour compléter n\'importe quelle tenue urbaine.',
+    description: 'Die perfekte Verbindung von Tradition und Moderne. Diese Chelsea-Boots aus vollnarbigem Kalbsleder bieten eine schlanke Silhouette und außergewöhnlichen Komfort dank ihrer elastischen Einsätze. Ein Muss für den urbanen Entdecker.',
+    description_fr: 'L\'alliance parfaite de la tradition et de la modernité. Ces bottines Chelsea en cuir de veau pleine fleur offrent une silhouette épurée et un confort exceptionnel grâce à leurs empiècements élastiques. Un must-have pour l\'explorateur urbain.',
     category: 'shoes',
     images: ['bottines-chelsea-cuir-citadin'],
     reviews: [
-      { author: 'Alex', rating: 5, comment: 'Sehr bequem und stilvoll. Ich trage sie jeden Tag.' }
+      { author: 'Alex', rating: 5, comment: 'Très confortables et le cuir est de superbe qualité. Je les porte tous les jours.' },
+      { author: 'Luc', rating: 4, comment: 'Elles sont belles, mais demandent un petit temps d\'adaptation.'}
     ]
   },
   {
@@ -107,12 +119,13 @@ export const products: Product[] = [
     name_fr: 'Bottines en cuir suédé à talon carré Paris',
     slug: 'bottines-en-cuir-suede-talon-carre-paris',
     price: 480,
-    description: 'Elegante Wildlederstiefeletten mit einem stabilen quadratischen Absatz, der Stil und Komfort vereint.',
-    description_fr: 'D\'élégantes bottines en suède dotées d\'un talon carré stable, alliant style et confort au quotidien.',
+    description: 'Eleganz und Stabilität vereint. Diese Wildlederstiefeletten mit ihrem soliden Blockabsatz garantieren einen sicheren Gang und eine feminine Silhouette. Das weiche Veloursleder verleiht jedem Outfit eine Note von Raffinesse.',
+    description_fr: 'L\'élégance et la stabilité réunies. Ces bottines en suède, avec leur talon carré solide, assurent une démarche assurée et une silhouette féminine. La douceur du veau velours ajoute une note de raffinement à chaque tenue.',
     category: 'shoes',
     images: ['bottines-en-cuir-suede-talon-carre-paris'],
     reviews: [
-      { author: 'Julia', rating: 4, comment: 'Ich liebe den Stil, aber sie müssen eingelaufen werden.' }
+      { author: 'Julia', rating: 4, comment: 'J\'adore le style, mais elles nécessitent d\'être "faites" au début.' },
+      { author: 'Alice', rating: 5, comment: 'Parfaites pour le bureau comme pour sortir. Très polyvalentes.'}
     ]
   },
   {
@@ -121,11 +134,13 @@ export const products: Product[] = [
     name_fr: 'Brogues perforées Full-Brogue Tradition',
     slug: 'brogues-perforees-full-brogue-tradition',
     price: 520,
-    description: 'Ein klassischer Herrenschuh, der Full-Brogue, mit aufwendigen Perforationen für einen Hauch von traditioneller Raffinesse.',
-    description_fr: 'Un classique du vestiaire masculin, le full-brogue, avec ses perforations élaborées pour une touche de sophistication traditionnelle.',
+    description: 'Ein zeitloser Klassiker der Herrengarderobe. Diese Full-Brogues aus feinstem Leder sind mit kunstvollen Perforationen verziert, ein Zeugnis traditioneller Handwerkskunst für einen Hauch von anspruchsvoller Eleganz.',
+    description_fr: 'Un classique intemporel du vestiaire masculin. Ces souliers full-brogue en cuir fin sont ornés de perforations artistiques, témoignage d\'un savoir-faire traditionnel pour une touche de sophistication distinguée.',
     category: 'shoes',
     images: ['brogues-perforees-full-brogue-tradition'],
-    reviews: []
+    reviews: [
+      { author: 'Guillaume', rating: 5, comment: 'Une qualité de fabrication irréprochable. De vrais souliers de gentleman.' }
+    ]
   },
   {
     id: 'prod-50',
@@ -133,12 +148,13 @@ export const products: Product[] = [
     name_fr: 'Derby chunky à plateforme Street-Luxe',
     slug: 'derby-chunky-platform-street-luxe',
     price: 610,
-    description: 'Ein kühner Derby-Schuh mit einer imposanten Plateausohle, der Streetwear und Luxus für einen entschieden modernen Look vereint.',
-    description_fr: 'Une chaussure derby audacieuse montée sur une semelle plateforme imposante, fusionnant streetwear et luxe pour un look résolument moderne.',
+    description: 'Ein kühnes Statement für den modebewussten Mann. Diese Derby-Schuhe kombinieren ein klassisches Obermaterial aus poliertem Leder mit einer imposanten Plateausohle und schaffen so eine avantgardistische Fusion aus Streetwear und Luxus.',
+    description_fr: 'Une déclaration audacieuse pour l\'homme à la pointe de la mode. Ces derbies fusionnent une tige classique en cuir poli avec une semelle plateforme imposante, créant une fusion avant-gardiste entre streetwear et luxe.',
     category: 'shoes',
     images: ['derby-chunky-platform-street-luxe'],
     reviews: [
-      { author: 'Leo', rating: 5, comment: 'Einzigartiger Stil, sehr beeindruckend.' }
+      { author: 'Leo', rating: 5, comment: 'Style unique, elles font vraiment leur effet.' },
+      { author: 'Maxime', rating: 5, comment: 'Surprenant au début, mais incroyablement confortables.'}
     ]
   },
   {
@@ -147,11 +163,13 @@ export const products: Product[] = [
     name_fr: 'Derby en cuir grainé Élite',
     slug: 'derby-cuir-graine-elite',
     price: 550,
-    description: 'Ein robuster und eleganter Derby-Schuh aus hochwertigem genarbtem Leder. Ein Muss für den anspruchsvollen Mann.',
-    description_fr: 'Un derby robuste et élégant, fabriqué dans un cuir grainé de première qualité. Un essentiel pour l\'homme distingué.',
+    description: 'Robustheit trifft auf Raffinesse. Gefertigt aus hochwertigem genarbtem Leder, bietet dieser Derby-Schuh eine reiche Textur und außergewöhnliche Langlebigkeit. Ein Grundpfeiler für die Garderobe des anspruchsvollen Mannes.',
+    description_fr: 'Quand la robustesse rencontre le raffinement. Fabriqué dans un cuir grainé de première qualité, ce derby offre une texture riche et une durabilité exceptionnelle. Un pilier de la garde-robe de l\'homme exigeant.',
     category: 'shoes',
     images: ['derby-cuir-graine-elite'],
-    reviews: []
+    reviews: [
+      { author: 'Sébastien', rating: 5, comment: 'Le cuir grainé est magnifique et la chaussure est très solide.' }
+    ]
   },
   {
     id: 'prod-52',
@@ -159,11 +177,13 @@ export const products: Product[] = [
     name_fr: 'Escarpins en cuir verni talon 9 cm Éclipse',
     slug: 'escarpins-cuir-verni-talon-9-cm-eclipse',
     price: 490,
-    description: 'Der Inbegriff von Weiblichkeit, diese Lacklederpumps mit einem 9 cm hohen Absatz verlängern die Silhouette elegant.',
-    description_fr: 'Le summum de la féminité, ces escarpins en cuir verni avec un talon de 9 cm pour allonger la silhouette avec élégance.',
+    description: 'Der Inbegriff weiblicher Eleganz. Diese Pumps aus glänzendem Lackleder verlängern die Silhouette mit ihrem 9 cm hohen Stilettoabsatz. Ein Symbol für Glamour und Selbstvertrauen für jeden besonderen Anlass.',
+    description_fr: 'La quintessence de l\'élégance féminine. Ces escarpins en cuir verni brillant allongent la silhouette avec leur talon aiguille de 9 cm. Un symbole de glamour et de confiance pour toute occasion spéciale.',
     category: 'shoes',
     images: ['escarpins-cuir-verni-talon-9-cm-eclipse'],
-    reviews: []
+    reviews: [
+      { author: 'Charlotte', rating: 5, comment: 'La cambrure est parfaite. Elles sont sublimes.' }
+    ]
   },
   {
     id: 'prod-53',
@@ -171,11 +191,13 @@ export const products: Product[] = [
     name_fr: 'Mocassin à pampilles en suède Club',
     slug: 'mocassin-tasseled-suede-club',
     price: 420,
-    description: 'Ein lässig-eleganter Loafer aus Wildleder, verziert mit klassischen Quasten. Perfekt für einen Preppy-Chic-Look.',
-    description_fr: 'Un mocassin décontracté-élégant en suède, orné de pampilles classiques. Parfait pour un look preppy-chic.',
+    description: 'Eine lässig-schicke Ästhetik. Diese Loafer aus weichem Wildleder sind mit eleganten Quasten verziert und verkörpern einen mühelosen Preppy-Stil. Ideal für einen eleganten Look am Wochenende oder im Büro.',
+    description_fr: 'Une esthétique casual-chic. Ces mocassins en suède souple, agrémentés d\'élégantes pampilles, incarnent un style preppy sans effort. Idéal pour une allure élégante le week-end ou au bureau.',
     category: 'shoes',
     images: ['mocassin-tasseled-suede-club'],
-    reviews: []
+    reviews: [
+      { author: 'Arthur', rating: 4, comment: 'Très beaux, mais un peu fragiles sous la pluie.' }
+    ]
   },
   {
     id: 'prod-54',
@@ -183,12 +205,13 @@ export const products: Product[] = [
     name_fr: 'Mules en satin à talon sculpté Diva',
     slug: 'mules-satin-talon-sculpte-diva',
     price: 530,
-    description: 'Diese Satin-Mules sind ein wahres Schmuckstück und zeichnen sich durch ihren einzigartigen skulpturalen Absatz aus. Für einen unvergesslichen Auftritt.',
-    description_fr: 'Véritables bijoux de pied, ces mules en satin se distinguent par leur talon sculptural unique. Pour une entrée remarquée.',
+    description: 'Ein wahres Fußschmuckstück. Diese Mules aus leuchtendem Satin fallen durch ihren einzigartigen, kunstvoll skulpturierten Absatz auf. Sie sind die Garantie für einen unvergesslichen und raffinierten Auftritt.',
+    description_fr: 'Véritable bijou de pied. Ces mules en satin lumineux se distinguent par leur talon sculptural unique et artistique. La garantie d\'une entrée remarquée et sophistiquée.',
     category: 'shoes',
     images: ['mules-satin-talon-sculpte-diva'],
     reviews: [
-      { author: 'Nina', rating: 5, comment: 'Spektakulär! Ein echtes Kunstwerk.' }
+      { author: 'Nina', rating: 5, comment: 'Spectaculaires ! Une véritable œuvre d\'art à mes pieds.' },
+      { author: 'Laura', rating: 5, comment: 'Étonnamment confortables pour des chaussures aussi design.'}
     ]
   },
   {
@@ -197,11 +220,13 @@ export const products: Product[] = [
     name_fr: 'Richelieu cousu main en cuir patiné Souverain',
     slug: 'richelieu-cousu-main-cuir-patine-souverain',
     price: 780,
-    description: 'Der Oxford in seiner edelsten Form. Handgenäht aus patiniertem Leder für eine einzigartige Tiefe und Farbe.',
-    description_fr: 'Le richelieu dans sa forme la plus noble. Cousu à la main dans un cuir patiné pour une profondeur et une couleur uniques.',
+    description: 'Die Krönung der Schuhmacherkunst. Diese handgenähten Oxford-Schuhe aus sorgfältig patiniertem Leder bieten eine einzigartige Tiefe und unvergleichliche Farbnuancen. Für den Kenner, der das Außergewöhnliche sucht.',
+    description_fr: 'Le summum de l\'art bottier. Ce richelieu cousu main, réalisé dans un cuir méticuleusement patiné, offre une profondeur et des nuances de couleur inégalées. Pour le connaisseur qui recherche l\'exception.',
     category: 'shoes',
     images: ['richelieu-cousu-main-cuir-patine-souverain'],
-    reviews: []
+    reviews: [
+      { author: 'Édouard', rating: 5, comment: 'La patine est magnifique. Des chaussures d\'exception.' }
+    ]
   },
   {
     id: 'prod-56',
@@ -209,11 +234,13 @@ export const products: Product[] = [
     name_fr: 'Sandales à bride cheville en cuir Sérénité',
     slug: 'sandales-a-bride-cheville-en-cuir-serenite',
     price: 390,
-    description: 'Minimalistische und schicke Sandalen mit einem feinen Knöchelriemen aus Leder. Die Essenz sommerlicher Eleganz.',
-    description_fr: 'Des sandales minimalistes et chics, avec une fine bride en cuir qui enlace la cheville. L\'essence de l\'élégance estivale.',
+    description: 'Die Essenz sommerlicher Schlichtheit. Diese minimalistischen Sandalen zeichnen sich durch einen feinen Lederriemen aus, der den Knöchel elegant umschließt. Ein Symbol für mühelose Eleganz an sonnigen Tagen.',
+    description_fr: 'L\'essence de la simplicité estivale. Ces sandales minimalistes se caractérisent par une fine bride en cuir qui enlace délicatement la cheville. Un symbole d\'élégance sans effort pour les jours ensoleillés.',
     category: 'shoes',
     images: ['sandales-a-bride-cheville-en-cuir-serenite'],
-    reviews: []
+    reviews: [
+      { author: 'Chloé', rating: 5, comment: 'Élégantes, simples et confortables. Parfaites pour l\'été.' }
+    ]
   },
   {
     id: 'prod-57',
@@ -221,12 +248,13 @@ export const products: Product[] = [
     name_fr: 'Sneakers de luxe en cuir nubuck Runway',
     slug: 'sneakers-luxe-cuir-nubuck-runway',
     price: 650,
-    description: 'Diese Sneakers überschreiten die Grenzen zwischen Sport und Luxus, gefertigt aus weichem Nubukleder mit einer Designer-Sohle.',
-    description_fr: 'Des sneakers qui transcendent les codes du sport et du luxe, fabriquées en cuir nubuck doux avec une semelle design.',
+    description: 'Überschreiten Sie die Grenzen zwischen lässig und luxuriös. Diese Sneakers sind aus samtigem Nubukleder gefertigt und auf einer maßgefertigten Sohle montiert, die Komfort und High-Fashion-Stil vereint.',
+    description_fr: 'Transcendez les frontières entre le décontracté et le luxe. Ces sneakers sont fabriquées en cuir nubuck velouté et montées sur une semelle designée sur mesure, alliant confort et style haute-couture.',
     category: 'shoes',
     images: ['sneakers-luxe-cuir-nubuck-runway'],
     reviews: [
-      { author: 'Tom', rating: 5, comment: 'So bequem und sehen toll aus.' }
+      { author: 'Tom', rating: 5, comment: 'Aussi confortables que stylées. Le nubuck est très doux.' },
+      { author: 'Lucas', rating: 5, comment: 'Un luxe discret et moderne. J\'adore.'}
     ]
   },
   {
@@ -235,11 +263,14 @@ export const products: Product[] = [
     name_fr: 'Montre Chrono Luxe',
     slug: 'montre-acier-inoxydable-noire-chrono-luxe',
     price: 450,
-    description: 'Eine moderne und kühne Uhr aus schwarzem Edelstahl. Ein Chronograph für einen urbanen und anspruchsvollen Stil.',
-    description_fr: 'Une montre moderne et audacieuse en acier inoxydable noir. Un chronographe pour un style urbain et sophistiqué.',
+    description: 'Eine kühne Ästhetik für das Handgelenk. Diese Chronographenuhr aus mattschwarzem Edelstahl ist ein Symbol für moderne Raffinesse. Sie vereint anspruchsvolle Funktionalität mit einem entschieden urbanen und kraftvollen Design.',
+    description_fr: 'Une esthétique audacieuse pour le poignet. Cette montre chronographe en acier inoxydable noir mat est un symbole de sophistication moderne. Elle allie une fonctionnalité pointue à un design résolument urbain et puissant.',
     category: 'accessories',
     images: ['montre-acier-inoxydable-noire-chrono-luxe'],
-    reviews: [{ author: 'Marc', rating: 5, comment: 'Superbe montre, très classe.' }]
+    reviews: [
+        { author: 'Marc', rating: 5, comment: 'Superbe montre, très classe et agréable à porter.' },
+        { author: 'David', rating: 5, comment: 'Le noir mat est magnifique. Elle ne quitte plus mon poignet.'}
+    ]
   },
   {
     id: 'acc-2',
@@ -247,11 +278,13 @@ export const products: Product[] = [
     name_fr: 'Montre sport Hydrosport',
     slug: 'montre-sport-silicone-hydrosport-5-atm',
     price: 250,
-    description: 'Eine Sportuhr mit Silikonarmband, wasserdicht bis 5 ATM. Perfekt für den aktiven Mann.',
-    description_fr: 'Une montre de sport avec un bracelet en silicone, étanche jusqu\'à 5 ATM. Parfaite pour l\'homme actif.',
+    description: 'Der ideale Begleiter für den modernen Abenteurer. Mit ihrem widerstandsfähigen Silikonarmband und einer Wasserdichtigkeit von 5 ATM ist diese Uhr für jede Herausforderung bereit, ohne jemals auf Stil zu verzichten.',
+    description_fr: 'Le compagnon idéal de l\'aventurier moderne. Avec son bracelet en silicone résistant et son étanchéité à 5 ATM, cette montre est conçue pour affronter tous les défis sans jamais sacrifier le style.',
     category: 'accessories',
     images: ['montre-sport-silicone-hydrosport-5-atm'],
-    reviews: []
+    reviews: [
+        { author: 'Kevin', rating: 5, comment: 'Robuste et stylée, parfaite pour mes activités sportives.'}
+    ]
   },
   {
     id: 'acc-3',
@@ -259,11 +292,14 @@ export const products: Product[] = [
     name_fr: 'Montre Heritage Classique',
     slug: 'montre-cuir-brun-heritage-classique',
     price: 380,
-    description: 'Eine klassische Uhr mit braunem Lederarmband, die zeitlose Eleganz verkörpert. Ein Erbstück von morgen.',
-    description_fr: 'Une montre classique avec un bracelet en cuir brun, incarnant l\'élégance intemporelle. Un héritage de demain.',
+    description: 'Eine Hommage an die zeitlose Uhrmacherkunst. Diese Uhr mit ihrem braunen Lederarmband, das mit der Zeit eine wunderschöne Patina entwickelt, und ihrem minimalistischen Zifferblatt verkörpert eine unaufdringliche und ewige Eleganz.',
+    description_fr: 'Un hommage à l\'horlogerie intemporelle. Cette montre, avec son bracelet en cuir brun qui se patinera superbement avec le temps et son cadran épuré, incarne une élégance discrète et éternelle.',
     category: 'accessories',
     images: ['montre-cuir-brun-heritage-classique'],
-    reviews: [{ author: 'Jean', rating: 5, comment: 'Magnifique et très agréable à porter.' }]
+    reviews: [
+        { author: 'Jean', rating: 5, comment: 'Magnifique et très agréable à porter. Un classique.' },
+        { author: 'Pierre', rating: 5, comment: 'Le cuir est de très belle qualité.'}
+    ]
   },
   {
     id: 'acc-4',
@@ -271,11 +307,13 @@ export const products: Product[] = [
     name_fr: 'Montre Blue Vision',
     slug: 'montre-metallique-argent-blue-vision',
     price: 320,
-    description: 'Eine Uhr aus silbernem Metall mit einem tiefblauen Zifferblatt. Eine perfekte Kombination aus Modernität und Eleganz.',
-    description_fr: 'Une montre en métal argenté avec un cadran bleu profond. Une alliance parfaite de modernité et d\'élégance.',
+    description: 'Fesseln Sie die Blicke mit dem tiefblauen Zifferblatt dieser Uhr, das an einen mitternächtlichen Himmel erinnert. Eingefasst in poliertes silbernes Metall, ist sie ein Schmuckstück von moderner und fesselnder Eleganz.',
+    description_fr: 'Capturez les regards avec le cadran bleu profond de cette montre, évoquant un ciel de minuit. Enchâssée dans un métal argenté poli, c\'est un bijou d\'une élégance moderne et captivante.',
     category: 'accessories',
     images: ['montre-metallique-argent-blue-vision'],
-    reviews: []
+    reviews: [
+        { author: 'Daniel', rating: 5, comment: 'Le cadran bleu est tout simplement hypnotique.'}
+    ]
   },
   {
     id: 'acc-5',
@@ -283,11 +321,13 @@ export const products: Product[] = [
     name_fr: 'Montre digitale Urban Tech',
     slug: 'montre-digitale-led-urban-tech',
     price: 180,
-    description: 'Eine digitale Uhr mit LED-Anzeige für einen entschieden urbanen und technologischen Look.',
-    description_fr: 'Une montre digitale avec affichage LED pour un look résolument urbain et technologique.',
+    description: 'Ein Konzentrat aus Technologie und Stil. Diese digitale Uhr mit ihrem klaren LED-Display und minimalistischem Design ist das perfekte Accessoire für einen Look, der entschieden in der Zukunft verankert ist.',
+    description_fr: 'Un concentré de technologie et de style. Cette montre digitale, avec son affichage LED clair et son design minimaliste, est l\'accessoire parfait pour un look résolument ancré dans le futur.',
     category: 'accessories',
     images: ['montre-digitale-led-urban-tech'],
-    reviews: []
+    reviews: [
+        { author: 'Simon', rating: 4, comment: 'Design sympa et futuriste. Très légère.'}
+    ]
   },
   {
     id: 'acc-6',
@@ -295,11 +335,13 @@ export const products: Product[] = [
     name_fr: 'Montre Executive Elite',
     slug: 'montre-cadran-or-rose-executive-elite',
     price: 550,
-    description: 'Eine prestigeträchtige Uhr mit einem Zifferblatt in Roségold, für den modernen und anspruchsvollen Mann.',
-    description_fr: 'Une montre de prestige avec un cadran en or rose, pour l\'homme d\'affaires moderne et exigeant.',
+    description: 'Für den Mann, der an der Spitze steht. Die sanften und warmen Töne des Roségold-Zifferblatts verleihen dieser prestigeträchtigen Uhr eine moderne und anspruchsvolle Note. Ein Symbol für Erfolg und raffinierten Geschmack.',
+    description_fr: 'Pour l\'homme qui est au sommet. Les tons doux et chauds du cadran en or rose confèrent à cette montre de prestige une touche de modernité et d\'exigence. Un symbole de réussite et de goût raffiné.',
     category: 'accessories',
     images: ['montre-cadran-or-rose-executive-elite'],
-    reviews: []
+    reviews: [
+        { author: 'Charles', rating: 5, comment: 'Une montre qui impose le respect. Finitions impeccables.'}
+    ]
   },
   {
     id: 'acc-7',
@@ -307,11 +349,13 @@ export const products: Product[] = [
     name_fr: 'Chronographe Titan Steel Pro',
     slug: 'montre-chronographe-titan-steel-pro',
     price: 620,
-    description: 'Ein robuster und präziser Chronograph aus Titan. Ein Werkzeug für den Mann, der keine Kompromisse eingeht.',
-    description_fr: 'Un chronographe robuste et précis en titane. Un outil pour l\'homme qui ne fait aucun compromis.',
+    description: 'Gebaut für die Ewigkeit. Dieser Chronograph aus ultraleichtem und widerstandsfähigem Titan ist ein Konzentrat aus Leistung und Präzision. Sein technisches Design und seine Robustheit machen ihn zum Werkzeug für kompromisslose Männer.',
+    description_fr: 'Conçu pour durer. Ce chronographe en titane, ultra-léger et résistant, est un concentré de performance et de précision. Son design technique et sa robustesse en font l\'outil des hommes sans compromis.',
     category: 'accessories',
     images: ['montre-chronographe-titan-steel-pro'],
-    reviews: []
+    reviews: [
+      { author: 'Olivier', rating: 5, comment: 'Légère, robuste et très précise. Une montre d\'exception.'}
+    ]
   },
   {
     id: 'acc-8',
@@ -319,11 +363,13 @@ export const products: Product[] = [
     name_fr: 'Bonnet en laine Nordic Luxe',
     slug: 'bonnet-laine-torsadee-noir-nordic-luxe',
     price: 80,
-    description: 'Eine Mütze aus Zopfstrickwolle, für einen schicken und gemütlichen Winterlook.',
-    description_fr: 'Un bonnet en laine torsadée, pour un look hivernal chic et douillet.',
-    category: 'accessories',
+    description: 'Wärme und Textur für Ihre Wintertage. Diese Mütze aus reiner Wolle mit Zopfstrickmuster bietet einen schicken und gemütlichen Stil. Ein unverzichtbares Accessoire, um der Kälte mit nordischer Eleganz zu trotzen.',
+    description_fr: 'De la chaleur et de la texture pour vos journées d\'hiver. Ce bonnet en pure laine, au tricot torsadé, offre un style chic et douillet. Un accessoire indispensable pour affronter le froid avec une élégance nordique.',
+    category: 'winter-clothing',
     images: ['bonnet-laine-torsadee-noir-nordic-luxe'],
-    reviews: []
+    reviews: [
+        { author: 'Elsa', rating: 5, comment: 'Très chaud et la laine ne gratte pas. J\'adore !'}
+    ]
   },
   {
     id: 'acc-9',
@@ -331,11 +377,13 @@ export const products: Product[] = [
     name_fr: 'Bonnet Winter Essential',
     slug: 'bonnet-epais-gris-winter-essential',
     price: 65,
-    description: 'Eine dicke, graue Mütze, ein unverzichtbares Accessoire, um dem Winter mit Stil zu begegnen.',
-    description_fr: 'Un bonnet épais et gris, l\'essentiel pour affronter l\'hiver avec style.',
+    description: 'Schlichtheit und Funktionalität. Diese dicke Mütze in neutralem Grau ist das unverzichtbare Accessoire, das sich leicht mit all Ihren Wintermänteln kombinieren lässt, um stilvoll warm zu bleiben.',
+    description_fr: 'La simplicité et l\'efficacité. Ce bonnet épais d\'un gris neutre est l\'accessoire essentiel qui s\'associe facilement à tous vos manteaux d\'hiver pour rester au chaud avec style.',
     category: 'winter-clothing',
     images: ['bonnet-epais-gris-winter-essential'],
-    reviews: []
+    reviews: [
+        { author: 'Martin', rating: 5, comment: 'Simple, chaud, efficace. Exactement ce que je cherchais.'}
+    ]
   },
   {
     id: 'acc-10',
@@ -343,11 +391,13 @@ export const products: Product[] = [
     name_fr: 'Écharpe Alpine Soft',
     slug: 'echarpe-laine-vierge-premium-alpine-soft',
     price: 150,
-    description: 'Ein Schal aus reiner Schurwolle für unübertroffene Weichheit und Wärme.',
-    description_fr: 'Une écharpe en pure laine vierge pour une douceur et une chaleur inégalées.',
+    description: 'Hüllen Sie sich in einen Kokon aus Weichheit. Dieser Schal aus reiner Schurwolle bietet eine unvergleichliche Wärme und ein Gefühl von zartem Luxus auf der Haut. Das perfekte Accessoire für die kältesten Tage.',
+    description_fr: 'Enveloppez-vous dans un cocon de douceur. Cette écharpe en pure laine vierge offre une chaleur inégalée et une sensation de luxe délicat contre la peau. L\'accessoire parfait pour les jours les plus froids.',
     category: 'winter-clothing',
     images: ['echarpe-laine-vierge-premium-alpine-soft'],
-    reviews: []
+    reviews: [
+        { author: 'Isabelle', rating: 5, comment: 'Une douceur incroyable, c\'est comme un câlin.'}
+    ]
   },
   {
     id: 'acc-11',
@@ -355,11 +405,13 @@ export const products: Product[] = [
     name_fr: 'Snood Winter Shield',
     slug: 'snood-polaire-winter-shield-premium',
     price: 75,
-    description: 'Ein Fleece-Snood für optimalen Schutz vor Kälte, ohne Kompromisse beim Stil einzugehen.',
-    description_fr: 'Un snood en polaire pour une protection optimale contre le froid, sans compromis sur le style.',
+    description: 'Eine moderne und praktische Alternative zum Schal. Dieser Fleece-Snood bietet optimalen Schutz vor Wind und Kälte und bewahrt dabei einen klaren und urbanen Stil. Perfekt für Ihre Outdoor-Aktivitäten.',
+    description_fr: 'Une alternative moderne et pratique à l\'écharpe. Ce snood en polaire offre une protection optimale contre le vent et le froid, tout en conservant un style épuré et urbain. Parfait pour vos activités extérieures.',
     category: 'winter-clothing',
     images: ['snood-polaire-winter-shield-premium'],
-    reviews: []
+    reviews: [
+        { author: 'Romain', rating: 5, comment: 'Très pratique et bien plus chaud que je ne le pensais.'}
+    ]
   },
   {
     id: 'acc-12',
@@ -367,11 +419,13 @@ export const products: Product[] = [
     name_fr: 'Bonnet Urban Knit',
     slug: 'bonnet-streetwear-a-revers-urban-knit',
     price: 55,
-    description: 'Eine Streetwear-Mütze mit Umschlag für einen lässigen und trendigen Look.',
-    description_fr: 'Un bonnet streetwear à revers pour un look décontracté et tendance.',
+    description: 'Das Markenzeichen des urbanen Stils. Diese Mütze mit ihrem charakteristischen Umschlag ist das unverzichtbare Accessoire, um jedem lässigen Outfit einen trendigen und modernen Streetwear-Touch zu verleihen.',
+    description_fr: 'La marque de fabrique du style urbain. Ce bonnet à revers caractéristique est l\'accessoire indispensable pour ajouter une touche streetwear tendance et moderne à n\'importe quelle tenue décontractée.',
     category: 'accessories',
     images: ['bonnet-streetwear-a-revers-urban-knit'],
-    reviews: []
+    reviews: [
+        { author: 'Dylan', rating: 5, comment: 'Style parfait, je le porte tout le temps.'}
+    ]
   },
   {
     id: 'acc-13',
@@ -379,11 +433,13 @@ export const products: Product[] = [
     name_fr: 'Gants Tech Gloves',
     slug: 'gants-tactiles-thermiques-tech-gloves',
     price: 95,
-    description: 'Thermische und taktile Handschuhe, um auch im Winter verbunden zu bleiben.',
-    description_fr: 'Des gants thermiques et tactiles pour rester connecté même en hiver.',
+    description: 'Kombinieren Sie Wärme und Konnektivität. Diese Thermohandschuhe sind mit einer speziellen Technologie ausgestattet, mit der Sie Ihre Touchscreens bedienen können, ohne sie ausziehen zu müssen. Nie wieder kalte Hände, um in Verbindung zu bleiben.',
+    description_fr: 'Alliez chaleur et connectivité. Ces gants thermiques sont dotés d\'une technologie spécifique vous permettant d\'utiliser vos écrans tactiles sans les retirer. Ne plus jamais avoir froid aux mains pour rester connecté.',
     category: 'winter-clothing',
     images: ['gants-tactiles-thermiques-tech-gloves'],
-    reviews: []
+    reviews: [
+        { author: 'Laura', rating: 5, comment: 'Enfin des gants qui fonctionnent vraiment avec mon téléphone !'}
+    ]
   },
   {
     id: 'acc-14',
@@ -391,11 +447,13 @@ export const products: Product[] = [
     name_fr: 'Portefeuille Slimfold Premium',
     slug: 'portefeuille-cuir-veritable-slimfold-premium',
     price: 120,
-    description: 'Ein schlankes Portemonnaie aus echtem Leder, das Eleganz und Funktionalität vereint.',
-    description_fr: 'Un portefeuille slim en cuir véritable, alliant élégance et fonctionnalité.',
+    description: 'Eleganz in Ihrer Tasche. Dieses schlanke Portemonnaie aus echtem Leder ist so konzipiert, dass es sich diskret in Ihre Tasche schmiegt und gleichzeitig Ihre wichtigsten Karten und Geldscheine mit Raffinesse organisiert.',
+    description_fr: 'L\'élégance dans votre poche. Ce portefeuille slim en cuir véritable est conçu pour se glisser discrètement dans votre poche tout en organisant vos cartes et billets essentiels avec raffinement.',
     category: 'accessories',
     images: ['portefeuille-cuir-veritable-slimfold-premium'],
-    reviews: []
+    reviews: [
+        { author: 'Vincent', rating: 5, comment: 'Très fin et le cuir est de grande qualité. Parfait.'}
+    ]
   },
   {
     id: 'acc-15',
@@ -403,11 +461,13 @@ export const products: Product[] = [
     name_fr: 'Sacoche bandoulière Executive',
     slug: 'sacoche-bandouliere-cuir-premium-executive-bag',
     price: 350,
-    description: 'Eine Umhängetasche aus Premium-Leder, ideal für den modernen Geschäftsmann.',
-    description_fr: 'Une sacoche en bandoulière en cuir premium, idéale pour l\'homme d\'affaires moderne.',
+    description: 'Der ideale Partner für den modernen Geschäftsmann. Diese Umhängetasche aus hochwertigem Leder vereint Funktionalität und Eleganz. Ihre durchdachten Fächer ermöglichen es Ihnen, Ihre täglichen Essentials mit Stil zu organisieren.',
+    description_fr: 'Le partenaire idéal de l\'homme d\'affaires moderne. Cette sacoche en bandoulière, fabriquée dans un cuir de première qualité, allie fonctionnalité et élégance. Ses compartiments bien pensés vous permettent d\'organiser vos essentiels quotidiens avec style.',
     category: 'accessories',
     images: ['sacoche-bandouliere-cuir-premium-executive-bag'],
-    reviews: []
+    reviews: [
+        { author: 'Alexandre', rating: 5, comment: 'Taille parfaite et très professionnelle. Je recommande.'}
+    ]
   },
   {
     id: 'acc-16',
@@ -415,11 +475,14 @@ export const products: Product[] = [
     name_fr: 'Montre Golden Lady',
     slug: 'montre-elegante-doree-golden-lady',
     price: 480,
-    description: 'Eine elegante, vergoldete Uhr für die Frau, die gerne glänzt. Ein Schmuckstück, das die Zeit anzeigt.',
-    description_fr: 'Une montre élégante et dorée pour la femme qui aime briller. Un bijou qui donne l\'heure.',
+    description: 'Ein Schmuckstück, das die Zeit anzeigt. Diese vergoldete Uhr ist eine Ode an die Weiblichkeit. Ihr strahlendes Finish und ihr raffiniertes Design machen sie zum perfekten Accessoire, um jedes Outfit mit einem Hauch von Glamour zu erleuchten.',
+    description_fr: 'Un bijou qui donne l\'heure. Cette montre plaquée or est une ode à la féminité. Sa finition éclatante et son design raffiné en font l\'accessoire parfait pour illuminer chaque tenue d\'une touche de glamour.',
     category: 'accessories',
     images: ['montre-elegante-doree-golden-lady'],
-    reviews: [{ author: 'Marie', rating: 5, comment: 'Absolument magnifique, je l\'adore !' }]
+    reviews: [
+        { author: 'Marie', rating: 5, comment: 'Absolument magnifique, je l\'adore ! Elle est encore plus belle en vrai.' },
+        { author: 'Juliette', rating: 5, comment: 'Un vrai bijou. Je reçois des compliments à chaque fois que je la porte.'}
+    ]
   },
   {
     id: 'acc-17',
@@ -427,11 +490,13 @@ export const products: Product[] = [
     name_fr: 'Montre Silver Pure',
     slug: 'montre-argentee-minimaliste-silver-pure',
     price: 350,
-    description: 'Eine minimalistische, versilberte Uhr. Die Essenz von schlichter Eleganz.',
-    description_fr: 'Une montre minimaliste et argentée. L\'essence de l\'élégance épurée.',
+    description: 'Die Kunst der Schlichtheit. Diese minimalistische, versilberte Uhr verkörpert reine und zeitlose Eleganz. Ihr schlichtes Design und ihre makellose Verarbeitung machen sie zu einem vielseitigen Accessoire für jeden Anlass.',
+    description_fr: 'L\'art de la simplicité. Cette montre minimaliste en métal argenté incarne une élégance pure et intemporelle. Son design épuré et sa finition impeccable en font un accessoire polyvalent pour toutes les occasions.',
     category: 'accessories',
     images: ['montre-argentee-minimaliste-silver-pure'],
-    reviews: []
+    reviews: [
+      { author: 'Clara', rating: 5, comment: 'Simple, élégante, parfaite. C\'est exactement ce que je voulais.'}
+    ]
   },
   {
     id: 'acc-18',
@@ -439,11 +504,13 @@ export const products: Product[] = [
     name_fr: 'Montre Soft Elegance',
     slug: 'montre-cuir-beige-soft-elegance',
     price: 320,
-    description: 'Eine Uhr mit beigem Lederarmband für eine sanfte und raffinierte Eleganz.',
-    description_fr: 'Une montre avec un bracelet en cuir beige pour une élégance douce et raffinée.',
+    description: 'Eine sanfte und raffinierte Note für Ihr Handgelenk. Das Armband aus weichem beigem Leder und das schlichte Zifferblatt dieser Uhr schaffen eine Harmonie von subtiler und femininer Eleganz.',
+    description_fr: 'Une touche de douceur et de raffinement pour votre poignet. Le bracelet en cuir beige souple et le cadran épuré de cette montre créent une harmonie d\'élégance subtile et féminine.',
     category: 'accessories',
     images: ['montre-cuir-beige-soft-elegance'],
-    reviews: []
+    reviews: [
+        { author: 'Audrey', rating: 5, comment: 'La couleur est très douce et la montre est très confortable.'}
+    ]
   },
   {
     id: 'acc-19',
@@ -451,11 +518,13 @@ export const products: Product[] = [
     name_fr: 'Montre Rose Queen',
     slug: 'montre-rose-gold-maille-milanaise-rose-queen',
     price: 420,
-    description: 'Eine Uhr in Roségold mit Milanaise-Armband. Die Königin der Uhren.',
-    description_fr: 'Une montre en or rose avec un bracelet en maille milanaise. La reine des montres.',
+    description: 'Die Königin der Uhren an Ihrem Handgelenk. Das Milanaise-Armband aus Roségold schmiegt sich elegant an die Haut, während das funkelnde Zifferblatt bei jeder Bewegung das Licht einfängt. Eine Uhr für die moderne Königin.',
+    description_fr: 'La reine des montres à votre poignet. Son bracelet en maille milanaise couleur or rose épouse élégamment la peau, tandis que son cadran étincelant capture la lumière à chaque mouvement. Une montre pour la reine moderne.',
     category: 'accessories',
     images: ['montre-rose-gold-maille-milanaise-rose-queen'],
-    reviews: []
+    reviews: [
+        { author: 'Manon', rating: 5, comment: 'Je suis amoureuse de cette montre. Le bracelet est magnifique.'}
+    ]
   },
   {
     id: 'acc-20',
@@ -463,11 +532,13 @@ export const products: Product[] = [
     name_fr: 'Bonnet Cozy Glam',
     slug: 'bonnet-laine-pompon-fourrure-synthetique-cozy-glam',
     price: 90,
-    description: 'Eine Wollmütze mit einem Bommel aus Kunstpelz, für einen glamourösen und gemütlichen Winter.',
-    description_fr: 'Un bonnet en laine avec un pompon en fourrure synthétique, pour un hiver glamour et douillet.',
+    description: 'Vereinen Sie Wärme und Glamour. Diese Wollmütze ist mit einem weichen Bommel aus hochwertigem Kunstpelz versehen, der Ihrem Winterlook einen Hauch von verspieltem Luxus verleiht.',
+    description_fr: 'Alliez chaleur et glamour. Ce bonnet en laine est surmonté d\'un pompon doux en fausse fourrure de haute qualité, ajoutant une touche de luxe ludique à votre look d\'hiver.',
     category: 'winter-clothing',
     images: ['bonnet-laine-pompon-fourrure-synthetique-cozy-glam'],
-    reviews: []
+    reviews: [
+        { author: 'Jessica', rating: 5, comment: 'Très doux et le pompon est adorable !'}
+    ]
   },
   {
     id: 'acc-21',
@@ -475,11 +546,13 @@ export const products: Product[] = [
     name_fr: 'Bonnet Urban Chic',
     slug: 'bonnet-long-oversize-urban-chic',
     price: 70,
-    description: 'Eine lange Oversize-Mütze für einen urbanen und schicken Look.',
-    description_fr: 'Un bonnet long et oversize pour un look urbain et chic.',
+    description: 'Für einen lässigen und trendigen Stil. Diese lange Oversize-Mütze kann auf verschiedene Arten getragen werden, um Ihren urbanen und schicken Look zu vervollkommnen. Ein starkes Stück für einen selbstbewussten Stil.',
+    description_fr: 'Pour un style décontracté et tendance. Ce bonnet long et oversize peut être porté de différentes manières pour parfaire votre look urbain et chic. Une pièce forte pour un style affirmé.',
     category: 'accessories',
     images: ['bonnet-long-oversize-urban-chic'],
-    reviews: []
+    reviews: [
+        { author: 'Mathieu', rating: 4, comment: 'Bonnet sympa, le style oversize est cool.'}
+    ]
   },
   {
     id: 'acc-22',
@@ -487,11 +560,13 @@ export const products: Product[] = [
     name_fr: 'Bonnet Winter Pearl',
     slug: 'bonnet-tricote-perle-winter-pearl',
     price: 85,
-    description: 'Eine gestrickte Mütze mit Perlen verziert, für einen Hauch von winterlicher Zartheit.',
-    description_fr: 'Un bonnet tricoté orné de perles, pour une touche de délicatesse hivernale.',
+    description: 'Ein Hauch von Zartheit im Herzen des Winters. Diese gestrickte Mütze ist subtil mit kleinen Perlen verziert, die einen Hauch von Licht und winterlicher Poesie in Ihre Garderobe bringen.',
+    description_fr: 'Une touche de délicatesse au cœur de l\'hiver. Ce bonnet tricoté est subtilement orné de petites perles, apportant un éclat de lumière et une poésie hivernale à votre garde-robe.',
     category: 'winter-clothing',
     images: ['bonnet-tricote-perle-winter-pearl'],
-    reviews: []
+    reviews: [
+        { author: 'Amélie', rating: 5, comment: 'Très original et féminin. J\'aime beaucoup les petites perles.'}
+    ]
   },
   {
     id: 'acc-23',
@@ -499,11 +574,13 @@ export const products: Product[] = [
     name_fr: 'Écharpe Luxe Soft',
     slug: 'echarpe-oversize-fausse-fourrure-luxe-soft',
     price: 180,
-    description: 'Ein Oversize-Schal aus Kunstpelz für einen Hauch von Luxus und extremer Weichheit.',
-    description_fr: 'Une écharpe oversize en fausse fourrure pour une touche de luxe et de douceur extrême.',
+    description: 'Hüllen Sie sich in extremen Luxus. Dieser Oversize-Schal aus hochwertigem Kunstpelz bietet eine unvergleichliche Weichheit und einen Hauch von opulentem Glamour für Ihre Winteroutfits.',
+    description_fr: 'Drapez-vous dans un luxe extrême. Cette écharpe oversize en fausse fourrure de haute qualité offre une douceur inégalée et une touche de glamour opulent à vos tenues d\'hiver.',
     category: 'winter-clothing',
     images: ['echarpe-oversize-fausse-fourrure-luxe-soft'],
-    reviews: []
+    reviews: [
+        { author: 'Caroline', rating: 5, comment: 'Incroyablement douce et luxueuse. C\'est magnifique.'}
+    ]
   },
   {
     id: 'acc-24',
@@ -511,11 +588,13 @@ export const products: Product[] = [
     name_fr: 'Écharpe Warm Plush',
     slug: 'echarpe-maille-torsadee-warm-plush',
     price: 130,
-    description: 'Ein Schal aus Zopfstrick, um sich stilvoll in Wärme zu hüllen.',
-    description_fr: 'Une écharpe en maille torsadée pour s\'envelopper de chaleur avec style.',
+    description: 'Die zeitlose Eleganz von Zopfstrick. Dieser dicke und weiche Schal umhüllt Sie mit stilvoller Wärme. Seine reiche Textur und großzügigen Abmessungen machen ihn zum perfekten Verbündeten gegen die Winterkälte.',
+    description_fr: 'L\'élégance intemporelle de la maille torsadée. Cette écharpe épaisse et moelleuse vous enveloppe de chaleur avec style. Sa texture riche et ses dimensions généreuses en font l\'alliée parfaite contre le froid hivernal.',
     category: 'winter-clothing',
     images: ['echarpe-maille-torsadee-warm-plush'],
-    reviews: []
+    reviews: [
+        { author: 'Nicolas', rating: 5, comment: 'Écharpe de grande qualité, très chaude et confortable.'}
+    ]
   },
   {
     id: 'acc-25',
@@ -523,11 +602,13 @@ export const products: Product[] = [
     name_fr: 'Châle Elegant Wrap',
     slug: 'chale-hiver-motif-elegant-elegant-wrap',
     price: 160,
-    description: 'Eine Winterstola mit elegantem Muster, um jedes Outfit zu veredeln.',
-    description_fr: 'Un châle d\'hiver au motif élégant pour sublimer n\'importe quelle tenue.',
+    description: 'Mehr als nur ein Accessoire, ein Statement. Diese große Winterstola mit ihrem raffinierten und eleganten Muster wertet jedes Outfit auf, vom einfachen Mantel bis zum Abendkleid.',
+    description_fr: 'Plus qu\'un accessoire, une déclaration de style. Ce grand châle d\'hiver, avec son motif raffiné et élégant, sublime n\'importe quelle tenue, du simple manteau à la robe de soirée.',
     category: 'winter-clothing',
     images: ['chale-hiver-motif-elegant-elegant-wrap'],
-    reviews: []
+    reviews: [
+        { author: 'Béatrice', rating: 5, comment: 'Les motifs sont superbes et il est très grand et enveloppant.'}
+    ]
   },
   {
     id: 'acc-26',
@@ -535,11 +616,13 @@ export const products: Product[] = [
     name_fr: 'Foulard Cashmere Touch',
     slug: 'foulard-cachemire-imprime-cashmere-touch',
     price: 220,
-    description: 'Ein bedruckter Schal mit Kaschmir-Gefühl für einen Hauch von Farbe und Weichheit.',
-    description_fr: 'Un foulard imprimé au toucher cachemire pour une touche de couleur et de douceur.',
+    description: 'Die Weichheit von Kaschmir, die Kühnheit eines Drucks. Dieser Schal aus einem Kaschmirgemisch bietet ein luxuriöses Gefühl und einen Hauch von Farbe, um Ihre Looks in der Zwischensaison aufzuwerten.',
+    description_fr: 'La douceur du cachemire, l\'audace d\'un imprimé. Ce foulard en mélange de cachemire offre un toucher luxueux et une touche de couleur pour rehausser vos looks de mi-saison.',
     category: 'accessories',
     images: ['foulard-cachemire-imprime-cashmere-touch'],
-    reviews: []
+    reviews: [
+        { author: 'Diane', rating: 5, comment: 'Très doux et les couleurs sont magnifiques.'}
+    ]
   },
   {
     id: 'acc-27',
@@ -547,11 +630,13 @@ export const products: Product[] = [
     name_fr: 'Gants Lady Warm',
     slug: 'gants-cuir-doubles-polaire-lady-warm',
     price: 110,
-    description: 'Lederhandschuhe mit Fleecefutter, um Eleganz und Wärme zu vereinen.',
-    description_fr: 'Des gants en cuir doublés de polaire pour allier élégance et chaleur.',
+    description: 'Die perfekte Allianz zwischen Eleganz und Komfort. Diese Handschuhe aus geschmeidigem Leder sind mit einem weichen Fleece gefüttert, um Ihre Hände warm zu halten, ohne auf einen raffinierten Stil zu verzichten.',
+    description_fr: 'L\'alliance parfaite entre l\'élégance et le confort. Ces gants en cuir souple sont doublés d\'une polaire douce pour garder vos mains au chaud sans sacrifier un style raffiné.',
     category: 'winter-clothing',
     images: ['gants-cuir-doubles-polaire-lady-warm'],
-    reviews: []
+    reviews: [
+        { author: 'Hélène', rating: 5, comment: 'Très chauds et le cuir est d\'une grande souplesse. Parfaits.'}
+    ]
   },
   {
     id: 'acc-28',
@@ -559,11 +644,13 @@ export const products: Product[] = [
     name_fr: 'Petit sac à main Mini Glam',
     slug: 'petit-sac-a-main-chic-mini-glam',
     price: 450,
-    description: 'Eine kleine, schicke Handtasche, das unverzichtbare Accessoire für Ihre Abendveranstaltungen.',
-    description_fr: 'Un petit sac à main chic, l\'accessoire indispensable pour vos soirées.',
+    description: 'Das unverzichtbare Accessoire für Ihre Abende. Diese schicke Minitasche mit ihren goldenen Details ist so konzipiert, dass sie Ihre wichtigsten Dinge aufnimmt und Ihrem Abendoutfit einen Hauch von Glamour verleiht.',
+    description_fr: 'L\'accessoire indispensable de vos soirées. Ce mini sac chic, avec ses détails dorés, est conçu pour contenir juste l\'essentiel et ajouter une touche de glamour à votre tenue de soirée.',
     category: 'accessories',
     images: ['petit-sac-a-main-chic-mini-glam'],
-    reviews: []
+    reviews: [
+        { author: 'Camille', rating: 5, comment: 'Adorable et juste assez grand pour mon téléphone et mon rouge à lèvres.'}
+    ]
   },
   {
     id: 'acc-29',
@@ -571,11 +658,13 @@ export const products: Product[] = [
     name_fr: 'Boucles d\'oreilles Shine Drop',
     slug: 'boucles-oreilles-pendantes-argentees-shine-drop',
     price: 180,
-    description: 'Hängende, versilberte Ohrringe, um Ihr Gesicht mit einem Hauch von Glanz zu erhellen.',
-    description_fr: 'Des boucles d\'oreilles pendantes et argentées pour illuminer votre visage d\'un éclat.',
+    description: 'Ein Tropfen Licht, um Ihr Gesicht zu erhellen. Diese hängenden Ohrringe aus poliertem Silber fangen das Licht bei jeder Bewegung ein und verleihen Ihrem Look einen subtilen und raffinierten Glanz.',
+    description_fr: 'Une goutte de lumière pour illuminer votre visage. Ces boucles d\'oreilles pendantes en argent poli capturent la lumière à chaque mouvement, ajoutant un éclat subtil et raffiné à votre allure.',
     category: 'accessories',
     images: ['boucles-oreilles-pendantes-argentees-shine-drop'],
-    reviews: []
+    reviews: [
+        { author: 'Marion', rating: 5, comment: 'Elles sont magnifiques et très légères à porter.'}
+    ]
   },
   {
     id: 'acc-30',
@@ -583,11 +672,13 @@ export const products: Product[] = [
     name_fr: 'Pochette Shine Night',
     slug: 'pochette-soiree-shine-night-premium',
     price: 250,
-    description: 'Eine Abendclutch, um Ihre wichtigsten Dinge mit Eleganz zu transportieren.',
-    description_fr: 'Une pochette de soirée pour transporter vos essentiels avec élégance.',
+    description: 'Die perfekte Ergänzung zu Ihrem Abendkleid. Diese Clutch mit ihrem funkelnden Finish und ihrer eleganten Struktur ist so konzipiert, dass Sie Ihre wichtigsten Dinge aufnehmen und gleichzeitig ein modisches Statement setzen.',
+    description_fr: 'Le complément parfait de votre robe de soirée. Cette pochette à la finition scintillante et à la structure élégante est conçue pour contenir vos essentiels tout en étant une déclaration de mode à part entière.',
     category: 'accessories',
     images: ['pochette-soiree-shine-night-premium'],
-    reviews: []
+    reviews: [
+        { author: 'Eva', rating: 5, comment: 'Parfaite pour un mariage. J\'ai reçu beaucoup de compliments.'}
+    ]
   },
     {
     id: 'prod-21',
@@ -595,11 +686,13 @@ export const products: Product[] = [
     name_fr: 'Robe pull en cachemire',
     slug: 'robe-pull-en-cachemire-max-mara',
     price: 1200,
-    description: 'Une robe pull luxueuse en pur cachemire, pour une élégance confortable et chaleureuse.',
-    description_fr: 'Une robe pull luxueuse en pur cachemire, pour une élégance confortable et chaleureuse.',
+    description: 'Eine luxuriöse Pulloverkleid aus reinem Kaschmir, für eine komfortable und warme Eleganz. Seine lockere Passform und die Weichheit des Materials machen es zu einem Kokon des Luxus für den Winter.',
+    description_fr: 'Une robe pull luxueuse en pur cachemire, pour une élégance confortable et chaleureuse. Sa coupe décontractée et la douceur de sa maille en font un cocon de luxe pour l\'hiver.',
     category: 'womens-clothing',
     images: ['robe-pull-en-cachemire-max-mara'],
-    reviews: []
+    reviews: [
+      { author: 'Elodie', rating: 5, comment: 'Incroyablement douce et confortable, tout en restant très chic.' },
+    ]
   },
   {
     id: 'prod-22',
@@ -607,11 +700,13 @@ export const products: Product[] = [
     name_fr: 'Pantalon en cuir',
     slug: 'pantalon-en-cuir-saint-laurent',
     price: 1500,
-    description: 'Un pantalon en cuir d\'agneau souple, coupe slim, pour un look rock et chic.',
-    description_fr: 'Un pantalon en cuir d\'agneau souple, coupe slim, pour un look rock et chic.',
+    description: 'Ein Statement-Stück par excellence. Dieser Slim-Fit-Hose aus geschmeidigem Lammleder formt die Silhouette für einen entschieden rockigen und schicken Look. Ein starkes Stück, das die Zeiten überdauert.',
+    description_fr: 'La pièce forte par excellence. Ce pantalon slim en cuir d\'agneau souple sculpte la silhouette pour un look résolument rock et chic. Une pièce forte qui traverse les époques.',
     category: 'womens-clothing',
     images: ['pantalon-en-cuir-saint-laurent'],
-    reviews: []
+    reviews: [
+      { author: 'Victoria', rating: 5, comment: 'Un cuir de rêve, souple et confortable. La coupe est parfaite.' },
+    ]
   },
   {
     id: 'prod-23',
@@ -619,11 +714,13 @@ export const products: Product[] = [
     name_fr: 'Jupe plissée midi',
     slug: 'jupe-plissee-midi-valentino',
     price: 850,
-    description: 'Une jupe midi plissée, fluide et légère, pour un mouvement gracieux et une allure féminine.',
-    description_fr: 'Une jupe midi plissée, fluide et légère, pour un mouvement gracieux et une allure féminine.',
+    description: 'Eine Ode an die Weiblichkeit und Bewegung. Dieser fließende und leichte Midirock mit Sonnenplissee tanzt bei jedem Schritt und schafft eine anmutige und luftige Silhouette.',
+    description_fr: 'Une ode à la féminité et au mouvement. Cette jupe midi plissée soleil, fluide et légère, danse à chacun de vos pas, créant une silhouette gracieuse et aérienne.',
     category: 'womens-clothing',
     images: ['jupe-plissee-midi-valentino'],
-    reviews: []
+    reviews: [
+      { author: 'Olivia', rating: 5, comment: 'Le mouvement de cette jupe est magique. Très élégante.' },
+    ]
   },
   {
     id: 'prod-24',
@@ -631,11 +728,13 @@ export const products: Product[] = [
     name_fr: 'T-shirt brodé logo',
     slug: 't-shirt-brode-logo-gucci',
     price: 450,
-    description: 'Un t-shirt en coton de qualité supérieure, rehaussé du logo emblématique brodé de la maison.',
-    description_fr: 'Un t-shirt en coton de qualité supérieure, rehaussé du logo emblématique brodé de la maison.',
+    description: 'Ein Luxus-Basic. Dieses T-Shirt aus hochwertiger Baumwolle wird durch das ikonische Logo des Hauses, das sorgfältig auf der Brust gestickt ist, aufgewertet. Ein Symbol für Zugehörigkeit und lässigen Stil.',
+    description_fr: 'Le basique de luxe. Ce t-shirt en coton de qualité supérieure est rehaussé du logo emblématique de la maison, minutieusement brodé sur la poitrine. Un symbole d\'appartenance et de style décontracté.',
     category: 'womens-clothing',
     images: ['t-shirt-brode-logo-gucci'],
-    reviews: []
+    reviews: [
+      { author: 'Anna', rating: 5, comment: 'Même pour un t-shirt, la qualité est incroyable. Très confortable.' },
+    ]
   }
 ];
 
@@ -647,7 +746,12 @@ export function getProductsByCategory(products: Product[], categorySlug: string,
 
   if (categorySlug === 'all') {
     filteredProducts = products;
-  } else {
+  } else if (categorySlug === 'winter-clothing') {
+    // A more specific logic for winter could be to check for keywords or a dedicated property
+    // For now, let's stick to the category property
+    filteredProducts = products.filter((p) => p.category === categorySlug);
+  }
+  else {
     filteredProducts = products.filter((p) => p.category === categorySlug);
   }
 
