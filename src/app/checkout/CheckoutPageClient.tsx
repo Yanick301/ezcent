@@ -29,7 +29,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { useFirestore, useUser, errorEmitter, FirestorePermissionError } from '@/firebase';
-import { addDoc, collection, serverTimestamp, writeBatch, doc } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -176,34 +176,22 @@ export default function CheckoutPageClient() {
         paymentStatus: 'pending',
         receiptImageURL: '',
     };
-
-    const batch = writeBatch(firestore);
-
-    // 1. Create order in the global collection
-    const globalOrderRef = doc(collection(firestore, 'orders'));
-    batch.set(globalOrderRef, orderData);
-
-    // 2. Create order in the user's subcollection with the SAME ID
-    const userOrderRef = doc(firestore, `userProfiles/${user.uid}/orders`, globalOrderRef.id);
-    batch.set(userOrderRef, orderData);
     
-    batch.commit().then(() => {
-        clearCart();
-        router.push('/checkout/thank-you');
+    const userOrderRef = collection(firestore, `userProfiles/${user.uid}/orders`);
+
+    addDoc(userOrderRef, orderData).then(() => {
+      clearCart();
+      router.push('/checkout/thank-you');
     }).catch((serverError) => {
-      // This is a simplified context. For batch writes, you might need to iterate
-      // through the operations to create a more detailed error.
       const permissionError = new FirestorePermissionError({
-        path: `userProfiles/${user.uid}/orders/${globalOrderRef.id}`, // Example path
+        path: userOrderRef.path,
         operation: 'create',
         requestResourceData: orderData,
       });
 
       errorEmitter.emit('permission-error', permissionError);
 
-      // Re-enable the button so the user can try again
       setIsSubmitting(false);
-
     });
 
   };
@@ -423,5 +411,3 @@ export default function CheckoutPageClient() {
     </div>
   );
 }
-
-    

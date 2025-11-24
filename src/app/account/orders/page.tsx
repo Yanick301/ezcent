@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -30,8 +31,6 @@ import {
   updateDoc,
   query,
   orderBy,
-  where,
-  writeBatch
 } from 'firebase/firestore';
 import { useRef, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
@@ -118,27 +117,17 @@ export default function OrdersPage() {
       const uploadResult = await uploadBytes(fileRef, file);
       const downloadURL = await getDownloadURL(uploadResult.ref);
       
-      const batch = writeBatch(firestore);
-
-      // Update user-specific order
       const userOrderRef = doc(
         firestore,
         `userProfiles/${user.uid}/orders`,
         selectedOrderId
       );
-      batch.update(userOrderRef, {
+
+      await updateDoc(userOrderRef, {
         receiptImageURL: downloadURL,
         paymentStatus: 'processing',
       });
 
-      // Update global order
-      const globalOrderRef = doc(firestore, 'orders', selectedOrderId);
-      batch.update(globalOrderRef, {
-        receiptImageURL: downloadURL,
-        paymentStatus: 'processing',
-      });
-
-      await batch.commit();
 
       toast({
         title:

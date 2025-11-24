@@ -16,13 +16,14 @@ import {
   FileCheck,
 } from 'lucide-react';
 import { useUser, useFirestore, useMemoFirebase } from '@/firebase';
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import {
-  collection,
+  collectionGroup,
   query,
   orderBy,
   doc,
   writeBatch,
+  updateDoc,
 } from 'firebase/firestore';
 import { useCollection } from '@/firebase/firestore/use-collection';
 import { Button } from '@/components/ui/button';
@@ -42,7 +43,7 @@ export default function AdminDashboardPage() {
 
   const ordersQuery = useMemoFirebase(() => {
     if (!isAdmin || !firestore) return null;
-    return query(collection(firestore, 'orders'), orderBy('orderDate', 'desc'));
+    return query(collectionGroup(firestore, 'orders'), orderBy('orderDate', 'desc'));
   }, [isAdmin, firestore]);
 
   const { data: orders, isLoading } = useCollection(ordersQuery);
@@ -66,18 +67,9 @@ export default function AdminDashboardPage() {
     if (!firestore) return;
     setUpdatingOrderId(orderId);
     try {
-      const batch = writeBatch(firestore);
-
-      // Update global order
-      const globalOrderRef = doc(firestore, 'orders', orderId);
-      batch.update(globalOrderRef, { paymentStatus: 'completed' });
-
-      // Update user-specific order
       const userOrderRef = doc(firestore, `userProfiles/${userId}/orders`, orderId);
-      batch.update(userOrderRef, { paymentStatus: 'completed' });
-
-      await batch.commit();
-
+      await updateDoc(userOrderRef, { paymentStatus: 'completed' });
+      
       toast({
         title: 'Paiement Validé',
         description: `La commande ${orderId} a été marquée comme terminée. Le client sera notifié.`,

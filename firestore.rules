@@ -25,15 +25,10 @@ service cloud.firestore {
     }
     
     match /userProfiles/{userId}/orders/{orderId} {
-        // A user can read, create and write to their own orders subcollection
-        allow read, write, create: if request.auth != null && request.auth.uid == userId;
-    }
-
-    // Global orders collection for admin access
-    match /orders/{orderId} {
-      // Admins can read, write, create, and delete any order document
-      allow read, write, create, delete: if isAdmin();
-      // Regular users cannot access this collection at all
+      // A user can read and create their own orders
+      allow read, create: if request.auth != null && request.auth.uid == userId;
+      // An admin can read or update any order
+      allow get, list, update: if isAdmin();
     }
   }
 }
