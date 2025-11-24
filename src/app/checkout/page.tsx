@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useCart } from '@/context/CartContext';
@@ -14,8 +15,8 @@ import {
 import placeholderImagesData from '@/lib/placeholder-images.json';
 import { TranslatedText } from '@/components/TranslatedText';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-import { Banknote } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Banknote, Loader2 } from 'lucide-react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -34,16 +35,25 @@ import { useLanguage } from '@/context/LanguageContext';
 
 const { placeholderImages } = placeholderImagesData;
 
-const shippingSchema = z.object({
+const shippingSchemaDE = z.object({
+  name: z.string().min(1, { message: 'Name ist erforderlich.' }),
+  email: z.string().email({ message: 'Ungültige E-Mail-Adresse.' }),
+  address: z.string().min(1, { message: 'Adresse ist erforderlich.' }),
+  city: z.string().min(1, { message: 'Stadt ist erforderlich.' }),
+  zip: z.string().min(1, { message: 'Postleitzahl ist erforderlich.' }),
+  country: z.string().min(1, { message: 'Land ist erforderlich.' }),
+});
+
+const shippingSchemaFR = z.object({
   name: z.string().min(1, { message: 'Le nom est requis.' }),
   email: z.string().email({ message: 'Adresse e-mail invalide.' }),
   address: z.string().min(1, { message: "L'adresse est requise." }),
   city: z.string().min(1, { message: 'La ville est requise.' }),
   zip: z.string().min(1, { message: 'Le code postal est requis.' }),
-  country: z.string().min(1, { message: 'Le pays est requis.' }),
+  country: zstring().min(1, { message: 'Le pays est requis.' }),
 });
 
-type ShippingFormInputs = z.infer<typeof shippingSchema>;
+type ShippingFormInputs = z.infer<typeof shippingSchemaDE>;
 
 
 export default function CheckoutPage() {
@@ -53,9 +63,12 @@ export default function CheckoutPage() {
   const firestore = useFirestore();
   const { toast } = useToast();
   const { language } = useLanguage();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const currentSchema = language === 'fr' ? shippingSchemaFR : shippingSchemaDE;
 
   const form = useForm<ShippingFormInputs>({
-    resolver: zodResolver(shippingSchema),
+    resolver: zodResolver(currentSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -93,6 +106,7 @@ export default function CheckoutPage() {
   const total = subtotal + shipping + taxes;
 
   const handlePlaceOrder: SubmitHandler<ShippingFormInputs> = async (data) => {
+    setIsSubmitting(true);
     if (!user) {
         toast({
             variant: "destructive",
@@ -100,6 +114,7 @@ export default function CheckoutPage() {
             description: language === 'fr' ? "Vous devez être connecté pour passer une commande." : "Sie müssen angemeldet sein, um eine Bestellung aufzugeben.",
         });
         router.push('/login?redirect=/checkout');
+        setIsSubmitting(false);
         return;
     }
     if (!firestore) {
@@ -108,6 +123,7 @@ export default function CheckoutPage() {
             title: "Database Error",
             description: "Could not connect to the database.",
         });
+        setIsSubmitting(false);
         return;
     }
     
@@ -144,6 +160,8 @@ export default function CheckoutPage() {
             title: language === 'fr' ? "Erreur lors de la commande" : "Fehler bei der Bestellung",
             description: language === 'fr' ? "Une erreur est survenue. Veuillez réessayer." : "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
         });
+    } finally {
+        setIsSubmitting(false);
     }
   };
 
@@ -341,9 +359,12 @@ export default function CheckoutPage() {
                   </div>
               </CardContent>
             </Card>
-            <Button size="lg" className="w-full" type="submit" disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting ? (
-                  <TranslatedText fr="Passage de la commande...">Bestellung wird aufgegeben...</TranslatedText>
+            <Button size="lg" className="w-full" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <TranslatedText fr="Passage de la commande...">Bestellung wird aufgegeben...</TranslatedText>
+                  </>
               ) : (
                   <TranslatedText fr="Passer la commande">Bestellung aufgeben</TranslatedText>
               )}
@@ -354,3 +375,5 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+    
