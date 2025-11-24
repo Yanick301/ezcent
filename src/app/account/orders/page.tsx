@@ -28,7 +28,7 @@ const getSafeDate = (order: any): Date => {
     return new Date(); // Return current date as a fallback
   }
   // If it's a Firestore Timestamp, it has a toDate method
-  if (typeof order.orderDate.toDate === 'function') {
+  if (order.orderDate && typeof order.orderDate.toDate === 'function') {
     return order.orderDate.toDate();
   }
   // If it's already a Date object
@@ -36,9 +36,13 @@ const getSafeDate = (order: any): Date => {
     return order.orderDate;
   }
   // If it's a string or number, try to parse it
-  const parsedDate = new Date(order.orderDate);
-  if (!isNaN(parsedDate.getTime())) {
-    return parsedDate;
+  try {
+    const parsedDate = new Date(order.orderDate);
+    if (!isNaN(parsedDate.getTime())) {
+      return parsedDate;
+    }
+  } catch (e) {
+    // Ignore parsing errors and return fallback
   }
   // Fallback if parsing fails
   return new Date();

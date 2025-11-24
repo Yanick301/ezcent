@@ -411,10 +411,10 @@ export default function CheckoutPage() {
               {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    <TranslatedText fr="Passage de la commande..." en="Placing order...">Bestellung wird aufgegeben...</TranslatedText>
+                    <TranslatedText fr="Création de la commande..." en="Creating order...">Bestellung wird erstellt...</TranslatedText>
                   </>
               ) : (
-                  <TranslatedText fr="Passer la commande" en="Place Order">Bestellung aufgeben</TranslatedText>
+                  <TranslatedText fr="Créer la commande" en="Create Order">Bestellung erstellen</TranslatedText>
               )}
             </Button>
           </div>
