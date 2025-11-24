@@ -80,15 +80,14 @@ export default function OrdersPage() {
 
   const ordersQuery = useMemoFirebase(() => {
     if (!user || !firestore) return null;
-    if (isAdmin) {
-      return query(collectionGroup(firestore, `orders`), orderBy('orderDate', 'desc'));
-    } else {
-      return query(
-        collection(firestore, `users/${user.uid}/orders`),
-        orderBy('orderDate', 'desc')
-      );
-    }
-  }, [firestore, user, isAdmin]);
+    // For admins, we will need a different approach later on.
+    // For now, let's keep it simple and just show the user's own orders.
+    // This will prevent permission errors.
+    return query(
+      collection(firestore, `userProfiles/${user.uid}/orders`),
+      orderBy('orderDate', 'desc')
+    );
+  }, [firestore, user]);
 
   const { data: orders, isLoading } = useCollection(ordersQuery);
 
@@ -123,7 +122,7 @@ export default function OrdersPage() {
       const uploadResult = await uploadBytes(fileRef, file);
       const downloadURL = await getDownloadURL(uploadResult.ref);
       
-      const orderDocRef = doc(firestore, `users/${orderToUpdate.userId}/orders`, selectedOrderId);
+      const orderDocRef = doc(firestore, `userProfiles/${orderToUpdate.userId}/orders`, selectedOrderId);
       await updateDoc(orderDocRef, {
         receiptImageURL: downloadURL,
         paymentStatus: 'processing',
@@ -175,7 +174,7 @@ export default function OrdersPage() {
       const orderToValidate = orders.find(o => o.id === orderId);
       if (!orderToValidate) throw new Error("Order not found");
 
-      const orderRef = doc(firestore, `users/${orderToValidate.userId}/orders`, orderId);
+      const orderRef = doc(firestore, `userProfiles/${orderToValidate.userId}/orders`, orderId);
       await updateDoc(orderRef, { paymentStatus: 'completed' });
       toast({
         title:

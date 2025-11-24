@@ -268,7 +268,7 @@
       },
       "description": "Stores user profile information. Only the authenticated user can read/write their own profile."
     },
-    "/userProfiles/{userId}/orders": {
+    "/userProfiles/{userId}/orders/{orderId}": {
       "schema": {
         "$ref": "#/backend/entities/Order"
       },
