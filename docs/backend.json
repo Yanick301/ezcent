@@ -286,5 +286,13 @@
       },
       "description": "Stores cart items for each user.  The 'userId' field within the document data MUST match the document ID.  This enforces that only the user owning a specific cart item can access/modify it."
     }
+  },
+  "storage": {
+    "/receipts/{userId}/{orderId}/{fileName}": {
+      "description": "Users can upload a receipt for an order they placed.",
+      "rules": {
+        "write": "request.auth != null && request.auth.uid == userId"
+      }
+    }
   }
 }
