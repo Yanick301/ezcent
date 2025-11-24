@@ -17,10 +17,10 @@ export function Footer() {
       title_fr: 'Aide',
       title_en: 'Help',
       links: [
-        { name: 'Kontaktieren Sie uns', name_fr: 'Contactez-nous', name_en: 'Contact Us', href: 'mailto:contact-support@ezcentials.com' },
-        { name: 'FAQs', name_fr: 'FAQs', name_en: 'FAQs', href: '/products/all' },
+        { name: 'Kontaktieren Sie uns', name_fr: 'Contactez-nous', name_en: 'Contact Us', href: 'mailto:contact-support@ezcentials.com', isExternal: true },
+        { name: 'FAQs', name_fr: 'FAQs', name_en: 'FAQs', href: '/faq' },
         { name: 'Produktpflege', name_fr: 'Entretien des produits', name_en: 'Product Care', href: '/products/all' },
-        { name: 'Rechtliche Hinweise', name_fr: 'Mentions légales', name_en: 'Legal Notice', href: '/account' },
+        { name: 'Rechtliche Hinweise', name_fr: 'Mentions légales', name_en: 'Legal Notice', href: '/legal-notice' },
       ],
     },
     {
@@ -38,7 +38,7 @@ export function Footer() {
       title_fr: 'À propos d\'EZCENTIALS',
       title_en: 'About EZCENTIALS',
       links: [
-        { name: 'Modehäuser', name_fr: 'Maisons de mode', name_en: 'Fashion Houses', href: '/' },
+        { name: 'Modehäuser', name_fr: 'Notre Maison', name_en: 'Our House', href: '/about' },
         { name: 'Nachhaltigkeit', name_fr: 'Durabilité', name_en: 'Sustainability', href: '/' },
         { name: 'Karriere', name_fr: 'Carrières', name_en: 'Careers', href: '/' },
       ],
@@ -71,10 +71,10 @@ export function Footer() {
                     <ul className={`mt-4 space-y-3 ${section.isSocial ? 'flex space-x-4 space-y-0' : ''}`}>
                     {section.links.map((link) => (
                         <li key={link.name}>
-                        <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-stone-300 hover:text-white flex items-center gap-2">
-                           {link.image && <img src={link.image} alt={`${link.name} logo`} className="h-6 w-6" />}
-                           {!section.isSocial && <TranslatedText fr={link.name_fr} en={link.name_en}>{link.name}</TranslatedText>}
-                        </a>
+                          <Link href={link.href} target={link.isExternal ? '_blank' : undefined} rel={link.isExternal ? 'noopener noreferrer' : undefined} className="text-sm text-stone-300 hover:text-white flex items-center gap-2">
+                            {link.image && <img src={link.image} alt={`${link.name} logo`} className="h-6 w-6" />}
+                            {!section.isSocial && <TranslatedText fr={link.name_fr} en={link.name_en}>{link.name}</TranslatedText>}
+                          </Link>
                         </li>
                     ))}
                     </ul>
