@@ -848,12 +848,7 @@ export function getProductsByCategory(products: Product[], categorySlug: string,
 
   if (categorySlug === 'all') {
     filteredProducts = products;
-  } else if (categorySlug === 'winter-clothing') {
-    // A more specific logic for winter could be to check for keywords or a dedicated property
-    // For now, let's stick to the category property
-    filteredProducts = products.filter((p) => p.category === categorySlug);
-  }
-  else {
+  } else {
     filteredProducts = products.filter((p) => p.category === categorySlug);
   }
 
