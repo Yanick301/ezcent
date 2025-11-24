@@ -140,7 +140,7 @@ export default function ProductPage({ params }: ProductPageProps) {
         {/* Product Info */}
         <div>
           <h1 className="font-headline text-3xl md:text-4xl"><TranslatedText fr={product.name_fr} en={product.name_en}>{product.name}</TranslatedText></h1>
-          <p className="mt-2 text-2xl text-muted-foreground">${product.price.toFixed(2)}</p>
+          <p className="mt-2 text-2xl text-muted-foreground">€{product.price.toFixed(2)}</p>
           
           <div className="mt-4 flex items-center gap-2">
             <div className="flex items-center">
@@ -264,4 +264,5 @@ export default function ProductPage({ params }: ProductPageProps) {
   );
 }
 
+    
     

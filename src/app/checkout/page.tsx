@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useCart } from '@/context/CartContext';
@@ -349,12 +350,11 @@ export default function CheckoutPage() {
                           <span className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-muted text-sm font-medium">{item.quantity}</span>
                         </div>
                         <div className="ml-4 flex-1">
-                          <p className="font-medium"><TranslatedText fr={item.product.name_fr} en={item.product.name_en}>{item.product.name}</TranslatedText></p>
-                          <p className="text-sm text-muted-foreground">
-                              ${item.product.price.toFixed(2)}
+                          <p className="font-medium"><TranslatedText fr={item.product.name_fr} en={item.product.name_en}>{item.product.name}</TranslatedText></p>                          <p className="text-sm text-muted-foreground">
+                              €{item.product.price.toFixed(2)}
                           </p>
                         </div>
-                        <p className="font-medium">${(item.product.price * item.quantity).toFixed(2)}</p>
+                        <p className="font-medium">€{(item.product.price * item.quantity).toFixed(2)}</p>
                       </li>
                     );
                   })}
@@ -363,21 +363,21 @@ export default function CheckoutPage() {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <p className="text-muted-foreground"><TranslatedText fr="Sous-total" en="Subtotal">Zwischensumme</TranslatedText></p>
-                    <p>${subtotal.toFixed(2)}</p>
+                    <p>€{subtotal.toFixed(2)}</p>
                   </div>
                   <div className="flex justify-between">
                     <p className="text-muted-foreground"><TranslatedText fr="Livraison" en="Shipping">Versand</TranslatedText></p>
-                    <p>${shipping.toFixed(2)}</p>
+                    <p>€{shipping.toFixed(2)}</p>
                   </div>
                   <div className="flex justify-between">
                     <p className="text-muted-foreground"><TranslatedText fr="Taxes" en="Taxes">Steuern</TranslatedText></p>
-                    <p>${taxes.toFixed(2)}</p>
+                    <p>€{taxes.toFixed(2)}</p>
                   </div>
                 </div>
                 <Separator className="my-4" />
                 <div className="flex justify-between font-bold text-lg">
                     <p><TranslatedText fr="Total" en="Total">Gesamt</TranslatedText></p>
-                    <p>${total.toFixed(2)}</p>
+                    <p>€{total.toFixed(2)}</p>
                   </div>
               </CardContent>
             </Card>
@@ -397,3 +397,5 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+    

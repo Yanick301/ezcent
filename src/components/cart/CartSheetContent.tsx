@@ -50,7 +50,7 @@ export function CartSheetContent() {
                         <h3>
                           <Link href={`/product/${item.product.slug}`}><TranslatedText fr={item.product.name_fr} en={item.product.name_en}>{item.product.name}</TranslatedText></Link>
                         </h3>
-                        <p className="ml-4">${(item.product.price * item.quantity).toFixed(2)}</p>
+                        <p className="ml-4">€{(item.product.price * item.quantity).toFixed(2)}</p>
                       </div>
                     </div>
                     <div className="flex flex-1 items-end justify-between text-sm">
@@ -95,7 +95,7 @@ export function CartSheetContent() {
       <div className="border-t border-border px-4 py-6 sm:px-6">
         <div className="flex justify-between text-base font-medium text-foreground">
           <p><TranslatedText fr="Sous-total" en="Subtotal">Zwischensumme</TranslatedText></p>
-          <p>${subtotal.toFixed(2)}</p>
+          <p>€{subtotal.toFixed(2)}</p>
         </div>
         <p className="mt-0.5 text-sm text-muted-foreground">
           <TranslatedText fr="Les frais de port et les taxes sont calculés au moment du paiement." en="Shipping and taxes calculated at checkout.">Versand und Steuern werden an der Kasse berechnet.</TranslatedText>
@@ -131,3 +131,5 @@ function ShoppingBagIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
+
+    

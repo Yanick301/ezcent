@@ -49,10 +49,12 @@ export function ProductCard({ product }: ProductCardProps) {
               <span className="text-xs text-muted-foreground ml-1">({product.reviews?.length || 0})</span>
             </div>
             <div className="mt-4 flex justify-between items-center">
-              <p className="text-lg font-medium text-foreground">${product.price.toFixed(2)}</p>
+              <p className="text-lg font-medium text-foreground">€{product.price.toFixed(2)}</p>
               <AddToCartButton product={product} variant="ghost" size="icon" />
             </div>
         </div>
     </div>
   );
 }
+
+    

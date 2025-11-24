@@ -191,26 +191,26 @@ export default function OrdersPage() {
                         <span className="flex-grow pr-4">
                           {item.quantity} x <TranslatedText fr={item.name_fr} en={item.name_en}>{item.name}</TranslatedText>
                         </span>
-                        <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
+                        <span className="font-medium">€{(item.price * item.quantity).toFixed(2)}</span>
                       </li>
                     ))}
                   </ul>
                   <div className="border-t pt-4 mt-4">
                     <div className="flex justify-between text-sm">
                       <p className="text-muted-foreground"><TranslatedText fr="Sous-total" en="Subtotal">Zwischensumme</TranslatedText></p>
-                      <p>${order.subtotal.toFixed(2)}</p>
+                      <p>€{order.subtotal.toFixed(2)}</p>
                     </div>
                      <div className="flex justify-between text-sm">
                       <p className="text-muted-foreground"><TranslatedText fr="Livraison" en="Shipping">Versand</TranslatedText></p>
-                      <p>${order.shipping.toFixed(2)}</p>
+                      <p>€{order.shipping.toFixed(2)}</p>
                     </div>
                      <div className="flex justify-between text-sm">
                       <p className="text-muted-foreground"><TranslatedText fr="Taxes" en="Taxes">Steuern</TranslatedText></p>
-                      <p>${order.taxes.toFixed(2)}</p>
+                      <p>€{order.taxes.toFixed(2)}</p>
                     </div>
                     <div className="flex justify-between font-semibold text-base mt-2 pt-2 border-t">
                       <p><TranslatedText fr="Total" en="Total">Gesamt</TranslatedText></p>
-                      <p>${order.totalAmount.toFixed(2)}</p>
+                      <p>€{order.totalAmount.toFixed(2)}</p>
                     </div>
                   </div>
                 </div>
@@ -265,3 +265,5 @@ export default function OrdersPage() {
     </div>
   );
 }
+
+    
