@@ -1,10 +1,32 @@
 
+'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { TranslatedText } from '@/components/TranslatedText';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Loader2 } from 'lucide-react';
+import { useUser } from '@/firebase';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function ThankYouPage() {
+  const { user, isUserLoading } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isUserLoading) return;
+    if (!user) {
+      router.push('/login');
+    }
+  }, [user, isUserLoading, router]);
+
+  if (isUserLoading || !user) {
+    return (
+       <div className="container mx-auto flex min-h-[70vh] flex-col items-center justify-center text-center px-4">
+        <Loader2 className="h-20 w-20 animate-spin text-primary" />
+       </div>
+    )
+  }
+
   return (
     <div className="container mx-auto flex min-h-[70vh] flex-col items-center justify-center text-center px-4">
       <CheckCircle2 className="h-20 w-20 text-green-500" />

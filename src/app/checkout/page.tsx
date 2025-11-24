@@ -68,11 +68,18 @@ type ShippingFormInputs = z.infer<typeof shippingSchemaDE>;
 export default function CheckoutPage() {
   const { cart, subtotal, clearCart } = useCart();
   const router = useRouter();
-  const { user } = useUser();
+  const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
   const { toast } = useToast();
   const { language } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (isUserLoading) return;
+    if (!user) {
+      router.push('/login?redirect=/checkout');
+    }
+  }, [user, isUserLoading, router]);
 
   const getValidationSchema = (lang: string) => {
     switch (lang) {
@@ -115,6 +122,14 @@ export default function CheckoutPage() {
   }, [user, form]);
 
 
+  if (isUserLoading || !user) {
+    return (
+      <div className="container mx-auto flex h-[60vh] items-center justify-center text-center">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
+
   if (cart.length === 0 && !form.formState.isSubmitSuccessful) {
     return (
       <div className="container mx-auto flex h-[60vh] items-center justify-center text-center">
@@ -129,7 +144,7 @@ export default function CheckoutPage() {
 
   const handlePlaceOrder: SubmitHandler<ShippingFormInputs> = async (data) => {
     setIsSubmitting(true);
-    if (!user) {
+    if (!user) { // Redundant check, but good for safety
         toast({
             variant: "destructive",
             title: language === 'fr' ? "Authentification requise" : language === 'en' ? "Authentication Required" : "Authentifizierung erforderlich",
