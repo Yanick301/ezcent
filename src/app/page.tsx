@@ -10,6 +10,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel"
 import { CollectionHighlight } from '@/components/CollectionHighlight';
 import { categories } from '@/lib/data';
@@ -70,6 +72,8 @@ export default function HomePage() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
+                <CarouselPrevious className="hidden lg:flex" />
+                <CarouselNext className="hidden lg:flex" />
             </Carousel>
         </div>
       </section>
