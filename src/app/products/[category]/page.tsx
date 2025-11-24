@@ -1,13 +1,12 @@
+
 'use client';
 
 import { ProductCard } from '@/components/ProductCard';
 import { notFound } from 'next/navigation';
 import { TranslatedText } from '@/components/TranslatedText';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { useMemo } from 'react';
-import { collection, query, where } from 'firebase/firestore';
+import { useMemo, useState, useEffect } from 'react';
 import type { Product } from '@/lib/types';
-import { categories } from '@/lib/data';
+import { categories, products as allProducts, getProductsByCategory } from '@/lib/data';
 
 
 type CategoryPageProps = {
@@ -18,17 +17,15 @@ type CategoryPageProps = {
 
 export default function CategoryPage({ params }: CategoryPageProps) {
   const { category: categorySlug } = params;
-  const firestore = useFirestore();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const productsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    if (categorySlug === 'all') {
-      return query(collection(firestore, 'products'));
-    }
-    return query(collection(firestore, 'products'), where('category', '==', categorySlug));
-  }, [firestore, categorySlug]);
-
-  const { data: products, isLoading } = useCollection<Product>(productsQuery);
+  useEffect(() => {
+    setIsLoading(true);
+    const categoryProducts = getProductsByCategory(allProducts, categorySlug);
+    setProducts(categoryProducts);
+    setIsLoading(false);
+  }, [categorySlug]);
   
   const category = categories.find((c) => c.slug === categorySlug);
 

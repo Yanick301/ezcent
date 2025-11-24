@@ -1,30 +1,24 @@
+
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState, Suspense, useMemo } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import type { Product } from '@/lib/types';
 import { ProductCard } from '@/components/ProductCard';
 import { TranslatedText } from '@/components/TranslatedText';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query } from 'firebase/firestore';
+import { products as allProducts } from '@/lib/data';
 
 function SearchPageClient() {
   const searchParams = useSearchParams();
   const queryParam = searchParams.get('q') || '';
   const [results, setResults] = useState<Product[]>([]);
-  const firestore = useFirestore();
-
-  const productsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'products'));
-  }, [firestore]);
-
-  const { data: products, isLoading } = useCollection<Product>(productsQuery);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (queryParam && products) {
+    setIsLoading(true);
+    if (queryParam) {
       const lowerCaseQuery = queryParam.toLowerCase();
-      const filteredProducts = products.filter(
+      const filteredProducts = allProducts.filter(
         (product) =>
           product.name.toLowerCase().includes(lowerCaseQuery) ||
           product.description.toLowerCase().includes(lowerCaseQuery) ||
@@ -35,7 +29,8 @@ function SearchPageClient() {
     } else {
       setResults([]);
     }
-  }, [queryParam, products]);
+    setIsLoading(false);
+  }, [queryParam]);
 
   return (
     <div className="container mx-auto px-4 py-12">

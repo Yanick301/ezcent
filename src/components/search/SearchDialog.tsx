@@ -14,13 +14,11 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { TranslatedText } from '../TranslatedText';
-import { categories } from '@/lib/data';
+import { categories, products as allProducts } from '@/lib/data';
 import type { Product } from '@/lib/types';
 import placeholderImagesData from '@/lib/placeholder-images.json';
 import Link from 'next/link';
 import { Separator } from '../ui/separator';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query } from 'firebase/firestore';
 
 const { placeholderImages } = placeholderImagesData;
 
@@ -28,28 +26,20 @@ export function SearchDialog() {
   const [isOpen, setIsOpen] = useState(false);
   const [queryTerm, setQueryTerm] = useState('');
   const router = useRouter();
-  const firestore = useFirestore();
-
-  const productsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'products'));
-  }, [firestore]);
-
-  const { data: products, isLoading } = useCollection<Product>(productsQuery);
 
   const searchResults = useMemo(() => {
-    if (!queryTerm.trim() || !products) {
+    if (!queryTerm.trim() || !allProducts) {
       return [];
     }
     const lowerCaseQuery = queryTerm.toLowerCase();
-    return products.filter(
+    return allProducts.filter(
       (product) =>
         product.name.toLowerCase().includes(lowerCaseQuery) ||
         product.description.toLowerCase().includes(lowerCaseQuery) ||
         product.name_fr.toLowerCase().includes(lowerCaseQuery) ||
         product.description_fr.toLowerCase().includes(lowerCaseQuery)
     ).slice(0, 5); // Limit to 5 results
-  }, [queryTerm, products]);
+  }, [queryTerm]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -106,10 +96,6 @@ export function SearchDialog() {
                 ))}
               </div>
             </div>
-          ) : isLoading ? (
-            <p className="text-center text-sm text-muted-foreground py-8">
-              <TranslatedText fr="Recherche en cours...">Recherche...</TranslatedText>
-            </p>
           ) : searchResults.length > 0 ? (
             <ul className="divide-y divide-border -mx-6">
               {searchResults.map((product) => {
@@ -158,5 +144,3 @@ export function SearchDialog() {
     </Dialog>
   );
 }
-
-    

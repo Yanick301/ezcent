@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
-import { getFeaturedProducts } from '@/lib/data';
+import { getFeaturedProducts, products } from '@/lib/data';
 import { ProductCard } from '@/components/ProductCard';
 import { TranslatedText } from '@/components/TranslatedText';
 import { CategoryCard } from '@/components/CategoryCard';
@@ -14,25 +14,12 @@ import {
 } from "@/components/ui/carousel"
 import { CollectionHighlight } from '@/components/CollectionHighlight';
 import { categories } from '@/lib/data';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { useMemo } from 'react';
-import { collection, query } from 'firebase/firestore';
 
 export default function HomePage() {
-  const firestore = useFirestore();
-  
-  const productsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'products'));
-  }, [firestore]);
-
-  const { data: products, isLoading } = useCollection(productsQuery);
-  
   const featuredProducts = useMemo(() => {
-    if (!products) return [];
     return getFeaturedProducts(products, 4);
-  }, [products]);
-
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -102,7 +89,7 @@ export default function HomePage() {
               </TranslatedText>
             </p>
           </div>
-          {isLoading ? (
+          {featuredProducts.length === 0 ? (
             <div className="text-center mt-12">Chargement des produits...</div>
           ) : (
             <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
