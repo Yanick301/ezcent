@@ -11,6 +11,8 @@ export interface UserHookResult {
   userError: Error | null;
 }
 
+const ADMIN_EMAIL = 'admin@ezcentials.com';
+
 export const useUser = (): UserHookResult => {
   const auth = useAuth();
   const [user, setUser] = useState<User | null>(auth.currentUser);
@@ -24,13 +26,12 @@ export const useUser = (): UserHookResult => {
       return;
     }
 
-    const unsubscribe = auth.onIdTokenChanged(
-      async (user) => {
+    const unsubscribe = auth.onAuthStateChanged(
+      (user) => {
         setUser(user);
         if (user) {
-          const tokenResult = await user.getIdTokenResult();
-          const claims = tokenResult.claims;
-          setIsAdmin(!!claims.isAdmin);
+          // Check if the user's email is the admin email
+          setIsAdmin(user.email === ADMIN_EMAIL);
         } else {
           setIsAdmin(false);
         }
