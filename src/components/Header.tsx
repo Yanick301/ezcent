@@ -68,7 +68,7 @@ export function Header() {
                     </nav>
                 </main>
                 <footer className="border-t p-6">
-                    <div className="flex flex-col space-y-4">
+                    <div className="flex items-center justify-between">
                         <UserButton />
                         <LanguageSwitcher />
                     </div>
