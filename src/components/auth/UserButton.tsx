@@ -1,3 +1,4 @@
+
 'use client';
 
 import { User, LogOut, Heart, ListOrdered, Shield } from 'lucide-react';
@@ -71,7 +72,7 @@ export function UserButton() {
           <DropdownMenuSeparator />
           {isAdmin && (
             <DropdownMenuItem asChild>
-                <Link href="/admin/dashboard"><Shield className="mr-2 h-4 w-4" /> Admin Dashboard</Link>
+                <Link href="/account/orders"><Shield className="mr-2 h-4 w-4" /> <TranslatedText fr="Gérer les commandes" en="Manage Orders">Bestellungen verwalten</TranslatedText></Link>
             </DropdownMenuItem>
           )}
           <DropdownMenuItem asChild>
