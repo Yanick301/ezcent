@@ -78,7 +78,7 @@ export default function AdminDashboardPage() {
         fr: { pending: 'Action requise', processing: 'En traitement', completed: 'Paiement validé' },
         en: { pending: 'Action Required', processing: 'Processing', completed: 'Payment validated' },
     };
-    return texts[language][status] || status;
+    return texts[language]?.[status] || status;
   }
 
   if (isUserLoading || !isAdmin || isLoadingOrders) {
@@ -101,9 +101,9 @@ export default function AdminDashboardPage() {
                 <div>
                   <CardTitle>Commande #{order.id.substring(0, 7)}...</CardTitle>
                   <CardDescription>
-                    {format(order.orderDate.toDate(), 'PPPpp', { locale: language === 'fr' ? fr : language === 'en' ? enUS : de })}
+                    {order.orderDate?.toDate ? format(order.orderDate.toDate(), 'PPPpp', { locale: language === 'fr' ? fr : language === 'en' ? enUS : de }) : 'Date not available'}
                   </CardDescription>
-                   <p className="text-sm text-muted-foreground mt-1">Client: {order.userEmail}</p>
+                   <p className="text-sm text-muted-foreground mt-1">Client: {order.userEmail || 'N/A'}</p>
                 </div>
                 <Badge variant={getStatusVariant(order.paymentStatus)}>{getStatusText(order.paymentStatus)}</Badge>
               </CardHeader>
@@ -111,14 +111,14 @@ export default function AdminDashboardPage() {
                 <div className="mb-4">
                   <h4 className="font-semibold">Articles</h4>
                   <ul className="list-disc pl-5 text-sm text-muted-foreground">
-                    {order.items.map((item: any) => (
-                      <li key={item.productId}>{item.quantity} x {item.name}</li>
+                    {order.items?.map((item: any) => (
+                      <li key={item.productId}>{item.quantity} x <TranslatedText fr={item.name_fr} en={item.name_en}>{item.name}</TranslatedText></li>
                     ))}
                   </ul>
                 </div>
                  <div className="mb-4">
                     <h4 className="font-semibold">Montant Total</h4>
-                    <p className="text-lg font-bold">€{order.totalAmount.toFixed(2)}</p>
+                    <p className="text-lg font-bold">€{(order.totalAmount || 0).toFixed(2)}</p>
                  </div>
                 <div className="flex items-center justify-between mt-6 border-t pt-4">
                   <div>
