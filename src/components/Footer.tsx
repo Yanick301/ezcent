@@ -40,9 +40,9 @@ export function Footer() {
       title_fr: 'À propos d\'EZCENTIALS',
       title_en: 'About EZCENTIALS',
       links: [
-        { name: 'Modehäuser', name_fr: 'Maisons de mode', name_en: 'Fashion Houses', href: '/products/all' },
-        { name: 'Nachhaltigkeit', name_fr: 'Durabilité', name_en: 'Sustainability', href: '/products/all' },
-        { name: 'Karriere', name_fr: 'Carrières', name_en: 'Careers', href: '/products/all' },
+        { name: 'Modehäuser', name_fr: 'Maisons de mode', name_en: 'Fashion Houses', href: '/' },
+        { name: 'Nachhaltigkeit', name_fr: 'Durabilité', name_en: 'Sustainability', href: '/' },
+        { name: 'Karriere', name_fr: 'Carrières', name_en: 'Careers', href: '/' },
       ],
     },
      {
