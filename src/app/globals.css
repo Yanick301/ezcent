@@ -71,7 +71,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  .dark .bg-footer {
+  .bg-footer {
     background-color: hsl(25 30% 10%);
+    background-image: radial-gradient(hsl(25 30% 15%) 0.5px, transparent 0.5px);
+    background-size: 5px 5px;
   }
 }
