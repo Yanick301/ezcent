@@ -1340,9 +1340,21 @@ export const products: Product[] = [
 // --- Data-fetching functions ---
 
 export function getProductsByCategory(products: Product[], categorySlug: string, limit?: number, excludeId?: string): Product[] {
-  let filteredProducts = (categorySlug === 'all')
-    ? products
-    : products.filter((p) => p.category === categorySlug);
+  let filteredProducts: Product[];
+
+  if (categorySlug === 'all') {
+    filteredProducts = products;
+  } else if (categorySlug === 'winter-clothing') {
+    const winterKeywords = ['winter', 'manteau', 'pull', 'parka', 'doudoune', 'bonnet', 'écharpe', 'gants', 'coat', 'sweater', 'beanie', 'scarf', 'gloves', 'mantel', 'pullover'];
+    filteredProducts = products.filter(p => 
+      p.category === 'winter-clothing' || 
+      winterKeywords.some(keyword => p.name_fr.toLowerCase().includes(keyword)) ||
+      winterKeywords.some(keyword => p.name_en.toLowerCase().includes(keyword)) ||
+      winterKeywords.some(keyword => p.name.toLowerCase().includes(keyword))
+    );
+  } else {
+    filteredProducts = products.filter((p) => p.category === categorySlug);
+  }
 
   if (excludeId) {
     filteredProducts = filteredProducts.filter((p) => p.id !== excludeId);
