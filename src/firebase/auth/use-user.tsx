@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState, useMemo } from 'react';
@@ -38,7 +39,7 @@ export const useUser = (): UserHookResult => {
     const unsubscribe = auth.onAuthStateChanged(
       (user) => {
         setUser(user);
-        // The final loading state will be determined by both auth and profile loading
+        setIsUserLoading(false);
       },
       (error) => {
         setUserError(error);
@@ -51,13 +52,14 @@ export const useUser = (): UserHookResult => {
 
   const isAdmin = useMemo(() => {
     if (!user) return false;
-    // Check based on email for directness
+    // Primary check: user's email. This is immediate.
     if (user.email === ADMIN_EMAIL) return true;
-    // Fallback to check profile document, if available
+    // Fallback check: Firestore profile document. This might take a moment to load.
     return (userProfile as any)?.isAdmin === true;
   }, [user, userProfile]);
 
-  // The overall loading state depends on both auth and profile fetching
+  // The overall loading state depends on both auth and profile fetching,
+  // but only if a user is present.
   const finalIsLoading = isUserLoading || (user && isProfileLoading);
 
 

@@ -103,19 +103,19 @@ export default function RegisterPage() {
       
       await handleUserCreation(userCredential, data.name);
       
-      if (userCredential.user.email !== ADMIN_EMAIL) {
-        await sendEmailVerification(userCredential.user);
-        toast({
-            title: language === 'fr' ? 'Vérifiez votre e-mail' : language === 'en' ? 'Verify your email' : 'Überprüfen Sie Ihre E-Mail',
-            description: language === 'fr' ? 'Un lien de vérification a été envoyé à votre adresse e-mail.' : language === 'en' ? 'A verification link has been sent to your email address.' : 'Ein Bestätigungslink wurde an Ihre E-Mail-Adresse gesendet.',
-        });
-        router.push('/verify-email');
-      } else {
+      if (userCredential.user.email === ADMIN_EMAIL) {
          toast({
             title: 'Compte Admin Créé',
             description: 'Vous pouvez maintenant vous connecter en tant qu\'administrateur.',
         });
         router.push('/login');
+      } else {
+        await sendEmailVerification(userCredential.user);
+        toast({
+            title: language === 'fr' ? 'Vérifiez votre e-mail' : language === 'en' ? 'Verify your email' : 'Überprüfen Sie Ihre E-Mail',
+            description: language === 'fr' ? 'Un lien de vérification a été envoyé à votre adresse e-mail.' : language === 'en' ? 'A verification link has been sent to your email address.' : 'Ein Bestätigungslink wurde an Ihre E--Mail-Adresse gesendet.',
+        });
+        router.push('/verify-email');
       }
 
     } catch (error: any) {

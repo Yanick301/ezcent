@@ -82,7 +82,7 @@ export default function LoginPage() {
         });
       } catch (error) {
         console.error("Error creating user profile in Firestore: ", error);
-        // Optionnel: Gérer l'erreur, par exemple en affichant un toast
+        // Optional: Handle the error, e.g., show a toast message
       }
     }
   };
