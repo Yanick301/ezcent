@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { ReactNode } from 'react';
 import placeholderImagesData from '@/lib/placeholder-images.json';
 import { Button } from './ui/button';
+import { products as allProducts, getProductById } from '@/lib/data';
 
 type Stat = {
     value: string;
@@ -35,7 +36,14 @@ export function CollectionHighlight({
     secondaryActionText,
 }: CollectionHighlightProps) {
 
-    const images = imageIds.map(id => placeholderImages.find(img => img.id === id)).filter(Boolean);
+    const images = imageIds.map(id => {
+        const image = placeholderImages.find(img => img.id === id);
+        if (!image) return null;
+        
+        // Find the product that uses this image as its primary image
+        const product = allProducts.find(p => p.images[0] === id);
+        return { ...image, slug: product?.slug };
+    }).filter(Boolean);
 
     return (
         <section className="w-full bg-background py-16 lg:py-24">
@@ -44,16 +52,18 @@ export function CollectionHighlight({
                     <div className="grid grid-cols-2 gap-4">
                         {images.map((image, index) => (
                             image && (
-                                <div key={image.id} className="aspect-w-1 aspect-h-1">
-                                    <div className="overflow-hidden rounded-lg">
-                                        <img
-                                            src={image.imageUrl}
-                                            alt={image.description || 'Collection image'}
-                                            className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
-                                            data-ai-hint={image.imageHint}
-                                        />
+                                <Link key={image.id} href={image.slug ? `/product/${image.slug}` : '#'}>
+                                    <div className="aspect-w-1 aspect-h-1 block">
+                                        <div className="overflow-hidden rounded-lg">
+                                            <img
+                                                src={image.imageUrl}
+                                                alt={image.description || 'Collection image'}
+                                                className="h-full w-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                                                data-ai-hint={image.imageHint}
+                                            />
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             )
                         ))}
                     </div>

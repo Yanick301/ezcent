@@ -19,10 +19,10 @@ export function Footer() {
       title_fr: 'Aide',
       title_en: 'Help',
       links: [
-        { name: 'Kontaktieren Sie uns', name_fr: 'Contactez-nous', name_en: 'Contact Us', href: '#' },
-        { name: 'FAQs', name_fr: 'FAQs', name_en: 'FAQs', href: '#' },
-        { name: 'Produktpflege', name_fr: 'Entretien des produits', name_en: 'Product Care', href: '#' },
-        { name: 'Rechtliche Hinweise', name_fr: 'Mentions légales', name_en: 'Legal Notice', href: '#' },
+        { name: 'Kontaktieren Sie uns', name_fr: 'Contactez-nous', name_en: 'Contact Us', href: '/account' },
+        { name: 'FAQs', name_fr: 'FAQs', name_en: 'FAQs', href: '/products/all' },
+        { name: 'Produktpflege', name_fr: 'Entretien des produits', name_en: 'Product Care', href: '/products/all' },
+        { name: 'Rechtliche Hinweise', name_fr: 'Mentions légales', name_en: 'Legal Notice', href: '/account' },
       ],
     },
     {
@@ -30,9 +30,9 @@ export function Footer() {
       title_fr: 'Services',
       title_en: 'Services',
       links: [
-        { name: 'Reparaturen', name_fr: 'Réparations', name_en: 'Repairs', href: '#' },
-        { name: 'Personalisierung', name_fr: 'Personnalisation', name_en: 'Personalization', href: '#' },
-        { name: 'Geschenkkarten', name_fr: 'Cartes cadeaux', name_en: 'Gift Cards', href: '#' },
+        { name: 'Reparaturen', name_fr: 'Réparations', name_en: 'Repairs', href: '/products/all' },
+        { name: 'Personalisierung', name_fr: 'Personnalisation', name_en: 'Personalization', href: '/products/all' },
+        { name: 'Geschenkkarten', name_fr: 'Cartes cadeaux', name_en: 'Gift Cards', href: '/products/all' },
       ],
     },
     {
@@ -40,9 +40,9 @@ export function Footer() {
       title_fr: 'À propos d\'EZCENTIALS',
       title_en: 'About EZCENTIALS',
       links: [
-        { name: 'Modehäuser', name_fr: 'Maisons de mode', name_en: 'Fashion Houses', href: '#' },
-        { name: 'Nachhaltigkeit', name_fr: 'Durabilité', name_en: 'Sustainability', href: '#' },
-        { name: 'Karriere', name_fr: 'Carrières', name_en: 'Careers', href: '#' },
+        { name: 'Modehäuser', name_fr: 'Maisons de mode', name_en: 'Fashion Houses', href: '/products/all' },
+        { name: 'Nachhaltigkeit', name_fr: 'Durabilité', name_en: 'Sustainability', href: '/products/all' },
+        { name: 'Karriere', name_fr: 'Carrières', name_en: 'Careers', href: '/products/all' },
       ],
     },
      {
@@ -51,8 +51,8 @@ export function Footer() {
       title_en: 'Social Media',
       isSocial: true,
       links: [
-        { name: 'Instagram', href: '#', icon: InstagramIcon },
-        { name: 'Snapchat', href: '#', icon: SnapchatIcon },
+        { name: 'Instagram', href: '/products/all', icon: InstagramIcon },
+        { name: 'Snapchat', href: '/products/all', icon: SnapchatIcon },
       ],
     },
   ];
