@@ -1,14 +1,13 @@
-
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { products } from '@/lib/data';
 import type { Product } from '@/lib/types';
 import { ProductCard } from '@/components/ProductCard';
 import { TranslatedText } from '@/components/TranslatedText';
 
-export default function SearchPage() {
+function SearchPageClient() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
   const [results, setResults] = useState<Product[]>([]);
@@ -25,8 +24,11 @@ export default function SearchPage() {
           product.name_fr.toLowerCase().includes(lowerCaseQuery) ||
           product.description_fr.toLowerCase().includes(lowerCaseQuery)
       );
-      setResults(filteredProducts);
-      setLoading(false);
+      // Simulate a short delay to show loading state
+      setTimeout(() => {
+        setResults(filteredProducts);
+        setLoading(false);
+      }, 300);
     } else {
       setResults([]);
       setLoading(false);
@@ -65,4 +67,13 @@ export default function SearchPage() {
       )}
     </div>
   );
+}
+
+
+export default function SearchPage() {
+    return (
+        <Suspense fallback={<div className="text-center p-12"><TranslatedText fr="Chargement...">Laden...</TranslatedText></div>}>
+            <SearchPageClient />
+        </Suspense>
+    )
 }
