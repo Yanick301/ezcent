@@ -116,59 +116,77 @@ export default function OrdersPage() {
     const filePath = `receipts/${user.uid}/${selectedOrderId}/${file.name}`;
     const fileRef = storageRef(storage, filePath);
 
-    try {
-      await uploadBytes(fileRef, file);
-      const downloadURL = await getDownloadURL(fileRef);
-
-      await updateDoc(userOrderRef, {
-        receiptImageURL: downloadURL,
-        paymentStatus: 'processing',
+    uploadBytes(fileRef, file)
+      .then((snapshot) => {
+        return getDownloadURL(snapshot.ref);
+      })
+      .then((downloadURL) => {
+        return updateDoc(userOrderRef, {
+          receiptImageURL: downloadURL,
+          paymentStatus: 'processing',
+        }).catch((firestoreError) => {
+          // Create a contextual error for the Firestore update failure
+          const permissionError = new FirestorePermissionError({
+            path: userOrderRef.path,
+            operation: 'update',
+            requestResourceData: { receiptImageURL: downloadURL, paymentStatus: 'processing' },
+          });
+          errorEmitter.emit('permission-error', permissionError);
+          // Propagate the original error to the final catch block
+          throw firestoreError;
+        });
+      })
+      .then(() => {
+        toast({
+          title:
+            language === 'fr'
+              ? 'Paiement en cours de validation'
+              : language === 'en'
+              ? 'Payment Under Review'
+              : 'Zahlung wird überprüft',
+          description:
+            language === 'fr'
+              ? 'Votre preuve de paiement a été soumise.'
+              : language === 'en'
+              ? 'Your proof of payment has been submitted.'
+              : 'Ihr Zahlungsnachweis wurde übermittelt.',
+        });
+      })
+      .catch((error) => {
+        // This will catch errors from uploadBytes, getDownloadURL, or the propagated updateDoc error
+        if (!(error instanceof FirestorePermissionError)) {
+          // If it's not already our specific error, create one for the storage part.
+          const storagePermissionError = new FirestorePermissionError({
+            path: filePath,
+            operation: 'write', // Storage upload is a 'write' operation
+            requestResourceData: { size: file.size, contentType: file.type },
+          });
+          errorEmitter.emit('permission-error', storagePermissionError);
+        }
+        
+        toast({
+          variant: 'destructive',
+          title:
+            language === 'fr'
+              ? 'Erreur de téléversement'
+              : language === 'en'
+              ? 'Upload Error'
+              : 'Upload-Fehler',
+          description:
+            language === 'fr'
+              ? 'Une erreur est survenue. Veuillez vérifier vos permissions et réessayer.'
+              : language === 'en'
+              ? 'An error occurred. Please check your permissions and try again.'
+              : 'Ein Fehler ist aufgetreten. Bitte überprüfen Sie Ihre Berechtigungen und versuchen Sie es erneut.',
+        });
+      })
+      .finally(() => {
+        setUploadingOrderId(null);
+        setSelectedOrderId(null);
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
       });
-
-      toast({
-        title:
-          language === 'fr'
-            ? 'Paiement en cours de validation'
-            : language === 'en'
-            ? 'Payment Under Review'
-            : 'Zahlung wird überprüft',
-        description:
-          language === 'fr'
-            ? 'Votre preuve de paiement a été soumise.'
-            : language === 'en'
-            ? 'Your proof of payment has been submitted.'
-            : 'Ihr Zahlungsnachweis wurde übermittelt.',
-      });
-    } catch (error) {
-      const permissionError = new FirestorePermissionError({
-        path: userOrderRef.path,
-        operation: 'update',
-        requestResourceData: { receiptImageURL: '...' },
-      });
-      errorEmitter.emit('permission-error', permissionError);
-
-      toast({
-        variant: 'destructive',
-        title:
-          language === 'fr'
-            ? 'Erreur de téléversement'
-            : language === 'en'
-            ? 'Upload Error'
-            : 'Upload-Fehler',
-        description:
-          language === 'fr'
-            ? 'Une erreur est survenue. Veuillez vérifier vos permissions et réessayer.'
-            : language === 'en'
-            ? 'An error occurred. Please check your permissions and try again.'
-            : 'Ein Fehler ist aufgetreten. Bitte überprüfen Sie Ihre Berechtigungen und versuchen Sie es erneut.',
-      });
-    } finally {
-      setUploadingOrderId(null);
-      setSelectedOrderId(null);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-    }
   };
 
   const getStatusVariant = (status: string) => {
