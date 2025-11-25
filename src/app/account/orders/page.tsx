@@ -102,7 +102,8 @@ export default function OrdersPage() {
       event.target.files.length === 0 ||
       !selectedOrderId ||
       !user ||
-      !firestore
+      !firestore ||
+      !storage
     ) {
       return;
     }
@@ -119,8 +120,7 @@ export default function OrdersPage() {
       
       const userOrderRef = doc(
         firestore,
-        `userProfiles/${user.uid}/orders`,
-        selectedOrderId
+        `userProfiles/${user.uid}/orders/${selectedOrderId}`
       );
 
       await updateDoc(userOrderRef, {
