@@ -25,6 +25,8 @@ import {
   useUser,
   useMemoFirebase,
   useStorage,
+  errorEmitter,
+  FirestorePermissionError,
 } from '@/firebase';
 import {
   collection,
@@ -110,24 +112,18 @@ export default function OrdersPage() {
 
     const file = event.target.files[0];
     setUploadingOrderId(selectedOrderId);
+    const userOrderRef = doc(firestore, `userProfiles/${user.uid}/orders/${selectedOrderId}`);
+    const filePath = `receipts/${user.uid}/${selectedOrderId}/${file.name}`;
+    const fileRef = storageRef(storage, filePath);
 
     try {
-      const filePath = `receipts/${user.uid}/${selectedOrderId}/${file.name}`;
-      const fileRef = storageRef(storage, filePath);
-
       await uploadBytes(fileRef, file);
       const downloadURL = await getDownloadURL(fileRef);
-      
-      const userOrderRef = doc(
-        firestore,
-        `userProfiles/${user.uid}/orders/${selectedOrderId}`
-      );
 
       await updateDoc(userOrderRef, {
         receiptImageURL: downloadURL,
         paymentStatus: 'processing',
       });
-
 
       toast({
         title:
@@ -144,7 +140,13 @@ export default function OrdersPage() {
             : 'Ihr Zahlungsnachweis wurde übermittelt.',
       });
     } catch (error) {
-      console.error('Error uploading receipt: ', error);
+      const permissionError = new FirestorePermissionError({
+        path: userOrderRef.path,
+        operation: 'update',
+        requestResourceData: { receiptImageURL: '...' },
+      });
+      errorEmitter.emit('permission-error', permissionError);
+
       toast({
         variant: 'destructive',
         title:
@@ -155,10 +157,10 @@ export default function OrdersPage() {
             : 'Upload-Fehler',
         description:
           language === 'fr'
-            ? 'Une erreur est survenue. Veuillez réessayer.'
+            ? 'Une erreur est survenue. Veuillez vérifier vos permissions et réessayer.'
             : language === 'en'
-            ? 'An error occurred. Please try again.'
-            : 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.',
+            ? 'An error occurred. Please check your permissions and try again.'
+            : 'Ein Fehler ist aufgetreten. Bitte überprüfen Sie Ihre Berechtigungen und versuchen Sie es erneut.',
       });
     } finally {
       setUploadingOrderId(null);

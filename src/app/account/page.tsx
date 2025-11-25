@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { TranslatedText } from '@/components/TranslatedText';
-import { useUser, useAuth, useStorage } from '@/firebase';
+import { useUser, useAuth, useStorage, errorEmitter, FirestorePermissionError } from '@/firebase';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Heart, ListOrdered, User, Camera, Loader2 } from 'lucide-react';
 import Link from 'next/link';
@@ -43,21 +43,20 @@ export default function AccountPage() {
   };
 
   const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.files || event.target.files.length === 0 || !user || !storage) {
+    if (!event.target.files || event.target.files.length === 0 || !user || !auth.currentUser || !storage) {
       return;
     }
     
     const file = event.target.files[0];
     setIsUploading(true);
 
+    const filePath = `profile-pictures/${user.uid}/${file.name}`;
+    const fileRef = storageRef(storage, filePath);
+
     try {
-      const filePath = `profile-pictures/${user.uid}/${file.name}`;
-      const fileRef = storageRef(storage, filePath);
-      
       await uploadBytes(fileRef, file);
       const downloadURL = await getDownloadURL(fileRef);
-
-      await updateProfile(user, { photoURL: downloadURL });
+      await updateProfile(auth.currentUser, { photoURL: downloadURL });
       
       toast({
         title: language === 'fr' ? "Photo de profil mise à jour" : language === 'en' ? "Profile picture updated" : "Profilbild aktualisiert",
@@ -65,12 +64,17 @@ export default function AccountPage() {
       });
 
     } catch (error) {
+        const permissionError = new FirestorePermissionError({
+          path: fileRef.fullPath,
+          operation: 'write', // Storage operations map to 'write'
+        });
+        errorEmitter.emit('permission-error', permissionError);
+
        toast({
         variant: "destructive",
         title: language === 'fr' ? "Erreur de téléversement" : language === 'en' ? "Upload Error" : "Upload-Fehler",
-        description: language === 'fr' ? "Impossible de mettre à jour la photo de profil." : language === 'en' ? "Could not update profile picture." : "Profilbild konnte nicht aktualisiert werden.",
+        description: language === 'fr' ? "Impossible de mettre à jour la photo de profil. Vérifiez les permissions." : language === 'en' ? "Could not update profile picture. Check permissions." : "Profilbild konnte nicht aktualisiert werden. Berechtigungen prüfen.",
       });
-      console.error("Error uploading profile picture:", error);
     } finally {
         setIsUploading(false);
          if (fileInputRef.current) {

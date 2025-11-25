@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useFavorites } from '@/context/FavoritesContext';
@@ -5,16 +6,27 @@ import { products } from '@/lib/data';
 import { ProductCard } from '@/components/ProductCard';
 import { TranslatedText } from '@/components/TranslatedText';
 import { Heart } from 'lucide-react';
+import { useUser } from '@/firebase';
 
 export default function FavoritesPage() {
   const { favorites } = useFavorites();
+  const { user } = useUser();
   const favoriteProducts = products.filter((p) => favorites.includes(p.id));
 
   return (
     <div>
-      <h1 className="mb-6 font-headline text-3xl">
-        <TranslatedText fr="Mes favoris" en="My Favorites">Meine Favoriten</TranslatedText>
-      </h1>
+        <div className="mb-8">
+            <h1 className="mb-2 font-headline text-3xl">
+                <TranslatedText fr="Mes favoris" en="My Favorites">Meine Favoriten</TranslatedText>
+            </h1>
+            {user?.displayName && (
+                <p className="text-lg text-muted-foreground">
+                    <TranslatedText fr={`Bienvenue, ${user.displayName}. Voici vos articles précieusement sélectionnés.`} en={`Welcome, ${user.displayName}. Here are your treasured items.`}>
+                        Willkommen, {user.displayName}. Hier sind Ihre wertvollen Artikel.
+                    </TranslatedText>
+                </p>
+            )}
+        </div>
       {favoriteProducts.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted p-12 text-center">
           <Heart className="h-16 w-16 text-muted-foreground" />
