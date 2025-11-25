@@ -7,7 +7,6 @@ import { useAuth, useFirestore } from '@/firebase/provider';
 import { doc } from 'firebase/firestore';
 import { useDoc, type WithId } from '../firestore/use-doc';
 
-// Define a type for the user profile data
 export type UserProfile = {
   isAdmin?: boolean;
   // other profile fields...
@@ -16,15 +15,17 @@ export type UserProfile = {
 
 export interface UserHookResult {
   user: User | null;
-  profile: WithId<UserProfile> | null; // Add profile to the hook result
+  profile: WithId<UserProfile> | null;
   isUserLoading: boolean;
-  isProfileLoading: boolean;
+  isProfileLoading: boolean; // Explicitly expose profile loading state
   userError: Error | null;
+  profileError: Error | null; // Explicitly expose profile error state
 }
 
 export const useUser = (): UserHookResult => {
   const auth = useAuth();
   const firestore = useFirestore();
+
   const [user, setUser] = useState<User | null>(() => auth.currentUser);
   const [isUserLoading, setIsUserLoading] = useState(true);
   const [userError, setUserError] = useState<Error | null>(null);
@@ -49,18 +50,12 @@ export const useUser = (): UserHookResult => {
     return () => unsubscribe();
   }, [auth]);
 
-  const userProfileRef = useMemo(() => {
+  const userProfileRef = useMemoFirebase(() => {
     if (!user || !firestore) return null;
     return doc(firestore, 'userProfiles', user.uid);
   }, [user, firestore]);
   
   const { data: profile, isLoading: isProfileLoading, error: profileError } = useDoc<UserProfile>(userProfileRef);
-
-  useEffect(() => {
-      if (profileError) {
-          console.error("Error fetching user profile:", profileError);
-      }
-  }, [profileError]);
-
-  return { user, profile, isUserLoading, isProfileLoading, userError };
+  
+  return { user, profile, isUserLoading, isProfileLoading, userError, profileError };
 };
