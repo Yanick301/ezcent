@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -41,6 +42,7 @@ import { format } from 'date-fns';
 import { fr, de, enUS } from 'date-fns/locale';
 import { useLanguage } from '@/context/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 const getSafeDate = (order: any): Date => {
   if (!order || !order.orderDate) {
@@ -68,6 +70,7 @@ export default function OrdersPage() {
   const firestore = useFirestore();
   const { language } = useLanguage();
   const { toast } = useToast();
+  const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
 
@@ -154,6 +157,8 @@ export default function OrdersPage() {
             updateDoc(orderRef, {
                 receiptImageDataUri: imageDataUri,
                 paymentStatus: 'processing',
+            }).then(() => {
+                router.push('/checkout/thank-you');
             }).catch(e => {
                 const permissionError = new FirestorePermissionError({
                     path: orderRef.path,
@@ -161,22 +166,16 @@ export default function OrdersPage() {
                     requestResourceData: { paymentStatus: 'processing' }
                 });
                 errorEmitter.emit('permission-error', permissionError);
+                setProcessingOrderId(null);
             });
-          
-            toast({
-                title: language === 'fr' ? "Reçu téléversé" : language === 'en' ? "Receipt Uploaded" : "Beleg hochgeladen",
-                description: language === 'fr' ? "Votre preuve de paiement a été envoyée pour validation." : language === 'en' ? "Your proof of payment has been sent for validation." : "Ihr Zahlungsnachweis wurde zur Validierung gesendet.",
-            });
-
         } catch (error: any) {
            toast({
             variant: "destructive",
             title: language === 'fr' ? "Échec du téléversement" : language === 'en' ? "Upload Failed" : "Upload fehlgeschlagen",
             description: language === 'fr' ? "Impossible de téléverser le reçu. Veuillez réessayer." : language === 'en' ? "Could not upload receipt. Please try again." : "Beleg konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut.",
           });
+           setProcessingOrderId(null);
         } finally {
-            setProcessingOrderId(null);
-            setSelectedOrderId(null);
             if (fileInputRef.current) {
                 fileInputRef.current.value = '';
             }

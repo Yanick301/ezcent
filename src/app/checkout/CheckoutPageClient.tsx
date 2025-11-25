@@ -16,7 +16,7 @@ import placeholderImagesData from '@/lib/placeholder-images.json';
 import { TranslatedText } from '@/components/TranslatedText';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Banknote, Loader2 } from 'lucide-react';
+import { Banknote, Loader2, AlertCircle } from 'lucide-react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -32,6 +32,7 @@ import { useFirestore, useUser, errorEmitter, FirestorePermissionError } from '@
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 const { placeholderImages } = placeholderImagesData;
 
@@ -110,11 +111,11 @@ export default function CheckoutPageClient() {
   }, [language, form]);
 
   useEffect(() => {
-    if (cart.length === 0 && !form.formState.isSubmitSuccessful) {
+    if (cart.length === 0 && !isSubmitting) {
       const redirectUrl = searchParams.get('redirect') || '/products/all';
       router.push(redirectUrl);
     }
-  }, [cart, router, form.formState.isSubmitSuccessful, searchParams]);
+  }, [cart, router, isSubmitting, searchParams]);
 
   useEffect(() => {
     if (user) {
@@ -132,7 +133,7 @@ export default function CheckoutPageClient() {
     );
   }
 
-  if (cart.length === 0 && !form.formState.isSubmitSuccessful) {
+  if (cart.length === 0 && !isSubmitting) {
     return (
       <div className="container mx-auto flex h-[60vh] items-center justify-center text-center">
         <p><TranslatedText fr="Votre panier est vide. Vous allez être redirigé..." en="Your cart is empty. You will be redirected...">Ihr Warenkorb ist leer. Sie werden weitergeleitet...</TranslatedText></p>
@@ -181,7 +182,11 @@ export default function CheckoutPageClient() {
 
     addDoc(userOrderRef, orderData).then(() => {
       clearCart();
-      router.push('/checkout/thank-you');
+      toast({
+        title: language === 'fr' ? 'Commande Créée' : language === 'en' ? 'Order Created' : 'Bestellung erstellt',
+        description: language === 'fr' ? 'Veuillez maintenant téléverser votre preuve de paiement.' : language === 'en' ? 'Please now upload your proof of payment.' : 'Bitte laden Sie jetzt Ihren Zahlungsnachweis hoch.',
+      });
+      router.push('/account/orders');
     }).catch(async (serverError) => {
       const permissionError = new FirestorePermissionError({
         path: userOrderRef.path,
@@ -394,6 +399,15 @@ export default function CheckoutPageClient() {
                  </div>
               </CardContent>
             </Card>
+
+            <Alert variant="destructive">
+              <AlertCircle className="h-4 w-4" />
+              <AlertTitle><TranslatedText fr="Action Requise Avant de Continuer" en="Action Required Before Proceeding">Vor dem Fortfahren erforderliche Aktion</TranslatedText></AlertTitle>
+              <AlertDescription>
+                <TranslatedText fr="Veuillez effectuer le virement bancaire et préparer la capture d'écran du reçu AVANT de créer la commande. Vous devrez la téléverser à l'étape suivante." en="Please make the bank transfer and prepare the receipt screenshot BEFORE creating the order. You will need to upload it in the next step.">Bitte tätigen Sie die Überweisung und bereiten Sie den Screenshot des Belegs vor, BEVOR Sie die Bestellung erstellen. Sie müssen ihn im nächsten Schritt hochladen.</TranslatedText>
+              </AlertDescription>
+            </Alert>
+
 
             <Button size="lg" className="w-full" type="submit" disabled={isSubmitting}>
               {isSubmitting ? (

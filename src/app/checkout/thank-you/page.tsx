@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { TranslatedText } from '@/components/TranslatedText';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { Loader2, PackageCheck } from 'lucide-react';
 import { useUser } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -16,6 +16,10 @@ export default function ThankYouPage() {
     if (isUserLoading) return;
     if (!user) {
       router.push('/login');
+    } else {
+        // This page is likely no longer needed in the new flow,
+        // but we'll keep it for now. Redirecting to orders might be better.
+        // setTimeout(() => router.push('/account/orders'), 5000);
     }
   }, [user, isUserLoading, router]);
 
@@ -30,23 +34,21 @@ export default function ThankYouPage() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">
       <div className="flex flex-col items-center text-center">
-        <CheckCircle2 className="h-20 w-20 text-green-500" />
+        <PackageCheck className="h-20 w-20 text-green-500" />
         <h1 className="mt-6 font-headline text-4xl md:text-5xl">
           <TranslatedText
-            fr="Commande enregistrée !"
-            en="Order Saved!"
+            fr="Paiement en cours de validation"
+            en="Payment Under Review"
           >
-            Bestellung gespeichert!
+            Zahlung wird überprüft
           </TranslatedText>
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
           <TranslatedText
-            fr="Votre commande a été créée. Veuillez maintenant vous rendre dans votre espace client pour téléverser votre preuve de paiement afin de la finaliser."
-            en="Your order has been created. Please now go to your account area to upload your proof of payment to finalize it."
+            fr="Merci ! Votre preuve de paiement a été soumise. Nous la vérifierons sous peu. Vous pouvez suivre le statut de votre commande dans votre espace client."
+            en="Thank you! Your proof of payment has been submitted. We will review it shortly. You can track the status of your order in your account area."
           >
-            Ihre Bestellung wurde erstellt. Bitte gehen Sie nun in Ihren
-            Kundenbereich, um Ihren Zahlungsnachweis hochzuladen und die
-            Bestellung abzuschließen.
+            Vielen Dank! Ihr Zahlungsnachweis wurde übermittelt. Wir werden ihn in Kürze prüfen. Sie können den Status Ihrer Bestellung in Ihrem Kundenbereich verfolgen.
           </TranslatedText>
         </p>
       </div>
@@ -54,8 +56,8 @@ export default function ThankYouPage() {
       <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
         <Button asChild size="lg">
           <Link href="/account/orders">
-            <TranslatedText fr="Valider mon paiement" en="Validate my payment">
-              Zahlung bestätigen
+            <TranslatedText fr="Voir mes commandes" en="View My Orders">
+              Meine Bestellungen anzeigen
             </TranslatedText>
           </Link>
         </Button>
