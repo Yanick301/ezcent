@@ -13,13 +13,10 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import {
   ShoppingBag,
-  Mail,
   CheckCircle,
   Loader2,
   AlertCircle,
-  FileCheck,
   Ban,
-  ExternalLink,
   Upload,
 } from 'lucide-react';
 import {
@@ -105,7 +102,7 @@ export default function OrdersPage() {
                         if (status === 'rejected') return 'rejeté';
                     }
                     if (lang === 'en') {
-                        if (status === 'validated') return 'validated';
+                        if (status === 'completed') return 'validated';
                         if (status === 'rejected') return 'rejected';
                     }
                     if (status === 'completed') return 'validiert';
@@ -145,22 +142,13 @@ export default function OrdersPage() {
     const fileRef = storageRef(storage, filePath);
 
     try {
-      // 1. Upload the file
       await uploadBytes(fileRef, file);
       const downloadURL = await getDownloadURL(fileRef);
 
-      // 2. Update the Firestore document
       const orderRef = doc(firestore, `userProfiles/${user.uid}/orders`, orderId);
-      updateDoc(orderRef, {
+      await updateDoc(orderRef, {
         receiptImageURL: downloadURL,
         paymentStatus: 'processing',
-      }).catch(err => {
-         const permissionError = new FirestorePermissionError({
-          path: orderRef.path,
-          operation: 'update', 
-          requestResourceData: { receiptImageURL: downloadURL, paymentStatus: 'processing' }
-        });
-        errorEmitter.emit('permission-error', permissionError);
       });
       
       toast({
@@ -170,10 +158,20 @@ export default function OrdersPage() {
 
     } catch (error: any) {
         console.error("Upload failed:", error);
-        const permissionError = new FirestorePermissionError({
-          path: filePath,
-          operation: 'write', 
-        });
+        
+        let permissionError;
+        if (error.code && error.code.includes('storage')) {
+             permissionError = new FirestorePermissionError({
+                path: filePath,
+                operation: 'write', 
+             });
+        } else {
+            permissionError = new FirestorePermissionError({
+                path: `userProfiles/${user.uid}/orders/${orderId}`,
+                operation: 'update',
+                requestResourceData: { paymentStatus: 'processing' }
+            });
+        }
         errorEmitter.emit('permission-error', permissionError);
 
        toast({
@@ -291,7 +289,7 @@ export default function OrdersPage() {
         <div className="space-y-6">
           {[...(orders as any[])].map((order: any) => (
             <Card key={order.id}>
-              <CardHeader className="flex-row items-center justify-between">
+              <CardHeader className="flex-row items-start justify-between">
                 <div>
                   <CardTitle className="text-lg">
                     <TranslatedText
@@ -420,7 +418,7 @@ export default function OrdersPage() {
                   </div>
                 )}
                  {order.paymentStatus === 'processing' && (
-                  <div className="mt-6 flex flex-col items-center justify-center gap-4 rounded-md border-2 border-dashed border-blue-200 bg-blue-50/50 p-4">
+                  <div className="mt-6 flex items-center justify-center gap-2 rounded-md border-2 border-dashed border-blue-200 bg-blue-50/50 p-4">
                      <div className='flex items-center text-blue-800'>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                         <p className="font-semibold">
@@ -432,12 +430,6 @@ export default function OrdersPage() {
                         </TranslatedText>
                         </p>
                      </div>
-                     <Button asChild variant="outline" size="sm">
-                        <Link href={`/order-validation/${order.userId}/${order.id}`} target="_blank">
-                            <TranslatedText fr="Lien de validation" en="Validation Link">Validierungslink</TranslatedText>
-                            <ExternalLink className="ml-2 h-4 w-4" />
-                        </Link>
-                     </Button>
                   </div>
                 )}
                 {order.paymentStatus === 'completed' && (

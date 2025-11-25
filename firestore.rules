@@ -1,6 +1,10 @@
 
 rules_version = '2';
 
+function isAdmin() {
+  return get(/databases/$(database)/documents/userProfiles/$(request.auth.uid)).data.isAdmin == true;
+}
+
 service cloud.firestore {
   match /databases/{database}/documents {
     match /products/{productId} {
@@ -14,15 +18,15 @@ service cloud.firestore {
     }
 
     match /userProfiles/{userId} {
-      // Users can read and write their own profile
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
     
     match /userProfiles/{userId}/orders/{orderId} {
-      // A user can read and create their own orders
       allow read, create: if request.auth != null && request.auth.uid == userId;
-      // A user can update their own order status, and so can an admin
-      allow update: if request.auth != null;
+      // An admin can update any order status. A user can update their own order to 'processing'.
+      allow update: if isAdmin() || (request.auth.uid == userId && request.resource.data.paymentStatus == 'processing');
+      // Admins can list all orders, users can only list their own if they are logged in.
+      allow list: if isAdmin() || (request.auth.uid == userId);
     }
   }
 }

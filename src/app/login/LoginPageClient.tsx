@@ -70,17 +70,19 @@ export default function LoginPageClient() {
     const userDoc = await getDoc(userRef);
 
     if (!userDoc.exists()) {
-      try {
-        await setDoc(userRef, {
+      let profileData: any = {
           id: user.uid,
           email: user.email,
           firstName: user.displayName?.split(' ')[0] || '',
           lastName: user.displayName?.split(' ').slice(1).join(' ') || '',
           registrationDate: serverTimestamp(),
-        });
-      } catch (error) {
-        // Optional: Handle the error, e.g., show a toast message
+      };
+
+      if (user.email === 'ezcentials@gmail.com') {
+        profileData.isAdmin = true;
       }
+      
+      await setDoc(userRef, profileData);
     }
   };
 
@@ -93,7 +95,8 @@ export default function LoginPageClient() {
           title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
           description: language === 'fr' ? 'Bienvenue à nouveau !' : language === 'en' ? 'Welcome back!' : 'Willkommen zurück!',
       });
-      const redirectUrl = searchParams.get('redirect') || '/account';
+      
+      const redirectUrl = data.email === 'ezcentials@gmail.com' ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
       router.push(redirectUrl);
 
     } catch (error: any) {
@@ -119,7 +122,8 @@ export default function LoginPageClient() {
             title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
             description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
         });
-        const redirectUrl = searchParams.get('redirect') || '/account';
+        
+        const redirectUrl = userCredential.user.email === 'ezcentials@gmail.com' ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
         router.push(redirectUrl);
 
     } catch (error: any) {

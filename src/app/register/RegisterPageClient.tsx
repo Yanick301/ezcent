@@ -78,13 +78,20 @@ export default function RegisterPageClient() {
           await updateProfile(user, { displayName });
         }
         
-        await setDoc(userRef, {
+        let profileData: any = {
             id: user.uid,
             email: user.email,
             firstName: displayName?.split(' ')[0] || '',
             lastName: displayName?.split(' ').slice(1).join(' ') || '',
             registrationDate: serverTimestamp(),
-        });
+        };
+
+        // If the registering user is the admin, set isAdmin to true
+        if (user.email === 'ezcentials@gmail.com') {
+            profileData.isAdmin = true;
+        }
+        
+        await setDoc(userRef, profileData);
     }
   };
 
@@ -97,6 +104,12 @@ export default function RegisterPageClient() {
       const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
       
       await handleUserCreation(userCredential, data.name);
+      
+      // Admin user does not need email verification
+      if (data.email === 'ezcentials@gmail.com') {
+        router.push('/admin/dashboard');
+        return;
+      }
       
       await sendEmailVerification(userCredential.user);
       toast({
@@ -128,7 +141,7 @@ export default function RegisterPageClient() {
             title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
             description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
         });
-        const redirectUrl = searchParams.get('redirect') || '/account';
+        const redirectUrl = userCredential.user.email === 'ezcentials@gmail.com' ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
         router.push(redirectUrl);
     } catch (error: any) {
         toast({

@@ -5,10 +5,18 @@ import { useEffect, useState, useMemo } from 'react';
 import type { User } from 'firebase/auth';
 import { useAuth, useFirestore } from '@/firebase/provider';
 import { doc } from 'firebase/firestore';
-import { useDoc } from '../firestore/use-doc';
+import { useDoc, type WithId } from '../firestore/use-doc';
+
+// Define a type for the user profile data
+type UserProfile = {
+  isAdmin?: boolean;
+  // other profile fields...
+};
+
 
 export interface UserHookResult {
   user: User | null;
+  profile: WithId<UserProfile> | null; // Add profile to the hook result
   isUserLoading: boolean;
   isProfileLoading: boolean;
   userError: Error | null;
@@ -25,8 +33,9 @@ export const useUser = (): UserHookResult => {
     if (!user || !firestore) return null;
     return doc(firestore, 'userProfiles', user.uid);
   }, [user, firestore]);
-
-  const { isLoading: isProfileLoading } = useDoc(userProfileRef);
+  
+  // Use the useDoc hook to get the user profile
+  const { data: profile, isLoading: isProfileLoading } = useDoc<UserProfile>(userProfileRef);
 
   useEffect(() => {
     if (!auth) {
@@ -48,5 +57,5 @@ export const useUser = (): UserHookResult => {
     return () => unsubscribe();
   }, [auth]);
 
-  return { user, isUserLoading, isProfileLoading, userError };
+  return { user, profile, isUserLoading, isProfileLoading, userError };
 };
