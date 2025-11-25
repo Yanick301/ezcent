@@ -11,6 +11,7 @@ export interface UserHookResult {
   user: User | null;
   isAdmin: boolean;
   isUserLoading: boolean;
+  isProfileLoading: boolean;
   userError: Error | null;
 }
 
@@ -58,10 +59,5 @@ export const useUser = (): UserHookResult => {
     return (userProfile as any)?.isAdmin === true;
   }, [user, userProfile]);
 
-  // The overall loading state depends on both auth and profile fetching,
-  // but only if a user is present.
-  const finalIsLoading = isUserLoading || (user && isProfileLoading);
-
-
-  return { user, isAdmin, isUserLoading: finalIsLoading, userError };
+  return { user, isAdmin, isUserLoading, isProfileLoading, userError };
 };

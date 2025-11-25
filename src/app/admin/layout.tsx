@@ -21,13 +21,13 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user, isAdmin, isUserLoading } = useUser();
+  const { user, isAdmin, isUserLoading, isProfileLoading } = useUser();
   const router = useRouter();
   const auth = useAuth();
 
   useEffect(() => {
-    if (isUserLoading) {
-      return; // Wait until user status is resolved
+    if (isUserLoading || isProfileLoading) {
+      return; // Wait until user status and profile are resolved
     }
     if (!user) {
       router.push('/login'); // Not logged in, redirect to login
@@ -37,13 +37,13 @@ export default function AdminLayout({
       router.push('/account'); // Logged in but not an admin, redirect to account
       return;
     }
-  }, [user, isAdmin, isUserLoading, router]);
+  }, [user, isAdmin, isUserLoading, isProfileLoading, router]);
 
-  if (isUserLoading || !isAdmin || !user) {
+  if (isUserLoading || isProfileLoading || !isAdmin || !user) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-muted">
         <div className="text-center">
-          {isUserLoading ? (
+          {isUserLoading || isProfileLoading ? (
             <Loader2 className="mx-auto h-12 w-12 animate-spin text-primary" />
           ) : (
             <>
