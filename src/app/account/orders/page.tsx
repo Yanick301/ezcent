@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -18,6 +17,7 @@ import {
   AlertCircle,
   Ban,
   Upload,
+  Link as LinkIcon,
 } from 'lucide-react';
 import {
   useCollection,
@@ -87,7 +87,7 @@ export default function OrdersPage() {
   const { data: orders, isLoading } = useCollection(ordersQuery);
 
   useEffect(() => {
-    if (!ordersQuery) return;
+    if (!ordersQuery || !user) return;
 
     const unsubscribe = onSnapshot(ordersQuery, (snapshot) => {
         snapshot.docChanges().forEach((change) => {
@@ -118,7 +118,7 @@ export default function OrdersPage() {
     });
 
     return () => unsubscribe();
-  }, [ordersQuery, language, toast]);
+  }, [ordersQuery, language, toast, user]);
 
 
   const handleUploadClick = (orderId: string) => {
@@ -133,12 +133,11 @@ export default function OrdersPage() {
     const file = event.target.files[0];
     const orderId = selectedOrderId;
     
-    // Check file size (e.g., limit to 1MB)
-    if (file.size > 1024 * 1024) {
+    if (file.size > 1024 * 1024) { // 1MB limit
         toast({
             variant: "destructive",
-            title: "Fichier trop volumineux",
-            description: "La taille de l'image ne doit pas dépasser 1 Mo."
+            title: language === 'fr' ? "Fichier trop volumineux" : language === 'en' ? "File too large" : "Datei zu groß",
+            description: language === 'fr' ? "La taille de l'image ne doit pas dépasser 1 Mo." : language === 'en' ? "Image size should not exceed 1MB." : "Die Bildgröße darf 1 MB nicht überschreiten.",
         });
         return;
     }
@@ -152,29 +151,28 @@ export default function OrdersPage() {
 
         try {
             const orderRef = doc(firestore, `userProfiles/${user.uid}/orders`, orderId);
-            await updateDoc(orderRef, {
+            updateDoc(orderRef, {
                 receiptImageDataUri: imageDataUri,
                 paymentStatus: 'processing',
+            }).catch(e => {
+                const permissionError = new FirestorePermissionError({
+                    path: orderRef.path,
+                    operation: 'update',
+                    requestResourceData: { paymentStatus: 'processing' }
+                });
+                errorEmitter.emit('permission-error', permissionError);
             });
           
             toast({
-                title: "Reçu téléversé",
-                description: "Votre preuve de paiement a été envoyée pour validation."
+                title: language === 'fr' ? "Reçu téléversé" : language === 'en' ? "Receipt Uploaded" : "Beleg hochgeladen",
+                description: language === 'fr' ? "Votre preuve de paiement a été envoyée pour validation." : language === 'en' ? "Your proof of payment has been sent for validation." : "Ihr Zahlungsnachweis wurde zur Validierung gesendet.",
             });
 
         } catch (error: any) {
-            console.error("Upload failed:", error);
-            const permissionError = new FirestorePermissionError({
-                path: `userProfiles/${user.uid}/orders/${orderId}`,
-                operation: 'update',
-                requestResourceData: { paymentStatus: 'processing' }
-            });
-            errorEmitter.emit('permission-error', permissionError);
-
            toast({
             variant: "destructive",
-            title: "Échec du téléversement",
-            description: "Impossible de téléverser le reçu. Veuillez réessayer.",
+            title: language === 'fr' ? "Échec du téléversement" : language === 'en' ? "Upload Failed" : "Upload fehlgeschlagen",
+            description: language === 'fr' ? "Impossible de téléverser le reçu. Veuillez réessayer." : language === 'en' ? "Could not upload receipt. Please try again." : "Beleg konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut.",
           });
         } finally {
             setProcessingOrderId(null);
@@ -185,14 +183,23 @@ export default function OrdersPage() {
         }
     };
     reader.onerror = (error) => {
-        console.error("File reading failed:", error);
         toast({
             variant: "destructive",
-            title: "Erreur de lecture",
-            description: "Impossible de lire le fichier sélectionné."
+            title: language === 'fr' ? "Erreur de lecture" : language === 'en' ? "File Read Error" : "Fehler beim Lesen der Datei",
+            description: language === 'fr' ? "Impossible de lire le fichier sélectionné." : language === 'en' ? "Could not read the selected file." : "Die ausgewählte Datei konnte nicht gelesen werden.",
         });
         setProcessingOrderId(null);
     }
+  };
+
+  const handleCopyValidationLink = (order: any) => {
+    const url = `${window.location.origin}/order-validation/${order.userId}/${order.id}`;
+    navigator.clipboard.writeText(url).then(() => {
+        toast({
+            title: language === 'fr' ? 'Lien copié' : language === 'en' ? 'Link Copied' : 'Link kopiert',
+            description: language === 'fr' ? 'Le lien de validation a été copié dans le presse-papiers.' : language === 'en' ? 'The validation link has been copied to the clipboard.' : 'Der Validierungslink wurde in die Zwischenablage kopiert.',
+        });
+    });
   };
 
   const getStatusVariant = (status: string) => {
@@ -425,7 +432,7 @@ export default function OrdersPage() {
                   </div>
                 )}
                  {order.paymentStatus === 'processing' && (
-                  <div className="mt-6 flex items-center justify-center gap-2 rounded-md border-2 border-dashed border-blue-200 bg-blue-50/50 p-4">
+                  <div className="mt-6 flex flex-col items-center justify-center gap-4 rounded-md border-2 border-dashed border-blue-200 bg-blue-50/50 p-4">
                      <div className='flex items-center text-blue-800'>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                         <p className="font-semibold">
@@ -437,6 +444,10 @@ export default function OrdersPage() {
                         </TranslatedText>
                         </p>
                      </div>
+                     <Button variant="secondary" onClick={() => handleCopyValidationLink(order)}>
+                        <LinkIcon className="mr-2 h-4 w-4" />
+                        <TranslatedText fr="Copier le lien de validation" en="Copy Validation Link">Validierungslink kopieren</TranslatedText>
+                     </Button>
                   </div>
                 )}
                 {order.paymentStatus === 'completed' && (
