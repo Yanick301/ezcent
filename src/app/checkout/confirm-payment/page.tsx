@@ -10,13 +10,11 @@ import {
   useMemoFirebase,
   errorEmitter,
   FirestorePermissionError,
-  useStorage
 } from '@/firebase';
 import {
   doc,
   updateDoc,
 } from 'firebase/firestore';
-import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useState, useRef } from 'react';
 import {
   Card,
@@ -57,7 +55,6 @@ function ConfirmPaymentPageClient() {
   const orderId = searchParams.get('orderId');
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
-  const storage = useStorage();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
@@ -75,7 +72,7 @@ function ConfirmPaymentPageClient() {
   };
 
   const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.files || event.target.files.length === 0 || !user || !firestore || !orderId || !storage) {
+    if (!event.target.files || event.target.files.length === 0 || !user || !firestore || !orderId) {
       return;
     }
     const file = event.target.files[0];
@@ -91,36 +88,42 @@ function ConfirmPaymentPageClient() {
 
     setIsUploading(true);
 
-    const receiptRef = storageRef(storage, `receipts/${user.uid}/${orderId}/${file.name}`);
-
-    try {
-        await uploadBytes(receiptRef, file);
-        const downloadURL = await getDownloadURL(receiptRef);
-
-        const currentOrderRef = doc(firestore, `userProfiles/${user.uid}/orders`, orderId);
-        await updateDoc(currentOrderRef, {
-            receiptImageUrl: downloadURL,
-            paymentStatus: 'processing',
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+        const dataUrl = reader.result as string;
+        try {
+            const currentOrderRef = doc(firestore, `userProfiles/${user.uid}/orders`, orderId);
+            await updateDoc(currentOrderRef, {
+                receiptImageUrl: dataUrl,
+                paymentStatus: 'processing',
+            });
+            router.push('/checkout/thank-you');
+        } catch (e: any) {
+            console.error("Update error:", e);
+            const permissionError = new FirestorePermissionError({
+                path: orderRef!.path,
+                operation: 'update',
+                requestResourceData: { paymentStatus: 'processing' },
+            });
+            errorEmitter.emit('permission-error', permissionError);
+            toast({
+                variant: "destructive",
+                title: language === 'fr' ? "Échec de la mise à jour" : language === 'en' ? "Update Failed" : "Update fehlgeschlagen",
+                description: language === 'fr' ? "Impossible de mettre à jour la commande. Veuillez réessayer." : language === 'en' ? "Could not update order. Please try again." : "Bestellung konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.",
+            });
+            setIsUploading(false);
+        }
+    };
+    reader.onerror = (error) => {
+        console.error("File Reader error:", error);
+        toast({
+            variant: "destructive",
+            title: "Erreur de lecture de fichier",
+            description: "Impossible de lire le fichier sélectionné.",
         });
-
-        router.push('/checkout/thank-you');
-
-    } catch (error: any) {
-        console.error("Upload error:", error);
-        
-        const permissionError = new FirestorePermissionError({
-            path: receiptRef.fullPath,
-            operation: 'write', 
-        });
-        errorEmitter.emit('permission-error', permissionError);
-
-       toast({
-        variant: "destructive",
-        title: language === 'fr' ? "Échec du téléversement" : language === 'en' ? "Upload Failed" : "Upload fehlgeschlagen",
-        description: language === 'fr' ? "Impossible de téléverser le reçu. Veuillez vérifier les permissions et réessayer." : language === 'en' ? "Could not upload receipt. Please check permissions and try again." : "Beleg konnte nicht hochgeladen werden. Bitte Berechtigungen prüfen und erneut versuchen.",
-      });
-       setIsUploading(false);
-    }
+        setIsUploading(false);
+    };
   };
 
   if (isUserLoading || isOrderLoading) {

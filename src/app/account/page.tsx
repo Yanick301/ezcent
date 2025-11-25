@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { TranslatedText } from '@/components/TranslatedText';
-import { useUser, useAuth, useStorage, errorEmitter, FirestorePermissionError } from '@/firebase';
+import { useUser, useAuth, errorEmitter, FirestorePermissionError, useStorage } from '@/firebase';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Heart, ListOrdered, User, Camera, Loader2 } from 'lucide-react';
 import Link from 'next/link';
