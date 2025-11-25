@@ -12,10 +12,8 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user, profile, isUserLoading, isProfileLoading } = useUser();
+  const { user, profile, isLoading } = useUser();
   const router = useRouter();
-
-  const isLoading = isUserLoading || isProfileLoading;
 
   useEffect(() => {
     // Wait until loading is fully complete before making any decisions
