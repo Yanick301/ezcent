@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -30,7 +31,6 @@ import {
   AlertTriangle,
   FileText,
   User,
-  Calendar,
   Euro,
   ImageIcon,
 } from 'lucide-react';
@@ -41,7 +41,6 @@ import { fr, de, enUS } from 'date-fns/locale';
 import { useState, useEffect } from 'react';
 import { TranslatedText } from '@/components/TranslatedText';
 import { useLanguage } from '@/context/LanguageContext';
-import { Separator } from '@/components/ui/separator';
 
 type Order = {
   id: string;
@@ -230,7 +229,7 @@ export default function AdminDashboardPage() {
                       <img
                         src={order.receiptImageDataUri}
                         alt="Preuve de paiement"
-                        className="h-auto w-full object-contain max-h-80"
+                        className="h-auto w-full object-contain max-h-80 bg-muted"
                       />
                     </a>
                   </div>
@@ -243,7 +242,7 @@ export default function AdminDashboardPage() {
               </CardContent>
               <CardFooter className="flex items-center justify-end gap-4 border-t pt-6">
                 <Button
-                  variant="outline"
+                  variant="destructive"
                   onClick={() => handleUpdateStatus(order.userId, order.id, 'rejected')}
                   disabled={isProcessing === order.id}
                 >

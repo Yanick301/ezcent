@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -28,6 +29,7 @@ import { TranslatedText } from '@/components/TranslatedText';
 import { useLanguage } from '@/context/LanguageContext';
 
 type Order = {
+  id: string;
   userId: string;
   shippingInfo: any;
   items: any[];
@@ -50,7 +52,7 @@ const getSafeDate = (order: any): Date => {
 export default function OrderValidationPage() {
   const params = useParams();
   const router = useRouter();
-  const { userId, orderId } = params;
+  const { userId, orderId } = params as { userId: string; orderId: string };
   const firestore = useFirestore();
   const { toast } = useToast();
   const { language } = useLanguage();
@@ -58,7 +60,7 @@ export default function OrderValidationPage() {
 
   const orderRef = useMemoFirebase(() => {
     if (!firestore || !userId || !orderId) return null;
-    return doc(firestore, `userProfiles/${userId}/${orderId}`);
+    return doc(firestore, `userProfiles/${userId}/orders/${orderId}`);
   }, [firestore, userId, orderId]);
 
   const { data: order, isLoading, error } = useDoc<Order>(orderRef);
@@ -74,7 +76,11 @@ export default function OrderValidationPage() {
         toast({
           title: `Commande ${status === 'completed' ? 'confirmée' : 'rejetée'}`,
         });
-        router.push('/products/all'); // Redirect after action
+        if(status === 'completed') {
+            router.push('/checkout/thank-you');
+        } else {
+             router.push('/products/all');
+        }
       })
       .catch((e) => {
         // This is a public page, so we can't emit a permission error as we aren't logged in as admin
@@ -96,26 +102,16 @@ export default function OrderValidationPage() {
     );
   }
 
-  if (error) {
+  if (error || !order) {
     return (
         <div className="container mx-auto flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
             <AlertTriangle className="h-12 w-12 text-destructive" />
             <p className='mt-4 text-destructive font-semibold'>Erreur de chargement de la commande.</p>
-            <p className='text-sm text-muted-foreground'>Le lien est peut-être invalide ou expiré.</p>
+            <p className='text-sm text-muted-foreground'>La commande est introuvable, le lien est peut-être invalide ou expiré.</p>
         </div>
     );
   }
   
-  if (!order) {
-    return (
-        <div className="container mx-auto flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
-            <AlertTriangle className="h-12 w-12 text-muted-foreground" />
-            <p className='mt-4 text-xl font-semibold'>Commande introuvable</p>
-            <p className='text-sm text-muted-foreground'>Cette commande n'existe pas ou a déjà été traitée.</p>
-        </div>
-    )
-  }
-
   return (
     <div className="container mx-auto max-w-2xl px-4 py-12">
         <h1 className="font-headline text-4xl text-center mb-8">Validation de Commande</h1>
@@ -129,8 +125,8 @@ export default function OrderValidationPage() {
                             {order.shippingInfo.name}
                         </CardDescription>
                     </div>
-                    <Badge variant={order.paymentStatus === 'processing' ? 'default' : 'secondary'} className="bg-blue-600">
-                        <TranslatedText fr="À valider" en="To Validate">Zu validieren</TranslatedText>
+                     <Badge variant={order.paymentStatus === 'processing' ? 'default' : 'secondary'} className={order.paymentStatus === 'processing' ? "bg-blue-600" : ""}>
+                        <TranslatedText fr={order.paymentStatus} en={order.paymentStatus}>{order.paymentStatus}</TranslatedText>
                     </Badge>
                 </div>
               </CardHeader>
@@ -140,7 +136,7 @@ export default function OrderValidationPage() {
                   <div className="space-y-1">
                     {order.items.map((item: any, index: number) => (
                       <div key={index} className="flex justify-between">
-                        <span>{item.quantity}x {item.name}</span>
+                        <span>{item.quantity}x <TranslatedText fr={item.name_fr} en={item.name_en}>{item.name}</TranslatedText></span>
                         <span>€{(item.price * item.quantity).toFixed(2)}</span>
                       </div>
                     ))}
@@ -158,7 +154,7 @@ export default function OrderValidationPage() {
                       <img
                         src={order.receiptImageDataUri}
                         alt="Preuve de paiement"
-                        className="h-auto w-full object-contain max-h-96"
+                        className="h-auto w-full object-contain max-h-96 bg-muted"
                       />
                     </a>
                   </div>
