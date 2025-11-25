@@ -22,6 +22,8 @@ service cloud.firestore {
       allow read, write: if request.auth != null && request.auth.uid == userId;
       // Admins can read any profile
       allow get: if isAdmin();
+      // Prevent users from making themselves admins
+      allow update: if request.auth.uid == userId && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['isAdmin']) || isAdmin());
     }
     
     match /userProfiles/{userId}/orders/{orderId} {
