@@ -30,5 +30,10 @@ service cloud.firestore {
       // An admin can read or update any order
       allow get, list, update: if isAdmin();
     }
+
+    // Admins can list all orders across all users for the dashboard
+    match /{path=**}/orders/{orderId} {
+       allow list: if isAdmin();
+    }
   }
 }

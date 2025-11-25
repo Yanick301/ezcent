@@ -119,7 +119,7 @@ export default function AdminDashboardPage() {
     };
   }, [orders]);
 
-  if (isUserLoading || !isAdmin) {
+  if (isUserLoading || isLoading) {
     return (
       <div className="container mx-auto flex h-[60vh] items-center justify-center p-12 text-center">
         <Loader2 className="mx-auto h-12 w-12 animate-spin text-muted-foreground" />
@@ -151,7 +151,7 @@ export default function AdminDashboardPage() {
                           ID: {order.id}
                         </CardDescription>
                         <p className="text-sm font-medium">
-                          Client: {order.shippingInfo.email}
+                          Client: {order.shippingInfo?.name} ({order.shippingInfo?.email})
                         </p>
                      </div>
                      <p className="font-bold text-lg">€{order.totalAmount.toFixed(2)}</p>
@@ -161,7 +161,7 @@ export default function AdminDashboardPage() {
                       <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
                         {order.items.map((item: any) => (
                           <li key={item.productId}>
-                            {item.quantity} x {item.name_fr}
+                            {item.quantity} x <TranslatedText fr={item.name_fr} en={item.name_en}>{item.name}</TranslatedText>
                           </li>
                         ))}
                       </ul>
