@@ -80,6 +80,7 @@ export default function LoginPageClient() {
           firstName: user.displayName?.split(' ')[0] || '',
           lastName: user.displayName?.split(' ').slice(1).join(' ') || '',
           registrationDate: serverTimestamp(),
+          isAdmin: false, // Default to false
       };
       mustUpdate = true;
     } else {
@@ -88,8 +89,8 @@ export default function LoginPageClient() {
 
     // Ensure admin status is correctly set on every login for the admin account
     if (user.email === 'ezcentials@gmail.com') {
-        isAdmin = true;
-      if (!profileData.isAdmin) {
+      isAdmin = true;
+      if (profileData.isAdmin !== true) {
         profileData.isAdmin = true;
         mustUpdate = true;
       }
@@ -114,6 +115,7 @@ export default function LoginPageClient() {
       
       const redirectUrl = isAdmin ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
       router.push(redirectUrl);
+      router.refresh();
 
     } catch (error: any) {
       const errorMessage = error.code === 'auth/invalid-credential' 
@@ -141,6 +143,7 @@ export default function LoginPageClient() {
         
         const redirectUrl = isAdmin ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
         router.push(redirectUrl);
+        router.refresh();
 
     } catch (error: any) {
         toast({
@@ -231,3 +234,5 @@ export default function LoginPageClient() {
     </div>
   );
 }
+
+    
