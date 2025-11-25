@@ -10,11 +10,13 @@ import {
   useMemoFirebase,
   errorEmitter,
   FirestorePermissionError,
+  useStorage
 } from '@/firebase';
 import {
   doc,
   updateDoc,
 } from 'firebase/firestore';
+import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useState, useRef } from 'react';
 import {
   Card,
@@ -55,6 +57,7 @@ function ConfirmPaymentPageClient() {
   const orderId = searchParams.get('orderId');
   const { user, isUserLoading } = useUser();
   const firestore = useFirestore();
+  const storage = useStorage();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
@@ -72,59 +75,51 @@ function ConfirmPaymentPageClient() {
   };
 
   const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.files || event.target.files.length === 0 || !user || !firestore || !orderId) {
+    if (!event.target.files || event.target.files.length === 0 || !user || !firestore || !orderId || !storage) {
       return;
     }
     const file = event.target.files[0];
     
-    if (file.size > 1024 * 1024) { // 1MB limit
+    if (file.size > 5 * 1024 * 1024) { // 5MB limit
         toast({
             variant: "destructive",
             title: language === 'fr' ? "Fichier trop volumineux" : language === 'en' ? "File too large" : "Datei zu groß",
-            description: language === 'fr' ? "La taille de l'image ne doit pas dépasser 1 Mo." : language === 'en' ? "Image size should not exceed 1MB." : "Die Bildgröße darf 1 MB nicht überschreiten.",
+            description: language === 'fr' ? "La taille de l'image ne doit pas dépasser 5 Mo." : language === 'en' ? "Image size should not exceed 5MB." : "Die Bildgröße darf 5 MB nicht überschreiten.",
         });
         return;
     }
 
     setIsUploading(true);
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = async () => {
-        const imageDataUri = reader.result as string;
+    const receiptRef = storageRef(storage, `receipts/${user.uid}/${orderId}/${file.name}`);
 
-        try {
-            const currentOrderRef = doc(firestore, `userProfiles/${user.uid}/orders`, orderId);
-            updateDoc(currentOrderRef, {
-                receiptImageDataUri: imageDataUri,
-                paymentStatus: 'processing',
-            }).then(() => {
-                router.push('/checkout/thank-you');
-            }).catch(e => {
-                const permissionError = new FirestorePermissionError({
-                    path: currentOrderRef.path,
-                    operation: 'update',
-                    requestResourceData: { paymentStatus: 'processing' }
-                });
-                errorEmitter.emit('permission-error', permissionError);
-                setIsUploading(false);
-            });
-        } catch (error: any) {
-           toast({
-            variant: "destructive",
-            title: language === 'fr' ? "Échec du téléversement" : language === 'en' ? "Upload Failed" : "Upload fehlgeschlagen",
-            description: language === 'fr' ? "Impossible de téléverser le reçu. Veuillez réessayer." : language === 'en' ? "Could not upload receipt. Please try again." : "Beleg konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut.",
-          });
-           setIsUploading(false);
-        }
-    };
-    reader.onerror = (error) => {
-        toast({
-            variant: "destructive",
-            title: language === 'fr' ? "Erreur de lecture" : language === 'en' ? "File Read Error" : "Fehler beim Lesen der Datei",
-            description: language === 'fr' ? "Impossible de lire le fichier sélectionné." : language === 'en' ? "Could not read the selected file." : "Die ausgewählte Datei konnte nicht gelesen werden.",
+    try {
+        await uploadBytes(receiptRef, file);
+        const downloadURL = await getDownloadURL(receiptRef);
+
+        const currentOrderRef = doc(firestore, `userProfiles/${user.uid}/orders`, orderId);
+        await updateDoc(currentOrderRef, {
+            receiptImageUrl: downloadURL,
+            paymentStatus: 'processing',
         });
-        setIsUploading(false);
+
+        router.push('/checkout/thank-you');
+
+    } catch (error: any) {
+        console.error("Upload error:", error);
+        
+        const permissionError = new FirestorePermissionError({
+            path: receiptRef.fullPath,
+            operation: 'write', 
+        });
+        errorEmitter.emit('permission-error', permissionError);
+
+       toast({
+        variant: "destructive",
+        title: language === 'fr' ? "Échec du téléversement" : language === 'en' ? "Upload Failed" : "Upload fehlgeschlagen",
+        description: language === 'fr' ? "Impossible de téléverser le reçu. Veuillez vérifier les permissions et réessayer." : language === 'en' ? "Could not upload receipt. Please check permissions and try again." : "Beleg konnte nicht hochgeladen werden. Bitte Berechtigungen prüfen und erneut versuchen.",
+      });
+       setIsUploading(false);
     }
   };
 

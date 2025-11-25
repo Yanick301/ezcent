@@ -122,7 +122,7 @@
     "Order": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Order",
-      "type":_a"object",
+      "type": "object",
       "description": "Represents an order placed by a user.",
       "properties": {
         "id": {
@@ -146,9 +146,9 @@
           "type": "string",
           "description": "The status of the order (e.g., pending, processing, shipped, completed)."
         },
-        "receiptImageDataUri": {
+        "receiptImageUrl": {
             "type": "string",
-            "description": "A Base64 encoded data URI of the user's payment receipt image."
+            "description": "A URL to the user's payment receipt image in Firebase Storage."
         },
         "orderItemIds": {
           "type": "array",
@@ -296,6 +296,13 @@
         "read": "true",
         "write": "request.auth != null && request.auth.uid == userId"
       }
+    },
+    "/receipts/{userId}/{orderId}/{fileName}": {
+        "description": "Users upload their payment receipts here. Only the user can write to their own order path.",
+        "rules": {
+            "read": "true",
+            "write": "request.auth != null && request.auth.uid == userId"
+        }
     }
   }
 }

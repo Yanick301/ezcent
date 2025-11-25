@@ -50,7 +50,7 @@ type Order = {
   totalAmount: number;
   orderDate: any;
   paymentStatus: string;
-  receiptImageDataUri?: string;
+  receiptImageUrl?: string;
 };
 
 const getSafeDate = (order: any): Date => {
@@ -220,17 +220,17 @@ export default function AdminDashboardPage() {
                     </div>
                 </div>
 
-                {order.receiptImageDataUri ? (
+                {order.receiptImageUrl ? (
                   <div className="space-y-2">
                     <h4 className="font-semibold text-sm">Preuve de Paiement</h4>
                     <a
-                      href={order.receiptImageDataUri}
+                      href={order.receiptImageUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block overflow-hidden rounded-lg border hover:opacity-80 transition-opacity"
                     >
                       <img
-                        src={order.receiptImageDataUri}
+                        src={order.receiptImageUrl}
                         alt="Preuve de paiement"
                         className="h-auto w-full object-contain max-h-80 bg-muted"
                       />
@@ -258,7 +258,7 @@ export default function AdminDashboardPage() {
                 </Button>
                 <Button
                   onClick={() => handleUpdateStatus(order.userId, order.id, 'completed')}
-                  disabled={!order.receiptImageDataUri || isProcessing === order.id}
+                  disabled={!order.receiptImageUrl || isProcessing === order.id}
                   className="bg-green-600 hover:bg-green-700"
                 >
                   {isProcessing === order.id ? (

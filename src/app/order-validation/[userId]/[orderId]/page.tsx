@@ -36,7 +36,7 @@ type Order = {
   totalAmount: number;
   orderDate: any;
   paymentStatus: string;
-  receiptImageDataUri?: string;
+  receiptImageUrl?: string;
 };
 
 const getSafeDate = (order: any): Date => {
@@ -147,12 +147,12 @@ export default function OrderValidationPage() {
                   </div>
                 </div>
 
-                {order.receiptImageDataUri ? (
+                {order.receiptImageUrl ? (
                   <div className="space-y-2">
                     <h4 className="font-semibold text-sm">Preuve de Paiement</h4>
-                    <a href={order.receiptImageDataUri} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-lg border hover:opacity-80 transition-opacity">
+                    <a href={order.receiptImageUrl} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-lg border hover:opacity-80 transition-opacity">
                       <img
-                        src={order.receiptImageDataUri}
+                        src={order.receiptImageUrl}
                         alt="Preuve de paiement"
                         className="h-auto w-full object-contain max-h-96 bg-muted"
                       />
@@ -181,7 +181,7 @@ export default function OrderValidationPage() {
                     </Button>
                     <Button
                     onClick={() => handleUpdateStatus('completed')}
-                    disabled={!order.receiptImageDataUri || isProcessing === 'completed' || isProcessing === 'rejected'}
+                    disabled={!order.receiptImageUrl || isProcessing === 'completed' || isProcessing === 'rejected'}
                     className="bg-green-600 hover:bg-green-700"
                     >
                     {isProcessing === 'completed' ? (
