@@ -18,6 +18,7 @@ import {
   Loader2,
   AlertCircle,
   FileCheck,
+  Ban,
 } from 'lucide-react';
 import {
   useCollection,
@@ -34,12 +35,13 @@ import {
   query,
   orderBy,
 } from 'firebase/firestore';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { fr, de, enUS } from 'date-fns/locale';
 import { useLanguage } from '@/context/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
+import { onSnapshot } from 'firebase/firestore';
 
 const getSafeDate = (order: any): Date => {
   if (!order || !order.orderDate) {
@@ -83,6 +85,41 @@ export default function OrdersPage() {
 
   const { data: orders, isLoading } = useCollection(ordersQuery);
 
+  useEffect(() => {
+    if (!ordersQuery) return;
+
+    const unsubscribe = onSnapshot(ordersQuery, (snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+            if (change.type === 'modified') {
+                const changedDoc = change.doc.data();
+                const getStatusText = (status: string, lang: string) => {
+                    if (lang === 'fr') {
+                        if (status === 'completed') return 'validé';
+                        if (status === 'rejected') return 'rejeté';
+                    }
+                    if (lang === 'en') {
+                        if (status === 'completed') return 'validated';
+                        if (status === 'rejected') return 'rejected';
+                    }
+                    if (status === 'completed') return 'validiert';
+                    if (status === 'rejected') return 'abgelehnt';
+                    return '';
+                }
+                const statusText = getStatusText(changedDoc.paymentStatus, language);
+                if(statusText) {
+                    toast({
+                        title: language === 'fr' ? 'Mise à jour de la commande' : language === 'en' ? 'Order Update' : 'Bestellaktualisierung',
+                        description: language === 'fr' ? `Votre paiement a été ${statusText}.` : language === 'en' ? `Your payment has been ${statusText}.` : `Ihre Zahlung wurde ${statusText}.`,
+                    });
+                }
+            }
+        });
+    });
+
+    return () => unsubscribe();
+  }, [ordersQuery, language, toast]);
+
+
   const handleConfirmPayment = (orderId: string) => {
     if (processingOrderId || !user || !firestore) return;
 
@@ -97,22 +134,6 @@ export default function OrdersPage() {
     updateDoc(userOrderRef, {
       paymentStatus: 'processing',
     })
-      .then(() => {
-        toast({
-          title:
-            language === 'fr'
-              ? 'Confirmation reçue'
-              : language === 'en'
-              ? 'Confirmation Received'
-              : 'Bestätigung erhalten',
-          description:
-            language === 'fr'
-              ? 'Votre commande est en cours de traitement par nos équipes.'
-              : language === 'en'
-              ? 'Your order is being processed by our team.'
-              : 'Ihre Bestellung wird von unserem Team bearbeitet.',
-        });
-      })
       .catch(async (serverError) => {
         const permissionError = new FirestorePermissionError({
           path: userOrderRef.path,
@@ -134,6 +155,8 @@ export default function OrdersPage() {
         return 'default';
       case 'completed':
         return 'secondary';
+       case 'rejected':
+        return 'destructive';
       default:
         return 'outline';
     }
@@ -147,6 +170,8 @@ export default function OrdersPage() {
         return 'In Bearbeitung';
       case 'completed':
         return 'Abgeschlossen';
+      case 'rejected':
+        return 'Abgelehnt';
       default:
         return status;
     }
@@ -160,6 +185,8 @@ export default function OrdersPage() {
         return 'En traitement';
       case 'completed':
         return 'Terminé';
+      case 'rejected':
+        return 'Rejeté';
       default:
         return status;
     }
@@ -173,6 +200,8 @@ export default function OrdersPage() {
         return 'Processing';
       case 'completed':
         return 'Completed';
+       case 'rejected':
+        return 'Rejected';
       default:
         return status;
     }
@@ -186,6 +215,8 @@ export default function OrdersPage() {
         return <Loader2 className="mr-2 h-4 w-4 animate-spin" />;
       case 'completed':
         return <CheckCircle className="mr-2 h-4 w-4" />;
+      case 'rejected':
+        return <Ban className="mr-2 h-4 w-4" />;
       default:
         return null;
     }
@@ -351,17 +382,24 @@ export default function OrdersPage() {
                     </Button>
                   </div>
                 )}
-                {order.paymentStatus === 'processing' && (
-                  <div className="mt-6 flex items-center justify-center rounded-md bg-blue-50 p-4 text-sm font-semibold text-blue-700">
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    <p>
-                      <TranslatedText
-                        fr="Paiement en cours de vérification"
-                        en="Payment under review"
-                      >
-                        Zahlung wird überprüft
-                      </TranslatedText>
-                    </p>
+                 {order.paymentStatus === 'processing' && (
+                  <div className="mt-6 flex flex-col items-center justify-center gap-2 rounded-md bg-blue-50 p-4 text-sm font-semibold text-blue-700">
+                     <div className='flex items-center'>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        <p>
+                        <TranslatedText
+                            fr="Paiement en cours de vérification"
+                            en="Payment under review"
+                        >
+                            Zahlung wird überprüft
+                        </TranslatedText>
+                        </p>
+                     </div>
+                      <Button asChild variant="link" size="sm">
+                          <Link href={`/order-validation/${order.id}`} target="_blank">
+                                <TranslatedText fr="Lien de validation administrateur" en="Admin Validation Link">Admin-Validierungslink</TranslatedText>
+                          </Link>
+                      </Button>
                   </div>
                 )}
                 {order.paymentStatus === 'completed' && (
@@ -374,6 +412,21 @@ export default function OrdersPage() {
                           en="Payment validated"
                         >
                           Zahlung bestätigt
+                        </TranslatedText>
+                      </p>
+                    </div>
+                  </div>
+                )}
+                 {order.paymentStatus === 'rejected' && (
+                  <div className="mt-6 flex flex-col items-center justify-center rounded-md bg-red-50 p-4 text-sm font-semibold text-red-700">
+                    <div className="flex items-center">
+                      <Ban className="mr-2 h-5 w-5" />
+                      <p>
+                        <TranslatedText
+                          fr="Paiement rejeté"
+                          en="Payment rejected"
+                        >
+                          Zahlung abgelehnt
                         </TranslatedText>
                       </p>
                     </div>
