@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useUser } from '@/firebase';
@@ -15,8 +16,10 @@ export default function AdminLayout({
   const router = useRouter();
 
   useEffect(() => {
-    // Don't do anything while user and profile are loading.
-    if (isUserLoading || isProfileLoading) {
+    const isDataLoading = isUserLoading || isProfileLoading;
+    
+    // If data is still loading, don't do anything yet.
+    if (isDataLoading) {
       return;
     }
 
@@ -26,8 +29,10 @@ export default function AdminLayout({
     }
   }, [user, profile, isUserLoading, isProfileLoading, router]);
 
+  const isDataLoading = isUserLoading || isProfileLoading;
+
   // While loading, show a full-screen loader.
-  if (isUserLoading || isProfileLoading) {
+  if (isDataLoading) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-4">

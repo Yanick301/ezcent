@@ -17,9 +17,9 @@ export interface UserHookResult {
   user: User | null;
   profile: WithId<UserProfile> | null;
   isUserLoading: boolean;
-  isProfileLoading: boolean; // Explicitly expose profile loading state
+  isProfileLoading: boolean; 
   userError: Error | null;
-  profileError: Error | null; // Explicitly expose profile error state
+  profileError: Error | null;
 }
 
 export const useUser = (): UserHookResult => {
@@ -50,7 +50,7 @@ export const useUser = (): UserHookResult => {
     return () => unsubscribe();
   }, [auth]);
 
-  const userProfileRef = useMemoFirebase(() => {
+  const userProfileRef = useMemo(() => {
     if (!user || !firestore) return null;
     return doc(firestore, 'userProfiles', user.uid);
   }, [user, firestore]);
