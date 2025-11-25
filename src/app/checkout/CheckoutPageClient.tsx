@@ -182,7 +182,7 @@ export default function CheckoutPageClient() {
     addDoc(userOrderRef, orderData).then(() => {
       clearCart();
       router.push('/checkout/thank-you');
-    }).catch((serverError) => {
+    }).catch(async (serverError) => {
       const permissionError = new FirestorePermissionError({
         path: userOrderRef.path,
         operation: 'create',
