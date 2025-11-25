@@ -3,7 +3,7 @@ import type { Product, Category, Review } from './types';
 
 export const categories: Category[] = [
   { id: 'cat-1', name: 'Herrenbekleidung', name_fr: 'Vêtements Homme', name_en: 'Men\'s Clothing', slug: 'mens-clothing', imageId: 'mens-category' },
-  { id: 'cat-2', name: 'Damenbekleidung', name_fr: 'Vêtements Femme', name_en: 'Women\'s Clothing', slug: 'womens-clothing', imageId: 'womens-category' },
+  { id: 'cat-2', name: 'Damenbekleidung', name_fr: 'Vêtements Femme', name_en: 'Women\'s Clothing', slug: 'womens-category', imageId: 'womens-category' },
   { id: 'cat-3', name: 'Accessoires', name_fr: 'Accessoires', name_en: 'Accessories', slug: 'accessories', imageId: 'accessories-category' },
   { id: 'cat-5', name: 'Schuhe', name_fr: 'Chaussures', name_en: 'Shoes', slug: 'shoes', imageId: 'shoes-category' },
   { id: 'cat-4', name: 'Winterkleidung', name_fr: 'Vêtements d\'hiver', name_en: 'Winter Clothing', slug: 'winter-clothing', imageId: 'winter-category' },
@@ -2064,14 +2064,20 @@ export function getFeaturedProducts(products: Product[], limit: number = 4): Pro
 }
 
 
-export function getWinterSaleProducts(products: Product[], limit?: number): Product[] {
-  const saleProducts = products.filter(p => (p.category === 'winter-clothing' || p.slug.includes('bonnet') || p.category === 'shoes') && p.oldPrice);
+export function getWinterSaleProducts(products: Product[], limit?: number, homepage: boolean = false): Product[] {
+  const saleProducts = products.filter(p => p.oldPrice);
 
-  const parkas = saleProducts.filter(p => p.category === 'winter-clothing');
-  const beanies = saleProducts.filter(p => p.slug.includes('bonnet'));
+  if (homepage) {
+    const parkas = saleProducts.filter(p => p.name_fr.toLowerCase().includes('parka')).slice(0, 5);
+    const beanies = saleProducts.filter(p => p.slug.includes('bonnet')).slice(0, 2);
+    return [...parkas, ...beanies];
+  }
+  
+  const winterClothing = saleProducts.filter(p => p.category === 'winter-clothing');
   const shoes = saleProducts.filter(p => p.category === 'shoes');
+  const accessories = saleProducts.filter(p => p.category === 'accessories');
 
-  let combined = [...parkas, ...beanies, ...shoes];
+  let combined = [...winterClothing, ...shoes, ...accessories];
 
   if (limit) {
     return combined.slice(0, limit);

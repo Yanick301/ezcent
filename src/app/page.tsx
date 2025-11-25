@@ -18,10 +18,7 @@ import { useMemo } from 'react';
 
 export default function HomePage() {
   const saleProducts = useMemo(() => {
-    // Get only parkas and beanies for the homepage sale section
-    const allSaleProducts = getWinterSaleProducts(products);
-    const shoes = allSaleProducts.filter(p => p.category === 'shoes').slice(0, 4);
-    return shoes;
+    return getWinterSaleProducts(products, 7, true);
   }, []);
 
   return (
