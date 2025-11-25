@@ -428,26 +428,6 @@
       "imageHint": "leather sandals"
     },
     {
-      "id": "montre-acier-inoxydable-noire-chrono-luxe",
-      "imageUrl": "/images/products/montre-acier-inoxydable-noire-chrono-luxe.jpg",
-      "imageHint": "black watch"
-    },
-    {
-      "id": "montre-cuir-brun-heritage-classique",
-      "imageUrl": "/images/products/montre-cuir-brun-heritage-classique.jpg",
-      "imageHint": "leather watch"
-    },
-    {
-      "id": "montre-metallique-argent-blue-vision",
-      "imageUrl": "/images/products/montre-metallique-argent-blue-vision.jpg",
-      "imageHint": "silver watch"
-    },
-    {
-      "id": "montre-cadran-or-rose-executive-elite",
-      "imageUrl": "/images/products/montre-cadran-or-rose-executive-elite.jpg",
-      "imageHint": "rose gold watch"
-    },
-    {
       "id": "bonnet-laine-torsadee-noir-nordic-luxe",
       "imageUrl": "/images/products/bonnet-laine-torsadee-noir-nordic-luxe.jpg",
       "imageHint": "wool beanie"
@@ -476,16 +456,6 @@
       "id": "gants-tactiles-thermiques-tech-gloves",
       "imageUrl": "/images/products/gants-tactiles-thermiques-tech-gloves.jpg",
       "imageHint": "tech gloves"
-    },
-    {
-      "id": "portefeuille-cuir-veritable-slimfold-premium",
-      "imageUrl": "/images/products/portefeuille-cuir-veritable-slimfold-premium.jpg",
-      "imageHint": "leather wallet"
-    },
-    {
-      "id": "sacoche-bandouliere-cuir-premium-executive-bag",
-      "imageUrl": "/images/products/sacoche-bandouliere-cuir-premium-executive-bag.jpg",
-      "imageHint": "leather bag"
     },
     {
       "id": "montre-elegante-doree-golden-lady",
@@ -719,52 +689,52 @@
     },
     {
       "id": "Sorel_Caribou",
-      "imageUrl": "/images/products/shoes/Sorel_Caribou.jpg",
+      "imageUrl": "/images/products/Sorel_Caribou.jpg",
       "imageHint": "winter boots"
     },
     {
       "id": "Sorel_Caribou_Horizon_GTX",
-      "imageUrl": "/images/products/shoes/Sorel_Caribou_Horizon_GTX.jpg",
+      "imageUrl": "/images/products/Sorel_Caribou_Horizon_GTX.jpg",
       "imageHint": "winter boots"
     },
     {
       "id": "Sorel_1964_PAC",
-      "imageUrl": "/images/products/shoes/Sorel_1964_PAC.jpg",
+      "imageUrl": "/images/products/Sorel_1964_PAC.jpg",
       "imageHint": "winter boots"
     },
     {
       "id": "Salomon_X_Ultra_Snow_Pilot",
-      "imageUrl": "/images/products/shoes/Salomon_X_Ultra_Snow_Pilot.jpg",
+      "imageUrl": "/images/products/Salomon_X_Ultra_Snow_Pilot.jpg",
       "imageHint": "snow boots"
     },
     {
       "id": "Columbia_Bugaboot_III",
-      "imageUrl": "/images/products/shoes/Columbia_Bugaboot_III.jpg",
+      "imageUrl": "/images/products/Columbia_Bugaboot_III.jpg",
       "imageHint": "snow boots"
     },
     {
       "id": "The_North_Face_Chilkat_V_400",
-      "imageUrl": "/images/products/shoes/The_North_Face_Chilkat_V_400.jpg",
+      "imageUrl": "/images/products/The_North_Face_Chilkat_V_400.jpg",
       "imageHint": "snow boots"
     },
     {
       "id": "Baffin_Impact",
-      "imageUrl": "/images/products/shoes/Baffin_Impact.jpg",
+      "imageUrl": "/images/products/Baffin_Impact.jpg",
       "imageHint": "arctic boots"
     },
     {
       "id": "Merrell_Thermo_Chill_2_Mid",
-      "imageUrl": "/images/products/shoes/Merrell_Thermo_Chill_2_Mid.jpg",
+      "imageUrl": "/images/products/Merrell_Thermo_Chill_2_Mid.jpg",
       "imageHint": "hiking boots"
     },
     {
       "id": "UGG_Butte",
-      "imageUrl": "/images/products/shoes/UGG_Butte.jpg",
+      "imageUrl": "/images/products/UGG_Butte.jpg",
       "imageHint": "winter boots"
     },
     {
       "id": "Muck_Boot_Arctic_Ice_Tall",
-      "imageUrl": "/images/products/shoes/Muck_Boot_Arctic_Ice_Tall.jpg",
+      "imageUrl": "/images/products/Muck_Boot_Arctic_Ice_Tall.jpg",
       "imageHint": "rubber boots"
     }
   ]
