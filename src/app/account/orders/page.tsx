@@ -20,6 +20,7 @@ import {
   FileCheck,
   Ban,
   ExternalLink,
+  Upload,
 } from 'lucide-react';
 import {
   useCollection,
@@ -28,6 +29,7 @@ import {
   useMemoFirebase,
   errorEmitter,
   FirestorePermissionError,
+  useStorage,
 } from '@/firebase';
 import {
   collection,
@@ -36,7 +38,8 @@ import {
   query,
   orderBy,
 } from 'firebase/firestore';
-import { useState, useEffect } from 'react';
+import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { useState, useEffect, useRef } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { fr, de, enUS } from 'date-fns/locale';
@@ -68,8 +71,11 @@ const getSafeDate = (order: any): Date => {
 export default function OrdersPage() {
   const { user } = useUser();
   const firestore = useFirestore();
+  const storage = useStorage();
   const { language } = useLanguage();
   const { toast } = useToast();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
 
   const [processingOrderId, setProcessingOrderId] = useState<string | null>(
     null
@@ -99,7 +105,7 @@ export default function OrdersPage() {
                         if (status === 'rejected') return 'rejeté';
                     }
                     if (lang === 'en') {
-                        if (status === 'completed') return 'validated';
+                        if (status === 'validated') return 'validated';
                         if (status === 'rejected') return 'rejected';
                     }
                     if (status === 'completed') return 'validiert';
@@ -121,31 +127,67 @@ export default function OrdersPage() {
   }, [ordersQuery, language, toast]);
 
 
-  const handleConfirmPayment = (orderId: string) => {
-    if (processingOrderId || !user || !firestore) return;
+  const handleUploadClick = (orderId: string) => {
+    setSelectedOrderId(orderId);
+    fileInputRef.current?.click();
+  };
 
+  const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files || event.target.files.length === 0 || !user || !firestore || !storage || !selectedOrderId) {
+      return;
+    }
+    const file = event.target.files[0];
+    const orderId = selectedOrderId;
+    
     setProcessingOrderId(orderId);
 
-    const userOrderRef = doc(
-      firestore,
-      `userProfiles/${user.uid}/orders`,
-      orderId
-    );
+    const filePath = `receipts/${user.uid}/${orderId}/${file.name}`;
+    const fileRef = storageRef(storage, filePath);
 
-    updateDoc(userOrderRef, {
-      paymentStatus: 'processing',
-    })
-      .catch(async (serverError) => {
-        const permissionError = new FirestorePermissionError({
-          path: userOrderRef.path,
-          operation: 'update',
-          requestResourceData: { paymentStatus: 'processing' },
+    try {
+      // 1. Upload the file
+      await uploadBytes(fileRef, file);
+      const downloadURL = await getDownloadURL(fileRef);
+
+      // 2. Update the Firestore document
+      const orderRef = doc(firestore, `userProfiles/${user.uid}/orders`, orderId);
+      updateDoc(orderRef, {
+        receiptImageURL: downloadURL,
+        paymentStatus: 'processing',
+      }).catch(err => {
+         const permissionError = new FirestorePermissionError({
+          path: orderRef.path,
+          operation: 'update', 
+          requestResourceData: { receiptImageURL: downloadURL, paymentStatus: 'processing' }
         });
         errorEmitter.emit('permission-error', permissionError);
-      })
-      .finally(() => {
-        setProcessingOrderId(null);
       });
+      
+      toast({
+        title: "Reçu téléversé",
+        description: "Votre preuve de paiement a été envoyée pour validation."
+      });
+
+    } catch (error: any) {
+        console.error("Upload failed:", error);
+        const permissionError = new FirestorePermissionError({
+          path: filePath,
+          operation: 'write', 
+        });
+        errorEmitter.emit('permission-error', permissionError);
+
+       toast({
+        variant: "destructive",
+        title: "Échec du téléversement",
+        description: "Impossible de téléverser le reçu. Veuillez vérifier vos permissions et réessayer.",
+      });
+    } finally {
+        setProcessingOrderId(null);
+        setSelectedOrderId(null);
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
+    }
   };
 
   const getStatusVariant = (status: string) => {
@@ -223,17 +265,6 @@ export default function OrdersPage() {
     }
   };
 
-  const getDateLocale = () => {
-    switch (language) {
-      case 'fr':
-        return fr;
-      case 'en':
-        return enUS;
-      default:
-        return de;
-    }
-  };
-
   if (isLoading) {
     return (
       <div className="p-12 text-center">
@@ -244,6 +275,13 @@ export default function OrdersPage() {
 
   return (
     <div>
+        <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileSelect}
+            className="hidden"
+            accept="image/png, image/jpeg, image/jpg"
+        />
       <h1 className="mb-6 font-headline text-3xl">
         <TranslatedText fr="Historique des commandes" en="Order History">
           Bestellverlauf
@@ -348,37 +386,35 @@ export default function OrdersPage() {
                   <div className="mt-6 rounded-md bg-destructive/10 p-6 pt-6 text-center">
                     <h4 className="font-semibold text-destructive">
                       <TranslatedText
-                        fr="Action requise : Confirmer votre paiement"
-                        en="Action Required: Confirm Your Payment"
+                        fr="Action requise : Finaliser votre paiement"
+                        en="Action Required: Finalize Your Payment"
                       >
-                        Aktion erforderlich: Zahlung bestätigen
+                        Aktion erforderlich: Zahlung abschließen
                       </TranslatedText>
                     </h4>
                     <p className="my-2 text-sm text-destructive/80">
                       <TranslatedText
-                        fr="Pour finaliser votre commande, veuillez effectuer le virement bancaire puis cliquez sur le bouton ci-dessous."
-                        en="To finalize your order, please make the bank transfer then click the button below."
+                        fr="Pour finaliser votre commande, veuillez effectuer le virement bancaire puis téléverser votre preuve de paiement."
+                        en="To finalize your order, please make the bank transfer then upload your proof of payment."
                       >
-                        Um Ihre Bestellung abzuschließen, führen Sie bitte die
-                        Banküberweisung durch und klicken Sie dann auf die
-                        Schaltfläche unten.
+                        Um Ihre Bestellung abzuschließen, führen Sie bitte die Banküberweisung durch und laden Sie dann Ihren Zahlungsnachweis hoch.
                       </TranslatedText>
                     </p>
                     <Button
-                      onClick={() => handleConfirmPayment(order.id)}
+                      onClick={() => handleUploadClick(order.id)}
                       disabled={processingOrderId === order.id}
                       variant="destructive"
                     >
                       {processingOrderId === order.id ? (
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                       ) : (
-                        <CheckCircle className="mr-2 h-4 w-4" />
+                        <Upload className="mr-2 h-4 w-4" />
                       )}
                       <TranslatedText
-                        fr="J'ai effectué le virement"
-                        en="I Have Made the Transfer"
+                        fr="Téléverser le reçu"
+                        en="Upload Receipt"
                       >
-                        Ich habe die Überweisung getätigt
+                        Beleg hochladen
                       </TranslatedText>
                     </Button>
                   </div>
@@ -396,6 +432,12 @@ export default function OrdersPage() {
                         </TranslatedText>
                         </p>
                      </div>
+                     <Button asChild variant="outline" size="sm">
+                        <Link href={`/order-validation/${order.userId}/${order.id}`} target="_blank">
+                            <TranslatedText fr="Lien de validation" en="Validation Link">Validierungslink</TranslatedText>
+                            <ExternalLink className="ml-2 h-4 w-4" />
+                        </Link>
+                     </Button>
                   </div>
                 )}
                 {order.paymentStatus === 'completed' && (

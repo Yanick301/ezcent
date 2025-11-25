@@ -46,8 +46,6 @@ const registerSchemaEN = z.object({
     password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
 });
 
-const ADMIN_EMAIL = 'ezcentials@gmail.com';
-
 export default function RegisterPageClient() {
   const auth = useAuth();
   const firestore = useFirestore();
@@ -80,15 +78,12 @@ export default function RegisterPageClient() {
           await updateProfile(user, { displayName });
         }
         
-        const isRegisteringAdmin = user.email === ADMIN_EMAIL;
-        
         await setDoc(userRef, {
             id: user.uid,
             email: user.email,
             firstName: displayName?.split(' ')[0] || '',
             lastName: displayName?.split(' ').slice(1).join(' ') || '',
             registrationDate: serverTimestamp(),
-            isAdmin: isRegisteringAdmin,
         });
     }
   };
@@ -103,20 +98,12 @@ export default function RegisterPageClient() {
       
       await handleUserCreation(userCredential, data.name);
       
-      if (userCredential.user.email === ADMIN_EMAIL) {
-         toast({
-            title: 'Compte Admin Créé',
-            description: 'Vous pouvez maintenant vous connecter en tant qu\'administrateur.',
-        });
-        router.push('/login');
-      } else {
-        await sendEmailVerification(userCredential.user);
-        toast({
-            title: language === 'fr' ? 'Vérifiez votre e-mail' : language === 'en' ? 'Verify your email' : 'Überprüfen Sie Ihre E-Mail',
-            description: language === 'fr' ? 'Un lien de vérification a été envoyé à votre adresse e-mail.' : language === 'en' ? 'A verification link has been sent to your email address.' : 'Ein Bestätigungslink wurde an Ihre E--Mail-Adresse gesendet.',
-        });
-        router.push('/verify-email');
-      }
+      await sendEmailVerification(userCredential.user);
+      toast({
+          title: language === 'fr' ? 'Vérifiez votre e-mail' : language === 'en' ? 'Verify your email' : 'Überprüfen Sie Ihre E-Mail',
+          description: language === 'fr' ? 'Un lien de vérification a été envoyé à votre adresse e-mail.' : language === 'en' ? 'A verification link has been sent to your email address.' : 'Ein Bestätigungslink wurde an Ihre E--Mail-Adresse gesendet.',
+      });
+      router.push('/verify-email');
 
     } catch (error: any) {
        const errorMessage = error.code === 'auth/email-already-in-use' 
@@ -137,22 +124,12 @@ export default function RegisterPageClient() {
         const userCredential = await signInWithPopup(auth, provider);
         await handleUserCreation(userCredential);
         
-        const userDoc = await getDoc(doc(firestore, 'userProfiles', userCredential.user.uid));
-        const isAdmin = userDoc.exists() && userDoc.data().isAdmin;
-
-        if (isAdmin) {
-            toast({
-                title: 'Bienvenue cher administrateur',
-            });
-            router.push('/admin/dashboard');
-        } else {
-            toast({
-                title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
-                description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
-            });
-            const redirectUrl = searchParams.get('redirect') || '/account';
-            router.push(redirectUrl);
-        }
+        toast({
+            title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
+            description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
+        });
+        const redirectUrl = searchParams.get('redirect') || '/account';
+        router.push(redirectUrl);
     } catch (error: any) {
         toast({
             variant: 'destructive',
@@ -247,5 +224,3 @@ export default function RegisterPageClient() {
     </div>
   );
 }
-
-    

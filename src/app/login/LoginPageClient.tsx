@@ -29,7 +29,6 @@ import {
 } from "@/components/ui/form";
 import { useLanguage } from '@/context/LanguageContext';
 
-const ADMIN_EMAIL = 'ezcentials@gmail.com';
 
 const loginSchemaFR = z.object({
   email: z.string().email({ message: 'Adresse e-mail invalide.' }),
@@ -78,7 +77,6 @@ export default function LoginPageClient() {
           firstName: user.displayName?.split(' ')[0] || '',
           lastName: user.displayName?.split(' ').slice(1).join(' ') || '',
           registrationDate: serverTimestamp(),
-          isAdmin: user.email === ADMIN_EMAIL,
         });
       } catch (error) {
         // Optional: Handle the error, e.g., show a toast message
@@ -91,22 +89,12 @@ export default function LoginPageClient() {
       const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
       await handleUserCreation(userCredential);
       
-      const userDoc = await getDoc(doc(firestore, 'userProfiles', userCredential.user.uid));
-      const isAdmin = userDoc.exists() && userDoc.data().isAdmin;
-      
-      if (isAdmin) {
-        toast({
-            title: 'Bienvenue cher administrateur',
-        });
-        router.push('/admin/dashboard');
-      } else {
-        toast({
-            title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
-            description: language === 'fr' ? 'Bienvenue à nouveau !' : language === 'en' ? 'Welcome back!' : 'Willkommen zurück!',
-        });
-        const redirectUrl = searchParams.get('redirect') || '/account';
-        router.push(redirectUrl);
-      }
+      toast({
+          title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
+          description: language === 'fr' ? 'Bienvenue à nouveau !' : language === 'en' ? 'Welcome back!' : 'Willkommen zurück!',
+      });
+      const redirectUrl = searchParams.get('redirect') || '/account';
+      router.push(redirectUrl);
 
     } catch (error: any) {
       const errorMessage = error.code === 'auth/invalid-credential' 
@@ -127,22 +115,12 @@ export default function LoginPageClient() {
         const userCredential = await signInWithPopup(auth, provider);
         await handleUserCreation(userCredential);
 
-        const userDoc = await getDoc(doc(firestore, 'userProfiles', userCredential.user.uid));
-        const isAdmin = userDoc.exists() && userDoc.data().isAdmin;
-        
-        if (isAdmin) {
-            toast({
-                title: 'Bienvenue cher administrateur',
-            });
-            router.push('/admin/dashboard');
-        } else {
-            toast({
-                title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
-                description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
-            });
-            const redirectUrl = searchParams.get('redirect') || '/account';
-            router.push(redirectUrl);
-        }
+        toast({
+            title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
+            description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
+        });
+        const redirectUrl = searchParams.get('redirect') || '/account';
+        router.push(redirectUrl);
 
     } catch (error: any) {
         toast({
@@ -233,5 +211,3 @@ export default function LoginPageClient() {
     </div>
   );
 }
-
-    
