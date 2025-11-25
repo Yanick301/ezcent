@@ -62,15 +62,16 @@ export default function LoginPageClient() {
     },
   });
 
-  const handleUserCreation = async (userCredential: UserCredential) => {
+  const handleUserCreation = async (userCredential: UserCredential): Promise<boolean> => {
     const user = userCredential.user;
-    if (!user || !firestore) return;
+    if (!user || !firestore) return false;
 
     const userRef = doc(firestore, 'userProfiles', user.uid);
     const userDoc = await getDoc(userRef);
 
     let profileData: any = {};
     let mustUpdate = false;
+    let isAdmin = false;
 
     if (!userDoc.exists()) {
       profileData = {
@@ -87,6 +88,7 @@ export default function LoginPageClient() {
 
     // Ensure admin status is correctly set on every login for the admin account
     if (user.email === 'ezcentials@gmail.com') {
+        isAdmin = true;
       if (!profileData.isAdmin) {
         profileData.isAdmin = true;
         mustUpdate = true;
@@ -96,19 +98,21 @@ export default function LoginPageClient() {
     if (mustUpdate) {
         await setDoc(userRef, profileData, { merge: true });
     }
+    
+    return isAdmin;
   };
 
   const onSubmit: SubmitHandler<z.infer<typeof currentSchema>> = async (data) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
-      await handleUserCreation(userCredential);
+      const isAdmin = await handleUserCreation(userCredential);
       
       toast({
           title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
           description: language === 'fr' ? 'Bienvenue à nouveau !' : language === 'en' ? 'Welcome back!' : 'Willkommen zurück!',
       });
       
-      const redirectUrl = data.email === 'ezcentials@gmail.com' ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
+      const redirectUrl = isAdmin ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
       router.push(redirectUrl);
 
     } catch (error: any) {
@@ -128,14 +132,14 @@ export default function LoginPageClient() {
     try {
         const provider = new GoogleAuthProvider();
         const userCredential = await signInWithPopup(auth, provider);
-        await handleUserCreation(userCredential);
+        const isAdmin = await handleUserCreation(userCredential);
 
         toast({
             title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
             description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
         });
         
-        const redirectUrl = userCredential.user.email === 'ezcentials@gmail.com' ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
+        const redirectUrl = isAdmin ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
         router.push(redirectUrl);
 
     } catch (error: any) {

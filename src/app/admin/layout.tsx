@@ -15,24 +15,22 @@ export default function AdminLayout({
   const { user, profile, isUserLoading, isProfileLoading } = useUser();
   const router = useRouter();
 
+  const isLoading = isUserLoading || isProfileLoading;
+
   useEffect(() => {
-    const isDataLoading = isUserLoading || isProfileLoading;
-    
-    // If data is still loading, don't do anything yet.
-    if (isDataLoading) {
+    // Wait until loading is fully complete before making any decisions
+    if (isLoading) {
       return;
     }
 
     // After loading, if there's no user or the user is not an admin, redirect.
     if (!user || !profile?.isAdmin) {
-      router.push('/login');
+      router.replace('/login');
     }
-  }, [user, profile, isUserLoading, isProfileLoading, router]);
-
-  const isDataLoading = isUserLoading || isProfileLoading;
+  }, [user, profile, isLoading, router]);
 
   // While loading, show a full-screen loader.
-  if (isDataLoading) {
+  if (isLoading) {
     return (
       <div className="flex h-screen w-full items-center justify-center bg-background">
         <div className="flex flex-col items-center gap-4">
@@ -43,13 +41,14 @@ export default function AdminLayout({
     );
   }
 
-  // If the user is loaded and is an admin, show the admin content.
+  // If loading is complete and user is an admin, show the content.
+  // This prevents flashing the content for non-admins before the redirect.
   if (user && profile?.isAdmin) {
     return <>{children}</>;
   }
 
-  // Fallback for the brief moment before the redirect happens.
-  // Or if the logic somehow fails, this prevents showing the children.
+  // Otherwise, show a loading/redirecting screen as a fallback
+  // This covers the brief moment before the useEffect redirect kicks in
   return (
     <div className="flex h-screen w-full items-center justify-center bg-background">
       <div className="flex flex-col items-center gap-4">
