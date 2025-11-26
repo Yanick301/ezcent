@@ -707,7 +707,7 @@ export const products: Product[] = [
     category: 'mens-clothing',
     images: ['pantalon-tailleur-dior-homme'],
     reviews: [
-        { author: 'Victor', rating: 5, comment: 'La coupe est absolument parfaite.'}
+        { author: 'Victor', rating: 5, comment: 'La coupe est absolutely parfaite.'}
     ]
   },
   {
