@@ -19,7 +19,8 @@ import { Award, Leaf, Truck } from 'lucide-react';
 
 export default function HomePage() {
   const saleProducts = useMemo(() => {
-    return getWinterSaleProducts(products, 8, true);
+    // We want 8 products in total on the homepage sale section
+    return getWinterSaleProducts(products, 9, true);
   }, []);
 
   return (
@@ -184,4 +185,3 @@ export default function HomePage() {
     </div>
   );
 }
-

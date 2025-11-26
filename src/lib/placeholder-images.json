@@ -858,7 +858,7 @@
       "imageHint": "wool cape"
     },
     {
-      "id": "surchemise-matelassee-isabel-marant",
+      "id": "surchemise-matlassee-isabel-marant",
       "imageUrl": "/images/products/surchemise-matlassee-isabel-marant.jpg",
       "imageHint": "quilted overshirt"
     },
@@ -881,6 +881,26 @@
       "id": "manteau-puffer-xxl-zara-premium",
       "imageUrl": "/images/products/manteau-puffer-xxl-zara-premium.jpg",
       "imageHint": "puffer coat"
+    },
+    {
+      "id": "sac_de_couchage1",
+      "imageUrl": "/images/products/sac_de_couchage1.jpg",
+      "imageHint": "sleeping bag"
+    },
+    {
+      "id": "sac_de_couchage2",
+      "imageUrl": "/images/products/sac_de_couchage2.jpg",
+      "imageHint": "sleeping bag"
+    },
+    {
+      "id": "sac_de_couchage3",
+      "imageUrl": "/images/products/sac_de_couchage3.jpg",
+      "imageHint": "sleeping bag"
+    },
+    {
+      "id": "sac_de_couchage4",
+      "imageUrl": "/images/products/sac_de_couchage4.jpg",
+      "imageHint": "sleeping bag"
     }
   ]
 }

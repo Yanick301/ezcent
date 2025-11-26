@@ -1530,7 +1530,65 @@ export const products: Product[] = [
     category: 'shoes',
     images: ['Muck_Boot_Arctic_Ice_Tall'],
     reviews: []
-  }
+  },
+  {
+    id: 'prod-101',
+    name: 'Expeditions-Schlafsack -10°C',
+    name_fr: 'Sac de Couchage Expédition -10°C',
+    name_en: 'Expedition Sleeping Bag -10°C',
+    slug: 'sac-de-couchage-expedition-10c',
+    price: 310,
+    description: 'Entwickelt für extreme Bedingungen, bietet dieser Schlafsack optimale Wärme und Komfort bis -10°C.',
+    description_fr: 'Conçu pour les conditions extrêmes, ce sac de couchage offre une chaleur et un confort optimaux jusqu\'à -10°C.',
+    description_en: 'Designed for extreme conditions, this sleeping bag provides optimal warmth and comfort down to -10°C.',
+    category: 'winter-clothing',
+    images: ['sac_de_couchage1'],
+    reviews: [],
+  },
+  {
+    id: 'prod-102',
+    name: 'Alpin-Schlafsack -20°C',
+    name_fr: 'Sac de Couchage Alpin -20°C',
+    name_en: 'Alpine Sleeping Bag -20°C',
+    slug: 'sac-de-couchage-alpin-20c',
+    price: 300,
+    oldPrice: 350,
+    description: 'Der perfekte Begleiter für Hochgebirgstouren, garantiert Schutz und Wärme bei Temperaturen bis -20°C.',
+    description_fr: 'L\'allié parfait pour les expéditions en haute montagne, garantissant protection et chaleur jusqu\'à -20°C.',
+    description_en: 'The perfect ally for high mountain expeditions, ensuring protection and warmth down to -20°C.',
+    category: 'winter-clothing',
+    images: ['sac_de_couchage2'],
+    reviews: [],
+  },
+  {
+    id: 'prod-103',
+    name: 'Trekking-Schlafsack 0°C',
+    name_fr: 'Sac de Couchage Trekking 0°C',
+    name_en: 'Trekking Sleeping Bag 0°C',
+    slug: 'sac-de-couchage-trekking-0c',
+    price: 330,
+    description: 'Leicht und kompakt, dieser Schlafsack ist ideal für Trekkingtouren in der Zwischensaison.',
+    description_fr: 'Léger et compact, ce sac de couchage est idéal pour les treks de mi-saison.',
+    description_en: 'Lightweight and compact, this sleeping bag is ideal for mid-season treks.',
+    category: 'winter-clothing',
+    images: ['sac_de_couchage3'],
+    reviews: [],
+  },
+  {
+    id: 'prod-104',
+    name: 'Komfort-Schlafsack 5°C',
+    name_fr: 'Sac de Couchage Confort 5°C',
+    name_en: 'Comfort Sleeping Bag 5°C',
+    slug: 'sac-de-couchage-confort-5c',
+    price: 320,
+    oldPrice: 340,
+    description: 'Bietet außergewöhnlichen Komfort für kühle Nächte beim Camping oder im Biwak.',
+    description_fr: 'Offre un confort exceptionnel pour les nuits fraîches en camping ou en bivouac.',
+    description_en: 'Provides exceptional comfort for cool nights when camping or bivouacking.',
+    category: 'winter-clothing',
+    images: ['sac_de_couchage4'],
+    reviews: [],
+  },
 ];
 
 
@@ -1574,11 +1632,23 @@ export function getWinterSaleProducts(products: Product[], limit?: number, homep
   const saleProducts = products.filter(p => p.oldPrice);
 
   if (homepage) {
-    const parkas = saleProducts.filter(p => p.name_fr.toLowerCase().includes('parka')).slice(0, 5);
-    const beanies = saleProducts.filter(p => p.slug.includes('bonnet')).slice(0, 2);
-    const newShoes = saleProducts.filter(p => p.category === 'shoes' && ['shoe-1', 'shoe-4', 'shoe-8'].includes(p.id)).slice(0, 3);
-    // The final list should be 7 items as requested, but the logic creates more. We should slice it.
-    return [...newShoes, ...parkas, ...beanies].slice(0, 7);
+    // Keep existing logic and add the new sleeping bags
+    const existingHomepageSale = products.filter(p => 
+        ['prod-82', 'prod-85', 'prod-88', 'prod-91', 'prod-94', 'shoe-1', 'shoe-4', 'shoe-8'].includes(p.id)
+    );
+    
+    const newSleepingBagsOnSale = saleProducts.filter(p => p.slug.startsWith('sac-de-couchage') && p.oldPrice).slice(0, 2);
+    
+    // Combine and ensure no duplicates, then limit
+    const combined = [...existingHomepageSale, ...newSleepingBagsOnSale];
+    const uniqueIds = new Set();
+    const uniqueProducts = combined.filter(element => {
+        const isDuplicate = uniqueIds.has(element.id);
+        uniqueIds.add(element.id);
+        return !isDuplicate;
+    });
+
+    return uniqueProducts.slice(0, limit);
   }
   
   const winterClothing = saleProducts.filter(p => p.category === 'winter-clothing');
