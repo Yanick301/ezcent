@@ -1693,8 +1693,7 @@ export function getWinterSaleProducts(products: Product[], limit?: number, homep
     const homepageProductIds = [
         'prod-82', 'prod-85', 'prod-88', 'prod-91', 'prod-94', 
         'shoe-1', 'shoe-4', 'shoe-8',
-        'prod-102', 'prod-104',
-        'prod-105' // The new winter bag
+        'prod-102', 'prod-104', 'prod-105'
     ];
 
     const featuredProducts = products
