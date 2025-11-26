@@ -278,91 +278,6 @@
       "imageHint": "leather sandals"
     },
     {
-      "id": "portefeuille-cuir-veritable-slimfold-premium",
-      "imageUrl": "/images/products/portefeuille-cuir-veritable-slimfold-premium.jpg",
-      "imageHint": "leather wallet"
-    },
-    {
-      "id": "sacoche-bandouliere-cuir-premium-executive-bag",
-      "imageUrl": "/images/products/sacoche-bandouliere-cuir-premium-executive-bag.jpg",
-      "imageHint": "leather bag"
-    },
-    {
-      "id": "chale-hiver-motif-elegant-elegant-wrap",
-      "imageUrl": "/images/products/chale-hiver-motif-elegant-elegant-wrap.jpg",
-      "imageHint": "elegant shawl"
-    },
-    {
-      "id": "foulard-cachemire-imprime-cashmere-touch",
-      "imageUrl": "/images/products/foulard-cachemire-imprime-cashmere-touch.jpg",
-      "imageHint": "cashmere scarf"
-    },
-    {
-      "id": "petit-sac-a-main-chic-mini-glam",
-      "imageUrl": "/images/products/petit-sac-a-main-chic-mini-glam.jpg",
-      "imageHint": "handbag"
-    },
-    {
-      "id": "boucles-oreilles-pendantes-argentees-shine-drop",
-      "imageUrl": "/images/products/boucles-oreilles-pendantes-argentees-shine-drop.jpg",
-      "imageHint": "silver earrings"
-    },
-    {
-      "id": "pochette-soiree-shine-night-premium",
-      "imageUrl": "/images/products/pochette-soiree-shine-night-premium.jpg",
-      "imageHint": "evening clutch"
-    },
-    {
-      "id": "sac-cuir-luxe",
-      "imageUrl": "/images/products/sac-cuir-luxe.jpg",
-      "imageHint": "leather bag"
-    },
-    {
-      "id": "ceinture-cuir-logo",
-      "imageUrl": "/images/products/ceinture-cuir-logo.jpg",
-      "imageHint": "leather belt"
-    },
-    {
-      "id": "carre-de-soie",
-      "imageUrl": "/images/products/carre-de-soie.jpg",
-      "imageHint": "silk scarf"
-    },
-    {
-      "id": "lunettes-soleil-cat-eye",
-      "imageUrl": "/images/products/lunettes-soleil-cat-eye.jpg",
-      "imageHint": "cat eye sunglasses"
-    },
-    {
-      "id": "porte-cartes-cuir",
-      "imageUrl": "/images/products/porte-cartes-cuir.jpg",
-      "imageHint": "leather cardholder"
-    },
-    {
-      "id": "broche-logo-cristaux",
-      "imageUrl": "/images/products/broche-logo-cristaux.jpg",
-      "imageHint": "crystal brooch"
-    },
-    {
-      "id": "serre-tete-velours",
-      "imageUrl": "/images/products/serre-tete-velours.jpg",
-      "imageHint": "velvet headband"
-    },
-    {
-      "id": "sac-seau-cuir",
-      "imageUrl": "/images/products/sac-seau-cuir.jpg",
-      "imageHint": "leather bucket bag"
-    },
-    {
-      "id": "manchette-metal-dore",
-      "imageUrl": "/images/products/manchette-metal-dore.jpg",
-      "imageHint": "gold cuff"
-    },
-    {
-      "id": "etui-rouge-a-levres",
-      "imageUrl": "/images/products/etui-rouge-a-levres.jpg",
-      "imageHint": "lipstick case"
-    },
-    {
       "id": "Canada_Goose_MacMillan_Parka",
       "imageUrl": "/images/products/Canada_Goose_MacMillan_Parka.jpg",
       "imageHint": "winter parka"
@@ -576,61 +491,6 @@
       "id": "Muck_Boot_Arctic_Ice_Tall",
       "imageUrl": "/images/products/Muck_Boot_Arctic_Ice_Tall.jpg",
       "imageHint": "rubber boots"
-    },
-    {
-      "id": "montre-acier-inoxydable-noire-chrono-luxe",
-      "imageUrl": "/images/products/montre-acier-inoxydable-noire-chrono-luxe.jpg",
-      "imageHint": "black watch"
-    },
-    {
-      "id": "montre-sport-silicone-hydrosport-5-atm",
-      "imageUrl": "/images/products/montre-sport-silicone-hydrosport-5-atm.jpg",
-      "imageHint": "sport watch"
-    },
-    {
-      "id": "montre-cuir-brun-heritage-classique",
-      "imageUrl": "/images/products/montre-cuir-brun-heritage-classique.jpg",
-      "imageHint": "leather watch"
-    },
-    {
-      "id": "montre-metallique-argent-blue-vision",
-      "imageUrl": "/images/products/montre-metallique-argent-blue-vision.jpg",
-      "imageHint": "silver watch"
-    },
-    {
-      "id": "montre-digitale-led-urban-tech",
-      "imageUrl": "/images/products/montre-digitale-led-urban-tech.jpg",
-      "imageHint": "digital watch"
-    },
-    {
-      "id": "montre-cadran-or-rose-executive-elite",
-      "imageUrl": "/images/products/montre-cadran-or-rose-executive-elite.jpg",
-      "imageHint": "rose gold watch"
-    },
-    {
-      "id": "montre-chronographe-titan-steel-pro",
-      "imageUrl": "/images/products/montre-chronographe-titan-steel-pro.jpg",
-      "imageHint": "chronograph watch"
-    },
-    {
-      "id": "montre-elegante-doree-golden-lady",
-      "imageUrl": "/images/products/montre-elegante-doree-golden-lady.jpg",
-      "imageHint": "gold watch"
-    },
-    {
-      "id": "montre-argentee-minimaliste-silver-pure",
-      "imageUrl": "/images/products/montre-argentee-minimaliste-silver-pure.jpg",
-      "imageHint": "minimalist watch"
-    },
-    {
-      "id": "montre-cuir-beige-soft-elegance",
-      "imageUrl": "/images/products/montre-cuir-beige-soft-elegance.jpg",
-      "imageHint": "beige watch"
-    },
-    {
-      "id": "montre-rose-gold-maille-milanaise-rose-queen",
-      "imageUrl": "/images/products/montre-rose-gold-maille-milanaise-rose-queen.jpg",
-      "imageHint": "milanese watch"
     },
     {
       "id": "sweat-a-capuche-off-white",
@@ -921,6 +781,166 @@
       "id": "sac_hiver4",
       "imageUrl": "/images/products/sac_hiver4.jpg",
       "imageHint": "crossbody bag"
+    },
+    {
+      "id": "manteau-long-laine-hugo-boss",
+      "imageUrl": "/images/products/manteau-long-laine-hugo-boss.jpg",
+      "imageHint": "wool coat"
+    },
+    {
+      "id": "doudoune-matelassee-moncler",
+      "imageUrl": "/images/products/doudoune-matelassee-moncler.jpg",
+      "imageHint": "quilted jacket"
+    },
+    {
+      "id": "pull-col-roule-laine-merinos-paul-smith",
+      "imageUrl": "/images/products/pull-col-roule-laine-merinos-paul-smith.jpg",
+      "imageHint": "turtleneck sweater"
+    },
+    {
+      "id": "montre-sport-silicone-hydrosport-5-atm",
+      "imageUrl": "/images/products/montre-sport-silicone-hydrosport-5-atm.jpg",
+      "imageHint": "sport watch"
+    },
+    {
+      "id": "montre-cuir-brun-heritage-classique",
+      "imageUrl": "/images/products/montre-cuir-brun-heritage-classique.jpg",
+      "imageHint": "leather watch"
+    },
+    {
+      "id": "montre-metallique-argent-blue-vision",
+      "imageUrl": "/images/products/montre-metallique-argent-blue-vision.jpg",
+      "imageHint": "silver watch"
+    },
+    {
+      "id": "montre-digitale-led-urban-tech",
+      "imageUrl": "/images/products/montre-digitale-led-urban-tech.jpg",
+      "imageHint": "digital watch"
+    },
+    {
+      "id": "montre-cadran-or-rose-executive-elite",
+      "imageUrl": "/images/products/montre-cadran-or-rose-executive-elite.jpg",
+      "imageHint": "rose gold watch"
+    },
+    {
+      "id": "montre-chronographe-titan-steel-pro",
+      "imageUrl": "/images/products/montre-chronographe-titan-steel-pro.jpg",
+      "imageHint": "chronograph watch"
+    },
+    {
+      "id": "bonnet-laine-torsadee-noir-nordic-luxe",
+      "imageUrl": "/images/products/bonnet-laine-torsadee-noir-nordic-luxe.jpg",
+      "imageHint": "wool beanie"
+    },
+    {
+      "id": "bonnet-epais-gris-winter-essential",
+      "imageUrl": "/images/products/bonnet-epais-gris-winter-essential.jpg",
+      "imageHint": "gray beanie"
+    },
+    {
+      "id": "echarpe-laine-vierge-premium-alpine-soft",
+      "imageUrl": "/images/products/echarpe-laine-vierge-premium-alpine-soft.jpg",
+      "imageHint": "wool scarf"
+    },
+    {
+      "id": "snood-polaire-winter-shield-premium",
+      "imageUrl": "/images/products/snood-polaire-winter-shield-premium.jpg",
+      "imageHint": "fleece snood"
+    },
+    {
+      "id": "bonnet-streetwear-a-revers-urban-knit",
+      "imageUrl": "/images/products/bonnet-streetwear-a-revers-urban-knit.jpg",
+      "imageHint": "cuffed beanie"
+    },
+    {
+      "id": "gants-tactiles-thermiques-tech-gloves",
+      "imageUrl": "/images/products/gants-tactiles-thermiques-tech-gloves.jpg",
+      "imageHint": "tech gloves"
+    },
+    {
+      "id": "portefeuille-cuir-veritable-slimfold-premium",
+      "imageUrl": "/images/products/portefeuille-cuir-veritable-slimfold-premium.jpg",
+      "imageHint": "leather wallet"
+    },
+    {
+      "id": "sacoche-bandouliere-cuir-premium-executive-bag",
+      "imageUrl": "/images/products/sacoche-bandouliere-cuir-premium-executive-bag.jpg",
+      "imageHint": "leather bag"
+    },
+    {
+      "id": "montre-elegante-doree-golden-lady",
+      "imageUrl": "/images/products/montre-elegante-doree-golden-lady.jpg",
+      "imageHint": "gold watch"
+    },
+    {
+      "id": "montre-argentee-minimaliste-silver-pure",
+      "imageUrl": "/images/products/montre-argentee-minimaliste-silver-pure.jpg",
+      "imageHint": "silver watch"
+    },
+    {
+      "id": "montre-cuir-beige-soft-elegance",
+      "imageUrl": "/images/products/montre-cuir-beige-soft-elegance.jpg",
+      "imageHint": "beige watch"
+    },
+    {
+      "id": "montre-rose-gold-maille-milanaise-rose-queen",
+      "imageUrl": "/images/products/montre-rose-gold-maille-milanaise-rose-queen.jpg",
+      "imageHint": "milanese watch"
+    },
+    {
+      "id": "bonnet-laine-pompon-fourrure-synthetique-cozy-glam",
+      "imageUrl": "/images/products/bonnet-laine-pompon-fourrure-synthetique-cozy-glam.jpg",
+      "imageHint": "pompom beanie"
+    },
+    {
+      "id": "bonnet-long-oversize-urban-chic",
+      "imageUrl": "/images/products/bonnet-long-oversize-urban-chic.jpg",
+      "imageHint": "oversize beanie"
+    },
+    {
+      "id": "bonnet-tricote-perle-winter-pearl",
+      "imageUrl": "/images/products/bonnet-tricote-perle-winter-pearl.jpg",
+      "imageHint": "pearl beanie"
+    },
+    {
+      "id": "echarpe-oversize-fausse-fourrure-luxe-soft",
+      "imageUrl": "/images/products/echarpe-oversize-fausse-fourrure-luxe-soft.jpg",
+      "imageHint": "faux fur scarf"
+    },
+    {
+      "id": "echarpe-maille-torsadee-warm-plush",
+      "imageUrl": "/images/products/echarpe-maille-torsadee-warm-plush.jpg",
+      "imageHint": "knit scarf"
+    },
+    {
+      "id": "chale-hiver-motif-elegant-elegant-wrap",
+      "imageUrl": "/images/products/chale-hiver-motif-elegant-elegant-wrap.jpg",
+      "imageHint": "elegant shawl"
+    },
+    {
+      "id": "foulard-cachemire-imprime-cashmere-touch",
+      "imageUrl": "/images/products/foulard-cachemire-imprime-cashmere-touch.jpg",
+      "imageHint": "cashmere scarf"
+    },
+    {
+      "id": "gants-cuir-doubles-polaire-lady-warm",
+      "imageUrl": "/images/products/gants-cuir-doubles-polaire-lady-warm.jpg",
+      "imageHint": "leather gloves"
+    },
+    {
+      "id": "petit-sac-a-main-chic-mini-glam",
+      "imageUrl": "/images/products/petit-sac-a-main-chic-mini-glam.jpg",
+      "imageHint": "chic handbag"
+    },
+    {
+      "id": "boucles-oreilles-pendantes-argentees-shine-drop",
+      "imageUrl": "/images/products/boucles-oreilles-pendantes-argentees-shine-drop.jpg",
+      "imageHint": "dangle earrings"
+    },
+    {
+      "id": "pochette-soiree-shine-night-premium",
+      "imageUrl": "/images/products/pochette-soiree-shine-night-premium.jpg",
+      "imageHint": "evening clutch"
     }
   ]
 }
