@@ -11,11 +11,10 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { GoogleSignInButton } from '@/components/auth/GoogleSignInButton';
 import { TranslatedText } from '@/components/TranslatedText';
 import { Separator } from '@/components/ui/separator';
 import { useAuth, useFirestore } from '@/firebase';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, UserCredential } from 'firebase/auth';
+import { signInWithEmailAndPassword, type UserCredential } from 'firebase/auth';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
@@ -129,31 +128,6 @@ export default function LoginPageClient() {
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    if (!auth) return;
-    try {
-        const provider = new GoogleAuthProvider();
-        const userCredential = await signInWithPopup(auth, provider);
-        const isAdmin = await handleUserCreation(userCredential);
-
-        toast({
-            title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
-            description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
-        });
-        
-        const redirectUrl = isAdmin ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
-        router.push(redirectUrl);
-        router.refresh();
-
-    } catch (error: any) {
-        toast({
-            variant: 'destructive',
-            title: language === 'fr' ? 'Échec de la connexion Google' : language === 'en' ? 'Google Sign-In Failed' : 'Google-Anmeldung fehlgeschlagen',
-            description: error.message,
-        });
-    }
-  }
-
   return (
     <div className="flex min-h-[calc(100vh-80px)] w-full flex-col items-center justify-center p-4">
         <div className="mb-8 text-center">
@@ -200,21 +174,6 @@ export default function LoginPageClient() {
                     </form>
                 </Form>
 
-                <div className="relative my-6">
-                    <div className="absolute inset-0 flex items-center">
-                        <Separator />
-                    </div>
-                    <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-card px-2 text-muted-foreground">
-                            <TranslatedText fr="Ou" en="OR">OU</TranslatedText>
-                        </span>
-                    </div>
-                </div>
-
-                <GoogleSignInButton onClick={handleGoogleSignIn}>
-                    <TranslatedText fr="Continuer avec Google" en="Continue with Google">Continuer avec Google</TranslatedText>
-                </GoogleSignInButton>
-
                 <div className="mt-6 text-center text-sm">
                     <p className="text-muted-foreground">
                         <TranslatedText fr="Pas encore de compte ?" en="Don't have an account yet?">Pas encore de compte ?</TranslatedText>{' '}
@@ -234,5 +193,3 @@ export default function LoginPageClient() {
     </div>
   );
 }
-
-    

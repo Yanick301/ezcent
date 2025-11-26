@@ -11,11 +11,10 @@ import {
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { GoogleSignInButton } from '@/components/auth/GoogleSignInButton';
 import { TranslatedText } from '@/components/TranslatedText';
 import { Separator } from '@/components/ui/separator';
 import { useAuth, useFirestore } from '@/firebase';
-import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, updateProfile, UserCredential, sendEmailVerification } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile, type UserCredential, sendEmailVerification } from 'firebase/auth';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
@@ -114,7 +113,7 @@ export default function RegisterPageClient() {
       await sendEmailVerification(userCredential.user);
       toast({
           title: language === 'fr' ? 'Vérifiez votre e-mail' : language === 'en' ? 'Verify your email' : 'Überprüfen Sie Ihre E-Mail',
-          description: language === 'fr' ? 'Un lien de vérification a été envoyé à votre adresse e-mail.' : language === 'en' ? 'A verification link has been sent to your email address.' : 'Ein Bestätigungslink wurde an Ihre E--Mail-Adresse gesendet.',
+          description: language === 'fr' ? 'Un lien de vérification a été envoyé à votre adresse e-mail.' : language === 'en' ? 'A verification link has been sent to your email address.' : 'Ein Bestätigungslink wurde an Ihre E-Mail-Adresse gesendet.',
       });
       router.push('/verify-email');
 
@@ -129,28 +128,6 @@ export default function RegisterPageClient() {
       });
     }
   };
-
-  const handleGoogleSignIn = async () => {
-    if (!auth) return;
-    try {
-        const provider = new GoogleAuthProvider();
-        const userCredential = await signInWithPopup(auth, provider);
-        await handleUserCreation(userCredential);
-        
-        toast({
-            title: language === 'fr' ? 'Connexion réussie' : language === 'en' ? 'Login Successful' : 'Anmeldung erfolgreich',
-            description: language === 'fr' ? 'Bienvenue !' : language === 'en' ? 'Welcome!' : 'Willkommen!',
-        });
-        const redirectUrl = userCredential.user.email === 'ezcentials@gmail.com' ? '/admin/dashboard' : searchParams.get('redirect') || '/account';
-        router.push(redirectUrl);
-    } catch (error: any) {
-        toast({
-            variant: 'destructive',
-            title: language === 'fr' ? 'Échec de la connexion Google' : language === 'en' ? 'Google Sign-In Failed' : 'Google-Anmeldung fehlgeschlagen',
-            description: error.message,
-        });
-    }
-  }
 
   return (
     <div className="flex min-h-[calc(100vh-80px)] w-full flex-col items-center justify-center p-4">
@@ -208,21 +185,6 @@ export default function RegisterPageClient() {
                         </Button>
                     </form>
                 </Form>
-
-                <div className="relative my-6">
-                    <div className="absolute inset-0 flex items-center">
-                        <Separator />
-                    </div>
-                    <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-card px-2 text-muted-foreground">
-                            <TranslatedText fr="Ou" en="OR">OU</TranslatedText>
-                        </span>
-                    </div>
-                </div>
-                
-                <GoogleSignInButton onClick={handleGoogleSignIn}>
-                    <TranslatedText fr="S'inscrire avec Google" en="Sign up with Google">S'inscrire avec Google</TranslatedText>
-                </GoogleSignInButton>
                 
                 <div className="mt-6 text-center text-sm">
                     <p className="text-muted-foreground">
