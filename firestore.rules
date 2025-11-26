@@ -25,16 +25,18 @@ service cloud.firestore {
     }
     
     match /userProfiles/{userId}/orders/{orderId} {
-      // A user can create and read their own orders
-      allow create, read: if request.auth != null && request.auth.uid == userId;
-      // A user can update their own order to set payment status and receipt
-      allow update: if request.auth != null && request.auth.uid == userId;
+      // Anyone can create an order for their own user profile.
+      allow create: if request.auth != null && request.auth.uid == userId
+                    && request.resource.data.receiptImageUrl.size() < 1048576; // 1MB limit
 
-      // Admins can perform any action on any order
-      allow list, get, update: if isAdmin();
+      // An admin can read or delete any order.
+      allow read, delete: if isAdmin();
+
+      // Only an admin can update an order, and they can only change the status.
+      allow update: if isAdmin() && request.resource.data.keys().hasOnly(['paymentStatus']);
     }
 
-    // Deprecated, no access
+    // CartItems are now managed inside the user's profile, this is deprecated
     match /cartItems/{cartItemId} {
       allow read, write: if false;
     }

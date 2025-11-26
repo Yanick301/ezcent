@@ -108,7 +108,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
           setCart(remoteCart);
         }
       } else {
-        setCart(getCartFromLocalStorage());
+        // Clear cart on logout
+        setCart([]);
       }
       setIsCartLoading(false);
     };
@@ -116,15 +117,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     loadCart();
   }, [user, isUserLoading, firestore, getCartFromLocalStorage, fetchCartFromFirestore, syncCarts]);
 
-  useEffect(() => {
-    if (!user && !isCartLoading) {
-      try {
-        localStorage.setItem('ezcentials-cart', JSON.stringify(cart));
-      } catch (error) {
-        console.error('Failed to save cart to localStorage', error);
-      }
-    }
-  }, [cart, user, isCartLoading]);
 
   const addToCart = useCallback(async (product: Product, quantity: number = 1) => {
     setCart(prevCart => {
