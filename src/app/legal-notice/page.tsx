@@ -44,34 +44,14 @@ export default function LegalNoticePage() {
         </p>
 
         <h2 className='text-2xl'>
-          <TranslatedText fr="Hébergement" en="Hosting">
-            Hosting
-          </TranslatedText>
-        </h2>
-        <p>
-          <TranslatedText
-            fr="Ce site est hébergé par Firebase, un service de Google."
-            en="This site is hosted by Firebase, a Google service."
-          >
-            Diese Seite wird von Firebase, einem Dienst von Google, gehostet.
-          </TranslatedText>
-          <br />
-          Google LLC
-          <br />
-          1600 Amphitheatre Parkway,
-          <br />
-          Mountain View, CA 94043, USA
-        </p>
-
-        <h2 className='text-2xl'>
           <TranslatedText fr="Propriété Intellectuelle" en="Intellectual Property">
             Geistiges Eigentum
           </TranslatedText>
         </h2>
         <p>
           <TranslatedText
-            fr="L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques. La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication."
-            en="This entire site is subject to French and international legislation on copyright and intellectual property. All reproduction rights are reserved, including for downloadable documents and iconographic and photographic representations. The reproduction of all or part of this site on any electronic medium whatsoever is formally prohibited without the express authorization of the director of publication."
+            fr="L'ensemble de ce site relève de la législation allemande sur le droit d'auteur et la propriété intellectuelle. La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication."
+            en="This entire site is subject to German copyright and intellectual property law. The reproduction of all or part of this site on any electronic medium whatsoever is formally prohibited without the express authorization of the director of publication."
           >
             Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
           </TranslatedText>
