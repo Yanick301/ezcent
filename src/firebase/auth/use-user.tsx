@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from 'react';
 import type { User } from 'firebase/auth';
-import { useAuth, useFirestore } from '@/firebase/provider';
+import { useFirebase } from '@/firebase/provider';
 import { doc, onSnapshot } from 'firebase/firestore';
 
 export type UserProfile = {
@@ -21,8 +21,7 @@ export interface UserHookResult {
 }
 
 export const useUser = (): UserHookResult => {
-  const auth = useAuth();
-  const firestore = useFirestore();
+  const { auth, firestore } = useFirebase();
 
   const [user, setUser] = useState<User | null>(() => auth.currentUser);
   const [profile, setProfile] = useState<WithId<UserProfile> | null>(null);
@@ -86,5 +85,7 @@ export const useUser = (): UserHookResult => {
     return () => unsubscribeProfile();
   }, [user, firestore]);
   
-  return { user, profile, isLoading, error };
+  const { isUserLoading: isAuthLoading } = useFirebase();
+
+  return { user, profile, isLoading: isLoading || isAuthLoading, error };
 };
