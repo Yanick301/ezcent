@@ -2000,28 +2000,13 @@ export function getFeaturedProducts(products: Product[], limit: number = 4): Pro
 }
 
 
-export function getWinterSaleProducts(products: Product[], limit?: number, homepage: boolean = false): Product[] {
-  const saleProducts = products.filter(p => p.oldPrice).sort((a,b) => a.id.localeCompare(b.id));
-
-  if (homepage) {
-    const parkas = saleProducts.filter(p => p.name_fr.toLowerCase().includes('parka')).slice(0, 5);
-    const sleepingBags = saleProducts.filter(p => p.name_fr.toLowerCase().includes('sac de couchage')).slice(0, 2);
-    const winterBags = saleProducts.filter(p => p.name_fr.toLowerCase().includes('sac d\'hiver')).slice(0, 2);
-    
-    // Combine and slice to the final limit
-    return [...parkas, ...sleepingBags, ...winterBags].slice(0, limit || 9);
-  }
-  
-  const winterClothing = saleProducts.filter(p => p.category === 'winter-clothing');
-  const shoes = saleProducts.filter(p => p.category === 'shoes');
-  const accessories = saleProducts.filter(p => p.category === 'accessories');
-
-  let combined = [...winterClothing, ...shoes, ...accessories];
+export function getWinterSaleProducts(products: Product[], limit?: number): Product[] {
+  // Filter for products that have an oldPrice, sort them to ensure consistent order
+  const saleProducts = products.filter(p => p.oldPrice).sort((a, b) => a.id.localeCompare(b.id));
 
   if (limit) {
-    return combined.slice(0, limit);
+    return saleProducts.slice(0, limit);
   }
-  return combined;
-}
 
-    
+  return saleProducts;
+}
