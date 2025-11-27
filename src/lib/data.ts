@@ -1871,6 +1871,96 @@ export const products: Product[] = [
         { author: 'Hélène', rating: 5, comment: 'Très chauds et le cuir est d\'une grande souplesse. Parfaits.'}
     ]
   },
+  {
+    id: 'femme1',
+    name: 'Langer Wollmantel mit Gürtel',
+    name_fr: 'Manteau Long en Laine Ceinturé',
+    name_en: 'Long Belted Wool Coat',
+    slug: 'manteau-long-laine-ceinture-femme1',
+    price: 890,
+    oldPrice: 1200,
+    description: 'Ein Meisterwerk der Eleganz. Dieser lange Mantel aus reiner Wolle mit seinem passenden Gürtel betont die Taille und schafft eine anmutige und zeitlose Silhouette.',
+    description_fr: 'Un chef-d\'œuvre d\'élégance. Ce manteau long en pure laine, avec sa ceinture assortie, souligne la taille pour une silhouette gracieuse et intemporelle.',
+    description_en: 'A masterpiece of elegance. This long coat in pure wool, with its matching belt, emphasizes the waist for a graceful and timeless silhouette.',
+    category: 'womens-clothing',
+    images: ['femme1'],
+    reviews: []
+  },
+  {
+    id: 'femme2',
+    name: 'Langer Zweireiher-Mantel',
+    name_fr: 'Manteau Long Croisé',
+    name_en: 'Long Double-Breasted Coat',
+    slug: 'manteau-long-croise-femme2',
+    price: 950,
+    oldPrice: 1350,
+    description: 'Strukturierte Eleganz für diesen langen zweireihigen Mantel. Sein scharfer Schnitt und die imposante Schulterpartie verleihen einen kraftvollen und anspruchsvollen Look.',
+    description_fr: 'L\'élégance structurée pour ce manteau long croisé. Sa coupe franche et sa carrure imposante confèrent une allure puissante et sophistiquée.',
+    description_en: 'Structured elegance for this long double-breasted coat. Its clean cut and impressive shoulders provide a powerful and sophisticated look.',
+    category: 'womens-clothing',
+    images: ['femme2'],
+    reviews: []
+  },
+  {
+    id: 'femme3',
+    name: 'Langer Kaschmirmantel',
+    name_fr: 'Manteau Long en Cachemire',
+    name_en: 'Long Cashmere Coat',
+    slug: 'manteau-long-cachemire-femme3',
+    price: 1500,
+    oldPrice: 2200,
+    description: 'Hüllen Sie sich in absoluten Luxus mit diesem langen Mantel aus reinem Kaschmir. Seine unvergleichliche Weichheit und sein fließender Fall sind eine Einladung zu Komfort und Raffinesse.',
+    description_fr: 'Enveloppez-vous de luxe absolu avec ce manteau long en pur cachemire. Sa douceur inégalée et son tombé fluide sont une invitation au confort et au raffinement.',
+    description_en: 'Wrap yourself in absolute luxury with this long coat in pure cashmere. Its unparalleled softness and fluid drape are an invitation to comfort and refinement.',
+    category: 'womens-clothing',
+    images: ['femme3'],
+    reviews: []
+  },
+  {
+    id: 'femme4',
+    name: 'Langer Mantel aus Kunstpelz',
+    name_fr: 'Manteau Long en Fausse Fourrure',
+    name_en: 'Long Faux Fur Coat',
+    slug: 'manteau-long-fausse-fourrure-femme4',
+    price: 780,
+    oldPrice: 1100,
+    description: 'Ein glamouröser und gewagter Stil. Dieser lange Mantel aus luxuriösem Kunstpelz verspricht einen spektakulären Auftritt und gemütliche Wärme.',
+    description_fr: 'Une allure glamour et audacieuse. Ce manteau long en fausse fourrure luxueuse promet une entrée spectaculaire et une chaleur réconfortante.',
+    description_en: 'A glamorous and bold look. This long coat in luxurious faux fur promises a spectacular entrance and comforting warmth.',
+    category: 'womens-clothing',
+    images: ['femme4'],
+    reviews: []
+  },
+  {
+    id: 'femme5',
+    name: 'Langer Mantel mit Schalkragen',
+    name_fr: 'Manteau Long à Col Châle',
+    name_en: 'Long Shawl Collar Coat',
+    slug: 'manteau-long-col-chale-femme5',
+    price: 820,
+    oldPrice: 1150,
+    description: 'Ein umhüllender und raffinierter langer Mantel. Sein großzügiger Schalkragen und der weiche Wollstoff schaffen eine Silhouette, die sowohl schick als auch entspannt ist.',
+    description_fr: 'Un manteau long enveloppant et raffiné. Son col châle généreux et son drap de laine souple créent une silhouette à la fois chic et décontractée.',
+    description_en: 'An enveloping and refined long coat. Its generous shawl collar and soft wool cloth create a silhouette that is both chic and relaxed.',
+    category: 'womens-clothing',
+    images: ['femme5'],
+    reviews: []
+  },
+  {
+    id: 'femme6',
+    name: 'Langer Oversize-Mantel',
+    name_fr: 'Manteau Long Oversize',
+    name_en: 'Long Oversize Coat',
+    slug: 'manteau-long-oversize-femme6',
+    price: 990,
+    oldPrice: 1400,
+    description: 'Ein starkes Modestatement. Dieser lange Oversize-Mantel spielt mit Volumen für einen modernen und avantgardistischen Look, ohne auf Komfort und Wärme zu verzichten.',
+    description_fr: 'Une déclaration de mode forte. Ce manteau long oversize joue avec les volumes pour une allure moderne et avant-gardiste, sans compromis sur le confort et la chaleur.',
+    description_en: 'A strong fashion statement. This long oversized coat plays with volumes for a modern and avant-garde look, without compromising on comfort and warmth.',
+    category: 'womens-clothing',
+    images: ['femme6'],
+    reviews: []
+  }
 ];
 
 
@@ -1911,13 +2001,27 @@ export function getFeaturedProducts(products: Product[], limit: number = 4): Pro
 
 
 export function getWinterSaleProducts(products: Product[], limit?: number, homepage: boolean = false): Product[] {
-  const saleProducts = products
-    .filter(p => p.oldPrice)
-    .sort((a, b) => a.id.localeCompare(b.id)); // Sort for deterministic results
+  const saleProducts = products.filter(p => p.oldPrice).sort((a,b) => a.id.localeCompare(b.id));
+
+  if (homepage) {
+    const parkas = saleProducts.filter(p => p.name_fr.toLowerCase().includes('parka')).slice(0, 5);
+    const sleepingBags = saleProducts.filter(p => p.name_fr.toLowerCase().includes('sac de couchage')).slice(0, 2);
+    const winterBags = saleProducts.filter(p => p.name_fr.toLowerCase().includes('sac d\'hiver')).slice(0, 2);
+    
+    // Combine and slice to the final limit
+    return [...parkas, ...sleepingBags, ...winterBags].slice(0, limit || 9);
+  }
+  
+  const winterClothing = saleProducts.filter(p => p.category === 'winter-clothing');
+  const shoes = saleProducts.filter(p => p.category === 'shoes');
+  const accessories = saleProducts.filter(p => p.category === 'accessories');
+
+  let combined = [...winterClothing, ...shoes, ...accessories];
 
   if (limit) {
-    return saleProducts.slice(0, limit);
+    return combined.slice(0, limit);
   }
-
-  return saleProducts;
+  return combined;
 }
+
+    

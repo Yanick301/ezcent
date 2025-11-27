@@ -691,6 +691,36 @@
       "id": "pochette-soiree-shine-night-premium",
       "imageUrl": "/images/products/pochette-soiree-shine-night-premium.jpg",
       "imageHint": "evening clutch"
+    },
+    {
+      "id": "femme1",
+      "imageUrl": "/images/products/femme1.jpg",
+      "imageHint": "womens coat"
+    },
+    {
+      "id": "femme2",
+      "imageUrl": "/images/products/femme2.jpg",
+      "imageHint": "womens coat"
+    },
+    {
+      "id": "femme3",
+      "imageUrl": "/images/products/femme3.jpg",
+      "imageHint": "womens coat"
+    },
+    {
+      "id": "femme4",
+      "imageUrl": "/images/products/femme4.jpg",
+      "imageHint": "womens coat"
+    },
+    {
+      "id": "femme5",
+      "imageUrl": "/images/products/femme5.jpg",
+      "imageHint": "womens coat"
+    },
+    {
+      "id": "femme6",
+      "imageUrl": "/images/products/femme6.jpg",
+      "imageHint": "womens coat"
     }
   ]
 }
